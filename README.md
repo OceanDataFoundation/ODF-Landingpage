@@ -23,5 +23,5 @@ Homepage for Ocean Data Foundation, build on Contentful with Gatsby.js
 
 ## Demo
 
-We har hosting the development site at Netlify, click
+We are hosting the development site at Netlify, click
 [here](https://odf-landingpage.netlify.com/) to view.
