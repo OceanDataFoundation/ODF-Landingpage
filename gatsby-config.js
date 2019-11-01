@@ -9,7 +9,7 @@ module.exports = {
     title: `Ocean Data Foundation`,
     author: ``,
     description: `A starter blog demonstrating what Gatsby and Contentful can do.`,
-    siteUrl: ``,
+    siteUrl: `https://odf-landingpage.netlify.com`,
     social: {
       facebook: 'oceandatafoundation',
       linkedin: 'oceandatafoundation',
