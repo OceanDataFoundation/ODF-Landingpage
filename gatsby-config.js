@@ -7,11 +7,14 @@ if (process.env.NODE_ENV !== 'production') {
 module.exports = {
   siteMetadata: {
     title: `Ocean Data Foundation`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    author: ``,
+    description: `A starter blog demonstrating what Gatsby and Contentful can do.`,
+    siteUrl: ``,
     social: {
-      twitter: `kylemathews`,
+      facebook: 'oceandatafoundation',
+      linkedin: 'oceandatafoundation',
+      instagram: 'ocean_data_foundation',
+      twitter: `rev_ocean`,
     },
   },
   plugins: [
