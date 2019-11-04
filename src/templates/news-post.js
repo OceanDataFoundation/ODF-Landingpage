@@ -27,16 +27,13 @@ class NewsPostTemplate extends React.Component {
               }}>
               {post.title}
             </h1>
-            {/* <p
-              style={{
-                ...scale(-1 / 5),
-                display: `block`,
-                marginBottom: rhythm(1),
-              }}>
-              {post.frontmatter.date}
-            </p> NOTE: Remove? */}
+            <p>Published: {post.createdAt}</p>
           </header>
-          {/* <section dangerouslySetInnerHTML={{ __html: post.html }} /> NOTE: Build using Using Rich Text */}
+          <div
+            dangerouslySetInnerHTML={{
+              __html: post.content.childMarkdownRemark.html,
+            }}
+          />
           <hr
             style={{
               marginBottom: rhythm(1),
@@ -89,11 +86,17 @@ export const pageQuery = graphql`
     }
     contentfulNews(slug: { eq: $slug }) {
       title
+      createdAt(formatString: "MMMM DD, YYYY")
       excerpt
       author
       image {
         fluid {
           ...GatsbyContentfulFluid
+        }
+      }
+      content {
+        childMarkdownRemark {
+          html
         }
       }
     }
