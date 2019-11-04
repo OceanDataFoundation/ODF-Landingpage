@@ -8,6 +8,8 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { rhythm } from '../utils/typography'
 
+import { H1 } from '../components/typography/heading/Heading'
+
 const Article = styled.article`
   display: flex;
 `
@@ -29,6 +31,7 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
+        <H1>Test</H1>
         <SEO title="All posts" />
         <Bio />
         {posts.map(({ node }) => {
