@@ -10,6 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
         allContentfulNews {
           edges {
             node {
+              id
               title
               slug
             }
