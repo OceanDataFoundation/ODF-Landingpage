@@ -9,7 +9,7 @@ const NewsPosts = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Blog posts" />
+      <SEO title="News posts" />
       <h1>{"Here's a list of all blogposts!"}</h1>
       <div className="">
         {newsPosts.map(({ node: post }) => (
