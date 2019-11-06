@@ -8,11 +8,10 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^13.4.0",
-    "@contentful/rich-text-types": "^13.4.0",
     "dotenv": "^8.2.0",
     "gatsby": "^2.17.6",
     "gatsby-image": "^2.2.30",
+    "gatsby-plugin-feed": "^2.3.19",
     "gatsby-plugin-google-analytics": "^2.1.23",
     "gatsby-plugin-manifest": "^2.2.25",
     "gatsby-plugin-offline": "^3.0.17",
@@ -34,6 +33,7 @@
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
     "styled-components": "^4.4.1",
+    "styled-sanitize": "^1.1.2",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75",
     "typography": "^0.16.19",

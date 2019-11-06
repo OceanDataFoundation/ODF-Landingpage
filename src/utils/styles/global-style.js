@@ -5,6 +5,7 @@
 //
 
 import { createGlobalStyle } from 'styled-components'
+import styledSanitize from 'styled-sanitize'
 
 // Tokens
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
@@ -14,14 +15,18 @@ import { fontFamily } from '../../utils/tokens/tokenFontFamily'
 import { typeScale } from '../configs/confTypeScale'
 import { space } from '../configs/confSpace'
 
-// Styles
-import ResetCSS from './reset-css'
-
 // Typography
-import { Heading1 } from '../../utils/styles/heading-test'
+import {
+  GlobalH1,
+  GlobalH2,
+  GlobalH3,
+  GlobalH4,
+  GlobalH5,
+  GlobalH6,
+} from './typography/heading'
 
 export const GlobalStyle = createGlobalStyle`
-  /* ${ResetCSS} */
+  ${styledSanitize}
 
   *,
   *::before,
@@ -51,5 +56,11 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${colorNeutral.NEUTRAL_TINT_100};
   }
 
-  ${Heading1}
+  /* Typography */
+  ${GlobalH1}
+  ${GlobalH2}
+  ${GlobalH3}
+  ${GlobalH4}
+  ${GlobalH5}
+  ${GlobalH6}
 `

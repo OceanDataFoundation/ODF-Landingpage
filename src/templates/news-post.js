@@ -90,7 +90,7 @@ export const pageQuery = graphql`
       excerpt
       author
       image {
-        fluid {
+        fluid(maxWidth: 700) {
           ...GatsbyContentfulFluid
         }
       }

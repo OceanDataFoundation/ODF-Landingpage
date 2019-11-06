@@ -48,7 +48,7 @@ class BlogIndex extends React.Component {
                       marginTop: 0,
                       marginBottom: rhythm(1 / 4),
                     }}>
-                    <Link style={{ boxShadow: `none` }} to={node.slug}>
+                    <Link style={{ boxShadow: `none` }} to={`/${node.slug}`}>
                       {title}
                     </Link>
                   </h3>
@@ -83,7 +83,7 @@ export const pageQuery = graphql`
           author
           slug
           image {
-            fluid {
+            fluid(maxWidth: 700) {
               ...GatsbyContentfulFluid
             }
           }
