@@ -14,7 +14,7 @@ import { fontFamily } from '../../utils/tokens/tokenFontFamily'
 import { typeScale } from '../configs/confTypeScale'
 import { space } from '../configs/confSpace'
 
-// Typography
+// Styles
 import {
   GlobalH1,
   GlobalH2,
@@ -28,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
   *,
   *::before,
   *::after {
-      box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   * {
