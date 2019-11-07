@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import Layout from '../components/layout'
-import Image from '../components/image'
-import SEO from '../components/seo'
+import Layout from '../components/site-layout/siteLayout'
+import Image from '../components/image/image'
+import SEO from '../components/seo/seo'
 
 import { H1 } from '../components/typography/heading/Heading'
 
