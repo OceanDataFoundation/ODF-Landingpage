@@ -48,18 +48,18 @@ export const GlobalStyle = createGlobalStyle`
   body {
     ${typeScale.TEXT_PRESET_2};
 
-    padding: 70px ${space[0]} ${space[0]} ${space[0]};
+    padding: 66px ${space[0]} ${space[0]} ${space[0]};
     margin: ${space[0]};
     color: ${colorNeutral.NEUTRAL_TINT_15};
     font-family: ${fontFamily.FONT_FAMILY_1.join()};
     background-color: ${colorNeutral.NEUTRAL_TINT_100};
 
     ${mediaQuery.BREAKPOINT_1`
-      padding: 100px ${space[0]} ${space[0]} ${space[0]};
+      padding: 94px ${space[0]} ${space[0]} ${space[0]};
     `};
 
     ${mediaQuery.BREAKPOINT_2`
-      padding: 125px ${space[0]} ${space[0]} ${space[0]};
+      padding: 121px ${space[0]} ${space[0]} ${space[0]};
     `};
   }
 

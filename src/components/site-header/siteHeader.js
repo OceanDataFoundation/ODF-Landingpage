@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 // Tokens
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
+import { zIndex } from '../../utils/tokens/tokenZIndex'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
@@ -28,6 +29,7 @@ const HeaderStyle = styled.header`
   position: fixed;
   top: 0;
   background-color: ${colorNeutral.NEUTRAL_TINT_0};
+  z-index: ${zIndex.Z_INDEX_7};
 
   ${mediaQuery.BREAKPOINT_1`
 		padding: 0 ${space[6]};
@@ -37,13 +39,5 @@ const HeaderStyle = styled.header`
 		padding: 0 ${space[8]};
   `};
 `
-
-// Header.propTypes = {
-//   siteTitle: PropTypes.string,
-// }
-
-// Header.defaultProps = {
-//   siteTitle: ``,
-// }
 
 export default Header
