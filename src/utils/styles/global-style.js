@@ -45,7 +45,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     ${typeScale.TEXT_PRESET_2};
 
-    padding: ${space[0]};
+    padding: 120px ${space[0]} ${space[0]} ${space[0]};
     margin: ${space[0]};
     color: ${colorNeutral.NEUTRAL_TINT_15};
     font-family: ${fontFamily.FONT_FAMILY_1.join()};
