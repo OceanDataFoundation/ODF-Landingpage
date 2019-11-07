@@ -14,6 +14,9 @@ import { fontFamily } from '../../utils/tokens/tokenFontFamily'
 import { typeScale } from '../configs/confTypeScale'
 import { space } from '../configs/confSpace'
 
+// Mixins
+import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+
 // Styles
 import {
   GlobalH1,
@@ -45,11 +48,19 @@ export const GlobalStyle = createGlobalStyle`
   body {
     ${typeScale.TEXT_PRESET_2};
 
-    padding: 120px ${space[0]} ${space[0]} ${space[0]};
+    padding: 70px ${space[0]} ${space[0]} ${space[0]};
     margin: ${space[0]};
     color: ${colorNeutral.NEUTRAL_TINT_15};
     font-family: ${fontFamily.FONT_FAMILY_1.join()};
     background-color: ${colorNeutral.NEUTRAL_TINT_100};
+
+    ${mediaQuery.BREAKPOINT_1`
+      padding: 100px ${space[0]} ${space[0]} ${space[0]};
+    `};
+
+    ${mediaQuery.BREAKPOINT_2`
+      padding: 125px ${space[0]} ${space[0]} ${space[0]};
+    `};
   }
 
   /* Typography */
