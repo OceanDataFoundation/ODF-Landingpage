@@ -13,32 +13,42 @@ import { fontWeight } from '../../tokens/tokenFontWeight'
 import { space } from '../../configs/confSpace'
 import { typeScale } from '../../configs/confTypeScale'
 
+const Heading = css`
+  margin: ${space[0]};
+  font-weight: normal;
+`
+
 export const GlobalH1 = css`
   h1 {
+    ${Heading};
     ${typeScale.TEXT_PRESET_7}
   }
 `
 
 export const GlobalH2 = css`
   h2 {
+    ${Heading};
     ${typeScale.TEXT_PRESET_6}
   }
 `
 
 export const GlobalH3 = css`
   h3 {
+    ${Heading};
     ${typeScale.TEXT_PRESET_5}
   }
 `
 
 export const GlobalH4 = css`
   h4 {
+    ${Heading};
     ${typeScale.TEXT_PRESET_4}
   }
 `
 
 export const GlobalH5 = css`
   h5 {
+    ${Heading};
     ${typeScale.TEXT_PRESET_3}
   }
 `

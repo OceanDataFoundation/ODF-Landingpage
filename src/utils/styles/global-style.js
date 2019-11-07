@@ -5,7 +5,6 @@
 //
 
 import { createGlobalStyle } from 'styled-components'
-import styledSanitize from 'styled-sanitize'
 
 // Tokens
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
@@ -26,8 +25,6 @@ import {
 } from './typography/heading'
 
 export const GlobalStyle = createGlobalStyle`
-  ${styledSanitize}
-
   *,
   *::before,
   *::after {
@@ -35,7 +32,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   * {
-    position: relative;
     outline: none;
   }
 

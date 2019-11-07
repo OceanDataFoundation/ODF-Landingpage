@@ -1,25 +1,24 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react'
+import { Link } from 'gatsby'
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import Layout from '../components/layout'
+import Image from '../components/image'
+import SEO from '../components/seo'
 
-// import "./index.css"
+import { H1 } from '../components/typography/heading/Heading'
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <div className="home">
-      <h1>Hello There</h1>
+      <H1>Hello There 1</H1>
       <p>Welcome my awesome blog</p>
       <div>
         <div
           style={{
             maxWidth: `300px`,
-            margin: "0 auto 1.45rem",
-          }}
-        >
+            margin: '0 auto 1.45rem',
+          }}>
           <Image />
         </div>
       </div>
