@@ -13,43 +13,56 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 // Components
 import { Container } from '../container/Container'
-import { H1 } from '../../components/typography/heading/Heading'
+import { H1 } from '../typography/heading/Heading'
 
-const Hero = props => {
+const FrontPageHero = props => {
   const { children, bgImage, title } = props
 
   return (
-    <HeroWrapper bgImage={bgImage} title={title}>
+    <FrontPageHeroWrapper bgImage={bgImage} title={title}>
       <Container>
-        <HeroContent>
-          <HeroTitle>{title}</HeroTitle>
+        <FrontPageHeroContent>
+          <FrontPageHeroTitle>{title}</FrontPageHeroTitle>
           {children}
-        </HeroContent>
+        </FrontPageHeroContent>
       </Container>
-    </HeroWrapper>
+    </FrontPageHeroWrapper>
   )
 }
 
-const HeroWrapper = styled.div`
+const FrontPageHeroWrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: ${colorNeutral.NEUTRAL_TINT_0};
   background-image: url(${props => props.bgImage});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+
+  ${mediaQuery.BREAKPOINT_2`
+    justify-content: center;
+  `};
 `
 
-const HeroContent = styled.div`
+const FrontPageHeroContent = styled.div`
   width: 100%;
   padding: 0 ${space[4]};
-  flex: 0 0 50%;
+  margin-top: 40%;
+
+  ${mediaQuery.BREAKPOINT_1`
+    padding: 0 ${space[6]};
+  `};
 
   ${mediaQuery.BREAKPOINT_2`
     width: 70%;
+    padding: 0 ${space[8]};
+    margin-top: auto;
+  `};
+
+  ${mediaQuery.BREAKPOINT_5`
+    padding: 0;
   `};
 
   p {
@@ -67,8 +80,8 @@ const HeroContent = styled.div`
   }
 `
 
-const HeroTitle = styled(H1)`
-  ${typeScale.TEXT_PRESET_4};
+const FrontPageHeroTitle = styled(H1)`
+  ${typeScale.TEXT_PRESET_3};
 
   color: ${colorNeutral.NEUTRAL_TINT_100};
 
@@ -93,4 +106,4 @@ const HeroTitle = styled(H1)`
   `};
 `
 
-export default Hero
+export default FrontPageHero

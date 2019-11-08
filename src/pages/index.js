@@ -6,7 +6,7 @@ import Layout from '../components/site-layout/siteLayout'
 import Image from '../components/image/image'
 import SEO from '../components/seo/seo'
 
-import Hero from '../components/hero/Hero'
+import FrontPageHero from '../components/frontpage-hero/FrontPageHero'
 import { H1 } from '../components/typography/heading/Heading'
 
 const IndexPage = ({ data }) => {
@@ -17,13 +17,16 @@ const IndexPage = ({ data }) => {
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
 
       {heroPosts.map(({ node: post }) => (
-        <Hero key={post.id} bgImage={post.image.file.url} title={post.title}>
+        <FrontPageHero
+          key={post.id}
+          bgImage={post.image.file.url}
+          title={post.title}>
           <div
             dangerouslySetInnerHTML={{
               __html: post.content.childMarkdownRemark.html,
             }}
           />
-        </Hero>
+        </FrontPageHero>
       ))}
 
       <div>
