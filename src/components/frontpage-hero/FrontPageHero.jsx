@@ -56,7 +56,7 @@ const FrontPageHeroContent = styled.div`
   `};
 
   ${mediaQuery.BREAKPOINT_2`
-    width: 70%;
+    width: 75%;
     padding: 0 ${space[8]};
     margin-top: auto;
   `};
@@ -99,10 +99,6 @@ const FrontPageHeroTitle = styled(H1)`
 
   ${mediaQuery.BREAKPOINT_4`
     ${typeScale.TEXT_PRESET_8};
-  `};
-
-  ${mediaQuery.BREAKPOINT_5`
-    ${typeScale.TEXT_PRESET_9};
   `};
 `
 
