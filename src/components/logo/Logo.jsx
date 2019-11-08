@@ -31,13 +31,13 @@ export const Logo = props => {
 }
 
 export const LogoLink = styled(Link)`
+  ${Transition};
+
   height: 100%;
   padding-top: ${space[4]};
   padding-bottom: ${space[4]};
   box-shadow: inset 0 0 0 0 ${colorBrandGreen.GREEN_TINT_50};
   transition-property: box-shadow;
-
-  ${Transition};
 
   ${mediaQuery.BREAKPOINT_1`
 		padding-top: ${space[5]};
