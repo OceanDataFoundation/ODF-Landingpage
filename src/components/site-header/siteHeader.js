@@ -14,7 +14,7 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 // Components
 import Logo from '../logo/Logo'
 
-const Header = ({ siteTitle, children }) => (
+const Header = ({ children }) => (
   <HeaderStyle>
     <Logo />
     {children}
