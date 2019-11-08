@@ -2,6 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+// Tokens
+import { colorNeutral } from '../../../utils/tokens/tokenColorNeutral'
+
 // Config
 import { typeScale } from '../../../utils/configs/confTypeScale'
 
@@ -26,6 +29,10 @@ export const H1 = props => {
 }
 
 const HeadingH1 = styled.h1`
+  color: ${props =>
+    props.invert
+      ? colorNeutral.NEUTRAL_TINT_100
+      : colorNeutral.NEUTRAL_TINT_15};
   ${props =>
     props.size === 'large'
       ? typeScale.TEXT_PRESET_8
