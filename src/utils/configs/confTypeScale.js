@@ -4,8 +4,7 @@
 // ============================================================================
 //
 
-// Import design tokens
-// ----------------------------------------------------------------------------
+// Tokens
 import { fontSize } from '../tokens/tokenFontSize'
 import { lineHeight } from '../tokens/tokenLineHeight'
 

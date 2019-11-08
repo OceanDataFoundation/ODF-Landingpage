@@ -14,5 +14,5 @@ export const fontSize = {
   FONT_SIZE_6: '3.375rem', // 54px
   FONT_SIZE_7: '4.250rem', // 68px
   FONT_SIZE_8: '5.250rem', // 84px
-  FONT_SIZE_9: '5.750rem', // 92px
+  FONT_SIZE_9: '6.250rem', // 92px
 }
