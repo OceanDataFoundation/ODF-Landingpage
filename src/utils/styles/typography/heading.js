@@ -15,7 +15,6 @@ import { typeScale } from '../../configs/confTypeScale'
 
 const Heading = css`
   margin-bottom: ${space[0]};
-  font-weight: normal;
 `
 
 export const GlobalH1 = css`
@@ -66,10 +65,11 @@ export const GlobalH5 = css`
 export const GlobalH6 = css`
   h6 {
     ${Heading};
+    ${typeScale.TEXT_PRESET_2}
+
     margin-top: calc((1 - 1.7) * 0.5rem);
     font-weight: ${fontWeight.FONT_WEIGHT_5};
     text-transform: uppercase;
     letter-spacing: 1px;
-    ${typeScale.TEXT_PRESET_2}
   }
 `
