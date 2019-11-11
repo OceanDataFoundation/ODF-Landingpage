@@ -8,5 +8,5 @@ import { space } from '../../utils/configs/confSpace'
 
 export const Container = styled.div`
   margin: ${space[0]} auto;
-  max-width: ${breakpoints.BREAKPOINT_4};
+  max-width: ${props => (props.fluid ? `100%` : breakpoints.BREAKPOINT_4)};
 `
