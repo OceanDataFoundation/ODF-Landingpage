@@ -7,6 +7,10 @@ import { colorNeutral } from '../../../utils/tokens/tokenColorNeutral'
 
 // Config
 import { typeScale } from '../../../utils/configs/confTypeScale'
+import { space } from '../../../utils/configs/confSpace'
+
+// Mixins
+import { mediaQuery } from '../../../utils/mixins/mixMediaQuery'
 
 // Global style
 import {
@@ -29,16 +33,70 @@ export const H1 = props => {
 }
 
 const HeadingH1 = styled.h1`
+  margin-bottom: ${props =>
+    props.size === 'larger'
+      ? space[5]
+      : props.size === 'large'
+      ? space[4]
+      : space[3]};
   color: ${props =>
     props.invert
       ? colorNeutral.NEUTRAL_TINT_100
       : colorNeutral.NEUTRAL_TINT_15};
   ${props =>
     props.size === 'large'
-      ? typeScale.TEXT_PRESET_8
+      ? typeScale.TEXT_PRESET_3
       : props.size === 'larger'
-      ? typeScale.TEXT_PRESET_9
+      ? typeScale.TEXT_PRESET_3
       : GlobalH1};
+
+  ${mediaQuery.BREAKPOINT_2`
+    margin-bottom: ${props =>
+      props.size === 'large'
+        ? space[6]
+        : props.size === 'larger'
+        ? space[5]
+        : space[4]};
+    ${props =>
+      props.size === 'large'
+        ? typeScale.TEXT_PRESET_5
+        : props.size === 'larger'
+        ? typeScale.TEXT_PRESET_6
+        : GlobalH1};
+  `};
+
+  ${mediaQuery.BREAKPOINT_3`
+  margin-bottom: ${props =>
+    props.size === 'large'
+      ? space[7]
+      : props.size === 'larger'
+      ? space[6]
+      : space[5]};
+    ${props =>
+      props.size === 'large'
+        ? typeScale.TEXT_PRESET_6
+        : props.size === 'larger'
+        ? typeScale.TEXT_PRESET_7
+        : GlobalH1};
+  `};
+
+  ${mediaQuery.BREAKPOINT_4`
+    ${props =>
+      props.size === 'large'
+        ? typeScale.TEXT_PRESET_7
+        : props.size === 'larger'
+        ? typeScale.TEXT_PRESET_8
+        : GlobalH1};
+  `};
+
+  ${mediaQuery.BREAKPOINT_6`
+    ${props =>
+      props.size === 'large'
+        ? typeScale.TEXT_PRESET_8
+        : props.size === 'larger'
+        ? typeScale.TEXT_PRESET_9
+        : GlobalH1};
+  `};
 `
 
 export const H2 = styled.h2`
