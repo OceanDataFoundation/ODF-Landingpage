@@ -12,13 +12,23 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { GlobalStyle } from '../../utils/styles/global-style'
 
 import Header from '../site-header/siteHeader'
+import Navbar from '../navbar/Navbar'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+    query LayoutQuery {
       site {
         siteMetadata {
           title
+        }
+      }
+      contentfulNavigation(title: { eq: "Main Navigation" }) {
+        navItems {
+          id
+          title
+          link {
+            slug
+          }
         }
       }
     }
@@ -28,7 +38,9 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyle />
 
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle={data.site.siteMetadata.title}>
+        <Navbar data={data.contentfulNavigation.navItems} />
+      </Header>
       <div>
         <main>{children}</main>
         <footer>

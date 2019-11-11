@@ -31,6 +31,8 @@ const HeaderStyle = styled.header`
   background-color: ${colorNeutral.NEUTRAL_TINT_0};
   z-index: ${zIndex.Z_INDEX_7};
 
+  justify-content: space-between;
+
   ${mediaQuery.BREAKPOINT_1`
 		padding: 0 ${space[6]};
   `};
