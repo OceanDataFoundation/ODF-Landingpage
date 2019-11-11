@@ -33,8 +33,10 @@ const Paragraph = styled.p`
       ? colorNeutral.NEUTRAL_TINT_100
       : colorNeutral.NEUTRAL_TINT_15};
 
-  ${mediaQuery.BREAKPOINT_1`
-		${props => (props.lead ? typeScale.TEXT_PRESET_3 : typeScale.TEXT_PRESET_2)};
+  ${mediaQuery.BREAKPOINT_2`
+    ${props =>
+      props.lead ? typeScale.TEXT_PRESET_3 : typeScale.TEXT_PRESET_2};
+      line-height: ${props => (props.lead ? `1.5` : `inherit`)}
   `};
 `
 
