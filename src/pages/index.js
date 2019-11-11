@@ -7,8 +7,11 @@ import Image from '../components/image/image'
 import SEO from '../components/seo/seo'
 
 import { Container } from '../components/container/Container'
+import { Box } from '../components/box/Box'
 import Hero from '../components/hero/Hero'
 import Intro from '../components/intro/Intro'
+import Blockquote from '../components/blockquote/Blockquote'
+
 import { H1 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 
@@ -33,23 +36,24 @@ const IndexPage = ({ data }) => {
         </Hero>
       ))}
 
-      <Container fluid style={{ background: '#b3f2ef' }}>
-        <Container>
-          {quotePosts.map(({ node: post }) => (
-            <div key={post.id}>
-              {post.title} <br />
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: post.content.childMarkdownRemark.html,
-                }}
-              />
-              {post.cite}
-              <br />
-              {post.author}
-              <br />
-            </div>
-          ))}
-        </Container>
+      <Container fluid>
+        <Box>
+          <Container>
+            {quotePosts.map(({ node: post }) => (
+              <Blockquote key={post.id} cite={post.cite}>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: post.content.childMarkdownRemark.html,
+                  }}
+                />
+                <cite>{post.cite}</cite>
+                <br />
+                <strong>{post.author}</strong>
+                <br />
+              </Blockquote>
+            ))}
+          </Container>
+        </Box>
       </Container>
 
       <div>
