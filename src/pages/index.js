@@ -6,8 +6,11 @@ import Layout from '../components/site-layout/siteLayout'
 import Image from '../components/image/image'
 import SEO from '../components/seo/seo'
 
-import FrontPageHero from '../components/frontpage-hero/FrontPageHero'
+import { Container } from '../components/container/Container'
+import Hero from '../components/hero/Hero'
+import Intro from '../components/intro/Intro'
 import { H1 } from '../components/typography/heading/Heading'
+import P from '../components/typography/paragraph/Paragraph'
 
 const IndexPage = ({ data }) => {
   const heroPosts = data.allContentfulHero.edges
@@ -17,17 +20,21 @@ const IndexPage = ({ data }) => {
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
 
       {heroPosts.map(({ node: post }) => (
-        <FrontPageHero
-          key={post.id}
-          bgImage={post.image.file.url}
-          title={post.title}>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: post.content.childMarkdownRemark.html,
-            }}
-          />
-        </FrontPageHero>
+        <Hero key={post.id} bgImage={post.image.file.url}>
+          <Intro>
+            <H1 size="large" invert>
+              {post.title}
+            </H1>
+            <P lead invert>
+              {post.content.content}
+            </P>
+          </Intro>
+        </Hero>
       ))}
+
+      <Container fluid style={{ background: '#b3f2ef' }}>
+        <Container>test</Container>
+      </Container>
 
       <div>
         <H1>Hello There 1</H1>
@@ -55,9 +62,7 @@ export const query = graphql`
           id
           title
           content {
-            childMarkdownRemark {
-              html
-            }
+            content
           }
           image {
             file {
