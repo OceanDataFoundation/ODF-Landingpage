@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
 
       <Header siteTitle={data.site.siteMetadata.title} />
       <div>
-        <main>{children}</main>
+        <main role="main">{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
