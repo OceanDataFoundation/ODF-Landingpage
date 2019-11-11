@@ -14,6 +14,7 @@ import P from '../components/typography/paragraph/Paragraph'
 
 const IndexPage = ({ data }) => {
   const heroPosts = data.allContentfulHero.edges
+  const quotePosts = data.allContentfulQuote.edges
 
   return (
     <Layout>
@@ -33,7 +34,22 @@ const IndexPage = ({ data }) => {
       ))}
 
       <Container fluid style={{ background: '#b3f2ef' }}>
-        <Container>test</Container>
+        <Container>
+          {quotePosts.map(({ node: post }) => (
+            <div key={post.id}>
+              {post.title} <br />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: post.content.childMarkdownRemark.html,
+                }}
+              />
+              {post.cite}
+              <br />
+              {post.author}
+              <br />
+            </div>
+          ))}
+        </Container>
       </Container>
 
       <div>
@@ -53,7 +69,7 @@ const IndexPage = ({ data }) => {
 export default IndexPage
 
 export const query = graphql`
-  query HeroPostsPageQuery {
+  query IndexPageQuery {
     allContentfulHero(
       filter: { contentful_id: { eq: "IkxJsGmFULejd1JzRmJry" } }
     ) {
@@ -69,6 +85,23 @@ export const query = graphql`
               url
             }
           }
+        }
+      }
+    }
+    allContentfulQuote(
+      filter: { contentful_id: { eq: "27f4To0O1ACAWoyg4NR5xJ" } }
+    ) {
+      edges {
+        node {
+          id
+          title
+          content {
+            childMarkdownRemark {
+              html
+            }
+          }
+          cite
+          author
         }
       }
     }
