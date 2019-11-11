@@ -14,6 +14,10 @@ import { GlobalStyle } from '../../utils/styles/global-style'
 import Header from '../site-header/siteHeader'
 
 const Layout = ({ children }) => {
+  if (typeof window !== 'undefined') {
+    require('smooth-scroll')('a[href*="#"]')
+  }
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
