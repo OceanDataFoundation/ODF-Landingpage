@@ -43,6 +43,7 @@ const IntroContainer = styled(Container)`
 
 const IntroContent = styled.section`
   width: 100%;
+  position: relative;
 
   ${mediaQuery.BREAKPOINT_3`
     width: 60%;

@@ -10,6 +10,7 @@ import { Container } from '../components/container/Container'
 import { Box } from '../components/box/Box'
 import Hero from '../components/hero/Hero'
 import Intro from '../components/intro/Intro'
+import CallToAction from '../components/call-to-action/CallToAction'
 import Blockquote from '../components/blockquote/Blockquote'
 
 import { H1 } from '../components/typography/heading/Heading'
@@ -32,11 +33,12 @@ const IndexPage = ({ data }) => {
             <P lead invert>
               {post.content.content}
             </P>
+            <CallToAction href="/#quote" />
           </Intro>
         </Hero>
       ))}
 
-      <Container fluid>
+      <Container id="quote" fluid>
         <Box>
           <Container>
             {quotePosts.map(({ node: post }) => (
