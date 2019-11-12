@@ -71,11 +71,11 @@ export const LogoStyle = styled.img`
   width: 150px;
   display: block;
 
-  ${mediaQuery.BREAKPOINT_1`
+  ${mediaQuery.BREAKPOINT_2`
 		width: 200px;
   `};
 
-  ${mediaQuery.BREAKPOINT_2`
+  ${mediaQuery.BREAKPOINT_3`
 		width: 250px;
   `};
 `
