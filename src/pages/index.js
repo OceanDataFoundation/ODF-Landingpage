@@ -54,6 +54,8 @@ const IndexPage = ({ data }) => {
         </Box>
       </Container>
 
+      <Container>what we do</Container>
+
       <div>
         <H1>Hello There 1</H1>
         <p>Welcome my awesome blog</p>
@@ -71,7 +73,7 @@ const IndexPage = ({ data }) => {
 export default IndexPage
 
 export const query = graphql`
-  query IndexPageQuery {
+  query FrontPageQuery {
     allContentfulHero(
       filter: { contentful_id: { eq: "IkxJsGmFULejd1JzRmJry" } }
     ) {
@@ -104,6 +106,21 @@ export const query = graphql`
           }
           cite
           author
+        }
+      }
+    }
+    allContentfulPage(
+      filter: { contentful_id: { eq: "27f4To0O1ACAWoyg4NR5xJ" } }
+    ) {
+      edges {
+        node {
+          id
+          title
+          content {
+            childMarkdownRemark {
+              html
+            }
+          }
         }
       }
     }

@@ -35,15 +35,8 @@ const Blockquote = props => {
 
 const BlockquoteContainer = styled.blockquote`
   max-width: 100%;
-  padding-left: ${space[3]};
-  padding-right: ${space[3]};
   margin: ${quoteDimention} auto;
   position: relative;
-
-  ${mediaQuery.BREAKPOINT_2`
-    padding-left: ${space[6]};
-    padding-right: ${space[6]};
-  `};
 
   ${mediaQuery.BREAKPOINT_3`
     max-width: 75%;
@@ -86,12 +79,8 @@ const BlockquoteContent = styled.div`
 
   ::before {
     top: -${quoteDimention};
-    left: 8px;
+    left: 0;
     background-image: url(${iconLeftQuote});
-
-    ${mediaQuery.BREAKPOINT_2`
-      left: 32px;
-    `};
 
     ${mediaQuery.BREAKPOINT_3`
       top: -${quoteDimention};
@@ -101,12 +90,8 @@ const BlockquoteContent = styled.div`
 
   ::after {
     top: calc(100% + ${quoteDimention} / 2);
-    right: 8px;
+    right: 0;
     background-image: url(${iconRightQuote});
-
-    ${mediaQuery.BREAKPOINT_2`
-      right: 32px;
-    `};
 
     ${mediaQuery.BREAKPOINT_3`
       top: auto;
