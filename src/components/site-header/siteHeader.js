@@ -27,11 +27,11 @@ const HeaderContainer = styled.header`
   background-color: ${colorNeutral.NEUTRAL_TINT_0};
   z-index: ${zIndex.Z_INDEX_7};
 
-  ${mediaQuery.BREAKPOINT_1`
+  ${mediaQuery.BREAKPOINT_2`
 		padding: 0 ${space[6]};
   `};
 
-  ${mediaQuery.BREAKPOINT_2`
+  ${mediaQuery.BREAKPOINT_3`
 		padding: 0 ${space[8]};
   `};
 `
