@@ -3,7 +3,6 @@ import { Link, graphql } from 'gatsby'
 
 // Components
 import Layout from '../components/site-layout/siteLayout'
-import Image from '../components/image/image'
 import SEO from '../components/seo/seo'
 
 import { Container } from '../components/container/Container'
@@ -19,6 +18,10 @@ import P from '../components/typography/paragraph/Paragraph'
 const IndexPage = ({ data }) => {
   const heroPosts = data.allContentfulHero.edges
   const quotePosts = data.allContentfulQuote.edges
+
+  const pageOnePost = data.pageOne.edges
+  const pageTwoPost = data.pageTwo.edges
+  const pageThreePost = data.pageThree.edges
 
   return (
     <Layout>
@@ -54,18 +57,55 @@ const IndexPage = ({ data }) => {
         </Box>
       </Container>
 
-      <Container>what we do</Container>
-
-      <div>
-        <H1>Hello There 1</H1>
-        <p>Welcome my awesome blog</p>
-        <div>
-          <div>
-            <Image />
+      <Container>
+        {pageOnePost.map(({ node: post }) => (
+          <div key={post.id}>
+            {post.title}
+            {post.subtitle}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: post.content.childMarkdownRemark.html,
+              }}
+            />
           </div>
-        </div>
-        <Link to="/news/">View all posts</Link>
-      </div>
+        ))}
+      </Container>
+
+      <Container fluid>video container</Container>
+
+      <Container>
+        {pageTwoPost.map(({ node: post }) => (
+          <div key={post.id}>
+            {post.title}
+            {post.subtitle}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: post.content.childMarkdownRemark.html,
+              }}
+            />
+          </div>
+        ))}
+      </Container>
+
+      <Container fluid>
+        <Box>Press release container</Box>
+      </Container>
+
+      <Container>
+        {pageThreePost.map(({ node: post }) => (
+          <div key={post.id}>
+            {post.title}
+            {post.subtitle}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: post.content.childMarkdownRemark.html,
+              }}
+            />
+          </div>
+        ))}
+      </Container>
+
+      <Link to="/news/">View all posts</Link>
     </Layout>
   )
 }
@@ -109,13 +149,45 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPage(
-      filter: { contentful_id: { eq: "27f4To0O1ACAWoyg4NR5xJ" } }
+    pageOne: allContentfulPage(
+      filter: { contentful_id: { eq: "64aEfVMj0UWes4p7Iln9tn" } }
     ) {
       edges {
         node {
           id
           title
+          content {
+            childMarkdownRemark {
+              html
+            }
+          }
+        }
+      }
+    }
+    pageTwo: allContentfulPage(
+      filter: { contentful_id: { eq: "2r4i46JNKeDdrVqHigczDE" } }
+    ) {
+      edges {
+        node {
+          id
+          title
+          content {
+            childMarkdownRemark {
+              html
+            }
+          }
+        }
+      }
+    }
+    pageThree: allContentfulPage(
+      filter: { contentful_id: { eq: "4ENggrmrN48l1RkjTKXHOd" } }
+    ) {
+      edges {
+        node {
+          id
+          title
+          slug
+          subtitle
           content {
             childMarkdownRemark {
               html
