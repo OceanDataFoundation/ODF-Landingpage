@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
 
 // Config
+import { space } from '../../utils/configs/confSpace'
 import { typeScale } from '../../utils/configs/confTypeScale'
 
 // Asset
@@ -44,10 +45,9 @@ const BlockquoteContainer = styled.blockquote`
   p {
     ${typeScale.TEXT_PRESET_2};
 
-    ${mediaQuery.BREAKPOINT_3`
-      ${typeScale.TEXT_PRESET_3};
-      
+    ${mediaQuery.BREAKPOINT_3`      
       font-size: 1.250rem;
+      line-height: 1.5;
     `};
   }
 `
@@ -101,30 +101,32 @@ const BlockquoteContent = styled.div`
 `
 const BlockquoteFooter = styled.footer`
   max-width: 100%;
+  padding-left: ${space[5]};
   margin-top: calc(${quoteDimention} / 2);
   position: relative;
 
   ${mediaQuery.BREAKPOINT_2`
-    max-width: 50%;
+    max-width: 75%;
   `};
 
   ${mediaQuery.BREAKPOINT_3`
+    max-width: 50%;
+    padding-left: 0;
     margin-top: ${quoteDimention};
     margin-right: ${quoteDimention};
     margin-left: ${quoteDimention};
   `};
 
   ::before {
-    width: 6px;
+    width: 16px;
     height: 4px;
     content: '';
     position: absolute;
     top: 9px;
-    left: -11px;
+    left: 0;
     background-color: ${colorBrandGreen.GREEN_TINT_50};
 
-    ${mediaQuery.BREAKPOINT_2`
-      width: 16px;
+    ${mediaQuery.BREAKPOINT_3`
       left: -24px;
     `};
   }
