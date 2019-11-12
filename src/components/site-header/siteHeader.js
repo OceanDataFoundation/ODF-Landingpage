@@ -24,8 +24,7 @@ const HeaderContainer = styled.header`
   align-items: stretch;
   position: fixed;
   top: 0;
-  /* background-color: ${colorNeutral.NEUTRAL_TINT_0}; */
-  background-color: red;
+  background-color: ${colorNeutral.NEUTRAL_TINT_0};
   z-index: ${zIndex.Z_INDEX_7};
 
   ${mediaQuery.BREAKPOINT_1`
