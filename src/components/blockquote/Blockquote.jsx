@@ -6,7 +6,6 @@ import styled from 'styled-components'
 import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
 
 // Config
-import { space } from '../../utils/configs/confSpace.js'
 import { typeScale } from '../../utils/configs/confTypeScale'
 
 // Asset
