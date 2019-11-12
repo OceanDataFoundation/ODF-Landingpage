@@ -13,6 +13,7 @@ import { typeScale } from '../../configs/confTypeScale'
 export const GlobalParagraph = css`
   p {
     ${typeScale.TEXT_PRESET_2};
+    margin-top: ${space[0]};
 
     :not(:last-child) {
       margin-bottom: ${space[4]};
