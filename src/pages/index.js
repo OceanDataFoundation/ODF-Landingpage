@@ -42,16 +42,12 @@ const IndexPage = ({ data }) => {
         <Box>
           <Container>
             {quotePosts.map(({ node: post }) => (
-              <Blockquote key={post.id} cite={post.cite}>
+              <Blockquote key={post.id} cite={post.cite} author={post.author}>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: post.content.childMarkdownRemark.html,
                   }}
                 />
-                <cite>{post.cite}</cite>
-                <br />
-                <strong>{post.author}</strong>
-                <br />
               </Blockquote>
             ))}
           </Container>
