@@ -77,17 +77,21 @@ const Navbar = ({ data }) => {
   })
 
   return (
-    <NavBar style={barAnimation}>
-      <NavLinks style={linkAnimation}>
-        {navItems.map(item => (
-          <li key={item.id}>
-            <Link to={item.link.slug}>{item.title}</Link>
-          </li>
-        ))}
-      </NavLinks>
-      <BurgerMenu open={open} setOpen={setOpen} />
+    <>
+      <NavBar style={barAnimation}>
+        <FlexContainer>
+          <NavLinks style={linkAnimation}>
+            {navItems.map(item => (
+              <li key={item.id}>
+                <Link to={item.link.slug}>{item.title}</Link>
+              </li>
+            ))}
+          </NavLinks>
+          <BurgerMenu open={open} setOpen={setOpen} />
+        </FlexContainer>
+      </NavBar>
       <CollapseMenu navbarState={open} handleNavbar={setOpen} />
-    </NavBar>
+    </>
   )
 }
 

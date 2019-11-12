@@ -9,10 +9,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import { GlobalStyle } from '../../utils/styles/global-style'
+import { GlobalStyle } from '../../../utils/styles/global-style'
 
-import Header from '../site-header/siteHeader'
-import Navbar from '../navbar/Navbar'
+import Header from '../header/Header'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -38,9 +37,11 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyle />
 
-      <Header siteTitle={data.site.siteMetadata.title}>
-        <Navbar data={data.contentfulNavigation.navItems} />
-      </Header>
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        navItems={data.contentfulNavigation.navItems}
+      />
+
       <div>
         <main>{children}</main>
         <footer>

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import { Link } from 'gatsby'
 import { useSpring, animated } from 'react-spring'
 
 const CollapseWrapper = styled(animated.div)`
@@ -50,16 +50,16 @@ const CollapseMenu = props => {
         }}>
         <NavLinks>
           <li>
-            <a href="/">link n1</a>
+            <Link href="/">link n1</Link>
           </li>
           <li>
-            <a href="/">link n2</a>
+            <Link href="/">link n2</Link>
           </li>
           <li>
-            <a href="/">link n3</a>
+            <Link href="/">link n3</Link>
           </li>
           <li>
-            <a href="/">link n4</a>
+            <Link href="/">link n4</Link>
           </li>
         </NavLinks>
       </CollapseWrapper>
