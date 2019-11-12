@@ -9,6 +9,9 @@ import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
 // Config
 import { space } from '../../utils/configs/confSpace'
 
+// Mixins
+import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+
 // Styles
 import { SrOnly } from '../../utils/styles/utility-classes/sr-only'
 
@@ -26,10 +29,15 @@ const CallToAction = props => {
 
 const CallToActionContainer = styled(Link)`
   position: absolute;
-  bottom: -8rem;
-  left: ${space[2]};
+  bottom: -100%;
+  left: 50%;
 
   background-color: red;
+
+  ${mediaQuery.BREAKPOINT_2`
+		bottom: -8rem;
+    left: ${space[2]};
+  `};
 `
 
 const CallToActionArrow = styled.div`
