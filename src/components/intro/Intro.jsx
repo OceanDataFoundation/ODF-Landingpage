@@ -44,6 +44,14 @@ const IntroContent = styled.section`
   position: relative;
 
   ${mediaQuery.BREAKPOINT_3`
+    width: 60%;
+  `};
+
+  ${mediaQuery.BREAKPOINT_4`
+    width: 65%;
+  `};
+
+  ${mediaQuery.BREAKPOINT_6`
     width: 70%;
   `};
 `
