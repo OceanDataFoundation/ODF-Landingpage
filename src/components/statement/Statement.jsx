@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 
@@ -74,5 +75,17 @@ const StatementContent = styled.div`
     padding-top: calc(${space[10]} * 2);
   `};
 `
+
+StatementContainer.propTypes = {
+  children: PropTypes.node,
+}
+
+StatementImage.propTypes = {
+  reverse: PropTypes.bool,
+}
+
+StatementContent.propTypes = {
+  reverse: PropTypes.bool,
+}
 
 export default Statement
