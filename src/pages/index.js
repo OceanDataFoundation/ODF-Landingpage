@@ -22,6 +22,8 @@ const IndexPage = ({ data }) => {
   const quotePosts = data.allContentfulQuote.edges
 
   const statementOne = data.statementOne.edges
+  const statementTwo = data.statementTwo.edges
+  const statementThree = data.statementThree.edges
 
   return (
     <Layout>
@@ -61,7 +63,45 @@ const IndexPage = ({ data }) => {
         <Statement
           key={post.id}
           image={post.image.fluid}
-          reverse={post.reverseOrder}>
+          reverse={post.reverseOrder === 'Yes' ? post.reverseOrder : null}>
+          <SubHeading>{post.subtitle}</SubHeading>
+          <H2>{post.title}</H2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: post.content.childMarkdownRemark.html,
+            }}
+          />
+        </Statement>
+      ))}
+
+      <Container fluid>
+        <Box>Video?</Box>
+      </Container>
+
+      {statementTwo.map(({ node: post }) => (
+        <Statement
+          key={post.id}
+          image={post.image.fluid}
+          reverse={post.reverseOrder === 'Yes' ? post.reverseOrder : null}>
+          <SubHeading>{post.subtitle}</SubHeading>
+          <H2>{post.title}</H2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: post.content.childMarkdownRemark.html,
+            }}
+          />
+        </Statement>
+      ))}
+
+      <Container fluid>
+        <Box>Press</Box>
+      </Container>
+
+      {statementThree.map(({ node: post }) => (
+        <Statement
+          key={post.id}
+          image={post.image.fluid}
+          reverse={post.reverseOrder === 'Yes' ? post.reverseOrder : null}>
           <SubHeading>{post.subtitle}</SubHeading>
           <H2>{post.title}</H2>
           <div
@@ -118,6 +158,50 @@ export const query = graphql`
     }
     statementOne: allContentfulStatement(
       filter: { contentful_id: { eq: "ztB5QO0ksjDwYIfJmAyIc" } }
+    ) {
+      edges {
+        node {
+          id
+          title
+          subtitle
+          image {
+            fluid(maxWidth: 700) {
+              ...GatsbyContentfulFluid
+            }
+          }
+          content {
+            childMarkdownRemark {
+              html
+            }
+          }
+          reverseOrder
+        }
+      }
+    }
+    statementTwo: allContentfulStatement(
+      filter: { contentful_id: { eq: "1KjFyhW9qYGmoUG6fnmAML" } }
+    ) {
+      edges {
+        node {
+          id
+          title
+          subtitle
+          image {
+            fluid(maxWidth: 700) {
+              ...GatsbyContentfulFluid
+            }
+          }
+          content {
+            childMarkdownRemark {
+              html
+            }
+          }
+          reverseOrder
+        }
+      }
+    }
+    statementThree: allContentfulStatement(
+      filter: { contentful_id: { eq: "3j6lTSUDtdoe6MvOk3abcH" } }
     ) {
       edges {
         node {
