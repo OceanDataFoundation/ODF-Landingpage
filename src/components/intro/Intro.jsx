@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
+// Tokens
+import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
+
 // Config
 import { space } from '../../utils/configs/confSpace'
 
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-
-// Components
-import { Container } from '../container/Container'
 
 const Intro = props => {
   const { children } = props
@@ -20,32 +20,39 @@ const Intro = props => {
   )
 }
 
-const IntroContainer = styled(Container)`
+const IntroContainer = styled.div`
+  max-width: ${breakpoints.BREAKPOINT_4};
   padding-top: 8rem;
-  padding-right: ${space[3]};
-  padding-left: ${space[3]};
-
-  ${mediaQuery.BREAKPOINT_1`
-    padding-right: ${space[6]};
-    padding-left: ${space[6]};
-  `};
+  margin: ${space[0]} auto;
 
   ${mediaQuery.BREAKPOINT_2`
     padding-top: 12rem;
-    padding-right: ${space[8]};
-    padding-left: ${space[8]};
   `};
 
   ${mediaQuery.BREAKPOINT_3`
     padding-top: 0;
   `};
+
+  ${mediaQuery.BREAKPOINT_4`
+    padding-right: ${space[8]};
+    padding-left: ${space[8]};
+  `};
 `
 
 const IntroContent = styled.section`
   width: 100%;
+  position: relative;
 
   ${mediaQuery.BREAKPOINT_3`
     width: 60%;
+  `};
+
+  ${mediaQuery.BREAKPOINT_4`
+    width: 65%;
+  `};
+
+  ${mediaQuery.BREAKPOINT_6`
+    width: 70%;
   `};
 `
 

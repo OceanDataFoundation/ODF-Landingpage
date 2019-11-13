@@ -29,19 +29,27 @@ export const LogoLink = styled(Link)`
   box-shadow: inset 0 0 0 0 ${colorBrandGreen.GREEN_TINT_50};
   transition-property: box-shadow;
 
-  ${mediaQuery.BREAKPOINT_1`
+  ${mediaQuery.BREAKPOINT_2`
 		padding-top: ${space[5]};
     padding-bottom: ${space[5]};
   `};
 
-  ${mediaQuery.BREAKPOINT_2`
+  ${mediaQuery.BREAKPOINT_3`
 		padding-top: ${space[6]};
     padding-bottom: ${space[6]};
   `};
 
   :hover,
   :focus {
-    box-shadow: inset 0 -8px 0 0 ${colorBrandGreen.GREEN_TINT_50};
+    box-shadow: inset 0 -2px 0 0 ${colorBrandGreen.GREEN_TINT_50};
+
+    ${mediaQuery.BREAKPOINT_2`
+      box-shadow: inset 0 -4px 0 0 ${colorBrandGreen.GREEN_TINT_50};
+    `};
+
+    ${mediaQuery.BREAKPOINT_3`
+      box-shadow: inset 0 -8px 0 0 ${colorBrandGreen.GREEN_TINT_50};
+    `};
   }
 `
 
@@ -53,11 +61,11 @@ export const LogoStyle = styled.img`
   width: 150px;
   display: block;
 
-  ${mediaQuery.BREAKPOINT_1`
+  ${mediaQuery.BREAKPOINT_2`
 		width: 200px;
   `};
 
-  ${mediaQuery.BREAKPOINT_2`
+  ${mediaQuery.BREAKPOINT_3`
 		width: 250px;
   `};
 `

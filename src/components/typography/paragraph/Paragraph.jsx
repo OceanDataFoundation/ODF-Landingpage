@@ -27,7 +27,6 @@ export default P
 const Paragraph = styled.p`
   ${typeScale.TEXT_PRESET_2};
 
-  margin: ${space[0]};
   color: ${props =>
     props.invert
       ? colorNeutral.NEUTRAL_TINT_100
@@ -36,6 +35,8 @@ const Paragraph = styled.p`
   ${mediaQuery.BREAKPOINT_2`
     ${props =>
       props.lead ? typeScale.TEXT_PRESET_3 : typeScale.TEXT_PRESET_2};
+
+      margin-bottom: ${space[6]};
       line-height: ${props => (props.lead ? `1.5` : `inherit`)}
   `};
 `
