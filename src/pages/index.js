@@ -11,17 +11,17 @@ import Hero from '../components/hero/Hero'
 import Intro from '../components/intro/Intro'
 import CallToAction from '../components/call-to-action/CallToAction'
 import Blockquote from '../components/blockquote/Blockquote'
+import Statement from '../components/statement/Statement'
 
-import { H1 } from '../components/typography/heading/Heading'
+import { H1, H2 } from '../components/typography/heading/Heading'
+import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import P from '../components/typography/paragraph/Paragraph'
 
 const IndexPage = ({ data }) => {
   const heroPosts = data.allContentfulHero.edges
   const quotePosts = data.allContentfulQuote.edges
 
-  const pageOnePost = data.pageOne.edges
-  const pageTwoPost = data.pageTwo.edges
-  const pageThreePost = data.pageThree.edges
+  const statementOne = data.statementOne.edges
 
   return (
     <Layout>
@@ -57,53 +57,20 @@ const IndexPage = ({ data }) => {
         </Box>
       </Container>
 
-      <Container>
-        {pageOnePost.map(({ node: post }) => (
-          <div key={post.id}>
-            {post.title}
-            {post.subtitle}
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.content.childMarkdownRemark.html,
-              }}
-            />
-          </div>
-        ))}
-      </Container>
-
-      <Container fluid>video container</Container>
-
-      <Container>
-        {pageTwoPost.map(({ node: post }) => (
-          <div key={post.id}>
-            {post.title}
-            {post.subtitle}
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.content.childMarkdownRemark.html,
-              }}
-            />
-          </div>
-        ))}
-      </Container>
-
-      <Container fluid>
-        <Box>Press release container</Box>
-      </Container>
-
-      <Container>
-        {pageThreePost.map(({ node: post }) => (
-          <div key={post.id}>
-            {post.title}
-            {post.subtitle}
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.content.childMarkdownRemark.html,
-              }}
-            />
-          </div>
-        ))}
-      </Container>
+      {statementOne.map(({ node: post }) => (
+        <Statement
+          key={post.id}
+          image={post.image.fluid}
+          reverse={post.reverseOrder}>
+          <SubHeading>{post.subtitle}</SubHeading>
+          <H2>{post.title}</H2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: post.content.childMarkdownRemark.html,
+            }}
+          />
+        </Statement>
+      ))}
 
       <Link to="/news/">View all posts</Link>
     </Layout>
@@ -149,50 +116,25 @@ export const query = graphql`
         }
       }
     }
-    pageOne: allContentfulPage(
-      filter: { contentful_id: { eq: "64aEfVMj0UWes4p7Iln9tn" } }
+    statementOne: allContentfulStatement(
+      filter: { contentful_id: { eq: "ztB5QO0ksjDwYIfJmAyIc" } }
     ) {
       edges {
         node {
           id
           title
-          content {
-            childMarkdownRemark {
-              html
-            }
-          }
-        }
-      }
-    }
-    pageTwo: allContentfulPage(
-      filter: { contentful_id: { eq: "2r4i46JNKeDdrVqHigczDE" } }
-    ) {
-      edges {
-        node {
-          id
-          title
-          content {
-            childMarkdownRemark {
-              html
-            }
-          }
-        }
-      }
-    }
-    pageThree: allContentfulPage(
-      filter: { contentful_id: { eq: "4ENggrmrN48l1RkjTKXHOd" } }
-    ) {
-      edges {
-        node {
-          id
-          title
-          slug
           subtitle
+          image {
+            fluid(maxWidth: 700) {
+              ...GatsbyContentfulFluid
+            }
+          }
           content {
             childMarkdownRemark {
               html
             }
           }
+          reverseOrder
         }
       }
     }
