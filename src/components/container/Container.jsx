@@ -9,7 +9,7 @@ import { space } from '../../utils/configs/confSpace'
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
-export const Container = styled.div`
+export const Container = styled.section`
   margin: ${space[0]} auto;
   padding-right: ${props => (props.fluid ? 0 : space[4])};
   padding-left: ${props => (props.fluid ? 0 : space[4])};
