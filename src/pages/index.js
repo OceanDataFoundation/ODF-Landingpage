@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 // Components
-import Layout from '../components/site-layout/siteLayout'
+import Layout from '../components/site-layout/Layout'
 import Image from '../components/image/image'
 import SEO from '../components/seo/seo'
 

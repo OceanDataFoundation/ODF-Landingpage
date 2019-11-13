@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -45,3 +46,8 @@ const BurgerMenu = ({ open, setOpen }) => {
 }
 
 export default BurgerMenu
+
+BurgerMenu.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
+}

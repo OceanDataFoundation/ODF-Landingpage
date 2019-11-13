@@ -9,16 +9,30 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import { GlobalStyle } from '../../../utils/styles/global-style'
+import { GlobalStyle } from '../../utils/styles/global-style'
 
-import Header from '../header/Header'
+// Components
+import Header from '../site-header/Header'
+import Footer from '../site-footer/Footer'
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
+  const {
+    site,
+    contentfulAsset: logo,
+    contentfulNavigation: { navItems },
+  } = useStaticQuery(graphql`
     query LayoutQuery {
       site {
         siteMetadata {
           title
+        }
+      }
+      contentfulAsset(title: { eq: "odf-logo" }) {
+        description
+        file {
+          url
+          fileName
+          contentType
         }
       }
       contentfulNavigation(title: { eq: "Main Navigation" }) {
@@ -38,17 +52,14 @@ const Layout = ({ children }) => {
       <GlobalStyle />
 
       <Header
-        siteTitle={data.site.siteMetadata.title}
-        navItems={data.contentfulNavigation.navItems}
+        siteTitle={site.siteMetadata.title}
+        logo={logo}
+        navItems={navItems}
       />
 
       <div>
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <Footer />
       </div>
     </>
   )
