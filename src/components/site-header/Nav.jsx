@@ -3,55 +3,74 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
+// Token
+import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
+
+// Config
+import { space } from '../../utils/configs/confSpace'
+
+// Mixins
+import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+
 // Components
 import BurgerMenu from './BurgerMenu'
 
 const StyledNav = styled.nav`
   justify-self: end;
-  list-style-type: none;
   margin: auto 0;
+  list-style-type: none;
+`
+
+const NavList = styled.ul`
+  display: none;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: inline-block;
+  }
 
   & a {
-    color: #dfe6e9;
-    text-transform: uppercase;
-    font-weight: 600;
+    margin-right: ${space[6]};
+    color: ${colorNeutral.NEUTRAL_TINT_100};
+    padding-bottom: ${space[5]};
     border-bottom: 1px solid transparent;
-    margin: 0 1.5rem;
-    transition: all 300ms linear 0s;
+    transition: all 300ms cubic-bezier(0.1, 0.1, 0.6, 0.85);
     text-decoration: none;
     cursor: pointer;
+    text-transform: uppercase;
 
     &:hover {
-      color: #fdcb6e;
-      border-bottom: 1px solid #fdcb6e;
-    }
-
-    @media (max-width: 768px) {
-      display: none;
+      padding-bottom: ${space[2]};
+      border-bottom: 1px solid ${colorNeutral.NEUTRAL_TINT_100};
     }
   }
+
+  ${mediaQuery.BREAKPOINT_3`
+      display: initial;
+    `}
 `
 
 const BurgerWrapper = styled.div`
   margin: auto 0;
 
-  @media (min-width: 769px) {
-    display: none;
-  }
+  ${mediaQuery.BREAKPOINT_3`
+      display: none;
+    `}
 `
 
 const Nav = ({ navItems, open, setOpen }) => {
-  console.log('TCL: Nav -> navItems, open, setOpen', navItems, open, setOpen)
   return (
-    <StyledNav>
-      {navItems &&
-        navItems.map(item => (
-          <Link to={item.link.slug} key={item.id}>
-            {item.title}
-          </Link>
+    <StyledNav role="navigation">
+      <NavList>
+        {navItems.map(item => (
+          <li key={item.id}>
+            <Link to={item.link.slug}>{item.title}</Link>
+          </li>
         ))}
+      </NavList>
       <BurgerWrapper>
-        {/* <BurgerMenu open={open} setOpen={setOpen} /> */}
+        <BurgerMenu open={open} setOpen={setOpen} />
       </BurgerWrapper>
     </StyledNav>
   )

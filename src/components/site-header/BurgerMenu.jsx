@@ -2,19 +2,25 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+// Token
+import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
+
+// Config
+import { space } from '../../utils/configs/confSpace'
+
 const Wrapper = styled.div`
   position: relative;
-  padding-top: 0.7rem;
+  padding-top: ${space[3]};
   cursor: pointer;
   display: block;
 
   & span {
-    background: #fdcb6e;
+    background: ${colorNeutral.NEUTRAL_TINT_100};
     display: block;
     position: relative;
-    width: 3.5rem;
-    height: 0.4rem;
-    margin-bottom: 0.7rem;
+    width: 2rem;
+    height: ${space[1]};
+    margin-bottom: ${space[3]};
     transition: all ease-in-out 0.2s;
   }
 

@@ -40,14 +40,6 @@ const StyledHeader = styled.header`
   `};
 `
 
-// const Nav = styled.nav`
-//   max-width: 120rem;
-//   display: flex;
-//   padding: 0 2rem;
-//   justify-content: space-between;
-//   height: 5rem;
-// `
-
 // UI
 const Header = props => {
   const { siteTitle, logo, navItems } = props
