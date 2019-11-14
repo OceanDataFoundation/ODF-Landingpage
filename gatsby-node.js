@@ -24,12 +24,12 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors
   }
 
-  // Create news posts pages.
-  const posts = result.data.allContentfulNews.edges
+  // Create news pages.
+  const news = result.data.allContentfulNews.edges
 
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
+  news.forEach((post, index) => {
+    const previous = index === news.length - 1 ? null : news[index + 1].node
+    const next = index === 0 ? null : news[index - 1].node
 
     createPage({
       path: post.node.slug,
