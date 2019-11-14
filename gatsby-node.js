@@ -1,4 +1,5 @@
 const path = require(`path`)
+const slash = require(`slash`)
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -50,10 +51,10 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   // =============================
-  // Create next posts
+  // Create news posts
   // =============================
 
-  const newsPost = path.resolve(`./src/templates/news-post.js`)
+  const newsPostTemplate = path.resolve(`./src/templates/news-post.js`)
   const newsResult = await graphql(
     `
       {
@@ -83,7 +84,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: post.node.slug,
-      component: newsPost,
+      component: slash(newsPostTemplate),
       context: {
         slug: post.node.slug,
         previous,
