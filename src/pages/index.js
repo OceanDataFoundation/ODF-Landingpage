@@ -45,7 +45,7 @@ const IndexPage = ({ data }) => {
 
       <Container id="quote" fluid>
         <Box>
-          <Container>
+          <Container as="div">
             {quotePosts.map(({ node: post }) => (
               <Blockquote key={post.id} cite={post.cite} author={post.author}>
                 <div
@@ -94,7 +94,11 @@ const IndexPage = ({ data }) => {
       ))}
 
       <Container fluid>
-        <Box>Press</Box>
+        <Box>
+          <Container as="div">
+            <SubHeading>Press release</SubHeading>
+          </Container>
+        </Box>
       </Container>
 
       {statementThree.map(({ node: post }) => (
