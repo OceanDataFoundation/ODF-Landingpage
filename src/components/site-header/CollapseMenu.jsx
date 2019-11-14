@@ -67,5 +67,4 @@ export default CollapseMenu
 CollapseMenu.propTypes = {
   navItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   isOpen: PropTypes.bool.isRequired,
-  setOpen: PropTypes.func.isRequired,
 }
