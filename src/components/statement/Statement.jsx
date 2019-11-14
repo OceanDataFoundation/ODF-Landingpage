@@ -36,6 +36,7 @@ const StatementContainer = styled(Container)`
   ${mediaQuery.BREAKPOINT_2`
     padding-right: ${space[8]};
     padding-left: ${space[8]};
+    margin-bottom: ${space[6]};
     grid-template-columns: 47.5% 47.5%;
     grid-column-gap: 5%;
   `};
