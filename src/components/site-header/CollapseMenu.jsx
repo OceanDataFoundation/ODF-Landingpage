@@ -1,67 +1,61 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import { useSpring, animated } from 'react-spring'
 
+// Tokens
+import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
+import { fontSize } from '../../utils/tokens/tokenFontSize'
+
+// Config
+// import { space } from '../../utils/configs/confSpace'
+
 const CollapseWrapper = styled(animated.div)`
-  background: #2d3436;
+  background: rgba(0, 0, 0, 0.92);
   position: fixed;
-  top: 4.5rem;
+  top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
 `
 
-const NavLinks = styled.ul`
+const NavList = styled.ul`
   list-style-type: none;
-  padding: 2rem 1rem 2rem 2rem;
+  padding: 5.5rem 1rem 2rem 2rem;
 
   & li {
     transition: all 300ms linear 0s;
   }
 
   & a {
-    font-size: 1.4rem;
+    font-size: ${fontSize.FONT_SIZE_3};
     line-height: 2;
-    color: #dfe6e9;
+    color: ${colorNeutral.NEUTRAL_TINT_100};
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
 
     &:hover {
-      color: #fdcb6e;
-      border-bottom: 1px solid #fdcb6e;
+      border-bottom: 1px solid ${colorNeutral.NEUTRAL_TINT_100};
     }
   }
 `
 
 const CollapseMenu = props => {
-  const { open } = useSpring({ open: props.navbarState ? 0 : 1 })
+  const { navItems } = props
+  const toggleAnimation = useSpring({ opacity: props.isOpen ? 1 : 0 })
 
-  if (props.navbarState === true) {
+  if (props.isOpen === true) {
     return (
-      <CollapseWrapper
-        style={{
-          transform: open
-            .interpolate({
-              range: [0, 0.2, 0.3, 1],
-              output: [0, -20, 0, -200],
-            })
-            .interpolate(openValue => `translate3d(0, ${openValue}px, 0`),
-        }}>
-        <NavLinks>
-          <li>
-            <Link href="/">link n1</Link>
-          </li>
-          <li>
-            <Link href="/">link n2</Link>
-          </li>
-          <li>
-            <Link href="/">link n3</Link>
-          </li>
-          <li>
-            <Link href="/">link n4</Link>
-          </li>
-        </NavLinks>
+      <CollapseWrapper style={toggleAnimation}>
+        <NavList>
+          {navItems.map(item => (
+            <li key={item.id}>
+              <Link to={item.link.slug}>{item.title}</Link>
+            </li>
+          ))}
+        </NavList>
       </CollapseWrapper>
     )
   }
@@ -69,3 +63,9 @@ const CollapseMenu = props => {
 }
 
 export default CollapseMenu
+
+CollapseMenu.propTypes = {
+  navItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
+}

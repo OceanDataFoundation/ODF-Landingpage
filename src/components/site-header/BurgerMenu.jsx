@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-// Token
+// Tokens
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
+import { zIndex } from '../../utils/tokens/tokenZIndex'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
@@ -13,6 +14,7 @@ const Wrapper = styled.div`
   padding-top: ${space[3]};
   cursor: pointer;
   display: block;
+  z-index: ${zIndex.Z_INDEX_7};
 
   & span {
     background: ${colorNeutral.NEUTRAL_TINT_100};
@@ -29,13 +31,11 @@ const Wrapper = styled.div`
   }
 
   .open span:nth-child(3) {
-    transform: rotate(45deg);
-    top: -11px;
+    transform: translateY(-10px) rotate(45deg);
   }
 
   .open span:nth-child(1) {
-    transform: rotate(-45deg);
-    top: 11px;
+    transform: translateY(10px) rotate(-45deg);
   }
 `
 
