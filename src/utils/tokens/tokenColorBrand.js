@@ -17,3 +17,15 @@ export const colorBrandGreen = {
   GREEN_TINT_10: '#002a28',
   GREEN_TINT_5: '#001514',
 }
+
+export const colorBrandBlue = {
+  GREEN_TINT_90: '#cce2ff',
+  GREEN_TINT_80: '#99c5ff',
+  GREEN_TINT_70: '#66a7ff',
+  GREEN_TINT_60: '#338aff',
+  GREEN_TINT_50: '#006dff',
+  GREEN_TINT_40: '#0057cc',
+  GREEN_TINT_30: '#004199',
+  GREEN_TINT_20: '#002c66',
+  GREEN_TINT_10: '#001633',
+}
