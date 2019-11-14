@@ -12,10 +12,14 @@ import Intro from '../components/intro/Intro'
 import CallToAction from '../components/call-to-action/CallToAction'
 import Blockquote from '../components/blockquote/Blockquote'
 import Statement from '../components/statement/Statement'
+import PressRelease from '../components/press-release/PressRelease'
+import { Meta } from '../components/meta/Meta'
+import Time from '../components/time/Time'
 
-import { H1, H2 } from '../components/typography/heading/Heading'
+import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import P from '../components/typography/paragraph/Paragraph'
+import ExternalLink from '../components/external-link/ExternalLink'
 
 const IndexPage = ({ data }) => {
   const heroPosts = data.allContentfulHero.edges
@@ -24,6 +28,8 @@ const IndexPage = ({ data }) => {
   const statementOne = data.statementOne.edges
   const statementTwo = data.statementTwo.edges
   const statementThree = data.statementThree.edges
+
+  const pressRelease = data.allContentfulPressRelease.edges
 
   return (
     <Layout>
@@ -97,6 +103,29 @@ const IndexPage = ({ data }) => {
         <Box>
           <Container as="div">
             <SubHeading>Press release</SubHeading>
+            <PressRelease>
+              {pressRelease.map(({ node: post }) => (
+                <div key={post.id}>
+                  <H3>{post.title}</H3>
+                  <Meta>
+                    {post.location} | <Time dateTime={post.date} />
+                  </Meta>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: post.excerpt.childMarkdownRemark.html,
+                    }}
+                  />
+                  {post.link ? (
+                    <ExternalLink
+                      href={post.link}
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      Read more
+                    </ExternalLink>
+                  ) : null}
+                </div>
+              ))}
+            </PressRelease>
           </Container>
         </Box>
       </Container>
@@ -157,6 +186,22 @@ export const query = graphql`
           }
           cite
           author
+        }
+      }
+    }
+    allContentfulPressRelease(limit: 3, sort: { fields: [date], order: DESC }) {
+      edges {
+        node {
+          id
+          title
+          location
+          date(formatString: "MMMM D, YYYY")
+          excerpt {
+            childMarkdownRemark {
+              html
+            }
+          }
+          link
         }
       }
     }
