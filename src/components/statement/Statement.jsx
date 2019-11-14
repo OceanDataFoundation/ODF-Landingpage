@@ -82,11 +82,11 @@ StatementContainer.propTypes = {
 }
 
 StatementImage.propTypes = {
-  reverse: PropTypes.bool,
+  reverse: PropTypes.string,
 }
 
 StatementContent.propTypes = {
-  reverse: PropTypes.bool,
+  reverse: PropTypes.string,
 }
 
 export default Statement
