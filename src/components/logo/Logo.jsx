@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
@@ -17,18 +18,7 @@ import { Transition } from '../../utils/styles/utility-classes/transition'
 
 // Components
 import { H1 } from '../typography/heading/Heading'
-import logoSVG from '../../images/odf-logo.svg'
-
-export const Logo = props => {
-  const { ...rest } = props
-
-  return (
-    <LogoLink to="/">
-      <LogoHeading>Welcome to Ocean Data Foundation</LogoHeading>
-      <LogoStyle src={logoSVG} alt="Ocean Data Foundation Logo" {...rest} />
-    </LogoLink>
-  )
-}
+// import logoSVG from '../../images/odf-logo.svg'
 
 export const LogoLink = styled(Link)`
   ${Transition};
@@ -80,4 +70,23 @@ export const LogoStyle = styled.img`
   `};
 `
 
+export const Logo = ({ logo, siteTitle }) => {
+  const { description, file } = logo
+
+  return (
+    <LogoLink to="/">
+      <LogoHeading>{`Welcome to ${siteTitle}`}</LogoHeading>
+      <LogoStyle src={file.url} alt={description} />
+    </LogoLink>
+  )
+}
+
 export default Logo
+
+Logo.propTypes = {
+  siteTitle: PropTypes.string.isRequired,
+  logo: PropTypes.shape({
+    description: PropTypes.string,
+    file: PropTypes.objectOf(PropTypes.string),
+  }).isRequired,
+}

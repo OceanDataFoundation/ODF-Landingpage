@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
-import Layout from '../components/site-layout/siteLayout'
+import Layout from '../components/site-layout/Layout'
 import SEO from '../components/seo/seo'
 
 const NewsPostTemplate = ({ data }) => {
