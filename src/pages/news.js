@@ -14,7 +14,7 @@ const NewsPosts = ({ data }) => {
       <div className="">
         {newsPosts.map(({ node: post }) => (
           <div key={post.id}>
-            <Link to={`/${post.slug}`}>{post.title}</Link>
+            <Link to={`news/${post.slug}`}>{post.title}</Link>
           </div>
         ))}
         <span className="" />
