@@ -34,12 +34,11 @@ const StatementContainer = styled(Container)`
     padding-right: ${space[8]};
     padding-left: ${space[8]};
     margin-bottom: ${space[6]};
-    grid-template-columns: 47.5% 47.5%;
+    grid-template-columns: 50% 50%;
     grid-column-gap: 5%;
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-    grid-template-columns: 45% 45%;
     grid-column-gap: 10%;
   `};
 `
