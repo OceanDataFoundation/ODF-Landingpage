@@ -16,6 +16,10 @@ import Header from '../site-header/Header'
 import Footer from '../site-footer/Footer'
 
 const Layout = ({ children }) => {
+  if (typeof window !== 'undefined') {
+    require('smooth-scroll')('a[href*="#"]')
+  }
+
   const {
     site,
     contentfulAsset: logo,

@@ -3,9 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 
-// Tokens
-import { zIndex } from '../../utils/tokens/tokenZIndex'
-
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
