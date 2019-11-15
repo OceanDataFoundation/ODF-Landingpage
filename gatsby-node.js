@@ -38,14 +38,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const pages = pageResult.data.allContentfulPage.edges
 
-  pages.forEach(({ node }) => {
-    const path = node.slug
-
+  pages.forEach(page => {
     createPage({
-      path: path,
+      path: page.node.slug,
       component: pageTemplate,
       context: {
-        path,
+        slug: page.node.slug,
       },
     })
   })
