@@ -48,28 +48,19 @@ const StatementContainer = styled(Container)`
 `
 
 const StatementImage = styled.div`
-  ${props => (props.reverse ? `order: 2` : `order: 1`)};
-
   ${mediaQuery.BREAKPOINT_2`
     position: relative;
     top: -${space[8]};
+    ${props => (props.reverse ? `order: 2` : `order: 1`)};
   `};
 `
 
 const StatementContent = styled.div`
   padding: ${space[4]};
-  position: absolute;
-  top: ${space[7]};
-  left: ${space[7]};
-  z-index: ${zIndex.Z_INDEX_1};
   background-color: rgba(255, 255, 255, 0.95);
-  ${props => (props.reverse ? `order: 1` : `order: 2`)};
 
   ${mediaQuery.BREAKPOINT_2`
-    padding-top: calc(${space[10]});
-    position: relative;
-    top: auto;
-    left: auto;
+    ${props => (props.reverse ? `order: 1` : `order: 2`)};
   `};
 
   ${mediaQuery.BREAKPOINT_3`
