@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
 // Components
 import Layout from '../components/site-layout/Layout'
@@ -154,8 +154,6 @@ const IndexPage = ({ data }) => {
       <Container fluid>
         <Box>Stay in the loop?</Box>
       </Container>
-
-      <Link to="/news/">View all posts</Link>
     </Layout>
   )
 }
