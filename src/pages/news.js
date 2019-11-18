@@ -8,8 +8,11 @@ import SEO from '../components/seo/seo'
 // Components
 import { Container } from '../components/container/Container'
 
-import { H2, H3 } from '../components/typography/heading/Heading'
+import { H2 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
+import { Meta } from '../components/meta/Meta'
+import { Small } from '../components/typography/small/Small'
+import LinkBlock from '../components/link-block/LinkBlock'
 
 const NewsPosts = ({ data }) => {
   const newsPosts = data.allContentfulNews.edges
@@ -17,50 +20,27 @@ const NewsPosts = ({ data }) => {
   return (
     <Layout>
       <SEO title="News posts" />
-      <Container
-        style={{
-          marginTop: '4rem',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gridColumnGap: '32px',
-          gridRowGap: '32px',
-        }}>
+      <Container twoCol>
         {newsPosts.map(({ node: post }) => (
-          <article
-            key={post.id}
-            style={{
-              backgroundColor: 'white',
-            }}>
-            {post.image ? (
-              <Img
-                fluid={post.image.fluid}
-                style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-              />
-            ) : null}
-            <div
-              style={{
-                width: 'calc(100% - 3rem)',
-                padding: '4rem 2rem 2rem 2rem',
-                position: 'relative',
-                top: '-3rem',
-                right: '2rem',
-                left: '1rem',
-                // backgroundColor: 'rgba(230, 251, 250, .95)',
-                backgroundColor: 'rgba(255, 255, 255, .95)',
-              }}>
-              <small style={{ marginBottom: '1rem', display: 'block' }}>
-                {post.createdAt}
-              </small>
-              <H3>{post.title}</H3>
+          <LinkBlock to={`/news/${post.slug}`} key={post.id}>
+            <article>
+              {post.image ? <Img fluid={post.image.fluid} /> : null}
+              <Meta>
+                <Small>{post.createdAt}</Small>
+              </Meta>
+              <div style={{ padding: '2rem 2rem 0 2rem' }}>
+                <H2>{post.title}</H2>
+              </div>
               <P>{post.excerpt}</P>
-              <Link to={`/news/${post.slug}`}>Read more -></Link>
-            </div>
-          </article>
+            </article>
+          </LinkBlock>
         ))}
       </Container>
       <Link to="/">Go back to the homepage</Link>
     </Layout>
   )
 }
+
 export default NewsPosts
 
 export const query = graphql`
