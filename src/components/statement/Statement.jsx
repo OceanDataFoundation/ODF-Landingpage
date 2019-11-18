@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 
+// Tokens
+import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
+import { zIndex } from '../../utils/tokens/tokenZIndex'
+
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
@@ -42,11 +46,25 @@ const StatementContainer = styled(Container)`
 `
 
 const StatementImage = styled.div`
+  position: relative;
+
   ${mediaQuery.BREAKPOINT_2`
-    position: relative;
     top: -${space[8]};
     ${props => (props.reverse ? `order: 2` : `order: 1`)};
   `};
+
+  ::before {
+    ${mediaQuery.BREAKPOINT_3`
+      width: 160px;
+      height: 4px;
+      content: '';
+      position: absolute;
+      top: 116px;
+      left: ${props => (props.reverse ? '-120px' : 'calc(100% - 40px)')};
+      background-color: ${colorNeutral.NEUTRAL_TINT_85};
+      z-index: ${zIndex.Z_INDEX_2};
+    `};
+  }
 
   > div {
     height: 200px;
