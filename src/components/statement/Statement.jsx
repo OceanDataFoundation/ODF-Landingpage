@@ -31,10 +31,8 @@ const StatementContainer = styled(Container)`
   position: relative;
 
   ${mediaQuery.BREAKPOINT_2`
-    padding-right: ${space[8]};
-    padding-left: ${space[8]};
     margin-bottom: ${space[6]};
-    grid-template-columns: 50% 50%;
+    grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 5%;
   `};
 
@@ -56,11 +54,12 @@ const StatementContent = styled.div`
   background-color: rgba(255, 255, 255, 0.95);
 
   ${mediaQuery.BREAKPOINT_2`
+    padding: calc(${space[7]}) 0 0 0;
     ${props => (props.reverse ? `order: 1` : `order: 2`)};
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-    padding-top: calc(${space[10]} * 2);
+    padding: calc(${space[10]} * 2) 0 0 0;
   `};
 `
 
