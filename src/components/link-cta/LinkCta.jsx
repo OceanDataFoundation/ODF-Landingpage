@@ -54,6 +54,7 @@ const LinkCtaStyle = styled.a`
 
     span {
       width: 60px;
+      opacity: 1;
       background-color: ${colorBrandBlue.GREEN_TINT_40};
 
       ::before,
@@ -65,12 +66,13 @@ const LinkCtaStyle = styled.a`
 `
 
 const LinkCtaStyleArrow = styled.span`
-  width: 40px;
+  width: 0;
   height: 2px;
   margin-left: ${space[4]};
   position: relative;
   bottom: 3px;
   display: inline-block;
+  opacity: 0;
   background-color: ${colorBrandBlue.GREEN_TINT_50};
 
   ${Transition};

@@ -20,6 +20,7 @@ import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import P from '../components/typography/paragraph/Paragraph'
 import LinkCta from '../components/link-cta/LinkCta'
+import LinkButton from '../components/link-button/LinkButton'
 
 const IndexPage = ({ data }) => {
   const heroPosts = data.allContentfulHero.edges
@@ -126,6 +127,9 @@ const IndexPage = ({ data }) => {
                 </article>
               ))}
             </PressRelease>
+            <LinkButton to="/press/" showArrow>
+              See all
+            </LinkButton>
           </Container>
         </Box>
       </Container>
@@ -144,6 +148,12 @@ const IndexPage = ({ data }) => {
           />
         </Statement>
       ))}
+
+      <Container fluid>Upcomming events</Container>
+
+      <Container fluid>
+        <Box>Stay in the loop?</Box>
+      </Container>
 
       <Link to="/news/">View all posts</Link>
     </Layout>
