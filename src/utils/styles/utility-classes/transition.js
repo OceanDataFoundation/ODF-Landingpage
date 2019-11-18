@@ -10,5 +10,5 @@ import { css } from 'styled-components'
 import { duration } from '../../tokens/tokenDuration'
 
 export const Transition = css`
-  transition: all ${duration.DURATION_3} cubic-bezier(0.1, 0.1, 0.6, 0.85);
+  transition: all ${duration.DURATION_4} cubic-bezier(0.7, 0, 0.2, 1);
 `
