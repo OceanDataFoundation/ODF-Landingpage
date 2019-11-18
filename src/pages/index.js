@@ -105,7 +105,7 @@ const IndexPage = ({ data }) => {
             <SubHeading>Press release</SubHeading>
             <PressRelease>
               {pressRelease.map(({ node: post }) => (
-                <div key={post.id}>
+                <article key={post.id}>
                   <H3>{post.title}</H3>
                   <Meta>
                     {post.location} | <Time dateTime={post.date} />
@@ -123,7 +123,7 @@ const IndexPage = ({ data }) => {
                       Read more
                     </ExternalLink>
                   ) : null}
-                </div>
+                </article>
               ))}
             </PressRelease>
           </Container>
