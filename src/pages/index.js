@@ -214,7 +214,7 @@ export const query = graphql`
           title
           subtitle
           image {
-            fluid(maxWidth: 700) {
+            fluid(maxWidth: 1600) {
               ...GatsbyContentfulFluid
             }
           }
@@ -236,7 +236,7 @@ export const query = graphql`
           title
           subtitle
           image {
-            fluid(maxWidth: 700) {
+            fluid(maxWidth: 1600) {
               ...GatsbyContentfulFluid
             }
           }
@@ -258,7 +258,7 @@ export const query = graphql`
           title
           subtitle
           image {
-            fluid(maxWidth: 700) {
+            fluid(maxWidth: 1600) {
               ...GatsbyContentfulFluid
             }
           }
