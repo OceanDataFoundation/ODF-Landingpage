@@ -94,6 +94,7 @@ const LinkButtonStyleArrow = styled.span`
 `
 
 LinkButtonStyle.propTypes = {
+  children: PropTypes.node,
   to: PropTypes.string,
   showArrow: PropTypes.bool,
 }
