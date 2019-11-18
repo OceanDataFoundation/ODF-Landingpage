@@ -62,6 +62,10 @@ const PressReleaseContainer = styled(Container)`
     `};
   }
 
+  p {
+    margin-top: ${space[6]};
+  }
+
   a {
     margin-top: ${space[5]};
     margin-bottom: ${space[4]};
