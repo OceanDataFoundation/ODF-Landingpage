@@ -47,6 +47,18 @@ const StatementImage = styled.div`
     top: -${space[8]};
     ${props => (props.reverse ? `order: 2` : `order: 1`)};
   `};
+
+  > div {
+    height: 200px;
+
+    ${mediaQuery.BREAKPOINT_2`
+      height: 600px;
+    `};
+
+    ${mediaQuery.BREAKPOINT_3`
+      height: 800px;
+    `};
+  }
 `
 
 const StatementContent = styled.div`
