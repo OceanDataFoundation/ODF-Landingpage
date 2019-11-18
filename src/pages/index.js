@@ -19,7 +19,7 @@ import Time from '../components/time/Time'
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import P from '../components/typography/paragraph/Paragraph'
-import ExternalLink from '../components/external-link/ExternalLink'
+import MoreLink from '../components/more-link/MoreLink'
 
 const IndexPage = ({ data }) => {
   const heroPosts = data.allContentfulHero.edges
@@ -116,12 +116,12 @@ const IndexPage = ({ data }) => {
                     }}
                   />
                   {post.link ? (
-                    <ExternalLink
+                    <MoreLink
                       href={post.link}
                       target="_blank"
                       rel="noopener noreferrer">
                       Read more
-                    </ExternalLink>
+                    </MoreLink>
                   ) : null}
                 </article>
               ))}

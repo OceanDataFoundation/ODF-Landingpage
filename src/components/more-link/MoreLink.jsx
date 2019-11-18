@@ -11,18 +11,18 @@ import { space } from '../../utils/configs/confSpace'
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
 
-const ExternalLink = props => {
+const MoreLink = props => {
   const { children, href } = props
 
   return (
-    <ExternalLinkStyle href={href}>
+    <MoreLinkStyle href={href}>
       {children}
-      <ExternalLinkStyleArrow />
-    </ExternalLinkStyle>
+      <MoreLinkStyleArrow />
+    </MoreLinkStyle>
   )
 }
 
-const ExternalLinkStyle = styled.a`
+const MoreLinkStyle = styled.a`
   color: ${colorBrandBlue.GREEN_TINT_50};
   text-decoration: none;
   position: relative;
@@ -64,7 +64,7 @@ const ExternalLinkStyle = styled.a`
   }
 `
 
-const ExternalLinkStyleArrow = styled.span`
+const MoreLinkStyleArrow = styled.span`
   width: 40px;
   height: 2px;
   margin-left: ${space[4]};
@@ -96,8 +96,8 @@ const ExternalLinkStyleArrow = styled.span`
   }
 `
 
-ExternalLink.propTypes = {
+MoreLink.propTypes = {
   children: PropTypes.node,
 }
 
-export default ExternalLink
+export default MoreLink
