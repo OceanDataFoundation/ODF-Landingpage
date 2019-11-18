@@ -11,18 +11,18 @@ import { space } from '../../utils/configs/confSpace'
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
 
-const MoreLink = props => {
+const LinkCta = props => {
   const { children, href } = props
 
   return (
-    <MoreLinkStyle href={href}>
+    <LinkCtaStyle href={href}>
       {children}
-      <MoreLinkStyleArrow />
-    </MoreLinkStyle>
+      <LinkCtaStyleArrow />
+    </LinkCtaStyle>
   )
 }
 
-const MoreLinkStyle = styled.a`
+const LinkCtaStyle = styled.a`
   color: ${colorBrandBlue.GREEN_TINT_50};
   text-decoration: none;
   position: relative;
@@ -64,7 +64,7 @@ const MoreLinkStyle = styled.a`
   }
 `
 
-const MoreLinkStyleArrow = styled.span`
+const LinkCtaStyleArrow = styled.span`
   width: 40px;
   height: 2px;
   margin-left: ${space[4]};
@@ -96,8 +96,8 @@ const MoreLinkStyleArrow = styled.span`
   }
 `
 
-MoreLink.propTypes = {
+LinkCta.propTypes = {
   children: PropTypes.node,
 }
 
-export default MoreLink
+export default LinkCta
