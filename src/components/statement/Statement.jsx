@@ -62,7 +62,7 @@ const StatementImage = styled.div`
 `
 
 const StatementContent = styled.div`
-  padding: ${space[4]};
+  padding: ${space[6]};
   background-color: rgba(255, 255, 255, 0.95);
 
   ${mediaQuery.BREAKPOINT_2`
