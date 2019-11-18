@@ -65,7 +65,7 @@ const Nav = ({ navItems, open, setOpen }) => {
       <NavList>
         {navItems.map(item => (
           <li key={item.id}>
-            <Link to={item.link.slug}>{item.title}</Link>
+            {item.link && <Link to={item.link.slug}>{item.title}</Link>}
           </li>
         ))}
       </NavList>
