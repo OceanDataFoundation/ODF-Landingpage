@@ -79,7 +79,10 @@ const Layout = ({ children }) => {
 
       <div>
         <main>{children}</main>
-        <Footer contactInformation={contactInformation} />
+        <Footer
+          siteTitle={site.siteMetadata.title}
+          contactInformation={contactInformation}
+        />
       </div>
     </>
   )

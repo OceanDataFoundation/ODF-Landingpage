@@ -46,8 +46,6 @@ const MainSection = styled.section`
     justify-content: space-around;
   }
 `
-/* @media screen and (min-width: ${breakpoints.BREAKPOINT_2}) {
-  } */
 
 const MainCol = styled.div`
   padding: 1.25rem;
@@ -79,7 +77,7 @@ const LegalSection = styled.section`
   padding-bottom: 1.25rem;
 `
 
-const Footer = ({ contactInformation }) => {
+const Footer = ({ siteTitle, contactInformation }) => {
   console.log('TCL: Footer -> contactInformation', contactInformation)
 
   return (
@@ -113,7 +111,9 @@ const Footer = ({ contactInformation }) => {
         </MainCol>
       </MainSection>
       <LegalSection>
-        <small>© Ocean Data Foundation {new Date().getFullYear()}</small>
+        <small>
+          © {siteTitle} {new Date().getFullYear()}
+        </small>
       </LegalSection>
     </StyledFooter>
   )
@@ -122,5 +122,6 @@ const Footer = ({ contactInformation }) => {
 export default Footer
 
 Footer.propTypes = {
+  siteTitle: PropTypes.string.isRequired,
   contactInformation: PropTypes.objectOf(PropTypes.string),
 }
