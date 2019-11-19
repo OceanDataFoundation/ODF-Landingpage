@@ -8,57 +8,49 @@ import SEO from '../components/seo/seo'
 
 // Components
 import { Container } from '../components/container/Container'
-
-import { H2 } from '../components/typography/heading/Heading'
+import { Header } from '../components/header/Header'
+import Masonry from '../components/masonry/Masonry'
+import { NewsBlock } from '../components/news-block/NewsBlock'
+import { H1, H2 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { Meta } from '../components/meta/Meta'
 import { Small } from '../components/typography/small/Small'
 import LinkBlock from '../components/link-block/LinkBlock'
 
-const NewsPosts = ({ data }) => {
+const News = ({ data }) => {
   const newsPosts = data.allContentfulNews.edges
 
   return (
     <Layout>
       <SEO title="News posts" />
-      <Container col="2" offset>
-        {newsPosts.map(({ node: post }) => (
-          <LinkBlock to={`/news/${post.slug}`} key={post.id}>
-            <article>
-              {post.image ? <Img fluid={post.image.fluid} /> : null}
-              <TestNewsContent>
-                <Meta>
-                  <Small>{post.createdAt}</Small>
-                </Meta>
-                <H2>{post.title}</H2>
-                <P>{post.excerpt}</P>
-              </TestNewsContent>
-            </article>
-          </LinkBlock>
-        ))}
+      <Container offset="true">
+        <Header>
+          <H1>News</H1>
+        </Header>
+        <Masonry col="2">
+          {newsPosts.map(({ node: post }) => (
+            <LinkBlock to={`/news/${post.slug}`} key={post.id}>
+              <article>
+                {post.image ? <Img fluid={post.image.fluid} /> : null}
+                <NewsBlock>
+                  <Meta>
+                    <Small>{post.createdAt}</Small>
+                  </Meta>
+                  <H2>{post.title}</H2>
+                  <P>{post.excerpt}</P>
+                </NewsBlock>
+              </article>
+            </LinkBlock>
+          ))}
+        </Masonry>
       </Container>
+
       <Link to="/">Go back to the homepage</Link>
     </Layout>
   )
 }
 
-const TestNewsContent = styled.div`
-  padding: 0 2rem 0 3rem;
-  position: relative;
-
-  ::before {
-    width: 4px;
-    height: 160px;
-    content: '';
-    position: absolute;
-    top: -40px;
-    left: 12px;
-    /* background-color: #01d2c8; */
-    background-color: #d9d9d9;
-  }
-`
-
-export default NewsPosts
+export default News
 
 export const query = graphql`
   query NewsPostsPageQuery {
