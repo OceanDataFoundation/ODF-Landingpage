@@ -8,12 +8,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
+import styled from 'styled-components'
 
 import { GlobalStyle } from '../../utils/styles/global-style'
 
 // Components
 import Header from '../site-header/Header'
 import Footer from '../site-footer/Footer'
+
+const Main = styled.main``
 
 const Layout = ({ children }) => {
   if (typeof window !== 'undefined') {
@@ -24,6 +27,7 @@ const Layout = ({ children }) => {
     site,
     contentfulAsset: logo,
     contentfulNavigation: { navItems },
+    contentfulContactInformation: contactInformation,
   } = useStaticQuery(graphql`
     query LayoutQuery {
       site {
@@ -48,6 +52,18 @@ const Layout = ({ children }) => {
           }
         }
       }
+      contentfulContactInformation(
+        id: { eq: "5ee354e5-3ceb-52a1-9f0a-372b695358b7" }
+      ) {
+        name
+        streetAddress
+        postalCode
+        addressLocality
+        addressRegion
+        addressCountry
+        email
+        telephone
+      }
     }
   `)
 
@@ -63,7 +79,7 @@ const Layout = ({ children }) => {
 
       <div>
         <main>{children}</main>
-        <Footer />
+        <Footer contactInformation={contactInformation} />
       </div>
     </>
   )
