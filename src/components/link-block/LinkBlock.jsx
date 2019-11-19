@@ -6,6 +6,7 @@ import styled from 'styled-components'
 // Tokens
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
+import { duration } from '../../utils/tokens/tokenDuration'
 
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
@@ -24,10 +25,20 @@ const LinkNewsStyle = styled(Link)`
     ${Transition};
   }
 
+  img {
+    ${Transition};
+    transition-property: transform, opacity !important;
+    transition-timing-function: ${duration.DURATION_3} !important;
+  }
+
   :hover,
   :focus {
     h2 {
       color: ${colorBrandGreen.GREEN_TINT_50};
+    }
+
+    img {
+      transform: scale(1.1);
     }
   }
 `
