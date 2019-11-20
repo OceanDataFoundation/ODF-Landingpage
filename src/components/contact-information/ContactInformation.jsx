@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+// Elements
+import P from '../typography/paragraph/Paragraph'
+import { H6 } from '../typography/heading/Heading'
+
 const ContactInformation = ({ contactInformation }) => {
   const {
     name,
@@ -18,9 +22,9 @@ const ContactInformation = ({ contactInformation }) => {
     if (email) {
       const mailto = `mailto:${email}`
       return (
-        <p>
+        <P invert>
           <a href={mailto}>{email}</a>
-        </p>
+        </P>
       )
     }
   }
@@ -29,27 +33,27 @@ const ContactInformation = ({ contactInformation }) => {
     if (telephone) {
       const tel = `tel:${telephone}`
       return (
-        <p>
+        <P invert>
           <a href={tel}>{telephone}</a>
-        </p>
+        </P>
       )
     }
   }
 
   return (
     <>
-      {name && <h6>{name}</h6>}
-      {streetAddress && <p>{streetAddress}</p>}
-      {postOfficeBoxNumber && <p>{postOfficeBoxNumber}</p>}
+      {name && <H6>{name}</H6>}
+      {streetAddress && <P invert>{streetAddress}</P>}
+      {postOfficeBoxNumber && <P invert>{postOfficeBoxNumber}</P>}
       {postalCode && (
-        <p>
+        <P invert>
           {postalCode} {addressLocality}
-        </p>
+        </P>
       )}
       {addressRegion && (
-        <p>
+        <P invert>
           {addressRegion}, {addressCountry}
-        </p>
+        </P>
       )}
       <br />
       {renderEmail()}

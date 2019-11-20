@@ -5,6 +5,8 @@ import styled from 'styled-components'
 // Tokens
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
+
+// Components
 import ContactInformation from '../contact-information/ContactInformation'
 
 // Styles
