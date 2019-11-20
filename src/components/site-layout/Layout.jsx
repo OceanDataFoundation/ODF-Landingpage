@@ -43,10 +43,10 @@ const Layout = ({ children }) => {
           contentType
         }
       }
-      contentfulNavigation(title: { eq: "Main Navigation" }) {
+      contentfulNavigation(id: { eq: "caba71c2-67f9-5ace-b9c2-36e6587288a4" }) {
         navItems {
           id
-          title
+          text
           link {
             slug
           }

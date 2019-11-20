@@ -75,6 +75,11 @@ const LegalSection = styled.section`
   display: flex;
   justify-content: center;
   padding-bottom: 1.25rem;
+  height: 11rem;
+
+  small {
+    align-self: end;
+  }
 `
 
 const Footer = ({ siteTitle, contactInformation }) => {
@@ -108,13 +113,13 @@ const Footer = ({ siteTitle, contactInformation }) => {
         <MainCol>
           <h6>Connect</h6>
           <IconContainer></IconContainer>
+          <LegalSection>
+            <small>
+              © {siteTitle} {new Date().getFullYear()}
+            </small>
+          </LegalSection>
         </MainCol>
       </MainSection>
-      <LegalSection>
-        <small>
-          © {siteTitle} {new Date().getFullYear()}
-        </small>
-      </LegalSection>
     </StyledFooter>
   )
 }

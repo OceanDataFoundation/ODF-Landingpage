@@ -52,7 +52,7 @@ const CollapseMenu = props => {
         <NavList>
           {navItems.map(item => (
             <li key={item.id}>
-              <Link to={item.link.slug}>{item.title}</Link>
+              <Link to={item.link.slug}>{item.text}</Link>
             </li>
           ))}
         </NavList>
