@@ -101,22 +101,42 @@ const HeadingH1 = styled.h1`
 
 export const H2 = styled.h2`
   ${GlobalH2};
+  color: ${props =>
+    props.invert
+      ? colorNeutral.NEUTRAL_TINT_100
+      : colorNeutral.NEUTRAL_TINT_15};
 `
 
 export const H3 = styled.h3`
   ${GlobalH3};
+  color: ${props =>
+    props.invert
+      ? colorNeutral.NEUTRAL_TINT_100
+      : colorNeutral.NEUTRAL_TINT_15};
 `
 
 export const H4 = styled.h4`
   ${GlobalH4};
+  color: ${props =>
+    props.invert
+      ? colorNeutral.NEUTRAL_TINT_100
+      : colorNeutral.NEUTRAL_TINT_15};
 `
 
 export const H5 = styled.h5`
   ${GlobalH5};
+  color: ${props =>
+    props.invert
+      ? colorNeutral.NEUTRAL_TINT_100
+      : colorNeutral.NEUTRAL_TINT_15};
 `
 
 export const H6 = styled.h6`
   ${GlobalH6};
+  color: ${props =>
+    props.invert
+      ? colorNeutral.NEUTRAL_TINT_100
+      : colorNeutral.NEUTRAL_TINT_15};
 `
 
 H1.propTypes = {
