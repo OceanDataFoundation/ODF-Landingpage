@@ -22,10 +22,11 @@ const CollapseWrapper = styled(animated.div)`
 
 const NavList = styled.ul`
   list-style-type: none;
-  padding: 5.5rem 1rem 2rem 2rem;
+  padding: 5.5rem 2rem 2rem 2rem;
 
   & li {
     transition: all 300ms linear 0s;
+    text-align: end;
   }
 
   & a {
@@ -52,7 +53,7 @@ const CollapseMenu = props => {
         <NavList>
           {navItems.map(item => (
             <li key={item.id}>
-              <Link to={item.link.slug}>{item.text}</Link>
+              <Link to={`/${item.link.slug}`}>{item.text}</Link>
             </li>
           ))}
         </NavList>
