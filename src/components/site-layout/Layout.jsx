@@ -8,15 +8,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
 
 import { GlobalStyle } from '../../utils/styles/global-style'
 
 // Components
 import Header from '../site-header/Header'
 import Footer from '../site-footer/Footer'
-
-const Main = styled.main``
 
 const Layout = ({ children }) => {
   if (typeof window !== 'undefined') {
@@ -27,6 +24,8 @@ const Layout = ({ children }) => {
     site,
     contentfulAsset: logo,
     contentfulNavigation: { navItems },
+    relatedLinkList,
+    socialLinkList,
     contentfulContactInformation: contactInformation,
   } = useStaticQuery(graphql`
     query LayoutQuery {
@@ -49,6 +48,34 @@ const Layout = ({ children }) => {
           text
           link {
             slug
+          }
+        }
+      }
+      relatedLinkList: contentfulLinkList(
+        id: { eq: "fd27a86d-7c8a-569b-a1b0-a75247283926" }
+      ) {
+        text
+        listItems {
+          id
+          url
+          text
+          description
+        }
+      }
+      socialLinkList: contentfulLinkList(
+        id: { eq: "3015b022-e367-574f-9c98-436262551dbc" }
+      ) {
+        text
+        listItems {
+          id
+          url
+          text
+          description
+          image {
+            description
+            file {
+              url
+            }
           }
         }
       }
@@ -81,6 +108,8 @@ const Layout = ({ children }) => {
         <main>{children}</main>
         <Footer
           siteTitle={site.siteMetadata.title}
+          relatedLinkList={relatedLinkList}
+          socialLinkList={socialLinkList}
           contactInformation={contactInformation}
         />
       </div>

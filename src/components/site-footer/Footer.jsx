@@ -8,11 +8,11 @@ import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
 
 // Components
 import ContactInformation from '../contact-information/ContactInformation'
+import LinkList from '../link-list/LinkList'
 
 // Styles
 const StyledFooter = styled.footer`
   background-color: ${colorNeutral.NEUTRAL_TINT_0};
-  color: ${colorNeutral.NEUTRAL_TINT_100};
 
   * {
     box-sizing: border-box;
@@ -30,7 +30,7 @@ const StyledFooter = styled.footer`
 
   a {
     text-decoration: none;
-    color: ${colorNeutral.NEUTRAL_TINT_100};
+    color: inherit;
 
     :hover {
       text-decoration: underline;
@@ -65,56 +65,43 @@ const MainCol = styled.div`
   }
 `
 
-const IconContainer = styled.div`
-  display: flex;
-
-  img {
-    width: 2rem;
-  }
-`
-
 const LegalSection = styled.section`
   display: flex;
   justify-content: center;
   padding-bottom: 1.25rem;
-  height: 11rem;
+  height: 8rem;
 
   small {
     align-self: end;
   }
 `
 
-const Footer = ({ siteTitle, contactInformation }) => {
-  console.log('TCL: Footer -> contactInformation', contactInformation)
+const Footer = props => {
+  const {
+    siteTitle,
+    relatedLinkList,
+    socialLinkList,
+    contactInformation,
+  } = props
 
   return (
     <StyledFooter>
       <MainSection>
         <MainCol>
-          <h6>Related</h6>
-          <ul>
-            <li>
-              <a href="https://oceandata.earth/">The Foundation</a>
-            </li>
-            <li>
-              <a href="https://www.revocean.org/">Rev Ocean</a>
-            </li>
-            <li>
-              <a href="https://www.revocean.org/plast_ghana/">
-                Plastic REVolution
-              </a>
-            </li>
-            <li>
-              <a href="https://www.akerasa.com/">Aker ASA</a>
-            </li>
-          </ul>
+          {relatedLinkList && <LinkList invert linkList={relatedLinkList} />}
         </MainCol>
         <MainCol>
-          <ContactInformation contactInformation={contactInformation} />
+          {contactInformation && (
+            <ContactInformation
+              invert
+              contactInformation={contactInformation}
+            />
+          )}
         </MainCol>
         <MainCol>
-          <h6>Connect</h6>
-          <IconContainer></IconContainer>
+          {socialLinkList && (
+            <LinkList invert inline linkList={socialLinkList} />
+          )}
           <LegalSection>
             <small>
               © {siteTitle} {new Date().getFullYear()}
@@ -131,4 +118,6 @@ export default Footer
 Footer.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   contactInformation: PropTypes.objectOf(PropTypes.string),
+  relatedLinkList: PropTypes.object,
+  socialLinkList: PropTypes.object,
 }

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import P from '../typography/paragraph/Paragraph'
 import { H6 } from '../typography/heading/Heading'
 
-const ContactInformation = ({ contactInformation }) => {
+const ContactInformation = ({ contactInformation, invert }) => {
   const {
     name,
     streetAddress,
@@ -22,7 +22,7 @@ const ContactInformation = ({ contactInformation }) => {
     if (email) {
       const mailto = `mailto:${email}`
       return (
-        <P invert>
+        <P invert={invert}>
           <a href={mailto}>{email}</a>
         </P>
       )
@@ -33,7 +33,7 @@ const ContactInformation = ({ contactInformation }) => {
     if (telephone) {
       const tel = `tel:${telephone}`
       return (
-        <P invert>
+        <P invert={invert}>
           <a href={tel}>{telephone}</a>
         </P>
       )
@@ -42,16 +42,16 @@ const ContactInformation = ({ contactInformation }) => {
 
   return (
     <>
-      {name && <H6>{name}</H6>}
-      {streetAddress && <P invert>{streetAddress}</P>}
-      {postOfficeBoxNumber && <P invert>{postOfficeBoxNumber}</P>}
+      {name && <H6 invert={invert}>{name}</H6>}
+      {streetAddress && <P invert={invert}>{streetAddress}</P>}
+      {postOfficeBoxNumber && <P invert={invert}>{postOfficeBoxNumber}</P>}
       {postalCode && (
-        <P invert>
+        <P invert={invert}>
           {postalCode} {addressLocality}
         </P>
       )}
       {addressRegion && (
-        <P invert>
+        <P invert={invert}>
           {addressRegion}, {addressCountry}
         </P>
       )}
@@ -65,6 +65,7 @@ const ContactInformation = ({ contactInformation }) => {
 
 ContactInformation.propTypes = {
   contactInformation: PropTypes.objectOf(PropTypes.string).isRequired,
+  invert: PropTypes.bool,
 }
 
 export default ContactInformation
