@@ -67,6 +67,7 @@ const Header = props => {
   const animationProps = useSpring({
     transform: hideHeader ? translateY : originalY,
   })
+
   return (
     <StyledHeader style={animationProps}>
       <FlexContainer>

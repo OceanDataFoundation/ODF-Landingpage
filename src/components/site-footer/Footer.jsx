@@ -9,6 +9,7 @@ import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
 // Components
 import ContactInformation from '../contact-information/ContactInformation'
 import LinkList from '../link-list/LinkList'
+import { Small } from '../typography/small/Small'
 
 // Styles
 const StyledFooter = styled.footer`
@@ -103,9 +104,9 @@ const Footer = props => {
             <LinkList invert inline linkList={socialLinkList} />
           )}
           <LegalSection>
-            <small>
+            <Small invert>
               © {siteTitle} {new Date().getFullYear()}
-            </small>
+            </Small>
           </LegalSection>
         </MainCol>
       </MainSection>

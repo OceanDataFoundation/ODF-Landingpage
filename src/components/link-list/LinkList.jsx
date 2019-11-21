@@ -2,12 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+// Tokens
+import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
+
 // Components
 import { H6 } from '../typography/heading/Heading'
 
 // Styles
 const Li = styled.li`
   display: ${props => (props.inline ? 'inline-block' : 'list-item')};
+
+  color: ${props =>
+    props.invert
+      ? colorNeutral.NEUTRAL_TINT_100
+      : colorNeutral.NEUTRAL_TINT_15};
 
   a {
     margin-right: ${props => (props.inline ? '1rem' : '0')};
@@ -23,7 +31,7 @@ const LinkList = props => {
       <H6 invert={invert}>{text}</H6>
       <ul>
         {listItems.map(item => (
-          <Li inline={inline} key={item.id}>
+          <Li invert={invert} inline={inline} key={item.id}>
             <a href={item.url} target="_blank" rel="noopener noreferrer">
               {!item.image && item.text}
               {item.image && (
