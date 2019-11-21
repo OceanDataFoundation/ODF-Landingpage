@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { useSpring, animated } from 'react-spring'
 
 // Utils
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
@@ -18,13 +17,17 @@ import Nav from './Nav'
 import CollapseMenu from './CollapseMenu'
 
 // Styles
-const StyledHeader = styled(animated.header)`
+const StyledHeader = styled.header`
   z-index: ${zIndex.Z_INDEX_7};
   position: fixed;
   top: 0px;
   width: 100%;
   background-color: ${colorNeutral.NEUTRAL_TINT_0};
   padding: 0 ${space[4]};
+
+  transform: ${props =>
+    props.hideHeader ? 'translateY(-110%)' : 'translateY(0)'};
+  transition: transform 0.3s ease;
 
   ${mediaQuery.BREAKPOINT_1`
 		padding: 0 ${space[6]};
@@ -49,7 +52,7 @@ const Header = props => {
   const [hideHeader, setHideHeader] = useState(false)
 
   const MINIMUM_SCROLL = 120
-  const TIMEOUT_DELAY = 200
+  const TIMEOUT_DELAY = 300
 
   useDocumentScrollThrottled(callbackData => {
     const { previousScrollTop, currentScrollTop } = callbackData
@@ -61,15 +64,8 @@ const Header = props => {
     }, TIMEOUT_DELAY)
   })
 
-  const translateY = 'translateY(-110%)'
-  const originalY = 'translateY(0)'
-
-  const animationProps = useSpring({
-    transform: hideHeader ? translateY : originalY,
-  })
-
   return (
-    <StyledHeader style={animationProps}>
+    <StyledHeader hideHeader={hideHeader}>
       <FlexContainer>
         <Logo logo={logo} siteTitle={siteTitle} />
         <Nav navItems={navItems} open={open} setOpen={setOpen} />
