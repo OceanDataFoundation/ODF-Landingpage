@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
+// Config
 import { space } from '../../utils/configs/confSpace'
 
-export const Meta = styled.div`
-  margin: ${space[4]} 0 ${space[6]} 0;
+export const Header = styled.header`
+  margin: ${space[0]};
 `

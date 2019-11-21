@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
 // Components
 import Layout from '../components/site-layout/Layout'
@@ -19,7 +19,8 @@ import Time from '../components/time/Time'
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import P from '../components/typography/paragraph/Paragraph'
-import ExternalLink from '../components/external-link/ExternalLink'
+import LinkCta from '../components/link-cta/LinkCta'
+import LinkButton from '../components/link-button/LinkButton'
 
 const IndexPage = ({ data }) => {
   const heroPosts = data.allContentfulHero.edges
@@ -105,7 +106,7 @@ const IndexPage = ({ data }) => {
             <SubHeading>Press release</SubHeading>
             <PressRelease>
               {pressRelease.map(({ node: post }) => (
-                <div key={post.id}>
+                <article key={post.id}>
                   <H3>{post.title}</H3>
                   <Meta>
                     {post.location} | <Time dateTime={post.date} />
@@ -116,16 +117,19 @@ const IndexPage = ({ data }) => {
                     }}
                   />
                   {post.link ? (
-                    <ExternalLink
+                    <LinkCta
                       href={post.link}
                       target="_blank"
                       rel="noopener noreferrer">
                       Read more
-                    </ExternalLink>
+                    </LinkCta>
                   ) : null}
-                </div>
+                </article>
               ))}
             </PressRelease>
+            <LinkButton to="/press/" showArrow>
+              See all
+            </LinkButton>
           </Container>
         </Box>
       </Container>
@@ -145,7 +149,11 @@ const IndexPage = ({ data }) => {
         </Statement>
       ))}
 
-      <Link to="/news/">View all posts</Link>
+      <Container fluid>Upcomming events</Container>
+
+      <Container fluid>
+        <Box>Stay in the loop?</Box>
+      </Container>
     </Layout>
   )
 }
@@ -214,7 +222,7 @@ export const query = graphql`
           title
           subtitle
           image {
-            fluid(maxWidth: 700) {
+            fluid(maxWidth: 1600) {
               ...GatsbyContentfulFluid
             }
           }
@@ -236,7 +244,7 @@ export const query = graphql`
           title
           subtitle
           image {
-            fluid(maxWidth: 700) {
+            fluid(maxWidth: 1600) {
               ...GatsbyContentfulFluid
             }
           }
@@ -258,7 +266,7 @@ export const query = graphql`
           title
           subtitle
           image {
-            fluid(maxWidth: 700) {
+            fluid(maxWidth: 1600) {
               ...GatsbyContentfulFluid
             }
           }

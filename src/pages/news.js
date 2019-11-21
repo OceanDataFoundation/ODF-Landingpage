@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
@@ -7,42 +8,49 @@ import SEO from '../components/seo/seo'
 
 // Components
 import { Container } from '../components/container/Container'
-
-import { H2 } from '../components/typography/heading/Heading'
+import { Header } from '../components/header/Header'
+import Masonry from '../components/masonry/Masonry'
+import { NewsBlock } from '../components/news-block/NewsBlock'
+import { H1, H2 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
+import { Meta } from '../components/meta/Meta'
+import { Small } from '../components/typography/small/Small'
+import LinkBlock from '../components/link-block/LinkBlock'
 
-const NewsPosts = ({ data }) => {
+const News = ({ data }) => {
   const newsPosts = data.allContentfulNews.edges
 
   return (
     <Layout>
       <SEO title="News posts" />
-      <Container
-        style={{
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gridTemplateRows: 'repeat(8, 15vw)',
-          gridColumnGap: '32px',
-        }}>
-        {newsPosts.map(({ node: post }) => (
-          <div key={post.id} style={{ backgroundColor: 'grey' }}>
-            <H2>{post.title}</H2>
-            {post.image ? (
-              <Img
-                fluid={post.image.fluid}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            ) : null}
-            <P>{post.excerpt}</P>
-            <Link to={`/news/${post.slug}`}>{post.title}</Link>
-          </div>
-        ))}
-
-        <Link to="/">Go back to the homepage</Link>
+      <Container offset="true">
+        <Header>
+          <H1>News</H1>
+        </Header>
+        <Masonry col="2">
+          {newsPosts.map(({ node: post }) => (
+            <LinkBlock to={`/news/${post.slug}`} key={post.id}>
+              <article>
+                {post.image ? <Img fluid={post.image.fluid} /> : null}
+                <NewsBlock>
+                  <Meta>
+                    <Small>{post.createdAt}</Small>
+                  </Meta>
+                  <H2>{post.title}</H2>
+                  <P>{post.excerpt}</P>
+                </NewsBlock>
+              </article>
+            </LinkBlock>
+          ))}
+        </Masonry>
       </Container>
+
+      <Link to="/">Go back to the homepage</Link>
     </Layout>
   )
 }
-export default NewsPosts
+
+export default News
 
 export const query = graphql`
   query NewsPostsPageQuery {
@@ -50,6 +58,7 @@ export const query = graphql`
       edges {
         node {
           id
+          createdAt(formatString: "MMMM D, YYYY")
           title
           excerpt
           author

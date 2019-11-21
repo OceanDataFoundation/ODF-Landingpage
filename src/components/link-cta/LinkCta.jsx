@@ -11,18 +11,18 @@ import { space } from '../../utils/configs/confSpace'
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
 
-const ExternalLink = props => {
+const LinkCta = props => {
   const { children, href } = props
 
   return (
-    <ExternalLinkStyle href={href}>
+    <LinkCtaStyle href={href}>
       {children}
-      <ExternalLinkStyleArrow />
-    </ExternalLinkStyle>
+      <LinkCtaStyleArrow />
+    </LinkCtaStyle>
   )
 }
 
-const ExternalLinkStyle = styled.a`
+const LinkCtaStyle = styled.a`
   color: ${colorBrandBlue.GREEN_TINT_50};
   text-decoration: none;
   position: relative;
@@ -54,6 +54,7 @@ const ExternalLinkStyle = styled.a`
 
     span {
       width: 60px;
+      opacity: 1;
       background-color: ${colorBrandBlue.GREEN_TINT_40};
 
       ::before,
@@ -64,13 +65,14 @@ const ExternalLinkStyle = styled.a`
   }
 `
 
-const ExternalLinkStyleArrow = styled.span`
-  width: 40px;
+const LinkCtaStyleArrow = styled.span`
+  width: 0;
   height: 2px;
   margin-left: ${space[4]};
   position: relative;
   bottom: 3px;
   display: inline-block;
+  opacity: 0;
   background-color: ${colorBrandBlue.GREEN_TINT_50};
 
   ${Transition};
@@ -96,8 +98,8 @@ const ExternalLinkStyleArrow = styled.span`
   }
 `
 
-ExternalLink.propTypes = {
+LinkCta.propTypes = {
   children: PropTypes.node,
 }
 
-export default ExternalLink
+export default LinkCta
