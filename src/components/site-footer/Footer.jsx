@@ -7,6 +7,7 @@ import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
 
 // Components
+import { Container } from '../container/Container'
 import ContactInformation from '../contact-information/ContactInformation'
 import LinkList from '../link-list/LinkList'
 import { Small } from '../typography/small/Small'
@@ -17,8 +18,11 @@ const StyledFooter = styled.footer`
 
   * {
     box-sizing: border-box;
-    margin: 0;
     padding: 0;
+  }
+
+  h6 {
+    margin: 0;
   }
 
   ul {
@@ -87,29 +91,31 @@ const Footer = props => {
 
   return (
     <StyledFooter>
-      <MainSection>
-        <MainCol>
-          {relatedLinkList && <LinkList invert linkList={relatedLinkList} />}
-        </MainCol>
-        <MainCol>
-          {contactInformation && (
-            <ContactInformation
-              invert
-              contactInformation={contactInformation}
-            />
-          )}
-        </MainCol>
-        <MainCol>
-          {socialLinkList && (
-            <LinkList invert inline linkList={socialLinkList} />
-          )}
-          <LegalSection>
-            <Small invert>
-              © {siteTitle} {new Date().getFullYear()}
-            </Small>
-          </LegalSection>
-        </MainCol>
-      </MainSection>
+      <Container>
+        <MainSection>
+          <MainCol>
+            {relatedLinkList && <LinkList invert linkList={relatedLinkList} />}
+          </MainCol>
+          <MainCol>
+            {contactInformation && (
+              <ContactInformation
+                invert
+                contactInformation={contactInformation}
+              />
+            )}
+          </MainCol>
+          <MainCol>
+            {socialLinkList && (
+              <LinkList invert inline linkList={socialLinkList} />
+            )}
+            <LegalSection>
+              <Small invert>
+                © {siteTitle} {new Date().getFullYear()}
+              </Small>
+            </LegalSection>
+          </MainCol>
+        </MainSection>
+      </Container>
     </StyledFooter>
   )
 }

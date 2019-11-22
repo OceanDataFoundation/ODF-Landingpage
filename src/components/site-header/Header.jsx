@@ -25,16 +25,18 @@ const StyledHeader = styled.header`
   background-color: ${colorNeutral.NEUTRAL_TINT_0};
   padding: 0 ${space[4]};
 
-  transform: ${props =>
-    props.hideHeader ? 'translateY(-110%)' : 'translateY(0)'};
-  transition: transform 0.3s ease;
-
   ${mediaQuery.BREAKPOINT_1`
 		padding: 0 ${space[6]};
   `};
 
   ${mediaQuery.BREAKPOINT_2`
 		padding: 0 ${space[8]};
+  `};
+
+  ${mediaQuery.BREAKPOINT_3`
+    transform: ${props =>
+      props.hideHeader ? 'translateY(-110%)' : 'translateY(0)'};
+    transition: transform 0.3s ease;
   `};
 `
 
