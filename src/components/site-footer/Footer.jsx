@@ -6,11 +6,17 @@ import styled from 'styled-components'
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
 
+// Config
+import { space } from '../../utils/configs/confSpace'
+
 // Components
 import { Container } from '../container/Container'
 import ContactInformation from '../contact-information/ContactInformation'
 import LinkList from '../link-list/LinkList'
 import { Small } from '../typography/small/Small'
+
+// Mixins
+import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 // Styles
 const StyledFooter = styled.footer`
@@ -44,14 +50,13 @@ const StyledFooter = styled.footer`
 `
 
 const MainSection = styled.section`
+  padding-top: ${space[10]};
   display: flex;
-  padding: 1.25rem 1.875rem;
   flex-wrap: wrap;
-  justify-content: space-evenly;
 
-  @media screen and (max-width: ${breakpoints.BREAKPOINT_2}) {
-    justify-content: space-around;
-  }
+  ${mediaQuery.BREAKPOINT_2`
+    justify-content: space-between;
+  `};
 `
 
 const MainCol = styled.div`
@@ -63,10 +68,6 @@ const MainCol = styled.div`
   }
   p {
     margin-bottom: 0;
-  }
-
-  @media screen and (max-width: ${breakpoints.BREAKPOINT_2}) {
-    margin-right: auto;
   }
 `
 
