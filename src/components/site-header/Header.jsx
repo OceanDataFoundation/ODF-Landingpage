@@ -2,15 +2,14 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-// Tokens
+// Utils
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 import { zIndex } from '../../utils/tokens/tokenZIndex'
-
-// Config
 import { space } from '../../utils/configs/confSpace'
-
-// Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+
+// Hooks
+import { useDocumentScrollThrottled } from '../../hooks/useDocumentScroll'
 
 // Components
 import Logo from '../logo/Logo'
@@ -21,7 +20,7 @@ import CollapseMenu from './CollapseMenu'
 const StyledHeader = styled.header`
   z-index: ${zIndex.Z_INDEX_7};
   position: fixed;
-  top: 0;
+  top: 0px;
   width: 100%;
   background-color: ${colorNeutral.NEUTRAL_TINT_0};
   padding: 0 ${space[4]};
@@ -32,6 +31,12 @@ const StyledHeader = styled.header`
 
   ${mediaQuery.BREAKPOINT_2`
 		padding: 0 ${space[8]};
+  `};
+
+  ${mediaQuery.BREAKPOINT_3`
+    transform: ${props =>
+      props.hideHeader ? 'translateY(-110%)' : 'translateY(0)'};
+    transition: transform 0.3s ease;
   `};
 `
 
@@ -46,8 +51,23 @@ const Header = props => {
 
   const [open, setOpen] = useState(false)
 
+  const [hideHeader, setHideHeader] = useState(false)
+
+  const MINIMUM_SCROLL = 120
+  const TIMEOUT_DELAY = 300
+
+  useDocumentScrollThrottled(callbackData => {
+    const { previousScrollTop, currentScrollTop } = callbackData
+    const isScrolledDown = previousScrollTop < currentScrollTop
+    const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL
+
+    setTimeout(() => {
+      setHideHeader(isScrolledDown && isMinimumScrolled)
+    }, TIMEOUT_DELAY)
+  })
+
   return (
-    <StyledHeader>
+    <StyledHeader hideHeader={hideHeader}>
       <FlexContainer>
         <Logo logo={logo} siteTitle={siteTitle} />
         <Nav navItems={navItems} open={open} setOpen={setOpen} />
