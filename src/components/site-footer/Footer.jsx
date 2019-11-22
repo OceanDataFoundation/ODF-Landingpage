@@ -24,7 +24,6 @@ const StyledFooter = styled.footer`
 
   * {
     box-sizing: border-box;
-    padding: 0;
   }
 
   h6 {
@@ -32,6 +31,7 @@ const StyledFooter = styled.footer`
   }
 
   ul {
+    padding: 0;
     list-style: none;
 
     li {
