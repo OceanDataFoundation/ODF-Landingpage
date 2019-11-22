@@ -51,6 +51,7 @@ const StyledFooter = styled.footer`
 
 const MainSection = styled.section`
   padding-top: ${space[10]};
+  padding-bottom: ${space[10]};
   display: flex;
   flex-wrap: wrap;
 
@@ -60,7 +61,6 @@ const MainSection = styled.section`
 `
 
 const MainCol = styled.div`
-  padding: 1.25rem;
   min-width: 12.5rem;
 
   h6 {
