@@ -13,7 +13,7 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 export const Container = styled.section`
   max-width: ${props => (props.fluid ? `100%` : breakpoints.BREAKPOINT_4)};
   margin-top: ${props =>
-    props.offset ? '80px' : '0'}; /* NOTE: Add correct header height */
+    props.offset ? '84px' : '0'}; /* NOTE: Add correct header height */
   margin-right: auto;
   margin-bottom: ${space[0]};
   margin-left: auto;
@@ -32,14 +32,14 @@ export const Container = styled.section`
     padding-right: ${props => (props.fluid ? 0 : space[6])};
     padding-left: ${props => (props.fluid ? 0 : space[6])};
     margin-top: ${props =>
-      props.offset ? '100px' : '0'}; /* NOTE: Add correct header height */
+      props.offset ? '152px' : '0'}; /* NOTE: Add correct header height */
   `};
 
   ${mediaQuery.BREAKPOINT_3`
     padding-right: ${props => (props.fluid ? 0 : space[8])};
     padding-left: ${props => (props.fluid ? 0 : space[8])};
     margin-top: ${props =>
-      props.offset ? '120px' : '0'}; /* NOTE: Add correct header height */
+      props.offset ? '200px' : '0'}; /* NOTE: Add correct header height */
   `};
 `
 

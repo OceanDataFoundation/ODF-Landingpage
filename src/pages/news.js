@@ -43,8 +43,6 @@ const News = ({ data }) => {
           ))}
         </Masonry>
       </Container>
-
-      <Link to="/">Go back to the homepage</Link>
     </Layout>
   )
 }
