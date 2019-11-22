@@ -30,8 +30,8 @@ PageTemplate.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    contentfulPage(slug: { eq: $path }) {
+  query($slug: String!) {
+    contentfulPage(slug: { eq: $slug }) {
       title
       createdAt(formatString: "MMMM DD, YYYY")
       content {
