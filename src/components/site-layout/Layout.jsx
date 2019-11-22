@@ -8,12 +8,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
-
-import { GlobalStyle } from '../../utils/styles/global-style'
+import styled from 'styled-components'
 
 // Components
 import Header from '../site-header/Header'
 import Footer from '../site-footer/Footer'
+
+// Style
+import { GlobalStyle } from '../../utils/styles/global-style'
+
+const ContentWrap = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+
+const Main = styled.main`
+  flex: 1 0 auto;
+`
 
 const Layout = ({ children }) => {
   if (typeof window !== 'undefined') {
@@ -104,15 +116,15 @@ const Layout = ({ children }) => {
         navItems={navItems}
       />
 
-      <div>
-        <main>{children}</main>
+      <ContentWrap>
+        <Main>{children}</Main>
         <Footer
           siteTitle={site.siteMetadata.title}
           relatedLinkList={relatedLinkList}
           socialLinkList={socialLinkList}
           contactInformation={contactInformation}
         />
-      </div>
+      </ContentWrap>
     </>
   )
 }

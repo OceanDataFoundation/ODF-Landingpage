@@ -20,6 +20,7 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 // Styles
 const StyledFooter = styled.footer`
+  flex-shrink: 0;
   background-color: ${colorNeutral.NEUTRAL_TINT_0};
 
   * {
