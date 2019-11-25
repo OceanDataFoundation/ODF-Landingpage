@@ -7,11 +7,11 @@ import Img from 'gatsby-image'
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 import { zIndex } from '../../utils/tokens/tokenZIndex'
 
-// Mixins
-import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-
 // Config
 import { space } from '../../utils/configs/confSpace'
+
+// Mixins
+import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 // Components
 import { Container } from '../container/Container'
