@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 import SEO from '../components/seo/seo'
@@ -7,13 +7,21 @@ import SEO from '../components/seo/seo'
 // Components
 import Layout from '../components/site-layout/Layout'
 import { Container } from '../components/container/Container'
-import { Article } from '../components/article/Article'
+import {
+  Article,
+  ArticleContainer,
+  ArticleContent,
+} from '../components/article/Article'
 import { Header } from '../components/header/Header'
 import { H1 } from '../components/typography/heading/Heading'
 import { Meta } from '../components/meta/Meta'
+import { Figure } from '../components/figure/Figure'
+import { Figcaption } from '../components/figcaption/Figcaption'
 import P from '../components/typography/paragraph/Paragraph'
+import { TagList } from '../components/tag-list/TagList'
+import LinkButton from '../components/link-button/LinkButton'
 
-const NewsPostTemplate = ({ data, pageContext }) => {
+const NewsPostTemplate = ({ data }) => {
   const {
     title,
     createdAt,
@@ -21,6 +29,7 @@ const NewsPostTemplate = ({ data, pageContext }) => {
     author,
     content,
     image,
+    imageCaption,
     tags,
   } = data.contentfulNews
 
@@ -31,38 +40,41 @@ const NewsPostTemplate = ({ data, pageContext }) => {
       <Container offset="true">
         <Article>
           <Header>
-            <H1>{title}</H1>
             <Meta>
-              {createdAt} | {author}
+              {createdAt}&nbsp;&nbsp;|&nbsp;&nbsp;By: {author}
             </Meta>
+            <H1>{title}</H1>
+            <P lead>{excerpt}</P>
           </Header>
-          {image ? <Img fluid={image.fluid} /> : null}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-            }}>
-            <div style={{ width: '80ch' }}>
-              <P lead>
-                {excerpt}
-                {excerpt}
-                {excerpt}
-              </P>
+          {image && (
+            <Figure>
+              <Img fluid={image.fluid} />
+              {imageCaption && (
+                <Figcaption as="figcaption">
+                  {imageCaption.imageCaption}
+                </Figcaption>
+              )}
+            </Figure>
+          )}
+          <ArticleContainer>
+            <ArticleContent>
               <div
                 dangerouslySetInnerHTML={{
                   __html: content.childMarkdownRemark.html,
                 }}
               />
-            </div>
-          </div>
 
-          <ol>
-            {tags.map((tag, index) => (
-              <li key={index}>{tag}</li>
-            ))}
-          </ol>
+              <TagList>
+                {tags.map((tag, index) => (
+                  <li key={index}>{tag}</li>
+                ))}
+              </TagList>
+            </ArticleContent>
+          </ArticleContainer>
 
-          <Link to="/news">View more posts</Link>
+          <LinkButton to="/news/" showArrow>
+            See all posts
+          </LinkButton>
         </Article>
       </Container>
     </Layout>
@@ -79,9 +91,12 @@ export const pageQuery = graphql`
       excerpt
       author
       image {
-        fluid(maxWidth: 1200) {
+        fluid(maxWidth: 1180, maxHeight: 600) {
           ...GatsbyContentfulFluid
         }
+      }
+      imageCaption {
+        imageCaption
       }
       content {
         childMarkdownRemark {
