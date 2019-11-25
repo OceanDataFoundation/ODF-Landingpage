@@ -16,7 +16,7 @@ export const GlobalParagraph = css`
     margin-top: ${space[0]};
 
     :not(:last-child) {
-      margin-bottom: ${space[4]};
+      margin-bottom: ${space[6]};
     }
   }
 `
