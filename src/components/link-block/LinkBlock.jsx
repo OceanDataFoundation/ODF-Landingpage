@@ -25,10 +25,12 @@ const LinkNewsStyle = styled(Link)`
     ${Transition};
   }
 
-  img {
-    ${Transition};
-    transition-property: transform, opacity !important;
-    transition-timing-function: ${duration.DURATION_3} !important;
+  picture {
+    img {
+      ${Transition};
+      transition-property: all !important;
+      transition-duration: ${duration.DURATION_3} !important;
+    }
   }
 
   :hover,
@@ -37,8 +39,10 @@ const LinkNewsStyle = styled(Link)`
       color: ${colorBrandGreen.GREEN_TINT_50};
     }
 
-    img {
-      transform: scale(1.1);
+    picture {
+      img {
+        transform: scale(1.1);
+      }
     }
   }
 `
