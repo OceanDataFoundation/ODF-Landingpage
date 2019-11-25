@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 // Tokens
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
+// import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
@@ -17,7 +17,7 @@ import LinkList from '../link-list/LinkList'
 import { Small } from '../typography/small/Small'
 
 // Mixins
-import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+// import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 // Styles
 const StyledFooter = styled.footer`

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 // Tokens
-import { borderWidth } from '../../utils/tokens/tokenBorderWidth'
 import { borderRadius } from '../../utils/tokens/tokenBorderRadius'
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
