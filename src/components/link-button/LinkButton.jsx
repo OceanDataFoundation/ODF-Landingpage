@@ -33,7 +33,9 @@ const LinkButtonStyle = styled(Link)`
   font-weight: ${fontWeight.FONT_WEIGHT_4};
   text-decoration: none;
   text-transform: uppercase;
+  letter-spacing: 1px;
   position: relative;
+  display: table;
   border-radius: ${borderRadius.BORDER_RADIUS_2};
   background: linear-gradient(
     to right,
