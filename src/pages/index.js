@@ -151,10 +151,6 @@ const IndexPage = ({ data }) => {
       ))}
 
       <Container fluid>Upcomming events</Container>
-
-      <Container fluid>
-        <Box>Stay in the loop?</Box>
-      </Container>
     </Layout>
   )
 }
