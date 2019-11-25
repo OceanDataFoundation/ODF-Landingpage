@@ -22,11 +22,11 @@ export const Container = styled.section`
   display: grid;
   grid-template-columns: ${props =>
     props.col === '3'
-      ? `repeat(1, 1fr)`
+      ? `repeat(1, 100%)`
       : props.col === '2'
-      ? `repeat(1, 1fr)`
-      : `repeat(1, 1fr)`};
-  gap: ${props => (props.col === '3' || '2' ? `2rem` : null)};
+      ? `repeat(1, 100%)`
+      : `repeat(1, 100%)`};
+  gap: ${props => (props.col === '3' || '2' ? `0` : null)};
 
   ${mediaQuery.BREAKPOINT_2`
     padding-right: ${props => (props.fluid ? 0 : space[6])};
@@ -35,10 +35,10 @@ export const Container = styled.section`
       props.offset ? '152px' : '0'}; /* NOTE: Add correct header height */
     grid-template-columns: ${props =>
       props.col === '3'
-        ? `repeat(2, 1fr)`
+        ? `repeat(2, 50%)`
         : props.col === '2'
-        ? `repeat(2, 1fr)`
-        : `repeat(1, 1fr)`};
+        ? `repeat(2, 50%)`
+        : `repeat(1, 100%)`};
   `};
 
   ${mediaQuery.BREAKPOINT_3`
@@ -50,8 +50,8 @@ export const Container = styled.section`
       props.col === '3'
         ? `repeat(3, 1fr)`
         : props.col === '2'
-        ? `repeat(2, 1fr)`
-        : `repeat(1, 1fr)`};
+        ? `repeat(2, 50%)`
+        : `repeat(1, 100%)`};
   `};
 `
 
