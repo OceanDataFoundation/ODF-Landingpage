@@ -22,9 +22,9 @@ export const Container = styled.section`
   display: grid;
   grid-template-columns: ${props =>
     props.col === '3'
-      ? `repeat(3, 1fr)`
+      ? `repeat(1, 1fr)`
       : props.col === '2'
-      ? `repeat(2, 1fr)`
+      ? `repeat(1, 1fr)`
       : `repeat(1, 1fr)`};
   gap: ${props => (props.col === '3' || '2' ? `2rem` : null)};
 
@@ -33,6 +33,12 @@ export const Container = styled.section`
     padding-left: ${props => (props.fluid ? 0 : space[6])};
     margin-top: ${props =>
       props.offset ? '152px' : '0'}; /* NOTE: Add correct header height */
+    grid-template-columns: ${props =>
+      props.col === '3'
+        ? `repeat(2, 1fr)`
+        : props.col === '2'
+        ? `repeat(2, 1fr)`
+        : `repeat(1, 1fr)`};
   `};
 
   ${mediaQuery.BREAKPOINT_3`
@@ -40,6 +46,12 @@ export const Container = styled.section`
     padding-left: ${props => (props.fluid ? 0 : space[8])};
     margin-top: ${props =>
       props.offset ? '200px' : '0'}; /* NOTE: Add correct header height */
+    grid-template-columns: ${props =>
+      props.col === '3'
+        ? `repeat(3, 1fr)`
+        : props.col === '2'
+        ? `repeat(2, 1fr)`
+        : `repeat(1, 1fr)`};
   `};
 `
 
