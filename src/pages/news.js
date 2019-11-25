@@ -31,7 +31,7 @@ const News = ({ data }) => {
           {newsPosts.map(({ node: post }) => (
             <LinkBlock to={`/news/${post.slug}`} key={post.id}>
               <Article>
-                {post.image ? <Img fluid={post.image.fluid} /> : null}
+                {post.image && <Img fluid={post.image.fluid} />}
                 <NewsBlock>
                   <Meta>
                     <Small>{post.createdAt}</Small>

@@ -15,6 +15,7 @@ import Statement from '../components/statement/Statement'
 import PressRelease from '../components/press-release/PressRelease'
 import { Meta } from '../components/meta/Meta'
 import Time from '../components/time/Time'
+import { Article } from '../components/article/Article'
 
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
@@ -106,7 +107,7 @@ const IndexPage = ({ data }) => {
             <SubHeading>Press release</SubHeading>
             <PressRelease>
               {pressRelease.map(({ node: post }) => (
-                <article key={post.id}>
+                <Article key={post.id}>
                   <H3>{post.title}</H3>
                   <Meta>
                     {post.location} | <Time dateTime={post.date} />
@@ -116,15 +117,15 @@ const IndexPage = ({ data }) => {
                       __html: post.excerpt.childMarkdownRemark.html,
                     }}
                   />
-                  {post.link ? (
+                  {post.link && (
                     <LinkCta
                       href={post.link}
                       target="_blank"
                       rel="noopener noreferrer">
                       Read more
                     </LinkCta>
-                  ) : null}
-                </article>
+                  )}
+                </Article>
               ))}
             </PressRelease>
             <LinkButton to="/press/" showArrow>
