@@ -11,6 +11,7 @@ import { space } from '../../utils/configs/confSpace'
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 export const Container = styled.section`
+  width: 100%;
   max-width: ${props => (props.fluid ? `100%` : breakpoints.BREAKPOINT_4)};
   margin-top: ${props =>
     props.offset ? '84px' : '0'}; /* NOTE: Add correct header height */
