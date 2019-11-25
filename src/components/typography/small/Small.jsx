@@ -5,7 +5,7 @@ import { typeScale } from '../../../utils/configs/confTypeScale'
 import { colorNeutral } from '../../../utils/tokens/tokenColorNeutral'
 
 export const Small = styled.small`
-  font-size: ${typeScale.TEXT_PRESET_1};
+  ${typeScale.TEXT_PRESET_1};
 
   color: ${props =>
     props.invert
