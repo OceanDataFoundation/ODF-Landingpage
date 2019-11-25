@@ -48,7 +48,7 @@ const NewsPostTemplate = ({ data }) => {
           </Header>
           {image && (
             <Figure>
-              <Img fluid={image.fluid} />
+              <Img fluid={image.fluid} style={{ maxHeight: '600px' }} />
               {imageCaption && (
                 <Figcaption as="figcaption">
                   {imageCaption.imageCaption}
@@ -91,7 +91,7 @@ export const pageQuery = graphql`
       excerpt
       author
       image {
-        fluid(maxWidth: 1180, maxHeight: 600) {
+        fluid(maxWidth: 1200, quality: 80) {
           ...GatsbyContentfulFluid
         }
       }
