@@ -16,6 +16,7 @@ import PressRelease from '../components/press-release/PressRelease'
 import { Meta } from '../components/meta/Meta'
 import Time from '../components/time/Time'
 import { Article } from '../components/article/Article'
+import Video from '../components/video/Video'
 
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
@@ -26,6 +27,7 @@ import LinkButton from '../components/link-button/LinkButton'
 const IndexPage = ({ data }) => {
   const heroPosts = data.allContentfulHero.edges
   const quotePosts = data.allContentfulQuote.edges
+  const videoPosts = data.allContentfulVideoHero.edges
 
   const statementOne = data.statementOne.edges
   const statementTwo = data.statementTwo.edges
@@ -83,7 +85,9 @@ const IndexPage = ({ data }) => {
       ))}
 
       <Container fluid>
-        <Box>Video?</Box>
+        {videoPosts.map(({ node: post }) => (
+          <Video title={post.title} videoId={post.videoId} />
+        ))}
       </Container>
 
       {statementTwo.map(({ node: post }) => (
@@ -149,8 +153,6 @@ const IndexPage = ({ data }) => {
           />
         </Statement>
       ))}
-
-      <Container fluid>Upcomming events</Container>
     </Layout>
   )
 }
@@ -191,6 +193,17 @@ export const query = graphql`
           }
           cite
           author
+        }
+      }
+    }
+    allContentfulVideoHero(
+      filter: { contentful_id: { eq: "1tgrK4wxSh8Ja7kGZ2YaLH" } }
+    ) {
+      edges {
+        node {
+          id
+          title
+          videoId
         }
       }
     }

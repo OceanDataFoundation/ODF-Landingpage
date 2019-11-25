@@ -99,38 +99,33 @@ const Footer = props => {
   } = props
 
   return (
-    <>
-      <Container fluid>
-        <Box>Stay in the loop?</Box>
+    <StyledFooter>
+      <Container col="3">
+        {/* <MainSection> */}
+        <MainCol>
+          {relatedLinkList && <LinkList invert linkList={relatedLinkList} />}
+        </MainCol>
+        <MainCol>
+          {contactInformation && (
+            <ContactInformation
+              invert
+              contactInformation={contactInformation}
+            />
+          )}
+        </MainCol>
+        <MainCol>
+          {socialLinkList && (
+            <LinkList invert inline linkList={socialLinkList} />
+          )}
+          {/* <LegalSection> */}
+          <Small invert>
+            &copy; {siteTitle} {new Date().getFullYear()}
+          </Small>
+          {/* </LegalSection> */}
+        </MainCol>
+        {/* </MainSection> */}
       </Container>
-      <StyledFooter>
-        <Container col="3">
-          {/* <MainSection> */}
-          <MainCol>
-            {relatedLinkList && <LinkList invert linkList={relatedLinkList} />}
-          </MainCol>
-          <MainCol>
-            {contactInformation && (
-              <ContactInformation
-                invert
-                contactInformation={contactInformation}
-              />
-            )}
-          </MainCol>
-          <MainCol>
-            {socialLinkList && (
-              <LinkList invert inline linkList={socialLinkList} />
-            )}
-            {/* <LegalSection> */}
-            <Small invert>
-              &copy; {siteTitle} {new Date().getFullYear()}
-            </Small>
-            {/* </LegalSection> */}
-          </MainCol>
-          {/* </MainSection> */}
-        </Container>
-      </StyledFooter>
-    </>
+    </StyledFooter>
   )
 }
 
