@@ -8,7 +8,6 @@ import SEO from '../components/seo/seo'
 // Components
 import { Container } from '../components/container/Container'
 import { Header } from '../components/header/Header'
-import { Article } from '../components/article/Article'
 import Masonry from '../components/masonry/Masonry'
 import { NewsBlock } from '../components/news-block/NewsBlock'
 import { H1, H2 } from '../components/typography/heading/Heading'
@@ -30,16 +29,14 @@ const News = ({ data }) => {
         <Masonry col="2">
           {newsPosts.map(({ node: post }) => (
             <LinkBlock to={`/news/${post.slug}`} key={post.id}>
-              <Article>
-                {post.image ? <Img fluid={post.image.fluid} /> : null}
-                <NewsBlock>
-                  <Meta>
-                    <Small>{post.createdAt}</Small>
-                  </Meta>
-                  <H2>{post.title}</H2>
-                  <P>{post.excerpt}</P>
-                </NewsBlock>
-              </Article>
+              {post.image && <Img fluid={post.image.fluid} />}
+              <NewsBlock>
+                <Meta>
+                  <Small>{post.createdAt}</Small>
+                </Meta>
+                <H2>{post.title}</H2>
+                <P>{post.excerpt}</P>
+              </NewsBlock>
             </LinkBlock>
           ))}
         </Masonry>

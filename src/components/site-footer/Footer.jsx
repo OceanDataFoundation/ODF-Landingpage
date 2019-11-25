@@ -11,15 +11,19 @@ import { space } from '../../utils/configs/confSpace'
 // Components
 import { Container } from '../container/Container'
 import ContactInformation from '../contact-information/ContactInformation'
+import { Box } from '../box/Box'
 import LinkList from '../link-list/LinkList'
 import { Small } from '../typography/small/Small'
 
 // Mixins
-import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+// import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 // Styles
 const StyledFooter = styled.footer`
-  flex-shrink: 0;
+  padding-top: ${space[10]};
+  padding-bottom: ${space[10]};
+
+  /* flex-shrink: 0; */
   background-color: ${colorNeutral.NEUTRAL_TINT_0};
 
   * {
@@ -27,15 +31,18 @@ const StyledFooter = styled.footer`
   }
 
   h6 {
-    margin: 0;
+    margin-bottom: ${space[0]};
   }
 
   ul {
-    padding: 0;
+    padding: ${space[0]};
+    margin: ${space[0]};
     list-style: none;
 
     li {
-      line-height: 2;
+      :not(:last-child) {
+        margin-bottom: ${space[4]};
+      }
     }
   }
 
@@ -49,19 +56,19 @@ const StyledFooter = styled.footer`
   }
 `
 
-const MainSection = styled.section`
-  padding-top: ${space[10]};
-  padding-bottom: ${space[10]};
-  display: flex;
-  flex-wrap: wrap;
+// const MainSection = styled.section`
+//   padding-top: ${space[10]};
+//   padding-bottom: ${space[10]};
+//   display: flex;
+//   flex-wrap: wrap;
 
-  ${mediaQuery.BREAKPOINT_2`
-    justify-content: space-between;
-  `};
-`
+//   ${mediaQuery.BREAKPOINT_2`
+//     justify-content: space-between;
+//   `};
+// `
 
 const MainCol = styled.div`
-  min-width: 12.5rem;
+  /* min-width: 12.5rem; */
 
   h6 {
     padding-bottom: 1rem;
@@ -71,16 +78,16 @@ const MainCol = styled.div`
   }
 `
 
-const LegalSection = styled.section`
-  display: flex;
-  justify-content: center;
-  padding-bottom: 1.25rem;
-  height: 8rem;
+// const LegalSection = styled.section`
+//   display: flex;
+//   justify-content: center;
+//   padding-bottom: 1.25rem;
+//   height: 8rem;
 
-  small {
-    align-self: end;
-  }
-`
+//   small {
+//     align-self: end;
+//   }
+// `
 
 const Footer = props => {
   const {
@@ -91,9 +98,13 @@ const Footer = props => {
   } = props
 
   return (
-    <StyledFooter>
-      <Container>
-        <MainSection>
+    <>
+      <Container fluid>
+        <Box>Stay in the loop?</Box>
+      </Container>
+      <StyledFooter>
+        <Container col="3">
+          {/* <MainSection> */}
           <MainCol>
             {relatedLinkList && <LinkList invert linkList={relatedLinkList} />}
           </MainCol>
@@ -109,15 +120,16 @@ const Footer = props => {
             {socialLinkList && (
               <LinkList invert inline linkList={socialLinkList} />
             )}
-            <LegalSection>
-              <Small invert>
-                © {siteTitle} {new Date().getFullYear()}
-              </Small>
-            </LegalSection>
+            {/* <LegalSection> */}
+            <Small invert>
+              &copy; {siteTitle} {new Date().getFullYear()}
+            </Small>
+            {/* </LegalSection> */}
           </MainCol>
-        </MainSection>
-      </Container>
-    </StyledFooter>
+          {/* </MainSection> */}
+        </Container>
+      </StyledFooter>
+    </>
   )
 }
 
