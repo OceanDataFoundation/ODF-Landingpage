@@ -9,7 +9,6 @@ import SEO from '../components/seo/seo'
 import { Container } from '../components/container/Container'
 import { Header } from '../components/header/Header'
 import { H1, H2 } from '../components/typography/heading/Heading'
-import ContactForm from '../components/contact-form/ContactForm'
 
 const PageTemplate = ({ data }) => {
   const page = data.contentfulPage
@@ -21,12 +20,11 @@ const PageTemplate = ({ data }) => {
       <Container offset="true">
         <div>
           <Header>
-            <H1>{title}</H1>
-            <H2>{subtitle}</H2>
+            {title && <H1>{title}</H1>}
+            {subtitle && <H2>{subtitle}</H2>}
           </Header>
           {image ? <Img fluid={image.fluid} /> : null}
           <p>{content.content}</p>
-          <ContactForm />
         </div>
       </Container>
     </Layout>
