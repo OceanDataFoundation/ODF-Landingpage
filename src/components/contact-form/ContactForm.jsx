@@ -30,29 +30,48 @@ const ContactForm = () => {
     <form
       name="contact"
       method="post"
-      action="/success/"
+      action="/contact/success/"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}>
       <input type="hidden" name="form-name" value="contact" />
       <p>
         <label>
-          Name: <input type="text" name="name" onChange={handleChange} />
+          <input
+            placeholder="Name"
+            type="text"
+            name="name"
+            onChange={handleChange}
+          />
         </label>
       </p>
       <p>
         <label>
-          Email: <input type="email" name="email" onChange={handleChange} />
+          <input
+            placeholder="Email Address"
+            type="email"
+            name="email"
+            onChange={handleChange}
+          />
         </label>
       </p>
       <p>
         <label>
-          Subject: <input type="text" name="subject" onChange={handleChange} />
+          <input
+            placeholder="Subject"
+            type="text"
+            name="subject"
+            onChange={handleChange}
+          />
         </label>
       </p>
       <p>
         <label>
-          Message: <textarea name="message" onChange={handleChange} />
+          <textarea
+            placeholder="Message"
+            name="message"
+            onChange={handleChange}
+          />
         </label>
       </p>
       <button type="submit">Send</button>
