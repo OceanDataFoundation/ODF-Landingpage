@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 
+// Utils
+import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+
 // Components
 import Layout from '../../components/site-layout/Layout'
 import SEO from '../../components/seo/seo'
@@ -14,13 +17,22 @@ import ContactForm from '../../components/contact-form/ContactForm'
 // Style
 const FlexContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
 
   > * {
-    flex: 1;
-    max-width: 32rem;
+    flex: 1
+    max-width: 70ch;
   }
+
+  ${mediaQuery.BREAKPOINT_3`
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    > p {
+      margin-right: 6rem;
+    }
+  `};
 `
 
 const ContactPage = ({ data }) => {

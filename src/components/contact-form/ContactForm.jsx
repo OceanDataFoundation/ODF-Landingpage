@@ -1,6 +1,18 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import { navigate } from 'gatsby-link'
+import axios from 'axios'
+import styled from 'styled-components'
+
+// Style
+
+const Form = styled.form`
+  width: 100%;
+
+  input,
+  textarea {
+    width: 100%;
+  }
+`
 
 const encode = () => data => {
   return Object.keys(data)
@@ -27,7 +39,7 @@ const ContactForm = () => {
   }
 
   return (
-    <form
+    <Form
       name="contact"
       method="post"
       action="/contact/success/"
@@ -75,7 +87,7 @@ const ContactForm = () => {
         </label>
       </p>
       <button type="submit">Send</button>
-    </form>
+    </Form>
   )
 }
 
