@@ -17,12 +17,14 @@ import { Meta } from '../components/meta/Meta'
 import Time from '../components/time/Time'
 import { Article } from '../components/article/Article'
 import Video from '../components/video/Video'
+import { TableWrapper, Table, TBody, Tr, Td } from '../components/table/Table'
+import LinkCta from '../components/link-cta/LinkCta'
+import LinkButton from '../components/link-button/LinkButton'
 
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import P from '../components/typography/paragraph/Paragraph'
-import LinkCta from '../components/link-cta/LinkCta'
-import LinkButton from '../components/link-button/LinkButton'
+import { Strong } from '../components/typography/strong/Strong'
 
 const IndexPage = ({ data }) => {
   const heroPosts = data.allContentfulHero.edges
@@ -34,6 +36,8 @@ const IndexPage = ({ data }) => {
   const statementThree = data.statementThree.edges
 
   const pressRelease = data.allContentfulPressRelease.edges
+
+  const events = data.allContentfulEvents.edges
 
   return (
     <Layout>
@@ -86,7 +90,7 @@ const IndexPage = ({ data }) => {
 
       <Container fluid>
         {videoPosts.map(({ node: post }) => (
-          <Video title={post.title} videoId={post.videoId} />
+          <Video key={post.id} title={post.title} videoId={post.videoId} />
         ))}
       </Container>
 
@@ -153,6 +157,41 @@ const IndexPage = ({ data }) => {
           />
         </Statement>
       ))}
+
+      <Container>
+        <SubHeading>Connect</SubHeading>
+        <H2>Upcomming Events</H2>
+        <TableWrapper>
+          <Table style={{ marginBottom: '3.5rem' }}>
+            <TBody>
+              {events.map(({ node: post }) => (
+                <Tr key={post.id}>
+                  <Td>
+                    <Strong>{post.date}</Strong>
+                    <br />
+                    {post.time}
+                  </Td>
+                  <Td>
+                    <Strong>{post.title}</Strong>
+                    <br />
+                    {post.location}
+                  </Td>
+                  <Td>
+                    {post.link && (
+                      <LinkCta
+                        href={post.link}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Visit event site
+                      </LinkCta>
+                    )}
+                  </Td>
+                </Tr>
+              ))}
+            </TBody>
+          </Table>
+        </TableWrapper>
+      </Container>
     </Layout>
   )
 }
@@ -286,6 +325,18 @@ export const query = graphql`
             }
           }
           reverseOrder
+        }
+      }
+    }
+    allContentfulEvents {
+      edges {
+        node {
+          id
+          location
+          date(formatString: "MMMM D, YYYY")
+          time
+          title
+          link
         }
       }
     }
