@@ -3,14 +3,34 @@ import { navigate } from 'gatsby-link'
 import axios from 'axios'
 import styled from 'styled-components'
 
-// Style
+// Utils
+import { space } from '../../utils/configs/confSpace'
+import { typeScale } from '../../utils/configs/confTypeScale'
+import { borderRadius } from '../../utils/tokens/tokenBorderRadius'
+import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
+import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
 
+// Style
 const Form = styled.form`
   width: 100%;
+
+  label {
+    display: block;
+    padding-bottom: ${space[6]};
+  }
 
   input,
   textarea {
     width: 100%;
+    border: 1px solid ${colorNeutral.NEUTRAL_TINT_55};
+    border-radius: ${borderRadius.BORDER_RADIUS_2};
+    padding: ${space[3]};
+
+    ${typeScale.TEXT_PRESET_2};
+
+    :focus {
+      border-color: ${colorBrandGreen.GREEN_TINT_50};
+    }
   }
 `
 
@@ -47,46 +67,43 @@ const ContactForm = () => {
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}>
       <input type="hidden" name="form-name" value="contact" />
-      <p>
-        <label>
-          <input
-            placeholder="Name"
-            type="text"
-            name="name"
-            onChange={handleChange}
-          />
-        </label>
-      </p>
-      <p>
-        <label>
-          <input
-            placeholder="Email Address"
-            type="email"
-            name="email"
-            onChange={handleChange}
-          />
-        </label>
-      </p>
-      <p>
-        <label>
-          <input
-            placeholder="Subject"
-            type="text"
-            name="subject"
-            onChange={handleChange}
-          />
-        </label>
-      </p>
-      <p>
-        <label>
-          <textarea
-            placeholder="Message"
-            name="message"
-            onChange={handleChange}
-            rows="15"
-          />
-        </label>
-      </p>
+
+      <label>
+        <input
+          placeholder="Name"
+          type="text"
+          name="name"
+          onChange={handleChange}
+        />
+      </label>
+
+      <label>
+        <input
+          placeholder="Email Address"
+          type="email"
+          name="email"
+          onChange={handleChange}
+        />
+      </label>
+
+      <label>
+        <input
+          placeholder="Subject"
+          type="text"
+          name="subject"
+          onChange={handleChange}
+        />
+      </label>
+
+      <label>
+        <textarea
+          placeholder="Message"
+          name="message"
+          onChange={handleChange}
+          rows="10"
+        />
+      </label>
+
       <button type="submit">Send</button>
     </Form>
   )
