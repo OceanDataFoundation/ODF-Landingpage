@@ -12,7 +12,6 @@ import { space } from '../../utils/configs/confSpace'
 // Components
 import { Container } from '../container/Container'
 import ContactInformation from '../contact-information/ContactInformation'
-import { Box } from '../box/Box'
 import LinkList from '../link-list/LinkList'
 import { Small } from '../typography/small/Small'
 
