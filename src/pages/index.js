@@ -46,7 +46,7 @@ const IndexPage = ({ data }) => {
       {heroPosts.map(({ node: post }) => (
         <Hero key={post.id} bgImage={post.image.file.url}>
           <Intro>
-            <H1 size="large" invert>
+            <H1 size="larger" invert>
               {post.title}
             </H1>
             <P lead invert>

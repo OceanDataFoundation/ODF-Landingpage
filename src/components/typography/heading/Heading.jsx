@@ -45,9 +45,9 @@ const HeadingH1 = styled.h1`
       : colorNeutral.NEUTRAL_TINT_15};
   ${props =>
     props.size === 'large'
-      ? typeScale.TEXT_PRESET_3
+      ? typeScale.TEXT_PRESET_4
       : props.size === 'larger'
-      ? typeScale.TEXT_PRESET_3
+      ? typeScale.TEXT_PRESET_4
       : GlobalH1};
 
   ${mediaQuery.BREAKPOINT_2`
@@ -59,9 +59,9 @@ const HeadingH1 = styled.h1`
         : space[4]};
     ${props =>
       props.size === 'large'
-        ? typeScale.TEXT_PRESET_5
-        : props.size === 'larger'
         ? typeScale.TEXT_PRESET_6
+        : props.size === 'larger'
+        ? typeScale.TEXT_PRESET_7
         : GlobalH1};
   `};
 
@@ -74,22 +74,13 @@ const HeadingH1 = styled.h1`
       : space[5]};
     ${props =>
       props.size === 'large'
-        ? typeScale.TEXT_PRESET_6
-        : props.size === 'larger'
-        ? typeScale.TEXT_PRESET_7
-        : GlobalH1};
-  `};
-
-  ${mediaQuery.BREAKPOINT_4`
-    ${props =>
-      props.size === 'large'
         ? typeScale.TEXT_PRESET_7
         : props.size === 'larger'
         ? typeScale.TEXT_PRESET_8
         : GlobalH1};
   `};
 
-  ${mediaQuery.BREAKPOINT_6`
+  ${mediaQuery.BREAKPOINT_4`
     ${props =>
       props.size === 'large'
         ? typeScale.TEXT_PRESET_8

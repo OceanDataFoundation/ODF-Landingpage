@@ -23,6 +23,7 @@ export const GlobalH1 = css`
     ${Heading};
     ${typeScale.TEXT_PRESET_7};
 
+    font-weight: ${fontWeight.FONT_WEIGHT_3};
     margin-top: calc((1 - 2.6) * 0.5rem);
   }
 `
@@ -32,6 +33,7 @@ export const GlobalH2 = css`
     ${Heading};
     ${typeScale.TEXT_PRESET_6};
 
+    font-weight: ${fontWeight.FONT_WEIGHT_4};
     margin-top: calc((1 - 2.6) * 0.5rem);
   }
 `
@@ -41,6 +43,7 @@ export const GlobalH3 = css`
     ${Heading};
     ${typeScale.TEXT_PRESET_5};
 
+    font-weight: ${fontWeight.FONT_WEIGHT_3};
     margin-top: calc((1 - 2) * 0.5rem);
   }
 `
@@ -50,6 +53,7 @@ export const GlobalH4 = css`
     ${Heading};
     ${typeScale.TEXT_PRESET_4};
 
+    font-weight: ${fontWeight.FONT_WEIGHT_4};
     margin-top: calc((1 - 2) * 0.5rem);
   }
 `
@@ -59,6 +63,7 @@ export const GlobalH5 = css`
     ${Heading};
     ${typeScale.TEXT_PRESET_3};
 
+    font-weight: ${fontWeight.FONT_WEIGHT_4};
     margin-top: calc((1 - 1.7) * 0.5rem);
   }
 `
