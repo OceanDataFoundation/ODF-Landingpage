@@ -5,46 +5,79 @@ import styled from 'styled-components'
 // Tokens
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 
+// Config
+import { space } from '../../utils/configs/confSpace'
+
 // Components
 import { H6 } from '../typography/heading/Heading'
 
 // Styles
-const Li = styled.li`
-  display: ${props => (props.inline ? 'inline-block' : 'list-item')};
+import { Transition } from '../../utils/styles/utility-classes/transition'
 
+const Ul = styled.ul`
+  padding: ${space[0]};
+  margin: ${space[0]};
+  list-style-type: none;
+  display: flex;
+  flex-direction: ${props => (props.inline ? 'row' : 'column')};
+`
+
+const Li = styled.li`
+  margin-bottom: ${space[3]};
+  margin-right: ${props => (props.inline ? '0' : '1rem')};
+`
+
+const A = styled.a`
+  padding-bottom: ${space[2]};
   color: ${props =>
     props.invert
       ? colorNeutral.NEUTRAL_TINT_100
       : colorNeutral.NEUTRAL_TINT_15};
+  text-decoration: none;
+  border-bottom: ${props =>
+    props.underline ? `1px solid ${colorNeutral.NEUTRAL_TINT_100}` : ''};
 
-  a {
-    margin-right: ${props => (props.inline ? '1rem' : '0')};
+  ${Transition};
+
+  :hover,
+  :focus {
+    color: ${props =>
+      props.invert
+        ? colorNeutral.NEUTRAL_TINT_100
+        : colorNeutral.NEUTRAL_TINT_0};
+    border-bottom-color: transparent;
   }
 `
 
 const LinkList = props => {
-  const { linkList, invert, inline } = props
+  const { linkList, invert, inline, underline } = props
   const { text, listItems } = linkList
 
   return (
     <>
       <H6 invert={invert}>{text}</H6>
-      <ul>
+      <Ul inline={inline}>
         {listItems.map(item => (
-          <Li invert={invert} inline={inline} key={item.id}>
-            <a href={item.url} target="_blank" rel="noopener noreferrer">
+          <Li key={item.id}>
+            <A
+              invert={invert}
+              underline={underline}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer">
               {!item.image && item.text}
               {item.image && (
                 <img
                   src={item.image.file.url}
                   alt={item.image.description}
-                  width="48"
+                  width="40"
+                  style={{ marginTop: '5px' }}
                 />
               )}
-            </a>
+            </A>
           </Li>
         ))}
-      </ul>
+      </Ul>
     </>
   )
 }
@@ -53,6 +86,7 @@ LinkList.propTypes = {
   linkList: PropTypes.object.isRequired,
   invert: PropTypes.bool,
   inline: PropTypes.bool,
+  underline: PropTypes.bool,
 }
 
 export default LinkList
