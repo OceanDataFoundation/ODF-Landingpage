@@ -83,6 +83,7 @@ const ContactForm = () => {
             placeholder="Message"
             name="message"
             onChange={handleChange}
+            rows="15"
           />
         </label>
       </p>

@@ -26,7 +26,6 @@ const FlexContainer = styled.div`
 
   ${mediaQuery.BREAKPOINT_3`
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-between;
 
     > p {
