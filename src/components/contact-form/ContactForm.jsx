@@ -32,6 +32,16 @@ const Form = styled.form`
       border-color: ${colorBrandGreen.GREEN_TINT_50};
     }
   }
+
+  button {
+    padding: ${space[3]};
+    border-radius: ${borderRadius.BORDER_RADIUS_2};
+    border-style: hidden;
+    background: ${colorBrandGreen.GREEN_TINT_80};
+
+    text-transform: uppercase;
+    font-weight: 600;
+  }
 `
 
 const encode = () => data => {
