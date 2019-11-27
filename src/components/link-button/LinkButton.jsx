@@ -7,10 +7,12 @@ import styled from 'styled-components'
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
 import { borderRadius } from '../../utils/tokens/tokenBorderRadius'
+import { fontFamily } from '../../utils/tokens/tokenFontFamily'
 import { fontWeight } from '../../utils/tokens/tokenFontWeight'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
+import { typeScale } from '../../utils/configs/confTypeScale'
 
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
@@ -30,17 +32,18 @@ const LinkButton = props => {
 }
 
 const LinkButtonStyle = styled(Link)`
-  height: 50px;
   padding: ${space[4]} ${space[8]};
   margin: ${space[6]} auto ${space[2]} auto;
   color: ${colorNeutral.NEUTRAL_TINT_15};
+  font-family: ${fontFamily.FONT_FAMILY_2};
   font-weight: ${fontWeight.FONT_WEIGHT_4};
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
-  display: table;
+  display: ${props => (props.alignCenter ? `table` : 'inline-block')};
   border-radius: ${borderRadius.BORDER_RADIUS_2};
+  border: none;
   background: linear-gradient(
     to right,
     ${colorBrandGreen.GREEN_TINT_80} 50%,
@@ -48,6 +51,7 @@ const LinkButtonStyle = styled(Link)`
   );
   background-size: calc(210%) calc(210%);
 
+  ${typeScale.TEXT_PRESET_2};
   ${Transition};
   transition-property: background-position;
 

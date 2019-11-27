@@ -1,17 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
-
-// Config
-import { space } from '../../utils/configs/confSpace'
-
-// Mixins
-import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 const Video = props => {
   const { videoId, title } = props
 
   return (
-    <VideoStyle>
+    <>
       <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
         <iframe
           title={title}
@@ -28,16 +21,8 @@ const Video = props => {
           allowFullScreen></iframe>
       </div>
       <script src="https://player.vimeo.com/api/player.js"></script>
-    </VideoStyle>
+    </>
   )
 }
-
-const VideoStyle = styled.div`
-  margin-bottom: ${space[8]};
-
-  ${mediaQuery.BREAKPOINT_2`
-    margin-bottom: ${space[0]};
-  `};
-`
 
 export default Video

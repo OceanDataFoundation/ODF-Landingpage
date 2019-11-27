@@ -9,7 +9,6 @@ import { Container } from '../components/container/Container'
 import { Box } from '../components/box/Box'
 import Hero from '../components/hero/Hero'
 import Intro from '../components/intro/Intro'
-import CallToAction from '../components/call-to-action/CallToAction'
 import Blockquote from '../components/blockquote/Blockquote'
 import Statement from '../components/statement/Statement'
 import PressRelease from '../components/press-release/PressRelease'
@@ -52,12 +51,14 @@ const IndexPage = ({ data }) => {
             <P lead invert>
               {post.content.content}
             </P>
-            <CallToAction href="/#quote" />
+            <LinkButton to="/#video" style={{ marginTop: '4rem' }}>
+              Watch video
+            </LinkButton>
           </Intro>
         </Hero>
       ))}
 
-      <Container id="quote" fluid>
+      <Container fluid>
         <Box>
           <Container as="div">
             {quotePosts.map(({ node: post }) => (
@@ -88,7 +89,7 @@ const IndexPage = ({ data }) => {
         </Statement>
       ))}
 
-      <Container fluid>
+      <Container id="video" fluid>
         {videoPosts.map(({ node: post }) => (
           <Video key={post.id} title={post.title} videoId={post.videoId} />
         ))}
@@ -98,7 +99,8 @@ const IndexPage = ({ data }) => {
         <Statement
           key={post.id}
           image={post.image.fluid}
-          reverse={post.reverseOrder === 'Yes' ? post.reverseOrder : null}>
+          reverse={post.reverseOrder === 'Yes' ? post.reverseOrder : null}
+          removeOffset={true}>
           <SubHeading>{post.subtitle}</SubHeading>
           <H2>{post.title}</H2>
           <div
@@ -169,7 +171,7 @@ const IndexPage = ({ data }) => {
                   <Td>
                     <Strong>{post.date}</Strong>
                     <br />
-                    {post.time}
+                    {post.time && post.time}
                   </Td>
                   <Td>
                     <Strong>{post.title}</Strong>
