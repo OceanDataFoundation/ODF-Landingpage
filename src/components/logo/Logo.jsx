@@ -18,7 +18,6 @@ import { Transition } from '../../utils/styles/utility-classes/transition'
 
 // Components
 import { H1 } from '../typography/heading/Heading'
-// import logoSVG from '../../images/odf-logo.svg'
 
 export const LogoLink = styled(Link)`
   ${Transition};
@@ -35,21 +34,13 @@ export const LogoLink = styled(Link)`
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-		padding-top: ${space[6]};
-    padding-bottom: ${space[6]};
+		padding-top: ${space[5]};
+    padding-bottom: ${space[5]};
   `};
 
   :hover,
   :focus {
-    box-shadow: inset 0 -2px 0 0 ${colorBrandGreen.GREEN_TINT_50};
-
-    ${mediaQuery.BREAKPOINT_2`
-      box-shadow: inset 0 -4px 0 0 ${colorBrandGreen.GREEN_TINT_50};
-    `};
-
-    ${mediaQuery.BREAKPOINT_3`
-      box-shadow: inset 0 -8px 0 0 ${colorBrandGreen.GREEN_TINT_50};
-    `};
+    box-shadow: inset 0 -1px 0 0 ${colorBrandGreen.GREEN_TINT_50};
   }
 `
 
@@ -62,11 +53,11 @@ export const LogoStyle = styled.img`
   display: block;
 
   ${mediaQuery.BREAKPOINT_2`
-		width: 200px;
+		width: 175px;
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-		width: 250px;
+		width: 225px;
   `};
 `
 
