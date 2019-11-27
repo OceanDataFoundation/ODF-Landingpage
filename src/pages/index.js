@@ -169,14 +169,16 @@ const IndexPage = ({ data }) => {
               {events.map(({ node: post }) => (
                 <Tr key={post.id}>
                   <Td>
-                    <Strong>{post.date}</Strong>
-                    <br />
-                    {post.time && post.time}
+                    <Strong>
+                      {!post.toDate
+                        ? `${post.fromDate}`
+                        : `${post.fromDate.split(' ')[0]} - ${post.toDate}`}
+                    </Strong>
                   </Td>
                   <Td>
                     <Strong>{post.title}</Strong>
                     <br />
-                    {post.location}
+                    {post.location && post.location}
                   </Td>
                   <Td>
                     {post.link && (
@@ -334,10 +336,10 @@ export const query = graphql`
       edges {
         node {
           id
-          location
-          date(formatString: "MMMM D, YYYY")
-          time
           title
+          location
+          fromDate(formatString: "D MMMM, YYYY")
+          toDate(formatString: "D MMMM, YYYY")
           link
         }
       }
