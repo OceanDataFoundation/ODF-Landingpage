@@ -23,6 +23,7 @@ const PressRelease = props => {
 const PressReleaseContainer = styled(Container)`
   padding-right: ${space[0]};
   padding-left: ${space[0]};
+  margin-bottom: ${space[6]};
   grid-template-columns: repeat(1, 100%);
 
   ${mediaQuery.BREAKPOINT_2`

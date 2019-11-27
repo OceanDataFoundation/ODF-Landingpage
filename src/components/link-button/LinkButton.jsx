@@ -33,7 +33,7 @@ const LinkButton = props => {
 
 const LinkButtonStyle = styled(Link)`
   padding: ${space[4]} ${space[8]};
-  margin: ${space[6]} auto ${space[2]} auto;
+  margin: 0 auto;
   color: ${colorNeutral.NEUTRAL_TINT_15};
   font-family: ${fontFamily.FONT_FAMILY_2};
   font-weight: ${fontWeight.FONT_WEIGHT_4};
@@ -63,7 +63,7 @@ const LinkButtonStyle = styled(Link)`
   transition-property: background-position;
 
   ${mediaQuery.BREAKPOINT_2`
-    margin: ${space[6]} auto ${space[9]} auto;
+    ${props => (props.pressRelease ? `margin-bottom: 3.5rem` : null)};
   `};
 
   &:hover {

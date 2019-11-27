@@ -17,6 +17,7 @@ import { Small } from '../typography/small/Small'
 // Styles
 const StyledFooter = styled.footer`
   padding-top: ${space[10]};
+  margin-top: ${space[10]};
 
   background-color: ${colorNeutral.NEUTRAL_TINT_0};
 `

@@ -138,7 +138,7 @@ const IndexPage = ({ data }) => {
                 </Article>
               ))}
             </PressRelease>
-            <LinkButton to="/press/" showArrow>
+            <LinkButton to="/press/" showArrow pressRelease>
               See all
             </LinkButton>
           </Container>
@@ -164,7 +164,7 @@ const IndexPage = ({ data }) => {
         <SubHeading>Connect</SubHeading>
         <H2>Upcoming Events</H2>
         <TableWrapper>
-          <Table style={{ marginBottom: '3.5rem' }}>
+          <Table>
             <TBody>
               {events.map(({ node: post }) => (
                 <Tr key={post.id}>
