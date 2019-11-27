@@ -51,8 +51,12 @@ const StatementImage = styled.div`
 
   ${mediaQuery.BREAKPOINT_2`
     top: ${props => (props.removeOffset ? `0` : `-${space[8]}`)};
-    ${props => (props.removeOffset ? `margin: 80px 0 ${space[8]} 0` : null)};
+    ${props => (props.removeOffset ? `margin: 50px 0 ${space[8]} 0` : null)};
     ${props => (props.reverse ? `order: 2` : `order: 1`)};
+  `};
+
+  ${mediaQuery.BREAKPOINT_3`
+    ${props => (props.removeOffset ? `margin: 80px 0 ${space[8]} 0` : null)};
   `};
 
   ::before {
