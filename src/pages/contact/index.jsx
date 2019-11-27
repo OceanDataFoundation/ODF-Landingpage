@@ -10,7 +10,8 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import Layout from '../../components/site-layout/Layout'
 import SEO from '../../components/seo/seo'
 import { Container } from '../../components/container/Container'
-import { H3, H4 } from '../../components/typography/heading/Heading'
+import { H2 } from '../../components/typography/heading/Heading'
+import { SubHeading } from '../../components/typography/sub-heading/SubHeading'
 import P from '../../components/typography/paragraph/Paragraph'
 import ContactForm from '../../components/contact-form/ContactForm'
 
@@ -20,7 +21,10 @@ const FlexContainer = styled.div`
   flex-direction: column;
 
   > * {
-    flex: 1
+    flex: 1;
+  }
+
+  & > p {
     max-width: 70ch;
   }
 
@@ -28,8 +32,13 @@ const FlexContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
 
-    > p {
+    & > p {
+      flex: 4;
       margin-right: 6rem;
+    }
+
+    & > form {
+      flex: 5;
     }
   `};
 `
@@ -42,8 +51,8 @@ const ContactPage = ({ data }) => {
     <Layout>
       <SEO title="Contact" />
       <Container offset="true">
-        <H4>{title}</H4>
-        <H3>{subtitle}</H3>
+        <SubHeading>{title}</SubHeading>
+        <H2>{subtitle}</H2>
         <FlexContainer>
           <P>{content.content}</P>
           <ContactForm />

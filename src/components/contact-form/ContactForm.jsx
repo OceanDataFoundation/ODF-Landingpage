@@ -1,45 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
-// Utils
-import { space } from '../../utils/configs/confSpace'
-import { typeScale } from '../../utils/configs/confTypeScale'
-import { borderRadius } from '../../utils/tokens/tokenBorderRadius'
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
+// Components
+import LinkButton from '../../components/link-button/LinkButton'
+import { TextInput } from '../../components/input-text/inputText'
+import { Label } from '../../components/label/label'
 
 // Style
 const Form = styled.form`
   width: 100%;
-
-  label {
-    display: block;
-    padding-bottom: ${space[6]};
-  }
-
-  input,
-  textarea {
-    width: 100%;
-    border: 1px solid ${colorNeutral.NEUTRAL_TINT_55};
-    border-radius: ${borderRadius.BORDER_RADIUS_2};
-    padding: ${space[3]};
-
-    ${typeScale.TEXT_PRESET_2};
-
-    :focus {
-      border-color: ${colorBrandGreen.GREEN_TINT_50};
-    }
-  }
-
-  button {
-    padding: ${space[3]};
-    border-radius: ${borderRadius.BORDER_RADIUS_2};
-    border-style: hidden;
-    background: ${colorBrandGreen.GREEN_TINT_80};
-
-    text-transform: uppercase;
-    font-weight: 600;
-  }
 `
 
 const ContactForm = () => {
@@ -58,23 +27,45 @@ const ContactForm = () => {
         </label>
       </p>
 
-      <label>
-        <input placeholder="Name" type="text" name="name" />
-      </label>
+      <Label htmlFor="name">
+        Name
+        <TextInput placeholder="Your Name" type="text" name="name" id="name" />
+      </Label>
 
-      <label>
-        <input placeholder="Email Address" type="email" name="email" />
-      </label>
+      <Label htmlFor="email">
+        Email
+        <TextInput
+          placeholder="you@email.com"
+          type="email"
+          name="email"
+          id="email"
+        />
+      </Label>
 
-      <label>
-        <input placeholder="Subject" type="text" name="subject" />
-      </label>
+      <Label htmlFor="subject">
+        Subject
+        <TextInput
+          placeholder="Hello Ocean Data Platform"
+          type="text"
+          name="subject"
+          id="subject"
+        />
+      </Label>
 
-      <label>
-        <textarea placeholder="Message" name="message" rows="10" />
-      </label>
+      <Label htmlFor="message">
+        Message
+        <TextInput
+          as="textarea"
+          id="message"
+          placeholder="Hello..."
+          name="message"
+          rows="10"
+        />
+      </Label>
 
-      <button type="submit">Send</button>
+      <LinkButton as="button" type="submit" showArrow>
+        Send
+      </LinkButton>
     </Form>
   )
 }
