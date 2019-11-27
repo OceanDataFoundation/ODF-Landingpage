@@ -12,6 +12,9 @@ import { fontWeight } from '../../utils/tokens/tokenFontWeight'
 // Config
 import { space } from '../../utils/configs/confSpace'
 
+// Mixins
+import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
 
@@ -29,7 +32,7 @@ const LinkButton = props => {
 const LinkButtonStyle = styled(Link)`
   height: 50px;
   padding: ${space[4]} ${space[8]};
-  margin: 0 auto ${space[9]} auto;
+  margin: ${space[6]} auto ${space[2]} auto;
   color: ${colorNeutral.NEUTRAL_TINT_15};
   font-weight: ${fontWeight.FONT_WEIGHT_4};
   text-decoration: none;
@@ -47,6 +50,10 @@ const LinkButtonStyle = styled(Link)`
 
   ${Transition};
   transition-property: background-position;
+
+  ${mediaQuery.BREAKPOINT_2`
+    margin: ${space[6]} auto ${space[9]} auto;
+  `};
 
   :hover,
   :focus {
