@@ -51,7 +51,7 @@ const IndexPage = ({ data }) => {
             <P lead invert>
               {post.content.content}
             </P>
-            <LinkButton to="/#video" style={{ marginTop: '4rem' }}>
+            <LinkButton to="/#video" invert style={{ marginTop: '4rem' }}>
               Watch video
             </LinkButton>
           </Intro>

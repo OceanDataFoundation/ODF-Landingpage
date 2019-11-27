@@ -1,10 +1,11 @@
 import React from 'react'
+import styled from 'styled-components'
 
 const Video = props => {
   const { videoId, title } = props
 
   return (
-    <>
+    <VideoStyle>
       <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
         <iframe
           title={title}
@@ -21,8 +22,12 @@ const Video = props => {
           allowFullScreen></iframe>
       </div>
       <script src="https://player.vimeo.com/api/player.js"></script>
-    </>
+    </VideoStyle>
   )
 }
+
+const VideoStyle = styled.div`
+  background-color: black;
+`
 
 export default Video

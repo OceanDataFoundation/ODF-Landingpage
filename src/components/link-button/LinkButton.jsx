@@ -44,11 +44,18 @@ const LinkButtonStyle = styled(Link)`
   display: ${props => (props.alignCenter ? `table` : 'inline-block')};
   border-radius: ${borderRadius.BORDER_RADIUS_2};
   border: none;
-  background: linear-gradient(
-    to right,
-    ${colorBrandGreen.GREEN_TINT_80} 50%,
-    ${colorBrandGreen.GREEN_TINT_60} 50%
-  );
+  background: ${props =>
+    props.invert
+      ? `linear-gradient(
+        to right,
+        ${colorBrandGreen.GREEN_TINT_60} 50%,
+        ${colorBrandGreen.GREEN_TINT_80} 50%
+      )`
+      : `linear-gradient(
+        to right,
+        ${colorBrandGreen.GREEN_TINT_80} 50%,
+        ${colorBrandGreen.GREEN_TINT_60} 50%
+    )`};
   background-size: calc(210%) calc(210%);
 
   ${typeScale.TEXT_PRESET_2};
@@ -58,6 +65,10 @@ const LinkButtonStyle = styled(Link)`
   ${mediaQuery.BREAKPOINT_2`
     margin: ${space[6]} auto ${space[9]} auto;
   `};
+
+  &:hover {
+    cursor: pointer;
+  }
 
   :hover,
   :focus {
