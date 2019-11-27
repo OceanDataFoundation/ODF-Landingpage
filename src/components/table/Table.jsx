@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 // Tokens
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
