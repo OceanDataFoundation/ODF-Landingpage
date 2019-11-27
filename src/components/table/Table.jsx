@@ -11,23 +11,11 @@ import { typeScale } from '../../utils/configs/confTypeScale'
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
-export const TableWrapper = styled.div`
-  width: 100%;
-  overflow-x: auto;
-`
+export const TableWrapper = styled.div``
 
 export const Table = styled.table`
-  width: ${breakpoints.BREAKPOINT_2};
-  table-layout: fixed;
+  width: 100%;
   border-collapse: collapse;
-
-  ${mediaQuery.BREAKPOINT_2`
-    width: ${breakpoints.BREAKPOINT_3};
-  `};
-
-  ${mediaQuery.BREAKPOINT_3`
-    width: 100%;
-  `};
 `
 
 export const TBody = styled.tbody`
@@ -49,10 +37,31 @@ export const Tr = styled.tr`
 `
 
 export const Td = styled.td`
-  padding: ${space[6]} 0;
+  width: 100%;
+  padding: ${space[3]} 0;
+  display: inline-block;
+
+  ${mediaQuery.BREAKPOINT_2`
+    width: 50%;
+    padding: ${space[2]} 0;
+  `};
+
+  ${mediaQuery.BREAKPOINT_3`
+    width: auto;
+    padding: ${space[6]} 0;
+    display: table-cell;
+  `};
 
   :first-child {
-    width: 300px;
+    padding-top: ${space[5]};
+
+    ${mediaQuery.BREAKPOINT_2`
+      width: 300px;
+    `};
+
+    ${mediaQuery.BREAKPOINT_3`
+      width: 300px;
+    `};
 
     ${mediaQuery.BREAKPOINT_4`
       width: 400px;
@@ -60,7 +69,13 @@ export const Td = styled.td`
   }
 
   :last-child {
-    width: 240px;
+    margin-top: ${space[4]};
+    padding-bottom: ${space[5]};
+
+    ${mediaQuery.BREAKPOINT_3`
+      width: 240px;
+      margin-top: ${space[0]};
+    `};
   }
 
   :not(:last-child) {

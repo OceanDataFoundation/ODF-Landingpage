@@ -169,7 +169,7 @@ const IndexPage = ({ data }) => {
                   <Td>
                     <Strong>{post.date}</Strong>
                     <br />
-                    {post.time}
+                    {post.time && post.time}
                   </Td>
                   <Td>
                     <Strong>{post.title}</Strong>
