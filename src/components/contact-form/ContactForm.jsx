@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
-import { navigate } from 'gatsby-link'
-import axios from 'axios'
+import React from 'react'
 import styled from 'styled-components'
 
 // Utils
@@ -43,13 +41,6 @@ const Form = styled.form`
     font-weight: 600;
   }
 `
-
-// Component helper function
-const encode = () => data => {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
-}
 
 const ContactForm = () => {
   return (
