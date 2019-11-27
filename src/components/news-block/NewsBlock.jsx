@@ -1,13 +1,35 @@
 import styled from 'styled-components'
 
+// Tokens
+import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
+
+import { space } from '../../utils/configs/confSpace'
+
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 export const NewsBlock = styled.div`
+  padding-bottom: ${space[3]};
+  margin-bottom: ${space[6]};
   position: relative;
+
+  ::after {
+    width: 40px;
+    height: 4px;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: ${colorBrandGreen.GREEN_TINT_50};
+
+    ${mediaQuery.BREAKPOINT_3`
+      display: none;
+    `};
+  }
 
   ${mediaQuery.BREAKPOINT_3`
     padding: 0 2rem 0 3rem;
+    margin-bottom: 0;
 
     ::before {
       width: 4px;
