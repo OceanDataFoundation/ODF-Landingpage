@@ -332,7 +332,7 @@ export const query = graphql`
         }
       }
     }
-    allContentfulEvents {
+    allContentfulEvents(sort: { fields: [fromDate], order: ASC }) {
       edges {
         node {
           id
