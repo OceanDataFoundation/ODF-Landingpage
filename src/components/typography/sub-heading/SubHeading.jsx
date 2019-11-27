@@ -14,7 +14,7 @@ export const SubHeading = styled.span`
   ${typeScale.TEXT_PRESET_2};
 
   margin-bottom: ${space[6]};
-  color: ${colorBrandGreen.GREEN_TINT_40};
+  color: ${colorBrandGreen.GREEN_TINT_30};
   text-transform: uppercase;
   letter-spacing: 2px;
   display: block;
