@@ -35,7 +35,7 @@ const ContactForm = () => {
       <Label htmlFor="email">
         Email
         <TextInput
-          placeholder="you@email.com"
+          placeholder="your@email.com"
           type="email"
           name="email"
           id="email"
@@ -57,7 +57,7 @@ const ContactForm = () => {
         <TextInput
           as="textarea"
           id="message"
-          placeholder="Hello..."
+          placeholder="Hello, ..."
           name="message"
           rows="10"
         />
