@@ -40,7 +40,6 @@ const News = ({ data }) => {
             </LinkBlock>
           ))}
         </Masonry>
-        <div>Pagination ?</div>
       </Container>
     </Layout>
   )

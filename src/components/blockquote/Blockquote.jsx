@@ -44,11 +44,6 @@ const BlockquoteContainer = styled.blockquote`
 
   p {
     ${typeScale.TEXT_PRESET_2};
-
-    ${mediaQuery.BREAKPOINT_3`      
-      font-size: 1.250rem;
-      line-height: 1.5;
-    `};
   }
 `
 

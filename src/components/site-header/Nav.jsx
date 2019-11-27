@@ -40,7 +40,8 @@ const NavList = styled.ul`
     cursor: pointer;
     text-transform: uppercase;
 
-    &:hover {
+    :hover,
+    :focus {
       padding-bottom: ${space[2]};
       border-bottom: 1px solid ${colorNeutral.NEUTRAL_TINT_100};
     }

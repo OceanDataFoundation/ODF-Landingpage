@@ -16,22 +16,28 @@ import PressRelease from '../components/press-release/PressRelease'
 import { Meta } from '../components/meta/Meta'
 import Time from '../components/time/Time'
 import { Article } from '../components/article/Article'
+import Video from '../components/video/Video'
+import { TableWrapper, Table, TBody, Tr, Td } from '../components/table/Table'
+import LinkCta from '../components/link-cta/LinkCta'
+import LinkButton from '../components/link-button/LinkButton'
 
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import P from '../components/typography/paragraph/Paragraph'
-import LinkCta from '../components/link-cta/LinkCta'
-import LinkButton from '../components/link-button/LinkButton'
+import { Strong } from '../components/typography/strong/Strong'
 
 const IndexPage = ({ data }) => {
   const heroPosts = data.allContentfulHero.edges
   const quotePosts = data.allContentfulQuote.edges
+  const videoPosts = data.allContentfulVideoHero.edges
 
   const statementOne = data.statementOne.edges
   const statementTwo = data.statementTwo.edges
   const statementThree = data.statementThree.edges
 
   const pressRelease = data.allContentfulPressRelease.edges
+
+  const events = data.allContentfulEvents.edges
 
   return (
     <Layout>
@@ -40,7 +46,7 @@ const IndexPage = ({ data }) => {
       {heroPosts.map(({ node: post }) => (
         <Hero key={post.id} bgImage={post.image.file.url}>
           <Intro>
-            <H1 size="large" invert>
+            <H1 size="larger" invert>
               {post.title}
             </H1>
             <P lead invert>
@@ -83,7 +89,9 @@ const IndexPage = ({ data }) => {
       ))}
 
       <Container fluid>
-        <Box>Video?</Box>
+        {videoPosts.map(({ node: post }) => (
+          <Video key={post.id} title={post.title} videoId={post.videoId} />
+        ))}
       </Container>
 
       {statementTwo.map(({ node: post }) => (
@@ -150,7 +158,40 @@ const IndexPage = ({ data }) => {
         </Statement>
       ))}
 
-      <Container fluid>Upcomming events</Container>
+      <Container>
+        <SubHeading>Connect</SubHeading>
+        <H2>Upcoming Events</H2>
+        <TableWrapper>
+          <Table style={{ marginBottom: '3.5rem' }}>
+            <TBody>
+              {events.map(({ node: post }) => (
+                <Tr key={post.id}>
+                  <Td>
+                    <Strong>{post.date}</Strong>
+                    <br />
+                    {post.time}
+                  </Td>
+                  <Td>
+                    <Strong>{post.title}</Strong>
+                    <br />
+                    {post.location}
+                  </Td>
+                  <Td>
+                    {post.link && (
+                      <LinkCta
+                        href={post.link}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Visit event site
+                      </LinkCta>
+                    )}
+                  </Td>
+                </Tr>
+              ))}
+            </TBody>
+          </Table>
+        </TableWrapper>
+      </Container>
     </Layout>
   )
 }
@@ -191,6 +232,17 @@ export const query = graphql`
           }
           cite
           author
+        }
+      }
+    }
+    allContentfulVideoHero(
+      filter: { contentful_id: { eq: "1tgrK4wxSh8Ja7kGZ2YaLH" } }
+    ) {
+      edges {
+        node {
+          id
+          title
+          videoId
         }
       }
     }
@@ -273,6 +325,18 @@ export const query = graphql`
             }
           }
           reverseOrder
+        }
+      }
+    }
+    allContentfulEvents {
+      edges {
+        node {
+          id
+          location
+          date(formatString: "MMMM D, YYYY")
+          time
+          title
+          link
         }
       }
     }

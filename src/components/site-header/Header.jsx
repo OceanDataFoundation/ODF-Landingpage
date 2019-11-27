@@ -25,11 +25,11 @@ const StyledHeader = styled.header`
   background-color: ${colorNeutral.NEUTRAL_TINT_0};
   padding: 0 ${space[4]};
 
-  ${mediaQuery.BREAKPOINT_1`
+  ${mediaQuery.BREAKPOINT_2`
 		padding: 0 ${space[6]};
   `};
 
-  ${mediaQuery.BREAKPOINT_2`
+  ${mediaQuery.BREAKPOINT_3`
 		padding: 0 ${space[8]};
   `};
 

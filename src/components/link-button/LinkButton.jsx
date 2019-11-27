@@ -27,6 +27,7 @@ const LinkButton = props => {
 }
 
 const LinkButtonStyle = styled(Link)`
+  height: 50px;
   padding: ${space[4]} ${space[8]};
   margin: 0 auto ${space[9]} auto;
   color: ${colorNeutral.NEUTRAL_TINT_15};

@@ -12,10 +12,10 @@ import { space } from '../../utils/configs/confSpace'
 import { Transition } from '../../utils/styles/utility-classes/transition'
 
 const LinkCta = props => {
-  const { children, href } = props
+  const { children, href, target } = props
 
   return (
-    <LinkCtaStyle href={href}>
+    <LinkCtaStyle href={href} target={target}>
       {children}
       <LinkCtaStyleArrow />
     </LinkCtaStyle>
