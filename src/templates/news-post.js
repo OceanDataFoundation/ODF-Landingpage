@@ -72,7 +72,7 @@ const NewsPostTemplate = ({ data }) => {
             </ArticleContent>
           </ArticleContainer>
 
-          <LinkButton to="/news/" showArrow>
+          <LinkButton to="/news/" showArrow alignCenter>
             See all posts
           </LinkButton>
         </Article>
