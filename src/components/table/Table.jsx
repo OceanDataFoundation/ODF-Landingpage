@@ -55,14 +55,6 @@ export const Td = styled.td`
   :first-child {
     padding-top: ${space[5]};
 
-    ${mediaQuery.BREAKPOINT_2`
-      width: 300px;
-    `};
-
-    ${mediaQuery.BREAKPOINT_3`
-      width: 300px;
-    `};
-
     ${mediaQuery.BREAKPOINT_4`
       width: 400px;
     `};
