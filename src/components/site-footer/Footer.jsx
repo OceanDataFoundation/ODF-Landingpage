@@ -14,23 +14,15 @@ import ContactInformation from '../contact-information/ContactInformation'
 import LinkList from '../link-list/LinkList'
 import { Small } from '../typography/small/Small'
 
-// Mixins
-import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-
 // Styles
 const StyledFooter = styled.footer`
   padding-top: ${space[10]};
-  padding-bottom: ${space[10]};
-  margin-top: ${space[6]};
+
   background-color: ${colorNeutral.NEUTRAL_TINT_0};
 `
 
 const FooterCol = styled.div`
-  margin-bottom: ${space[10]};
-
-  ${mediaQuery.BREAKPOINT_4`
-    margin-bottom: ${space[0]};
-  `};
+  padding-bottom: ${space[10]};
 
   h6 {
     margin-bottom: ${space[4]};

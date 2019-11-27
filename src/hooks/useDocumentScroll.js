@@ -19,14 +19,10 @@ export const useDocumentScrollThrottled = callback => {
 
   const handleDocumentScrollThrottled = throttle(handleDocumentScroll, 250)
 
-  useEffect(
-    () => {
-      window.addEventListener('scroll', handleDocumentScrollThrottled)
+  useEffect(() => {
+    window.addEventListener('scroll', handleDocumentScrollThrottled)
 
-      return () =>
-        window.removeEventListener('scroll', handleDocumentScrollThrottled)
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  )
+    return () =>
+      window.removeEventListener('scroll', handleDocumentScrollThrottled)
+  }, [handleDocumentScrollThrottled])
 }

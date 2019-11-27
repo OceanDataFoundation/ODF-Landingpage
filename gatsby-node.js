@@ -5,50 +5,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   // =============================
-  // Create top level pages
-  // =============================
-
-  // Query for page nodes
-  const pageResult = await graphql(
-    `
-      {
-        allContentfulPage {
-          edges {
-            node {
-              id
-              title
-              slug
-              content {
-                content
-              }
-            }
-          }
-        }
-      }
-    `
-  )
-
-  // Handle errors
-  if (pageResult.errors) {
-    throw pageResult.errors
-  }
-
-  // Create pages for each page in Contentful
-  const pageTemplate = path.resolve(`./src/templates/page.js`)
-
-  const pages = pageResult.data.allContentfulPage.edges
-
-  pages.forEach(page => {
-    createPage({
-      path: page.node.slug,
-      component: pageTemplate,
-      context: {
-        slug: page.node.slug,
-      },
-    })
-  })
-
-  // =============================
   // Create news posts
   // =============================
 
