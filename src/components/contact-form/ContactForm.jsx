@@ -52,11 +52,11 @@ const encode = () => data => {
 }
 
 const ContactForm = () => {
-  const [state, setState] = useState({})
+  // const [state, setState] = useState({})
 
-  const handleChange = e => {
-    setState({ ...state, [e.target.name]: e.target.value })
-  }
+  // const handleChange = e => {
+  //   setState({ ...state, [e.target.name]: e.target.value })
+  // }
 
   // const handleSubmit = event => {
   //   event.preventDefault()
@@ -70,20 +70,20 @@ const ContactForm = () => {
   //     .catch(error => alert(error))
   // }
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    const form = e.target
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': form.getAttribute('name'),
-        ...state,
-      }),
-    })
-      .then(() => navigate(form.getAttribute('action')))
-      .catch(error => alert(error))
-  }
+  // const handleSubmit = e => {
+  //   e.preventDefault()
+  //   const form = e.target
+  //   fetch('/', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  //     body: encode({
+  //       'form-name': form.getAttribute('name'),
+  //       ...state,
+  //     }),
+  //   })
+  //     .then(() => navigate(form.getAttribute('action')))
+  //     .catch(error => alert(error))
+  // }
 
   return (
     <Form
@@ -92,13 +92,13 @@ const ContactForm = () => {
       action="/contact/success/"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
-      onSubmit={handleSubmit}>
+      // onSubmit={handleSubmit}
+    >
       {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
       <input type="hidden" name="form-name" value="contact" />
       <p hidden>
         <label>
-          Don’t fill this out:{' '}
-          <input name="bot-field" onChange={handleChange} />
+          Don’t fill this out: <input name="bot-field" />
         </label>
       </p>
 
@@ -107,7 +107,7 @@ const ContactForm = () => {
           placeholder="Name"
           type="text"
           name="name"
-          onChange={handleChange}
+          // onChange={handleChange}
         />
       </label>
 
@@ -116,7 +116,7 @@ const ContactForm = () => {
           placeholder="Email Address"
           type="email"
           name="email"
-          onChange={handleChange}
+          // onChange={handleChange}
         />
       </label>
 
@@ -125,7 +125,7 @@ const ContactForm = () => {
           placeholder="Subject"
           type="text"
           name="subject"
-          onChange={handleChange}
+          // onChange={handleChange}
         />
       </label>
 
@@ -133,7 +133,7 @@ const ContactForm = () => {
         <textarea
           placeholder="Message"
           name="message"
-          onChange={handleChange}
+          // onChange={handleChange}
           rows="10"
         />
       </label>
