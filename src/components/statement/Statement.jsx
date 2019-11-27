@@ -80,8 +80,7 @@ const StatementImage = styled.div`
 `
 
 const StatementContent = styled.div`
-  padding: ${space[6]};
-  background-color: rgba(255, 255, 255, 0.95);
+  padding: ${space[4]};
 
   ${mediaQuery.BREAKPOINT_2`
     padding: calc(${space[7]}) 0 0 0;
