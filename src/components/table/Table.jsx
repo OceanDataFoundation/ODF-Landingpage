@@ -39,15 +39,16 @@ export const Td = styled.td`
   width: 100%;
   padding: ${space[3]} 0;
   display: inline-block;
+  vertical-align: top;
 
   ${mediaQuery.BREAKPOINT_2`
     width: 50%;
-    padding: ${space[2]} 0;
+    padding: ${space[5]} 0 ${space[2]} 0;
   `};
 
   ${mediaQuery.BREAKPOINT_3`
     width: auto;
-    padding: ${space[6]} 0;
+    padding: ${space[5]} 0;
     display: table-cell;
   `};
 
