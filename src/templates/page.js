@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+// import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 // Components
@@ -37,15 +37,15 @@ PageTemplate.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export const pageQuery = graphql`
-  query($slug: String!) {
-    contentfulPage(slug: { eq: $slug }) {
-      title
-      subtitle
-      createdAt(formatString: "MMMM DD, YYYY")
-      content {
-        content
-      }
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query($slug: String!) {
+//     contentfulPage(slug: { eq: $slug }) {
+//       title
+//       subtitle
+//       createdAt(formatString: "MMMM DD, YYYY")
+//       content {
+//         content
+//       }
+//     }
+//   }
+// `
