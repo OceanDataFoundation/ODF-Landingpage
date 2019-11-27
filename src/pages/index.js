@@ -160,7 +160,7 @@ const IndexPage = ({ data }) => {
 
       <Container>
         <SubHeading>Connect</SubHeading>
-        <H2>Upcomming Events</H2>
+        <H2>Upcoming Events</H2>
         <TableWrapper>
           <Table style={{ marginBottom: '3.5rem' }}>
             <TBody>

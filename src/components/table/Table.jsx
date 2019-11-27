@@ -60,7 +60,7 @@ export const Td = styled.td`
   }
 
   :last-child {
-    width: 200px;
+    width: 240px;
   }
 
   :not(:last-child) {
