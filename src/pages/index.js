@@ -98,7 +98,8 @@ const IndexPage = ({ data }) => {
         <Statement
           key={post.id}
           image={post.image.fluid}
-          reverse={post.reverseOrder === 'Yes' ? post.reverseOrder : null}>
+          reverse={post.reverseOrder === 'Yes' ? post.reverseOrder : null}
+          removeOffset={true}>
           <SubHeading>{post.subtitle}</SubHeading>
           <H2>{post.title}</H2>
           <div

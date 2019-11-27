@@ -17,11 +17,11 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import { Container } from '../container/Container'
 
 const Statement = props => {
-  const { children, image, reverse, ...rest } = props
+  const { children, image, reverse, removeOffset, ...rest } = props
 
   return (
     <StatementContainer {...rest}>
-      <StatementImage reverse={reverse}>
+      <StatementImage reverse={reverse} removeOffset={removeOffset}>
         <Img fluid={image} />
       </StatementImage>
       <StatementContent reverse={reverse}>{children}</StatementContent>
@@ -47,9 +47,11 @@ const StatementContainer = styled(Container)`
 
 const StatementImage = styled.div`
   position: relative;
+  ${props => (props.removeOffset ? `margin: 40px 0 ${space[0]} 0` : null)};
 
   ${mediaQuery.BREAKPOINT_2`
-    top: -${space[8]};
+    top: ${props => (props.removeOffset ? `0` : `-${space[8]}`)};
+    ${props => (props.removeOffset ? `margin: 80px 0 ${space[8]} 0` : null)};
     ${props => (props.reverse ? `order: 2` : `order: 1`)};
   `};
 
