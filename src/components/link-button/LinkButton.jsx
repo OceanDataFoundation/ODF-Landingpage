@@ -35,7 +35,7 @@ const LinkButtonStyle = styled(Link)`
   padding: ${space[4]} ${space[8]};
   margin: ${space[6]} auto ${space[2]} auto;
   color: ${colorNeutral.NEUTRAL_TINT_15};
-  font-family: ${fontFamily.FONT_FAMILY_1};
+  font-family: ${fontFamily.FONT_FAMILY_2};
   font-weight: ${fontWeight.FONT_WEIGHT_4};
   text-decoration: none;
   text-transform: uppercase;
