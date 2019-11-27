@@ -25,5 +25,5 @@ export const colorNeutral = {
   NEUTRAL_TINT_15: '#262626', // Default text color
   NEUTRAL_TINT_10: '#1a1a1a',
   NEUTRAL_TINT_5: '#0d0d0d',
-  NEUTRAL_TINT_0: '#000000',
+  NEUTRAL_TINT_0: '#0f161b',
 }
