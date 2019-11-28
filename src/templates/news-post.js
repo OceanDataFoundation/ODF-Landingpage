@@ -64,11 +64,13 @@ const NewsPostTemplate = ({ data }) => {
                 }}
               />
 
-              <TagList>
-                {tags.map((tag, index) => (
-                  <li key={index}>{tag}</li>
-                ))}
-              </TagList>
+              {tags && (
+                <TagList>
+                  {tags.map((tag, index) => (
+                    <li key={index}>{tag}</li>
+                  ))}
+                </TagList>
+              )}
             </ArticleContent>
           </ArticleContainer>
 
