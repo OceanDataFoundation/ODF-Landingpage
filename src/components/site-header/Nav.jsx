@@ -43,6 +43,7 @@ const NavList = styled.ul`
     :hover,
     :focus {
       padding-bottom: ${space[2]};
+      color: ${colorNeutral.NEUTRAL_TINT_100};
       border-bottom: 1px solid ${colorNeutral.NEUTRAL_TINT_100};
     }
   }
