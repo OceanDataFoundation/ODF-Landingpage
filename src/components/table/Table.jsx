@@ -23,15 +23,27 @@ export const TBody = styled.tbody`
 
 export const Tr = styled.tr`
   :first-child td {
-    padding-top: ${space[0]};
+    ${mediaQuery.BREAKPOINT_3`
+      padding-top: ${space[0]};
+    `};
   }
 
   :last-child td {
-    padding-bottom: ${space[0]};
+    ${mediaQuery.BREAKPOINT_3`
+      padding-bottom: ${space[0]};
+    `};
   }
 
   :not(:last-child) {
     border-bottom: 1px solid ${colorNeutral.NEUTRAL_TINT_75};
+  }
+
+  :nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.03);
+
+    ${mediaQuery.BREAKPOINT_3`
+      background-color: ${colorNeutral.NEUTRAL_TINT_100};
+    `};
   }
 `
 
@@ -54,6 +66,11 @@ export const Td = styled.td`
 
   :first-child {
     padding-top: ${space[5]};
+    padding-left: ${space[5]};
+
+    ${mediaQuery.BREAKPOINT_3`
+      padding-left: ${space[0]};
+    `};
 
     ${mediaQuery.BREAKPOINT_4`
       width: 400px;
@@ -63,14 +80,24 @@ export const Td = styled.td`
   :last-child {
     margin-top: ${space[4]};
     padding-bottom: ${space[5]};
+    padding-left: ${space[5]};
 
     ${mediaQuery.BREAKPOINT_3`
       width: 240px;
+      padding-left: ${space[0]};
       margin-top: ${space[0]};
     `};
   }
 
   :not(:last-child) {
     padding-right: ${space[6]};
+  }
+
+  :nth-child(2) {
+    padding-left: ${space[5]};
+
+    ${mediaQuery.BREAKPOINT_3`
+      padding-left: ${space[0]};
+    `};
   }
 `
