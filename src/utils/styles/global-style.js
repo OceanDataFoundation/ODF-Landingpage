@@ -28,6 +28,7 @@ import { GlobalStrong } from './typography/strong'
 import { GlobalLink } from './link/link'
 import { GlobalUnorderedList } from './list/unordered-list'
 import { Blockquote } from './blockquote/blockquote'
+import { Hr } from './hr/hr'
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -80,5 +81,10 @@ export const GlobalStyle = createGlobalStyle`
   /* Blockquote */
   blockquote {
     ${Blockquote};
+  }
+
+  /* Line */
+  hr {
+    ${Hr};
   }
 `
