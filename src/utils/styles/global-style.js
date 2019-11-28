@@ -26,6 +26,7 @@ import {
 import { GlobalParagraph } from './typography/paragraph'
 import { GlobalStrong } from './typography/strong'
 import { GlobalLink } from './link/link'
+import { GlobalUnorderedList } from './list/unordered-list'
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -68,5 +69,10 @@ export const GlobalStyle = createGlobalStyle`
   /* Interactive*/
   a {
     ${GlobalLink};
+  }
+
+  /* List */
+  ul {
+    ${GlobalUnorderedList}
   }
 `

@@ -25,6 +25,10 @@ const Ul = styled.ul`
 const Li = styled.li`
   margin-bottom: ${space[3]};
   margin-right: ${props => (props.inline ? '0' : '1rem')};
+
+  ::before {
+    display: none;
+  }
 `
 
 const A = styled.a`

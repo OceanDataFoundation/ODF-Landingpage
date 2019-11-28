@@ -28,6 +28,10 @@ const NavList = styled.ul`
 
   li {
     display: inline-block;
+
+    ::before {
+      display: none;
+    }
   }
 
   & a {
