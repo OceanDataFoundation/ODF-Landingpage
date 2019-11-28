@@ -1,9 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-// Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
@@ -20,14 +17,23 @@ const HeroContainer = styled(Container)`
   max-width: 100vw;
   height: 100vh;
   align-items: start;
-  background-color: ${colorNeutral.NEUTRAL_TINT_0};
+  background-color: black;
   background-image: url(${props => (props.bgImage ? props.bgImage : `none`)});
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 65% 170px;
+
+  ${mediaQuery.BREAKPOINT_2`
+    background-position: 85% 170px;
+  `};
 
   ${mediaQuery.BREAKPOINT_3`
     align-items: center;
+    background-position: center 40px;
+  `};
+
+  ${mediaQuery.BREAKPOINT_4`
+    background-position: center -80px;
   `};
 `
 
