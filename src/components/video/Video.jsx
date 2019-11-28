@@ -21,7 +21,7 @@ const Video = props => {
           allow="autoplay; fullscreen"
           allowFullScreen></iframe>
       </div>
-      <script src="https://player.vimeo.com/api/player.js"></script>
+      <script src="https://player.vimeo.com/api/player.js" defer></script>
     </VideoStyle>
   )
 }
