@@ -23,7 +23,7 @@ const LinkCta = props => {
 }
 
 const LinkCtaStyle = styled.a`
-  color: ${colorBrandBlue.GREEN_TINT_50};
+  color: ${colorBrandBlue.GREEN_TINT_40};
   text-decoration: none;
   position: relative;
   display: block;
