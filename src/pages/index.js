@@ -94,7 +94,7 @@ const IndexPage = ({ data }) => {
 
       <Container id="video" fluid>
         {videoPosts.map(({ node: post }) => (
-          <Video key={post.id} title={post.title} videoId={post.videoId} />
+          <Video key={post.id} videoId={post.videoId} />
         ))}
       </Container>
 
