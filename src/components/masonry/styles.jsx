@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 
+// Config
+import { space } from '../../utils/configs/confSpace'
+
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 export const MasonryDiv = styled.div`
+  margin-top: ${space[6]};
   display: grid;
   grid-gap: ${props => props.gap || `2rem`};
   grid-template-columns: ${props =>
