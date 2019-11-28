@@ -54,7 +54,7 @@ const IndexPage = ({ data }) => {
             <LinkButton
               to="/#video"
               invert="true"
-              style={{ marginTop: '4rem' }}>
+              style={{ marginTop: '2rem', display: 'inline-block' }}>
               Watch video
             </LinkButton>
           </Intro>
