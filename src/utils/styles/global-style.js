@@ -27,6 +27,7 @@ import { GlobalParagraph } from './typography/paragraph'
 import { GlobalStrong } from './typography/strong'
 import { GlobalLink } from './link/link'
 import { GlobalUnorderedList } from './list/unordered-list'
+import { Blockquote } from './blockquote/blockquote'
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -73,6 +74,11 @@ export const GlobalStyle = createGlobalStyle`
 
   /* List */
   ul {
-    ${GlobalUnorderedList}
+    ${GlobalUnorderedList};
+  }
+
+  /* Blockquote */
+  blockquote {
+    ${Blockquote};
   }
 `
