@@ -15,7 +15,7 @@ const LinkCta = props => {
   const { children, href, target } = props
 
   return (
-    <LinkCtaStyle href={href} target={target}>
+    <LinkCtaStyle href={href} target={target} rel="noreferrer">
       {children}
       <LinkCtaStyleArrow />
     </LinkCtaStyle>
