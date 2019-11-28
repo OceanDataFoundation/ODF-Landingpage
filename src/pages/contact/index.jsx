@@ -10,8 +10,8 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import Layout from '../../components/site-layout/Layout'
 import SEO from '../../components/seo/seo'
 import { Container } from '../../components/container/Container'
-import { H2 } from '../../components/typography/heading/Heading'
-import { SubHeading } from '../../components/typography/sub-heading/SubHeading'
+import { Header } from '../../components/header/Header'
+import { H1 } from '../../components/typography/heading/Heading'
 import P from '../../components/typography/paragraph/Paragraph'
 import ContactForm from '../../components/contact-form/ContactForm'
 
@@ -45,14 +45,15 @@ const FlexContainer = styled.div`
 
 const ContactPage = ({ data }) => {
   const page = data.contentfulPage
-  const { title, subtitle, content } = page
+  const { subtitle, content } = page
 
   return (
     <Layout>
       <SEO title="Contact" />
       <Container offset="true">
-        <SubHeading>{title}</SubHeading>
-        <H2>{subtitle}</H2>
+        <Header>
+          <H1>{subtitle}</H1>
+        </Header>
         <FlexContainer>
           <P>{content.content}</P>
           <ContactForm />
@@ -72,7 +73,6 @@ export default ContactPage
 export const pageQuery = graphql`
   query {
     contentfulPage(slug: { eq: "contact" }) {
-      title
       subtitle
       content {
         content
