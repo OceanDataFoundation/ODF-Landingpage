@@ -21,15 +21,34 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import { Transition } from '../../utils/styles/utility-classes/transition'
 
 const LinkButton = props => {
-  const { children, to, showArrow, ...rest } = props
+  const { children, to, showArrow, pressRelease, ...rest } = props
 
   return (
-    <LinkButtonStyle to={to} {...rest}>
-      {children}
-      {showArrow ? <LinkButtonStyleArrow /> : null}
-    </LinkButtonStyle>
+    <>
+      {pressRelease ? (
+        <LinkButtonWrapper pressRelease={pressRelease}>
+          <LinkButtonStyle to={to} {...rest}>
+            {children}
+            {showArrow ? <LinkButtonStyleArrow /> : null}
+          </LinkButtonStyle>
+        </LinkButtonWrapper>
+      ) : (
+        <LinkButtonStyle to={to} {...rest}>
+          {children}
+          {showArrow ? <LinkButtonStyleArrow /> : null}
+        </LinkButtonStyle>
+      )}
+    </>
   )
 }
+
+const LinkButtonWrapper = styled.div`
+  margin: 0 auto;
+
+  ${mediaQuery.BREAKPOINT_2`
+    ${props => (props.pressRelease ? `margin-bottom: 3.5rem` : null)};
+  `};
+`
 
 const LinkButtonStyle = styled(Link)`
   padding: ${space[4]} ${space[8]};
@@ -61,10 +80,6 @@ const LinkButtonStyle = styled(Link)`
   ${typeScale.TEXT_PRESET_2};
   ${Transition};
   transition-property: background-position;
-
-  ${mediaQuery.BREAKPOINT_2`
-    ${props => (props.pressRelease ? `margin-bottom: 3.5rem` : null)};
-  `};
 
   &:hover {
     cursor: pointer;
