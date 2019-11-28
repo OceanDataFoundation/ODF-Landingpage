@@ -26,6 +26,7 @@ export const LogoLink = styled(Link)`
   padding-top: ${space[4]};
   padding-bottom: ${space[4]};
   box-shadow: inset 0 0 0 0 ${colorBrandGreen.GREEN_TINT_50};
+  border-bottom: none;
   transition-property: box-shadow;
 
   ${mediaQuery.BREAKPOINT_2`

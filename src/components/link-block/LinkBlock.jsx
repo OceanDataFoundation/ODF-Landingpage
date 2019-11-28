@@ -20,6 +20,7 @@ const LinkNews = props => {
 const LinkNewsStyle = styled(Link)`
   color: ${colorNeutral.NEUTRAL_TINT_15};
   text-decoration: none;
+  border-bottom: none;
 
   h2 {
     ${Transition};
