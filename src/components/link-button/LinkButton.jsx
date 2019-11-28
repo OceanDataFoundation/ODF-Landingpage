@@ -21,12 +21,14 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import { Transition } from '../../utils/styles/utility-classes/transition'
 
 const LinkButton = props => {
-  const { children, to, showArrow, pressRelease, ...rest } = props
+  const { children, to, showArrow, pressRelease, alignCenter, ...rest } = props
 
   return (
     <>
-      {pressRelease ? (
-        <LinkButtonWrapper pressRelease={pressRelease}>
+      {pressRelease || alignCenter ? (
+        <LinkButtonWrapper
+          pressRelease={pressRelease}
+          alignCenter={alignCenter}>
           <LinkButtonStyle to={to} {...rest}>
             {children}
             {showArrow ? <LinkButtonStyleArrow /> : null}
@@ -44,6 +46,7 @@ const LinkButton = props => {
 
 const LinkButtonWrapper = styled.div`
   margin: 0 auto;
+  display: ${props => (props.alignCenter ? `table` : 'inline-block')};
 
   ${mediaQuery.BREAKPOINT_2`
     ${props => (props.pressRelease ? `margin-bottom: 3.5rem` : null)};
@@ -60,7 +63,6 @@ const LinkButtonStyle = styled(Link)`
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
-  display: ${props => (props.alignCenter ? `table` : 'inline-block')};
   border-radius: ${borderRadius.BORDER_RADIUS_2};
   border: none;
   background: ${props =>
