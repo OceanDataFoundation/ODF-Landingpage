@@ -35,7 +35,9 @@ const A = styled.a`
       : colorNeutral.NEUTRAL_TINT_15};
   text-decoration: none;
   border-bottom: ${props =>
-    props.underline ? `1px solid ${colorNeutral.NEUTRAL_TINT_100}` : ''};
+    props.underline
+      ? `1px solid ${colorNeutral.NEUTRAL_TINT_100} !important`
+      : ''};
 
   ${Transition};
 
@@ -45,7 +47,7 @@ const A = styled.a`
       props.invert
         ? colorNeutral.NEUTRAL_TINT_100
         : colorNeutral.NEUTRAL_TINT_0};
-    border-bottom-color: transparent;
+    border-bottom-color: transparent !important;
   }
 `
 
@@ -64,7 +66,8 @@ const LinkList = props => {
               underline={underline}
               href={item.url}
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+              style={{ borderBottom: 'none' }}>
               {!item.image && item.text}
               {item.image && (
                 <img
