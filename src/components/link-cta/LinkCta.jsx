@@ -27,6 +27,7 @@ const LinkCtaStyle = styled.a`
   text-decoration: none;
   position: relative;
   display: block;
+  border-bottom: none;
   z-index: 1;
 
   ${Transition};

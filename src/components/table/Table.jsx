@@ -86,6 +86,7 @@ export const Td = styled.td`
       width: 240px;
       padding-left: ${space[0]};
       margin-top: ${space[0]};
+      vertical-align: middle;
     `};
   }
 
