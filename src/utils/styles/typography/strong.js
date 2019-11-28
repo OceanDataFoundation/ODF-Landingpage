@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------------
 //
 // Description:
-// Sets headings in global styles, and can be imported in styled components.
+// Sets bold text in global styles, and can be imported in styled components.
 // ============================================================================
 //
 

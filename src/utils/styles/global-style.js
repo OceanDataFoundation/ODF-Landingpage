@@ -25,6 +25,7 @@ import {
 } from './typography/heading'
 import { GlobalParagraph } from './typography/paragraph'
 import { GlobalStrong } from './typography/strong'
+import { GlobalLink } from './link/link'
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -63,4 +64,9 @@ export const GlobalStyle = createGlobalStyle`
   ${GlobalH6}
   ${GlobalParagraph}
   ${GlobalStrong}
+
+  /* Interactive*/
+  a {
+    ${GlobalLink};
+  }
 `
