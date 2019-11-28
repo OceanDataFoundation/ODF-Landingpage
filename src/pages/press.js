@@ -55,7 +55,7 @@ export default PressRelease
 
 export const query = graphql`
   query PressReleasePostsPageQuery {
-    allContentfulPressRelease {
+    allContentfulPressRelease(sort: { fields: [date], order: DESC }) {
       edges {
         node {
           id
