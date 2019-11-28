@@ -37,6 +37,8 @@ const BlockquoteContainer = styled.blockquote`
   max-width: 100%;
   margin: ${quoteDimention} auto;
   position: relative;
+  border: none;
+  font-style: normal;
 
   ${mediaQuery.BREAKPOINT_3`
     max-width: 75%;
