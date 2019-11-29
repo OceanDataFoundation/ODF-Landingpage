@@ -20,9 +20,9 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     title: `Ocean Data Foundation`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    description: `The Ocean Data Platform (ODP) is an open and collaborative platform that harnesses the power of data liberation and contextualization for the people.`,
     author: `@makingwaves`,
-    siteUrl: `https://odf-landingpage.netlify.com`,
+    siteUrl: `https://oceandata.earth`,
     social: {
       facebook: 'oceandatafoundation',
       linkedin: 'oceandatafoundation',
@@ -51,7 +51,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/odf-icon.png`, // This path is relative to the root of the site.
       },
     },
     {
