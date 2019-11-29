@@ -14,7 +14,7 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 export const TagList = styled.ol`
   padding: ${space[4]} ${space[0]} ${space[0]} ${space[6]};
-  margin: ${space[6]} ${space[0]} ${space[8]} ${space[0]};
+  margin: ${space[6]} ${space[0]} ${space[0]} ${space[0]};
   list-style-type: none;
   display: flex;
   position: relative;

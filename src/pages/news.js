@@ -49,7 +49,7 @@ export default News
 
 export const query = graphql`
   query NewsPostsPageQuery {
-    allContentfulNews {
+    allContentfulNews(sort: { fields: [createdAt], order: DESC }) {
       edges {
         node {
           id

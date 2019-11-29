@@ -50,6 +50,9 @@ const BlockquoteContainer = styled.blockquote`
 `
 
 const BlockquoteContent = styled.div`
+  margin-top: 0;
+  margin-bottom: 0;
+
   ${mediaQuery.BREAKPOINT_3`
     padding-left: ${quoteDimention};
     padding-right: ${quoteDimention};

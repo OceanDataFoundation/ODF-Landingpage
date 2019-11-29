@@ -9,6 +9,7 @@ import { space } from '../../utils/configs/confSpace'
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 export const NewsBlock = styled.div`
+  padding-top: ${space[4]};
   padding-bottom: ${space[3]};
   margin-bottom: ${space[6]};
   position: relative;
@@ -28,7 +29,7 @@ export const NewsBlock = styled.div`
   }
 
   ${mediaQuery.BREAKPOINT_3`
-    padding: 0 2rem 0 3rem;
+    padding: ${space[4]} 2rem 0 3rem;
     margin-bottom: 0;
 
     ::before {

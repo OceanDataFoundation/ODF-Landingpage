@@ -34,7 +34,7 @@ const Paragraph = styled.p`
 
   ${mediaQuery.BREAKPOINT_2`
     ${props =>
-      props.lead ? typeScale.TEXT_PRESET_3 : typeScale.TEXT_PRESET_2};
+      props.lead ? typeScale.TEXT_PRESET_4 : typeScale.TEXT_PRESET_2};
 
       margin-bottom: ${space[6]};
       line-height: ${props => (props.lead ? `1.5` : `inherit`)}
