@@ -27,6 +27,10 @@ const NavList = styled.ul`
   & li {
     transition: all 300ms linear 0s;
     text-align: end;
+
+    ::before {
+      display: none;
+    }
   }
 
   & a {
@@ -36,6 +40,7 @@ const NavList = styled.ul`
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
+    border-bottom: none;
 
     &:hover {
       border-bottom: 1px solid ${colorNeutral.NEUTRAL_TINT_100};

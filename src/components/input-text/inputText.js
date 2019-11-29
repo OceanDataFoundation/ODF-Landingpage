@@ -7,6 +7,9 @@ import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
 import { typeScale } from '../../utils/configs/confTypeScale'
 
+// Style
+import { Transition } from '../../utils/styles/utility-classes/transition'
+
 export const TextInput = styled.input`
   width: inherit;
   border: 1px solid ${colorNeutral.NEUTRAL_TINT_55};
@@ -16,7 +19,9 @@ export const TextInput = styled.input`
   margin-bottom: ${space[5]};
 
   ${typeScale.TEXT_PRESET_2};
+  ${Transition};
 
+  :hover,
   :focus {
     border-color: ${colorBrandGreen.GREEN_TINT_50};
   }
