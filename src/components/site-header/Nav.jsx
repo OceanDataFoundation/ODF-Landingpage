@@ -71,7 +71,16 @@ const Nav = ({ navItems, open, setOpen }) => {
       <NavList>
         {navItems.map(item => (
           <li key={item.id}>
-            {item.link && <Link to={`/${item.link.slug}`}>{item.text}</Link>}
+            {item.link && (
+              <Link
+                to={`/${item.link.slug}`}
+                activeStyle={{
+                  paddingBottom: '.250rem',
+                  borderBottom: '1px solid white',
+                }}>
+                {item.text}
+              </Link>
+            )}
           </li>
         ))}
       </NavList>
