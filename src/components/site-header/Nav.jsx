@@ -73,7 +73,7 @@ const Nav = ({ navItems, open, setOpen }) => {
           <li key={item.id}>
             {item.link && (
               <Link
-                to={`/${item.link.slug}`}
+                to={`${item.link.slug}`}
                 activeStyle={{
                   paddingBottom: '.250rem',
                   borderBottom: '1px solid white',

@@ -72,7 +72,7 @@ export default ContactPage
 
 export const pageQuery = graphql`
   query {
-    contentfulPage(slug: { eq: "contact" }) {
+    contentfulPage(contentful_id: { eq: "pem5BiuDhHKHCutzx8ql7" }) {
       subtitle
       content {
         content
