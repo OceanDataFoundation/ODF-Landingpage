@@ -65,7 +65,7 @@ const StatementImage = styled.div`
       height: 4px;
       content: '';
       position: absolute;
-      top: 116px;
+      top: ${props => (props.removeOffset ? '24px' : '116px')};
       left: ${props => (props.reverse ? '-120px' : 'calc(100% - 40px)')};
       background-color: ${colorNeutral.NEUTRAL_TINT_85};
       z-index: ${zIndex.Z_INDEX_2};
