@@ -10,51 +10,68 @@ import { css } from 'styled-components'
 import { fontWeight } from '../../tokens/tokenFontWeight'
 
 // Config
-import { space } from '../../configs/confSpace'
 import { typeScale } from '../../configs/confTypeScale'
 
+// Mixins
+import { mediaQuery } from '../../mixins/mixMediaQuery'
+
 const Heading = css`
-  /* margin-bottom: ${space[0]}; */
   font-weight: ${fontWeight.FONT_WEIGHT_5};
 `
 
 export const GlobalH1 = css`
   h1 {
     ${Heading};
-    ${typeScale.TEXT_PRESET_7};
+    ${typeScale.TEXT_PRESET_6};
 
     font-weight: ${fontWeight.FONT_WEIGHT_3};
     margin-top: calc((1 - 2.6) * 0.5rem);
+
+    ${mediaQuery.BREAKPOINT_3`
+      ${typeScale.TEXT_PRESET_7};
+    `};
   }
 `
 
 export const GlobalH2 = css`
   h2 {
     ${Heading};
-    ${typeScale.TEXT_PRESET_6};
+    ${typeScale.TEXT_PRESET_5};
 
     font-weight: ${fontWeight.FONT_WEIGHT_4};
     margin-top: calc((1 - 2.6) * 0.5rem);
+
+    ${mediaQuery.BREAKPOINT_3`
+      ${typeScale.TEXT_PRESET_6};
+    `};
   }
 `
 
 export const GlobalH3 = css`
   h3 {
     ${Heading};
-    ${typeScale.TEXT_PRESET_5};
+    ${typeScale.TEXT_PRESET_4};
 
     font-weight: ${fontWeight.FONT_WEIGHT_3};
     margin-top: calc((1 - 2) * 0.5rem);
+
+    ${mediaQuery.BREAKPOINT_3`
+      ${typeScale.TEXT_PRESET_5};
+    `};
   }
 `
 
 export const GlobalH4 = css`
   h4 {
     ${Heading};
-    ${typeScale.TEXT_PRESET_4};
+    ${typeScale.TEXT_PRESET_3};
 
     font-weight: ${fontWeight.FONT_WEIGHT_4};
     margin-top: calc((1 - 2) * 0.5rem);
+
+    ${mediaQuery.BREAKPOINT_3`
+      ${typeScale.TEXT_PRESET_4};
+    `};
   }
 `
 
