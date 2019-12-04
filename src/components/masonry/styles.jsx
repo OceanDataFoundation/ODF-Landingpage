@@ -7,7 +7,7 @@ import { space } from '../../utils/configs/confSpace'
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 export const MasonryDiv = styled.div`
-  margin-top: ${space[6]};
+  margin-top: ${space[3]};
   display: grid;
   grid-auto-flow: column;
   grid-gap: ${props => props.gap || `2rem`};
