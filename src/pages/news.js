@@ -26,7 +26,7 @@ const News = ({ data }) => {
         <Header>
           <H1>News</H1>
         </Header>
-        <Masonry col="2">
+        <Masonry col="2" minWidth={700}>
           {newsPosts.map(({ node: post }) => (
             <LinkBlock to={`/news/${post.slug}`} key={post.id}>
               {post.image && <Img fluid={post.image.fluid} />}
