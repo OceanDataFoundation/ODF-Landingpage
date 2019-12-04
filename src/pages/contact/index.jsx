@@ -45,11 +45,11 @@ const FlexContainer = styled.div`
 
 const ContactPage = ({ data }) => {
   const page = data.contentfulPage
-  const { subtitle, content } = page
+  const { title, subtitle, content, metaDescription } = page
 
   return (
     <Layout>
-      <SEO title="Contact" />
+      <SEO title={title} description={metaDescription} />
       <Container offset="true">
         <Header>
           <H1>{subtitle}</H1>
@@ -73,7 +73,9 @@ export default ContactPage
 export const pageQuery = graphql`
   query {
     contentfulPage(contentful_id: { eq: "pem5BiuDhHKHCutzx8ql7" }) {
+      title
       subtitle
+      metaDescription
       content {
         content
       }

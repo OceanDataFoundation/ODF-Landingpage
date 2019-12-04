@@ -26,6 +26,8 @@ import P from '../components/typography/paragraph/Paragraph'
 import { Strong } from '../components/typography/strong/Strong'
 
 const IndexPage = ({ data }) => {
+  const { title, metaDescription } = data.contentfulPage
+
   const heroPosts = data.allContentfulHero.edges
   const quotePosts = data.allContentfulQuote.edges
   const videoPosts = data.allContentfulVideoHero.edges
@@ -40,7 +42,22 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO
+        title={title}
+        description={metaDescription}
+        keywords={[
+          `ocean`,
+          `data`,
+          `foundation`,
+          `platform`,
+          `healthy`,
+          `REV`,
+          `open`,
+          `non-profit`,
+          `liberation`,
+          `collaborative`,
+        ]}
+      />
 
       {heroPosts.map(({ node: post }) => (
         <Hero key={post.id} bgImage={post.image.file.url}>
@@ -207,6 +224,10 @@ export default IndexPage
 
 export const query = graphql`
   query FrontPageQuery {
+    contentfulPage(contentful_id: { eq: "2P6qkdN2Lx8fhXd3VOyKLx" }) {
+      title
+      metaDescription
+    }
     allContentfulHero(
       filter: { contentful_id: { eq: "IkxJsGmFULejd1JzRmJry" } }
     ) {

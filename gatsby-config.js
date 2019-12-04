@@ -21,7 +21,7 @@ module.exports = {
   siteMetadata: {
     title: `Ocean Data Foundation`,
     description: `The Ocean Data Platform (ODP) is an open and collaborative platform that harnesses the power of data liberation and contextualization for the people.`,
-    author: `@makingwaves`,
+    author: `@rev_ocean`,
     siteUrl: `https://oceandata.earth`,
     social: {
       facebook: 'oceandatafoundation',
