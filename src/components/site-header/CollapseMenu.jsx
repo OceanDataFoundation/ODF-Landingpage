@@ -8,9 +8,6 @@ import { useSpring, animated } from 'react-spring'
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 import { fontSize } from '../../utils/tokens/tokenFontSize'
 
-// Config
-// import { space } from '../../utils/configs/confSpace'
-
 const CollapseWrapper = styled(animated.div)`
   background: rgba(0, 0, 0, 0.92);
   position: fixed;
