@@ -12,6 +12,9 @@ import { colorNeutral } from '../utils/tokens/tokenColorNeutral'
 // Config
 import { space } from '../utils/configs/confSpace'
 
+// Mixins
+import { mediaQuery } from '../utils/mixins/mixMediaQuery'
+
 // Components
 import { Container } from '../components/container/Container'
 import { Header } from '../components/header/Header'
@@ -28,32 +31,21 @@ import { Strong } from '../components/typography/strong/Strong'
 const Pagination = styled.div`
   margin-top: ${space[8]};
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+
+  ${mediaQuery.BREAKPOINT_2`
+    justify-content: center;
+  `};
 `
 
-const PaginationList = styled.ol`
-  padding: ${space[0]};
+const PaginationNumbers = styled(Small)`
   margin: 0 ${space[6]};
-  display: flex;
-  counter-reset: section;
-  list-style-type: none;
-`
-
-const PaginationListItem = styled.li`
-  ::before {
-    width: 24px;
-    text-align: center;
-    font-size: 12px;
-    display: inline-block;
-    counter-increment: section;
-    content: counters(section, '.') ' ';
-  }
+  color: ${colorNeutral.NEUTRAL_TINT_35};
 `
 
 const NewsListPage = ({ data, pageContext }) => {
-  const newsPosts = data.allContentfulTest.edges
-  const pageNumbers = pageContext.pageAmount
+  const newsPosts = data.allContentfulNews.edges
   const pageTotal = pageContext.pageAmount.length
 
   return (
@@ -61,20 +53,13 @@ const NewsListPage = ({ data, pageContext }) => {
       <SEO title="News posts" />
 
       <Container offset="true">
-        <Header
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-          }}>
+        <Header>
           <H1>News</H1>
-          <Small>
-            Page <Strong>{pageContext.pageNumber}</Strong> of {pageTotal}
-          </Small>
         </Header>
 
         <Masonry col="2" minWidth={700}>
           {newsPosts.map(({ node: post }) => (
-            <LinkBlock to={`/blog/${post.slug}`} key={post.id}>
+            <LinkBlock to={`/news/${post.slug}`} key={post.id}>
               {post.image && <Img fluid={post.image.fluid} />}
               <NewsBlock>
                 <Meta>
@@ -104,11 +89,9 @@ const NewsListPage = ({ data, pageContext }) => {
             )
           )}
 
-          <PaginationList>
-            {pageNumbers.map(() => (
-              <PaginationListItem key={Math.random()} />
-            ))}
-          </PaginationList>
+          <PaginationNumbers>
+            <Strong>{pageContext.pageNumber}</Strong> / {pageTotal}
+          </PaginationNumbers>
 
           {pageContext && pageContext.hasNextPage ? (
             <Link to={pageContext.nextPageLink}>
@@ -132,7 +115,7 @@ export default NewsListPage
 
 export const pageQuery = graphql`
   query NewsListPageQuery($skip: Int, $limit: Int) {
-    allContentfulTest(
+    allContentfulNews(
       skip: $skip
       limit: $limit
       sort: { order: DESC, fields: [createdAt] }

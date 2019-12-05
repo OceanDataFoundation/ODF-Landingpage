@@ -5,63 +5,18 @@ const _ = require('lodash')
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  // =============================
-  // Create news posts
-  // =============================
-
-  const newsPostTemplate = path.resolve(`./src/templates/news-post.js`)
-  const newsResult = await graphql(
-    `
-      {
-        allContentfulNews {
-          edges {
-            node {
-              id
-              title
-              slug
-            }
-          }
-        }
-      }
-    `
-  )
-
-  if (newsResult.errors) {
-    throw newsResult.errors
-  }
-
-  // Create news posts pages.
-  const news = newsResult.data.allContentfulNews.edges
-
-  news.forEach((post, index) => {
-    const previous = index === news.length - 1 ? null : news[index + 1].node
-    const next = index === 0 ? null : news[index - 1].node
-
-    createPage({
-      path: `news/${post.node.slug}`,
-      component: slash(newsPostTemplate),
-      context: {
-        slug: post.node.slug,
-        previous,
-        next,
-      },
-    })
-  })
-
   // Create news posts list
   // ----------------------------------------------------------------------------
-  const PAGE_SIZE = 1
+  const PAGE_SIZE = 10
   const newsListTemplate = path.resolve(`./src/templates/news-list.js`)
-  const newsPostTemplateTest = path.resolve(
-    `./src/templates/news-post-list-test.js`
-  )
+  const newsPostTemplate = path.resolve(`./src/templates/news-post.js`)
 
   return new Promise((resolve, reject) => {
     resolve(
       graphql(
         `
           query {
-            posts: allContentfulTest(
+            posts: allContentfulNews(
               sort: { order: DESC, fields: [createdAt] }
             ) {
               edges {
@@ -83,7 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
         // For each of the chunks, call createPage()
         chunks.forEach((chunk, index) => {
           createPage({
-            path: `blog/page/${index + 1}`,
+            path: `news/page/${index + 1}`,
             component: newsListTemplate,
             context: {
               skip: PAGE_SIZE * index,
@@ -91,9 +46,9 @@ exports.createPages = async ({ graphql, actions }) => {
               pageNumber: index + 1,
               pageAmount: chunks,
               hasNextPage: index != chunks.length - 1,
-              nextPageLink: `/blog/page/${index + 2}`,
+              nextPageLink: `/news/page/${index + 2}`,
               hasPrevPage: index != chunks.length + 1,
-              prevPageLink: `/blog/page/${index}`,
+              prevPageLink: `/news/page/${index}`,
             },
           })
         })
@@ -102,8 +57,8 @@ exports.createPages = async ({ graphql, actions }) => {
         result.data.posts.edges.forEach(({ node }) => {
           // loop over split pages
           createPage({
-            path: `blog/${node.slug}`,
-            component: newsPostTemplateTest,
+            path: `news/${node.slug}`,
+            component: newsPostTemplate,
             context: {
               slug: node.slug,
             },
