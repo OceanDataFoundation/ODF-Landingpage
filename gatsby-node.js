@@ -89,9 +89,9 @@ exports.createPages = async ({ graphql, actions }) => {
               skip: PAGE_SIZE * index,
               limit: PAGE_SIZE,
               pageNumber: index + 1,
+              pageAmount: chunks,
               hasNextPage: index != chunks.length - 1,
               nextPageLink: `/blog/page/${index + 2}`,
-
               hasPrevPage: index != chunks.length + 1,
               prevPageLink: `/blog/page/${index}`,
             },

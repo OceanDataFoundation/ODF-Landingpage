@@ -23,6 +23,7 @@ import { Meta } from '../components/meta/Meta'
 import { H1, H2 } from '../components/typography/heading/Heading'
 import { Small } from '../components/typography/small/Small'
 import P from '../components/typography/paragraph/Paragraph'
+import { Strong } from '../components/typography/strong/Strong'
 
 const Pagination = styled.div`
   margin-top: ${space[8]};
@@ -31,16 +32,44 @@ const Pagination = styled.div`
   align-items: center;
 `
 
+const PaginationList = styled.ol`
+  padding: ${space[0]};
+  margin: 0 ${space[6]};
+  display: flex;
+  counter-reset: section;
+  list-style-type: none;
+`
+
+const PaginationListItem = styled.li`
+  ::before {
+    width: 24px;
+    text-align: center;
+    font-size: 12px;
+    display: inline-block;
+    counter-increment: section;
+    content: counters(section, '.') ' ';
+  }
+`
+
 const NewsListPage = ({ data, pageContext }) => {
   const newsPosts = data.allContentfulTest.edges
+  const pageNumbers = pageContext.pageAmount
+  const pageTotal = pageContext.pageAmount.length
 
   return (
     <Layout>
       <SEO title="News posts" />
 
       <Container offset="true">
-        <Header>
+        <Header
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}>
           <H1>News</H1>
+          <Small>
+            Page <Strong>{pageContext.pageNumber}</Strong> of {pageTotal}
+          </Small>
         </Header>
 
         <Masonry col="2" minWidth={700}>
@@ -59,16 +88,28 @@ const NewsListPage = ({ data, pageContext }) => {
         </Masonry>
 
         <Pagination>
-          {pageContext && pageContext.hasPrevPage && (
-            <>
+          {pageContext.pageNumber === 1 ? (
+            <Small
+              style={{
+                color: colorNeutral.NEUTRAL_TINT_70,
+              }}>
+              Previous page
+            </Small>
+          ) : (
+            pageContext &&
+            pageContext.hasPrevPage && (
               <Link to={pageContext.prevPageLink}>
-                <Small>Prev page</Small>
+                <Small>Previous page</Small>
               </Link>
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-            </>
+            )
           )}
-          {console.log('pageContext.hasPrevPage: ' + pageContext.hasPrevPage)}
-          {console.log('pageContext.prevPageLink: ' + pageContext.prevPageLink)}
+
+          <PaginationList>
+            {pageNumbers.map(() => (
+              <PaginationListItem key={Math.random()} />
+            ))}
+          </PaginationList>
+
           {pageContext && pageContext.hasNextPage ? (
             <Link to={pageContext.nextPageLink}>
               <Small>Next page</Small>
