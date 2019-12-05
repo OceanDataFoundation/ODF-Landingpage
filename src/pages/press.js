@@ -25,7 +25,7 @@ const PressRelease = ({ data }) => {
         <Header>
           <H1>Press Releases</H1>
         </Header>
-        <Masonry col="3">
+        <Masonry col="3" minWidth={500}>
           {pressReleasePosts.map(({ node: post }) => (
             <PressReleaseBlock key={post.id}>
               <H2 style={{ fontSize: '1.5rem' }}>{post.title}</H2>
