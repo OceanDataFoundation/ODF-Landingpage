@@ -58,7 +58,6 @@ const Header = props => {
 
   useDocumentScrollThrottled(callbackData => {
     const { previousScrollTop, currentScrollTop } = callbackData
-    console.log('TCL: currentScrollTop', currentScrollTop)
     const isScrolledDown = previousScrollTop < currentScrollTop
     const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL
 
