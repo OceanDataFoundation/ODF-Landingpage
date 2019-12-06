@@ -54,10 +54,11 @@ const Header = props => {
   const [hideHeader, setHideHeader] = useState(false)
 
   const MINIMUM_SCROLL = 120
-  const TIMEOUT_DELAY = 300
+  const TIMEOUT_DELAY = 15
 
   useDocumentScrollThrottled(callbackData => {
     const { previousScrollTop, currentScrollTop } = callbackData
+    console.log('TCL: currentScrollTop', currentScrollTop)
     const isScrolledDown = previousScrollTop < currentScrollTop
     const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL
 
