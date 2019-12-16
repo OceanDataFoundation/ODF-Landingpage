@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 // Tokens
 import { colorBrandBlue } from '../../utils/tokens/tokenColorBrand'
@@ -22,7 +23,7 @@ const LinkCta = props => {
   )
 }
 
-const LinkCtaStyle = styled.a`
+const LinkCtaStyle = styled(OutboundLink)`
   color: ${colorBrandBlue.GREEN_TINT_40};
   text-decoration: none;
   position: relative;
