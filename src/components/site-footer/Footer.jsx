@@ -50,7 +50,7 @@ const Footer = props => {
           <Link
             to="/use-of-cookies"
             style={{
-              paddingBottom: '4px',
+              paddingBottom: '2px',
               marginTop: '32px',
               color: 'white',
               borderBottomColor: 'white',
