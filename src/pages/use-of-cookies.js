@@ -29,7 +29,7 @@ const CookiesPage = ({ data }) => {
             <H1>{title}</H1>
           </Header>
 
-          <ArticleContainer>
+          <ArticleContainer style={{ paddingLeft: '0' }}>
             <ArticleContent style={{ marginTop: '0' }}>
               <div
                 dangerouslySetInnerHTML={{
