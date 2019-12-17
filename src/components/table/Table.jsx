@@ -22,6 +22,15 @@ export const TBody = styled.tbody`
 `
 
 export const Tr = styled.tr`
+  border-bottom: none;
+
+  th,
+  td {
+    :not(:last-child) {
+      border: none;
+    }
+  }
+
   :first-child td {
     ${mediaQuery.BREAKPOINT_3`
       padding-top: ${space[0]};

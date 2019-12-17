@@ -16,7 +16,7 @@ import { space } from '../../configs/confSpace'
 
 export const Table = css`
   table {
-    margin-bottom: ${space[8]};
+    margin: ${space[4]} 0 ${space[8]} 0;
     font-size: ${fontSize.FONT_SIZE_1};
 
     tr {
