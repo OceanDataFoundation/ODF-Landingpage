@@ -29,6 +29,7 @@ import { GlobalLink } from './link/link'
 import { GlobalUnorderedList } from './list/unordered-list'
 import { Blockquote } from './blockquote/blockquote'
 import { Hr } from './hr/hr'
+import { Table } from './table/Table'
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -87,4 +88,7 @@ export const GlobalStyle = createGlobalStyle`
   hr {
     ${Hr};
   }
+
+  /* Table */
+  ${Table}
 `

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -45,6 +46,18 @@ const Footer = props => {
           {relatedLinkList && (
             <LinkList invert underline linkList={relatedLinkList} />
           )}
+
+          <Link
+            to="/use-of-cookies"
+            style={{
+              paddingBottom: '4px',
+              marginTop: '32px',
+              color: 'white',
+              borderBottomColor: 'white',
+              display: 'inline-block',
+            }}>
+            Use of cookies
+          </Link>
         </FooterCol>
         <FooterCol>
           {contactInformation && (

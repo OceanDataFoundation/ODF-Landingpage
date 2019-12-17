@@ -10,6 +10,7 @@ import { css } from 'styled-components'
 import { fontWeight } from '../../tokens/tokenFontWeight'
 
 // Config
+import { space } from '../../configs/confSpace'
 import { typeScale } from '../../configs/confTypeScale'
 
 // Mixins
@@ -24,8 +25,8 @@ export const GlobalH1 = css`
     ${Heading};
     ${typeScale.TEXT_PRESET_6};
 
-    font-weight: ${fontWeight.FONT_WEIGHT_3};
     margin-top: calc((1 - 2.6) * 0.5rem);
+    font-weight: ${fontWeight.FONT_WEIGHT_3};
 
     ${mediaQuery.BREAKPOINT_3`
       ${typeScale.TEXT_PRESET_7};
@@ -38,8 +39,8 @@ export const GlobalH2 = css`
     ${Heading};
     ${typeScale.TEXT_PRESET_5};
 
+    margin-bottom: ${space[4]};
     font-weight: ${fontWeight.FONT_WEIGHT_4};
-    margin-top: calc((1 - 2.6) * 0.5rem);
 
     ${mediaQuery.BREAKPOINT_3`
       ${typeScale.TEXT_PRESET_6};
@@ -53,7 +54,6 @@ export const GlobalH3 = css`
     ${typeScale.TEXT_PRESET_4};
 
     font-weight: ${fontWeight.FONT_WEIGHT_3};
-    margin-top: calc((1 - 2) * 0.5rem);
 
     ${mediaQuery.BREAKPOINT_3`
       ${typeScale.TEXT_PRESET_5};
@@ -67,7 +67,6 @@ export const GlobalH4 = css`
     ${typeScale.TEXT_PRESET_3};
 
     font-weight: ${fontWeight.FONT_WEIGHT_4};
-    margin-top: calc((1 - 2) * 0.5rem);
 
     ${mediaQuery.BREAKPOINT_3`
       ${typeScale.TEXT_PRESET_4};
@@ -81,7 +80,6 @@ export const GlobalH5 = css`
     ${typeScale.TEXT_PRESET_3};
 
     font-weight: ${fontWeight.FONT_WEIGHT_4};
-    margin-top: calc((1 - 1.7) * 0.5rem);
   }
 `
 
@@ -90,7 +88,6 @@ export const GlobalH6 = css`
     ${Heading};
     ${typeScale.TEXT_PRESET_2}
 
-    margin-top: calc((1 - 1.7) * 0.5rem);
     text-transform: uppercase;
     letter-spacing: 1px;
   }

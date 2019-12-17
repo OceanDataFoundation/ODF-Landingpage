@@ -18,7 +18,6 @@ export const ArticleContainer = styled.div`
 `
 
 export const ArticleContent = styled.div`
-  max-width: 70ch;
   margin-top: ${space[6]};
   margin-bottom: ${space[10]};
 
@@ -27,6 +26,8 @@ export const ArticleContent = styled.div`
   `};
 
   p {
+    max-width: 70ch;
+
     :last-child {
       margin-bottom: ${space[0]};
     }

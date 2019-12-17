@@ -20,6 +20,7 @@ const PageTemplate = ({ data }) => {
       <Container offset="true">
         <div>
           <Header>
+            Hvor er dette??
             {title && <H1>{title}</H1>}
             {subtitle && <H2>{subtitle}</H2>}
           </Header>
