@@ -19,6 +19,7 @@ import Video from '../components/video/Video'
 import { TableWrapper, Table, TBody, Tr, Td } from '../components/table/Table'
 import LinkCta from '../components/link-cta/LinkCta'
 import LinkButton from '../components/link-button/LinkButton'
+import { ArrowDown } from '../components/arrow-down/ArrowDown'
 
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
@@ -75,10 +76,11 @@ const IndexPage = ({ data }) => {
               Watch video
             </LinkButton>
           </Intro>
+          <ArrowDown href="#quote" />
         </Hero>
       ))}
 
-      <Container fluid>
+      <Container id="quote" fluid>
         <Box>
           <Container as="div">
             {quotePosts.map(({ node: post }) => (
