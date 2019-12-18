@@ -1,5 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
+
+// Tokens
+import { colorNeutral } from '../utils/tokens/tokenColorNeutral'
 
 // Components
 import Layout from '../components/site-layout/Layout'
@@ -11,6 +15,7 @@ import Hero from '../components/hero/Hero'
 import Intro from '../components/intro/Intro'
 import Blockquote from '../components/blockquote/Blockquote'
 import Statement from '../components/statement/Statement'
+import LinkBlock from '../components/link-block/LinkBlock'
 import PressRelease from '../components/press-release/PressRelease'
 import { Meta } from '../components/meta/Meta'
 import Time from '../components/time/Time'
@@ -38,6 +43,7 @@ const IndexPage = ({ data }) => {
   const statementThree = data.statementThree.edges
 
   const pressRelease = data.allContentfulPressRelease.edges
+  const news = data.allContentfulNews.edges
 
   const events = data.allContentfulEvents.edges
 
@@ -136,6 +142,51 @@ const IndexPage = ({ data }) => {
       <Container fluid>
         <Box>
           <Container as="div">
+            <SubHeading>Resent news</SubHeading>
+            <PressRelease>
+              {news.map(({ node: post }) => (
+                <LinkBlock to={`/news/${post.slug}`}>
+                  <Article key={post.id}>
+                    {post.image && (
+                      <Img
+                        fluid={post.image.fluid}
+                        style={{ maxHeight: '240px' }}
+                      />
+                    )}
+                    <H3>{post.title}</H3>
+                    <Meta style={{ color: colorNeutral.NEUTRAL_TINT_15 }}>
+                      <Time dateTime={post.createdAt} />
+                    </Meta>
+                    <P>{post.excerpt}</P>
+                  </Article>
+                </LinkBlock>
+              ))}
+            </PressRelease>
+            <LinkButton to="/news/page/1" showArrow pressRelease>
+              More news
+            </LinkButton>
+          </Container>
+        </Box>
+      </Container>
+
+      {statementThree.map(({ node: post }) => (
+        <Statement
+          key={post.id}
+          image={post.image.fluid}
+          reverse={post.reverseOrder === 'Yes' ? post.reverseOrder : null}>
+          <SubHeading>{post.subtitle}</SubHeading>
+          <H2>{post.title}</H2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: post.content.childMarkdownRemark.html,
+            }}
+          />
+        </Statement>
+      ))}
+
+      <Container fluid>
+        <Box>
+          <Container as="div">
             <SubHeading>Press release</SubHeading>
             <PressRelease>
               {pressRelease.map(({ node: post }) => (
@@ -167,22 +218,7 @@ const IndexPage = ({ data }) => {
         </Box>
       </Container>
 
-      {statementThree.map(({ node: post }) => (
-        <Statement
-          key={post.id}
-          image={post.image.fluid}
-          reverse={post.reverseOrder === 'Yes' ? post.reverseOrder : null}>
-          <SubHeading>{post.subtitle}</SubHeading>
-          <H2>{post.title}</H2>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: post.content.childMarkdownRemark.html,
-            }}
-          />
-        </Statement>
-      ))}
-
-      <Container>
+      <Container style={{ marginTop: '80px' }}>
         <SubHeading>Connect</SubHeading>
         <H2>Upcoming Events</H2>
         <TableWrapper>
@@ -273,6 +309,23 @@ export const query = graphql`
           id
           title
           videoId
+        }
+      }
+    }
+    allContentfulNews(limit: 3, sort: { order: DESC, fields: [createdAt] }) {
+      edges {
+        node {
+          id
+          createdAt(formatString: "MMMM D, YYYY")
+          title
+          excerpt
+          author
+          slug
+          image {
+            fluid(maxWidth: 700) {
+              ...GatsbyContentfulFluid
+            }
+          }
         }
       }
     }
