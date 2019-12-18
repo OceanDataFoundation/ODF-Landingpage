@@ -56,7 +56,7 @@ const Footer = props => {
               borderBottomColor: 'white',
               display: 'inline-block',
             }}>
-            Use of cookies
+            Use of Cookies
           </Link>
         </FooterCol>
         <FooterCol>
