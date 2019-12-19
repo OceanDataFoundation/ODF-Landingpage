@@ -126,7 +126,10 @@ const TeamListPage = ({ data }) => {
                     </>
                   )}
                   {post.linkedIn && (
-                    <a href={post.linkedIn} rel="noopener noreferrer">
+                    <a
+                      href={post.linkedIn}
+                      rel="noopener noreferrer"
+                      target="_blank">
                       LinkedIn
                     </a>
                   )}
