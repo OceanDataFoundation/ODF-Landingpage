@@ -101,7 +101,7 @@ const TeamListPage = ({ data }) => {
           </Header>
         ))}
       </Container>
-      <Container>
+      <Container style={{ marginTop: space[6] }}>
         <PressRelease columnGap="small" columnWidth="large">
           {teamPosts.map(({ node: post }) => (
             <TeamMember key={post.id}>
@@ -121,7 +121,9 @@ const TeamListPage = ({ data }) => {
                   )}
                   {post.email && (
                     <>
-                      <a href={`mailto: ${post.email}`}>E-mail</a>
+                      <a href={`mailto: ${post.email}`} title={post.email}>
+                        E-mail
+                      </a>
                       <br />
                     </>
                   )}
