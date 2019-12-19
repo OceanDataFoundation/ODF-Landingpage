@@ -188,7 +188,7 @@ const IndexPage = ({ data }) => {
         <Box>
           <Container as="div">
             <SubHeading>Press release</SubHeading>
-            <PressRelease>
+            <PressRelease columnGap="large">
               {pressRelease.map(({ node: post }) => (
                 <Article key={post.id}>
                   <H3>{post.title}</H3>

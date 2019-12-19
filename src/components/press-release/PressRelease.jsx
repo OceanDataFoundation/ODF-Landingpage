@@ -15,9 +15,13 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import { Container } from '../container/Container'
 
 const PressRelease = props => {
-  const { children } = props
+  const { children, columnGap, columnWidth } = props
 
-  return <PressReleaseContainer>{children}</PressReleaseContainer>
+  return (
+    <PressReleaseContainer columnGap={columnGap} columnWidth={columnWidth}>
+      {children}
+    </PressReleaseContainer>
+  )
 }
 
 const PressReleaseContainer = styled(Container)`
@@ -25,14 +29,20 @@ const PressReleaseContainer = styled(Container)`
   padding-left: ${space[0]};
   margin-bottom: ${space[6]};
   grid-template-columns: repeat(1, 100%);
+  grid-row-gap: ${props => (props.columnWidth ? space[6] : null)};
 
   ${mediaQuery.BREAKPOINT_2`
     padding-right: ${space[0]};
     padding-left: ${space[0]};
+    grid-column-gap: ${props =>
+      props.columnGap === 'large' ? space[5] : space[6]};
+    grid-template-columns: ${props =>
+      props.columnWidth === 'large' ? `repeat(2, 1fr)` : `repeat(1, 100%)`};
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-    grid-column-gap: ${space[10]};
+    grid-column-gap: ${props =>
+      props.columnGap === 'large' ? space[10] : space[6]};
     grid-template-columns: repeat(3, 1fr);
   `};
 
@@ -75,6 +85,8 @@ const PressReleaseContainer = styled(Container)`
 
 PressRelease.propTypes = {
   children: PropTypes.node,
+  columnGap: PropTypes.oneOf(['small', 'large']),
+  columnWidth: PropTypes.oneOf(['small', 'large']),
 }
 
 export default PressRelease
