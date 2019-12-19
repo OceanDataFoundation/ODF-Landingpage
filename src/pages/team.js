@@ -121,7 +121,7 @@ const TeamListPage = ({ data }) => {
                   )}
                   {post.email && (
                     <>
-                      <a href={`mailto: ${post.email}`}>{post.email}</a>
+                      <a href={`mailto: ${post.email}`}>E-mail</a>
                       <br />
                     </>
                   )}
@@ -162,7 +162,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulTeam(sort: { order: DESC, fields: [createdAt] }) {
+    allContentfulTeam(sort: { order: ASC, fields: [name] }) {
       edges {
         node {
           id
