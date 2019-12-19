@@ -66,7 +66,7 @@ const TeamMemberInfo = styled.div`
 
     ${TeamMember}:hover & {
       top: 0;
-      opacity: 1;
+      opacity: 0.95;
       visibility: visible;
     }
   `};
