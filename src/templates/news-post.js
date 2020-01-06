@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 import Layout from '../components/site-layout/Layout'
+import SEO from '../components/seo/seo'
 
 // Components
 import { Container } from '../components/container/Container'
@@ -35,6 +36,8 @@ const NewsPage = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title={title} metaDescription={excerpt} />
+
       <Container offset="true">
         <Article>
           <Header>
