@@ -5,10 +5,14 @@ import styled, { keyframes } from 'styled-components'
 import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 import { fontFamily } from '../../utils/tokens/tokenFontFamily'
+import { duration } from '../../utils/tokens/tokenDuration'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
 import { typeScale } from '../../utils/configs/confTypeScale'
+
+// Styles
+import { Transition } from '../../utils/styles/utility-classes/transition'
 
 // Components
 import LinkButton from '../link-button/LinkButton'
@@ -66,7 +70,7 @@ const SurveyWrapper = styled.div`
   right: -400px;
   bottom: 0;
   z-index: 9999;
-  animation: ${rotate} 500ms 5s ease-in-out forwards;
+  animation: ${rotate} ${duration.DURATION_5} 5s ease-in-out forwards;
 `
 
 const SurveyButton = styled.button`
@@ -82,9 +86,15 @@ const SurveyButton = styled.button`
   border-radius: 0;
   border: none;
   box-shadow: none;
-  background-color: ${colorBrandGreen.GREEN_TINT_50};
+  background-color: ${colorBrandGreen.GREEN_TINT_80};
 
   ${typeScale.TEXT_PRESET_1};
+  ${Transition};
+
+  :hover,
+  :focus {
+    background-color: ${colorBrandGreen.GREEN_TINT_60};
+  }
 `
 
 const SurveyTitle = styled(Strong)`
