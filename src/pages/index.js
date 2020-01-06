@@ -142,7 +142,7 @@ const IndexPage = ({ data }) => {
       <Container fluid>
         <Box>
           <Container as="div">
-            <SubHeading>Resent news</SubHeading>
+            <SubHeading>Recent news</SubHeading>
             <PressRelease>
               {news.map(({ node: post }) => (
                 <LinkBlock to={`/news/${post.slug}`}>
