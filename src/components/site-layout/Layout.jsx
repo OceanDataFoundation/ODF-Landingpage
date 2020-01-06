@@ -13,6 +13,7 @@ import styled from 'styled-components'
 // Components
 import Header from '../site-header/Header'
 import Footer from '../site-footer/Footer'
+import Survey from '../survey/Survey'
 
 // Style
 import { GlobalStyle } from '../../utils/styles/global-style'
@@ -39,6 +40,7 @@ const Layout = ({ children }) => {
     relatedLinkList,
     socialLinkList,
     contentfulContactInformation: contactInformation,
+    contentfulSurvey,
   } = useStaticQuery(graphql`
     query LayoutQuery {
       site {
@@ -103,12 +105,34 @@ const Layout = ({ children }) => {
         email
         telephone
       }
+      contentfulSurvey {
+        id
+        title
+        hide
+        description {
+          childMarkdownRemark {
+            html
+          }
+        }
+        buttonText
+        buttonLink {
+          slug
+        }
+      }
     }
   `)
 
   return (
     <>
       <GlobalStyle />
+      {contentfulSurvey.hide ? null : (
+        <Survey
+          title={contentfulSurvey.title}
+          description={contentfulSurvey.description.childMarkdownRemark.html}
+          buttonText={contentfulSurvey.buttonText}
+          buttonLink={contentfulSurvey.buttonLink.slug}
+        />
+      )}
 
       <Header
         siteTitle={site.siteMetadata.title}
