@@ -36,7 +36,7 @@ const NewsPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title={title} metaDescription={excerpt} />
+      <SEO title={title} metaDescription={excerpt} image={image.file.url} />
 
       <Container offset="true">
         <Article>
@@ -99,6 +99,9 @@ export const pageQuery = graphql`
       image {
         fluid(maxWidth: 1200, quality: 80) {
           ...GatsbyContentfulFluid
+        }
+        file {
+          url
         }
       }
       imageCaption {
