@@ -26,12 +26,13 @@ const Survey = props => {
     <SurveyWrapper>
       {hidden ? (
         <SurveyButton onClick={() => setHidden(false)}>
-          Hide survey
+          <SurveyArrow />
+          Hide
         </SurveyButton>
       ) : (
         <SurveyButton href="#" onClick={() => setHidden(true)}>
-          {' '}
-          Show survey
+          <SurveyArrow style={{ top: '0', transform: 'rotate(-135deg)' }} />
+          Show
         </SurveyButton>
       )}
       {hidden && (
@@ -73,11 +74,21 @@ const SurveyWrapper = styled.div`
   animation: ${rotate} ${duration.DURATION_5} 5s ease-in-out forwards;
 `
 
+const SurveyArrow = styled.span`
+  width: 8px;
+  height: 8px;
+  margin-right: ${space[3]};
+  position: relative;
+  top: -2px;
+  display: inline-block;
+  transform: rotate(45deg);
+  border-right: 2px solid ${colorNeutral.NEUTRAL_TINT_15};
+  border-bottom: 2px solid ${colorNeutral.NEUTRAL_TINT_15};
+`
+
 const SurveyButton = styled.button`
-  width: 124px;
+  width: 84px;
   height: 32px;
-  padding: 0;
-  margin: 0;
   color: ${colorNeutral.NEUTRAL_TINT_15};
   font-family: ${fontFamily.FONT_FAMILY_1.join()};
   position: absolute;
