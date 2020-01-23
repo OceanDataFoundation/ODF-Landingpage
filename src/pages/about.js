@@ -7,7 +7,7 @@ import Layout from '../components/site-layout/Layout'
 import SEO from '../components/seo/seo'
 
 // Tokens
-import { colorBrandGreen } from '../utils/tokens/tokenColorBrand'
+import { colorNeutral } from '../utils/tokens/tokenColorNeutral'
 
 // Config
 import { space } from '../utils/configs/confSpace'
@@ -21,10 +21,12 @@ import { Transition } from '../utils/styles/utility-classes/transition'
 
 // Components
 import { Container } from '../components/container/Container'
+import { Box } from '../components/box/Box'
 import { Header } from '../components/header/Header'
 import PressRelease from '../components/press-release/PressRelease'
 
 import { H1, H2 } from '../components/typography/heading/Heading'
+import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 
 const TeamMember = styled.div`
   position: relative;
@@ -51,7 +53,7 @@ const TeamMemberImage = styled(Img)`
 const TeamMemberInfo = styled.div`
   padding: ${space[2]} ${space[4]} ${space[5]} ${space[4]};
   position: relative;
-  background-color: ${colorBrandGreen.GREEN_TINT_95};
+  background-color: ${colorNeutral.NEUTRAL_TINT_100};
 
   ${mediaQuery.BREAKPOINT_3`
     width: 100%;
@@ -91,55 +93,64 @@ const AboutPage = ({ data }) => {
 
       <Container offset="true">
         {teamPage.map(({ node: post }) => (
-          <Header>
-            <H1>{post.title}</H1>
-            <div
+          <div key={post.id}>
+            <Header>
+              <H1>{post.title}</H1>
+            </Header>
+            <Header
+              as="div"
               dangerouslySetInnerHTML={{
                 __html: post.content.childMarkdownRemark.html,
               }}
             />
-          </Header>
+          </div>
         ))}
       </Container>
-      <Container style={{ marginTop: space[6] }}>
-        <PressRelease columnGap="small" columnWidth="large">
-          {teamPosts.map(({ node: post }) => (
-            <TeamMember key={post.id}>
-              {post.image && <TeamMemberImage fluid={post.image.fluid} />}
-              <TeamMemberInfo>
-                <TeamMemberName>{post.name && post.name}</TeamMemberName>
-                {post.title && post.title}
-                <br />
-                {post.location && post.location}
-                <br />
-                <TeamMemberAddress>
-                  {post.phone && (
-                    <>
-                      <a href={`tel: ${post.phone}`}>{post.phone}</a>
-                      <br />
-                    </>
-                  )}
-                  {post.email && (
-                    <>
-                      <a href={`mailto: ${post.email}`} title={post.email}>
-                        E-mail
-                      </a>
-                      <br />
-                    </>
-                  )}
-                  {post.linkedIn && (
-                    <a
-                      href={post.linkedIn}
-                      rel="noopener noreferrer"
-                      target="_blank">
-                      LinkedIn
-                    </a>
-                  )}
-                </TeamMemberAddress>
-              </TeamMemberInfo>
-            </TeamMember>
-          ))}
-        </PressRelease>
+
+      <Container fluid style={{ marginTop: '4rem', marginBottom: '-4rem' }}>
+        <Box>
+          <Container as="div">
+            <SubHeading>Meet the team</SubHeading>
+            <PressRelease columnGap="small" columnWidth="large">
+              {teamPosts.map(({ node: post }) => (
+                <TeamMember key={post.id}>
+                  {post.image && <TeamMemberImage fluid={post.image.fluid} />}
+                  <TeamMemberInfo>
+                    <TeamMemberName>{post.name && post.name}</TeamMemberName>
+                    {post.title && post.title}
+                    <br />
+                    {post.location && post.location}
+                    <br />
+                    <TeamMemberAddress>
+                      {post.phone && (
+                        <>
+                          <a href={`tel: ${post.phone}`}>{post.phone}</a>
+                          <br />
+                        </>
+                      )}
+                      {post.email && (
+                        <>
+                          <a href={`mailto: ${post.email}`} title={post.email}>
+                            E-mail
+                          </a>
+                          <br />
+                        </>
+                      )}
+                      {post.linkedIn && (
+                        <a
+                          href={post.linkedIn}
+                          rel="noopener noreferrer"
+                          target="_blank">
+                          LinkedIn
+                        </a>
+                      )}
+                    </TeamMemberAddress>
+                  </TeamMemberInfo>
+                </TeamMember>
+              ))}
+            </PressRelease>
+          </Container>
+        </Box>
       </Container>
     </Layout>
   )
@@ -150,7 +161,7 @@ export default AboutPage
 export const pageQuery = graphql`
   query AboutPageQuery {
     allContentfulPage(
-      filter: { contentful_id: { eq: "5vdFd2Dl4nkF1Pcu2gBkxU" } }
+      filter: { contentful_id: { eq: "6Y54nuw3s7Nk1tNOAopLGd" } }
     ) {
       edges {
         node {

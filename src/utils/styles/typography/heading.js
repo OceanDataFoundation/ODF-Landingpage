@@ -40,7 +40,7 @@ export const GlobalH2 = css`
     ${typeScale.TEXT_PRESET_5};
 
     margin-bottom: ${space[4]};
-    font-weight: ${fontWeight.FONT_WEIGHT_4};
+    font-weight: ${fontWeight.FONT_WEIGHT_3};
 
     ${mediaQuery.BREAKPOINT_3`
       ${typeScale.TEXT_PRESET_6};
