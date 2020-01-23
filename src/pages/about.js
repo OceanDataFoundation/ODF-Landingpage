@@ -81,7 +81,7 @@ const TeamMemberAddress = styled.address`
   line-height: 2;
 `
 
-const TeamListPage = ({ data }) => {
+const AboutPage = ({ data }) => {
   const teamPage = data.allContentfulPage.edges
   const teamPosts = data.allContentfulTeam.edges
 
@@ -145,10 +145,10 @@ const TeamListPage = ({ data }) => {
   )
 }
 
-export default TeamListPage
+export default AboutPage
 
 export const pageQuery = graphql`
-  query TeamListPageQuery {
+  query AboutPageQuery {
     allContentfulPage(
       filter: { contentful_id: { eq: "5vdFd2Dl4nkF1Pcu2gBkxU" } }
     ) {
