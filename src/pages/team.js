@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
@@ -84,6 +85,7 @@ const TeamMemberAddress = styled.address`
 const TeamListPage = ({ data }) => {
   const teamPage = data.allContentfulPage.edges
   const teamPosts = data.allContentfulTeam.edges
+  console.log('TCL: TeamListPage -> teamPosts', teamPosts)
 
   return (
     <Layout>
@@ -91,7 +93,7 @@ const TeamListPage = ({ data }) => {
 
       <Container offset="true">
         {teamPage.map(({ node: post }) => (
-          <Header>
+          <Header key={post.id}>
             <H1>{post.title}</H1>
             <div
               dangerouslySetInnerHTML={{
@@ -184,3 +186,7 @@ export const pageQuery = graphql`
     }
   }
 `
+
+TeamListPage.propTypes = {
+  data: PropTypes.object,
+}

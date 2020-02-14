@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/site-layout/Layout'
@@ -71,3 +72,11 @@ export const query = graphql`
     }
   }
 `
+
+PressRelease.propTypes = {
+  data: PropTypes.shape({
+    allContentfulPressRelease: PropTypes.objectOf(
+      PropTypes.arrayOf(PropTypes.object.isRequired)
+    ),
+  }),
+}

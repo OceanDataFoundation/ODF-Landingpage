@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
@@ -145,7 +146,7 @@ const IndexPage = ({ data }) => {
             <SubHeading>Recent news</SubHeading>
             <PressRelease>
               {news.map(({ node: post }) => (
-                <LinkBlock to={`/news/${post.slug}`}>
+                <LinkBlock to={`/news/${post.slug}`} key={post.id}>
                   <Article key={post.id}>
                     {post.image && (
                       <Img
@@ -425,3 +426,18 @@ export const query = graphql`
     }
   }
 `
+
+IndexPage.propTypes = {
+  data: PropTypes.shape({
+    allContentfulEvents: PropTypes.object.isRequired,
+    allContentfulHero: PropTypes.object.isRequired,
+    allContentfulNews: PropTypes.object.isRequired,
+    allContentfulPressRelease: PropTypes.object.isRequired,
+    allContentfulQuote: PropTypes.object.isRequired,
+    allContentfulVideoHero: PropTypes.object.isRequired,
+    contentfulPage: PropTypes.object.isRequired,
+    statementOne: PropTypes.object.isRequired,
+    statementThree: PropTypes.object.isRequired,
+    statementTwo: PropTypes.object.isRequired,
+  }),
+}

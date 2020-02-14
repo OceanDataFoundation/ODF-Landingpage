@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
@@ -195,3 +196,7 @@ export const pageQuery = graphql`
     }
   }
 `
+
+AboutPage.propTypes = {
+  data: PropTypes.objectOf(PropTypes.object).isRequired,
+}

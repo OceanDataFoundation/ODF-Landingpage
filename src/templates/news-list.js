@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
@@ -138,3 +139,8 @@ export const pageQuery = graphql`
     }
   }
 `
+
+NewsListPage.propTypes = {
+  data: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
+}
