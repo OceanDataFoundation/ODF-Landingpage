@@ -28,11 +28,12 @@ const BlogPost = ({ data }) => {
   console.log('TCL: BlogPost -> data', data)
   const {
     title,
-    excerpt,
+    teaser,
     coverImage,
     coverCaption,
     keywords,
     content,
+    publicationDate,
   } = data.blogPost
 
   const renderedContent = documentToReactComponents(content.json)
@@ -41,18 +42,15 @@ const BlogPost = ({ data }) => {
     <Layout>
       <SEO
         title={title}
-        metaDescription={excerpt}
+        metaDescription={teaser}
         image={`https:${coverImage.file.url}`}
       />
 
       <Container offset="true">
         <Article>
           <Header>
-            <Meta>
-              {/* {createdAt}&nbsp;&nbsp;|&nbsp;&nbsp;By: {author && author} */}
-            </Meta>
+            <Meta>{publicationDate}</Meta>
             <H1>{title && title}</H1>
-            <P lead>{excerpt && excerpt}</P>
           </Header>
 
           {coverImage && (
@@ -68,6 +66,7 @@ const BlogPost = ({ data }) => {
 
           <ArticleContainer>
             <ArticleContent>
+              <P lead>{teaser && teaser}</P>
               {renderedContent}
               {keywords && (
                 <TagList>
@@ -95,7 +94,7 @@ export const pageQuery = graphql`
     blogPost: contentfulBlogPost(slug: { eq: $slug }) {
       title
       slug
-      createdAt(formatString: "MMMM DD, YYYY")
+      publicationDate(formatString: "MMMM DD, YYYY")
       teaser
       # author
       coverImage {
