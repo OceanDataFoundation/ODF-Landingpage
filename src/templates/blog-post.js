@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 import Layout from '../components/site-layout/Layout'
 import SEO from '../components/seo/seo'
@@ -25,7 +26,16 @@ import P from '../components/typography/paragraph/Paragraph'
 
 const BlogPost = ({ data }) => {
   console.log('TCL: BlogPost -> data', data)
-  const { title, excerpt, coverImage, coverCaption, keywords } = data.blogPost
+  const {
+    title,
+    excerpt,
+    coverImage,
+    coverCaption,
+    keywords,
+    content,
+  } = data.blogPost
+
+  const renderedContent = documentToReactComponents(content.json)
 
   return (
     <Layout>
@@ -58,7 +68,7 @@ const BlogPost = ({ data }) => {
 
           <ArticleContainer>
             <ArticleContent>
-              {/* TODO: Add content */}
+              {renderedContent}
               {keywords && (
                 <TagList>
                   {keywords.map((tag, index) => (

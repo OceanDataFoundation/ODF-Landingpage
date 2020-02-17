@@ -68,7 +68,7 @@ const BlogListPage = ({ data, pageContext }) => {
                   <Small>{post.createdAt}</Small>
                 </Meta>
                 <H2>{post.title}</H2>
-                <P>{post.excerpt}</P>
+                <P>{post.teaser}</P>
               </NewsBlock>
             </LinkBlock>
           ))}

@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Ocean Data Foundation & Making Waves",
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^13.4.0",
     "@u-wave/react-vimeo": "^0.8.1",
     "babel-plugin-styled-components": "^1.10.7",
     "dotenv": "^8.2.0",
