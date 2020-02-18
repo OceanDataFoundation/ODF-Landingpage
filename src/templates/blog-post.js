@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
-// TODO: Move styled component
+// TODO: Move styled components
 import styled from 'styled-components'
 
 import Layout from '../components/site-layout/Layout'
@@ -116,7 +116,7 @@ const BlogPost = ({ data }) => {
 
           <ArticleContainer>
             <ArticleContent>
-              <P lead>{teaser && teaser}</P>
+              {teaser && <P lead>{teaser}</P>}
               {renderedContent}
               {keywords && (
                 <TagList>
@@ -140,7 +140,13 @@ const BlogPost = ({ data }) => {
             <AuthorText>
               <div>
                 <p>WRITTEN BY</p>
-                <h3>{author.name}</h3>
+                <div
+                  style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <h3>{author.name}</h3>
+                  <a href={author.pageUrl} target="blank">
+                    Link
+                  </a>
+                </div>
                 {author.affiliation && <p>{author.affiliation}</p>}
               </div>
               <small>{author.bio.biography}</small>
@@ -176,6 +182,7 @@ export const pageQuery = graphql`
         bio: biography {
           biography
         }
+        pageUrl
       }
       coverImage {
         fluid(maxWidth: 1200, quality: 80) {
