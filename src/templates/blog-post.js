@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-
-// TODO: Move styled components
 import styled from 'styled-components'
 
 import Layout from '../components/site-layout/Layout'
@@ -17,6 +15,7 @@ import {
   ArticleContainer,
   ArticleContent,
 } from '../components/article/Article'
+import { Author } from '../components/author/Author'
 import { Header } from '../components/header/Header'
 import { Meta } from '../components/meta/Meta'
 import { Figure } from '../components/figure/Figure'
@@ -34,27 +33,6 @@ const MetaContainer = styled(Meta)`
 
 const MetaText = styled.div`
   margin-left: 8px;
-`
-
-const Author = styled.div`
-  display: flex;
-
-  margin: 0 0 64px 64px;
-  border-top: 1px solid lightgray;
-  padding-top: 32px;
-  max-width: 70ch;
-
-  p {
-    margin-bottom: 0.5rem;
-  }
-
-  h3 {
-    margin: 0;
-  }
-`
-
-const AuthorText = styled.div`
-  margin-left: 16px;
 `
 
 const BlogPost = ({ data }) => {
@@ -96,7 +74,6 @@ const BlogPost = ({ data }) => {
               <MetaText>
                 <div>
                   <span>{author.name}</span>
-                  {author.affiliation && <span> - {author.affiliation}</span>}
                 </div>
                 <small>{publicationDate}</small>
               </MetaText>
@@ -127,31 +104,7 @@ const BlogPost = ({ data }) => {
               )}
             </ArticleContent>
           </ArticleContainer>
-          <Author>
-            <div style={{ width: '80px', height: '80px' }}>
-              <Img
-                alt={author.name}
-                fixed={author.picture.fixed}
-                objectFit="cover"
-                objectPosition="50% 50%"
-                style={{ borderRadius: '50%' }}
-              />
-            </div>
-            <AuthorText>
-              <div>
-                <p>WRITTEN BY</p>
-                <div
-                  style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <h3>{author.name}</h3>
-                  <a href={author.pageUrl} target="blank">
-                    Link
-                  </a>
-                </div>
-                {author.affiliation && <p>{author.affiliation}</p>}
-              </div>
-              <small>{author.bio.biography}</small>
-            </AuthorText>
-          </Author>
+          <Author author={author} />
         </Article>
 
         <LinkButton to="/blog/page/1" showArrow alignCenter>
@@ -179,7 +132,7 @@ export const pageQuery = graphql`
         }
         name
         affiliation
-        bio: biography {
+        biography {
           biography
         }
         pageUrl
