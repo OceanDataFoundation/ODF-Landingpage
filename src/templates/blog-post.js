@@ -4,6 +4,9 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
+// TODO: Move styled component
+import styled from 'styled-components'
+
 import Layout from '../components/site-layout/Layout'
 import SEO from '../components/seo/seo'
 
@@ -24,6 +27,36 @@ import LinkButton from '../components/link-button/LinkButton'
 import { H1 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 
+const MetaContainer = styled(Meta)`
+  display: flex;
+  align-items: center;
+`
+
+const MetaText = styled.div`
+  margin-left: 8px;
+`
+
+const Author = styled.div`
+  display: flex;
+
+  margin: 0 0 64px 64px;
+  border-top: 1px solid lightgray;
+  padding-top: 32px;
+  max-width: 70ch;
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    margin: 0;
+  }
+`
+
+const AuthorText = styled.div`
+  margin-left: 16px;
+`
+
 const BlogPost = ({ data }) => {
   console.log('TCL: BlogPost -> data', data)
   const {
@@ -34,7 +67,9 @@ const BlogPost = ({ data }) => {
     keywords,
     content,
     publicationDate,
+    author,
   } = data.blogPost
+  console.log('TCL: BlogPost -> author', author)
 
   const renderedContent = documentToReactComponents(content.json)
 
@@ -49,8 +84,23 @@ const BlogPost = ({ data }) => {
       <Container offset="true">
         <Article>
           <Header>
-            <Meta>{publicationDate}</Meta>
             <H1>{title && title}</H1>
+            <MetaContainer>
+              <Img
+                alt={author.name}
+                fixed={author.picture.fixed}
+                objectFit="cover"
+                objectPosition="50% 50%"
+                style={{ borderRadius: '50%', width: '48px', height: '48px' }}
+              />
+              <MetaText>
+                <div>
+                  <span>{author.name}</span>
+                  {author.affiliation && <span> - {author.affiliation}</span>}
+                </div>
+                <small>{publicationDate}</small>
+              </MetaText>
+            </MetaContainer>
           </Header>
 
           {coverImage && (
@@ -77,6 +127,25 @@ const BlogPost = ({ data }) => {
               )}
             </ArticleContent>
           </ArticleContainer>
+          <Author>
+            <div style={{ width: '80px', height: '80px' }}>
+              <Img
+                alt={author.name}
+                fixed={author.picture.fixed}
+                objectFit="cover"
+                objectPosition="50% 50%"
+                style={{ borderRadius: '50%' }}
+              />
+            </div>
+            <AuthorText>
+              <div>
+                <p>WRITTEN BY</p>
+                <h3>{author.name}</h3>
+                {author.affiliation && <p>{author.affiliation}</p>}
+              </div>
+              <small>{author.bio.biography}</small>
+            </AuthorText>
+          </Author>
         </Article>
 
         <LinkButton to="/blog/page/1" showArrow alignCenter>
@@ -96,7 +165,18 @@ export const pageQuery = graphql`
       slug
       publicationDate(formatString: "MMMM DD, YYYY")
       teaser
-      # author
+      author {
+        picture {
+          fixed(width: 80) {
+            ...GatsbyContentfulFixed
+          }
+        }
+        name
+        affiliation
+        bio: biography {
+          biography
+        }
+      }
       coverImage {
         fluid(maxWidth: 1200, quality: 80) {
           ...GatsbyContentfulFluid
