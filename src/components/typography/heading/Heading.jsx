@@ -1,5 +1,3 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 // Tokens
@@ -22,17 +20,7 @@ import {
   GlobalH6,
 } from '../../../utils/styles/typography/heading'
 
-export const H1 = props => {
-  const { children, size, ...rest } = props
-
-  return (
-    <HeadingH1 size={size} {...rest}>
-      {children}
-    </HeadingH1>
-  )
-}
-
-const HeadingH1 = styled.h1`
+export const H1 = styled.h1`
   margin-bottom: ${props =>
     props.size === 'larger'
       ? space[5]
@@ -129,7 +117,3 @@ export const H6 = styled.h6`
       ? colorNeutral.NEUTRAL_TINT_100
       : colorNeutral.NEUTRAL_TINT_15};
 `
-
-H1.propTypes = {
-  size: PropTypes.oneOf(['large', 'larger']),
-}
