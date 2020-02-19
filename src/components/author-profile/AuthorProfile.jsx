@@ -104,7 +104,7 @@ export const AuthorProfile = ({ author }) => {
               fixed={picture.fixed}
               objectFit="cover"
               objectPosition="50% 50%"
-              style={{ borderRadius: '50%' }}
+              style={{ borderRadius: '50%', width: '80px', height: '80px' }}
             />
           </AuthorImg>
           <AuthorText>

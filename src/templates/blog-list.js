@@ -113,12 +113,12 @@ export const pageQuery = graphql`
     allContentfulBlogPost(
       skip: $skip
       limit: $limit
-      sort: { order: DESC, fields: [createdAt] }
+      sort: { order: DESC, fields: [publicationDate] }
     ) {
       edges {
         node {
           id
-          createdAt(formatString: "MMMM D, YYYY")
+          publicationDate(formatString: "MMMM D, YYYY")
           title
           teaser
           slug
