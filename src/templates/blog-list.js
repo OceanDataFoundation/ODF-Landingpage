@@ -22,7 +22,7 @@ import { Header } from '../components/header/Header'
 import Masonry from '../components/masonry/Masonry'
 import LinkBlock from '../components/link-block/LinkBlock'
 import { NewsBlock } from '../components/news-block/NewsBlock'
-import { Meta } from '../components/meta/Meta'
+import { Author } from '../components/author/Author'
 
 import { H1, H2 } from '../components/typography/heading/Heading'
 import { Small } from '../components/typography/small/Small'
@@ -46,7 +46,6 @@ const PaginationNumbers = styled(Small)`
 `
 
 const BlogListPage = ({ data, pageContext }) => {
-  console.log('TCL: BlogListPage -> data', data)
   const blogPosts = data.allContentfulBlogPost.edges
   const pageTotal = pageContext.pageAmount.length
 
@@ -64,50 +63,44 @@ const BlogListPage = ({ data, pageContext }) => {
             <LinkBlock to={`/blog/${post.slug}`} key={post.id}>
               {post.coverImage && <Img fluid={post.coverImage.fluid} />}
               <NewsBlock>
-                <Meta>
-                  <Small>{post.createdAt}</Small>
-                </Meta>
                 <H2>{post.title}</H2>
-                <P>{post.teaser}</P>
+                <P style={{ marginBottom: '1rem' }}>{post.teaser}</P>
+                <Author
+                  name={post.author.name}
+                  picture={post.author.picture.fixed}
+                  size="32px"
+                />
               </NewsBlock>
             </LinkBlock>
           ))}
         </Masonry>
 
-        <Pagination>
-          {pageContext.pageNumber === 1 ? (
-            <Small
-              style={{
-                color: colorNeutral.NEUTRAL_TINT_70,
-              }}>
-              Previous page
-            </Small>
-          ) : (
-            pageContext &&
-            pageContext.hasPrevPage && (
-              <Link to={pageContext.prevPageLink}>
-                <Small>Previous page</Small>
-              </Link>
-            )
-          )}
+        {pageContext.hasNextPage && (
+          <Pagination>
+            {pageContext.pageNumber === 1 ? (
+              <Small
+                style={{
+                  color: colorNeutral.NEUTRAL_TINT_70,
+                }}>
+                Previous page
+              </Small>
+            ) : (
+              pageContext.hasPrevPage && (
+                <Link to={pageContext.prevPageLink}>
+                  <Small>Previous page</Small>
+                </Link>
+              )
+            )}
 
-          <PaginationNumbers>
-            <Strong>{pageContext.pageNumber}</Strong> / {pageTotal}
-          </PaginationNumbers>
+            <PaginationNumbers>
+              <Strong>{pageContext.pageNumber}</Strong> / {pageTotal}
+            </PaginationNumbers>
 
-          {pageContext && pageContext.hasNextPage ? (
             <Link to={pageContext.nextPageLink}>
               <Small>Next page</Small>
             </Link>
-          ) : (
-            <Small
-              style={{
-                color: colorNeutral.NEUTRAL_TINT_70,
-              }}>
-              Next page
-            </Small>
-          )}
-        </Pagination>
+          </Pagination>
+        )}
       </Container>
     </Layout>
   )
@@ -129,6 +122,14 @@ export const pageQuery = graphql`
           title
           teaser
           slug
+          author {
+            name
+            picture {
+              fixed(width: 80) {
+                ...GatsbyContentfulFixed
+              }
+            }
+          }
           coverImage {
             fluid(maxWidth: 700) {
               ...GatsbyContentfulFluid

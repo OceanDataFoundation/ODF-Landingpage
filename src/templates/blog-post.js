@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import styled from 'styled-components'
 
 import Layout from '../components/site-layout/Layout'
 import SEO from '../components/seo/seo'
@@ -15,29 +14,16 @@ import {
   ArticleContainer,
   ArticleContent,
 } from '../components/article/Article'
+import { Author } from '../components/author/Author'
 import { AuthorProfile } from '../components/author-profile/AuthorProfile'
 import { Header } from '../components/header/Header'
-import { Meta } from '../components/meta/Meta'
 import { Figure } from '../components/figure/Figure'
 import { Figcaption } from '../components/figcaption/Figcaption'
 import { TagList } from '../components/tag-list/TagList'
 import LinkButton from '../components/link-button/LinkButton'
 
 import { H1 } from '../components/typography/heading/Heading'
-import { Small } from '../components/typography/small/Small'
 import P from '../components/typography/paragraph/Paragraph'
-
-// Utils
-import { space } from '../utils/configs/confSpace'
-
-const AuthorContainer = styled(Meta)`
-  display: flex;
-  align-items: center;
-`
-
-const AuthorText = styled.div`
-  margin-left: ${space[4]};
-`
 
 const BlogPost = ({ data }) => {
   console.log('TCL: BlogPost -> data', data)
@@ -67,21 +53,11 @@ const BlogPost = ({ data }) => {
         <Article>
           <Header>
             <H1>{title && title}</H1>
-            <AuthorContainer>
-              <Img
-                alt={author.name}
-                fixed={author.picture.fixed}
-                objectFit="cover"
-                objectPosition="50% 50%"
-                style={{ borderRadius: '50%', width: '48px', height: '48px' }}
-              />
-              <AuthorText>
-                <div>
-                  <span>{author.name}</span>
-                </div>
-                <Small>{publicationDate}</Small>
-              </AuthorText>
-            </AuthorContainer>
+            <Author
+              name={author.name}
+              picture={author.picture.fixed}
+              date={publicationDate}
+            />
           </Header>
 
           {coverImage && (
