@@ -15,7 +15,7 @@ import {
   ArticleContainer,
   ArticleContent,
 } from '../components/article/Article'
-import { Author } from '../components/author/Author'
+import { AuthorProfile } from '../components/author-profile/AuthorProfile'
 import { Header } from '../components/header/Header'
 import { Meta } from '../components/meta/Meta'
 import { Figure } from '../components/figure/Figure'
@@ -108,7 +108,7 @@ const BlogPost = ({ data }) => {
               )}
             </ArticleContent>
           </ArticleContainer>
-          <Author author={author} />
+          <AuthorProfile author={author} />
         </Article>
 
         <LinkButton to="/blog/page/1" showArrow alignCenter>

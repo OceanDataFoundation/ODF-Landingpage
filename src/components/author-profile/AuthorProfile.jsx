@@ -4,27 +4,29 @@ import styled from 'styled-components'
 
 import Img from 'gatsby-image'
 
+//Components
+import { H3 } from '../typography/heading/Heading'
+import P from '../typography/paragraph/Paragraph'
+import { Small } from '../typography/small/Small'
+import LinkCta from '../link-cta/LinkCta'
+
 // Utils
 import { space } from '../../utils/configs/confSpace'
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-
-//Components
-import { H3 } from '../../components/typography/heading/Heading'
-import P from '../../components/typography/paragraph/Paragraph'
-import { Small } from '../../components/typography/small/Small'
-import LinkCta from '../../components/link-cta/LinkCta'
+import { borderWidth } from '../../utils/tokens/tokenBorderWidth'
 
 const Container = styled.div`
   display: flex;
 
-  border-top: 1px solid ${colorNeutral.NEUTRAL_TINT_90};
+  border-top: ${borderWidth.BORDER_WIDTH_1} solid
+    ${colorNeutral.NEUTRAL_TINT_90};
   padding-top: ${space[6]};
 
   max-width: 70ch;
 
   ${mediaQuery.BREAKPOINT_3`
-    margin-left: 64px;
+    margin-left: ${space[10]};
   `};
 `
 
@@ -89,7 +91,7 @@ const AuthorName = styled.div`
  * @param {object} author - an object that contains information about an author
  */
 
-export const Author = ({ author }) => {
+export const AuthorProfile = ({ author }) => {
   console.log('TCL: author', author)
   const { name, picture, affiliation, pageUrl, biography } = author
   return (
@@ -127,7 +129,7 @@ export const Author = ({ author }) => {
           )}
           <Small>{biography.biography}</Small>
           {pageUrl && (
-            <ShowOnPhone style={{ marginTop: `${space[5]}` }}>
+            <ShowOnPhone style={{ marginTop: space[5] }}>
               <LinkCta href={pageUrl} target="blank">
                 Read more
               </LinkCta>
@@ -139,7 +141,7 @@ export const Author = ({ author }) => {
   )
 }
 
-Author.propTypes = {
+AuthorProfile.propTypes = {
   author: PropTypes.shape({
     name: PropTypes.string.isRequired,
     picture: PropTypes.objectOf(PropTypes.object.isRequired),
