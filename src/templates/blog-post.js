@@ -24,15 +24,19 @@ import { TagList } from '../components/tag-list/TagList'
 import LinkButton from '../components/link-button/LinkButton'
 
 import { H1 } from '../components/typography/heading/Heading'
+import { Small } from '../components/typography/small/Small'
 import P from '../components/typography/paragraph/Paragraph'
 
-const MetaContainer = styled(Meta)`
+// Utils
+import { space } from '../utils/configs/confSpace'
+
+const AuthorContainer = styled(Meta)`
   display: flex;
   align-items: center;
 `
 
-const MetaText = styled.div`
-  margin-left: 8px;
+const AuthorText = styled.div`
+  margin-left: ${space[4]};
 `
 
 const BlogPost = ({ data }) => {
@@ -63,7 +67,7 @@ const BlogPost = ({ data }) => {
         <Article>
           <Header>
             <H1>{title && title}</H1>
-            <MetaContainer>
+            <AuthorContainer>
               <Img
                 alt={author.name}
                 fixed={author.picture.fixed}
@@ -71,13 +75,13 @@ const BlogPost = ({ data }) => {
                 objectPosition="50% 50%"
                 style={{ borderRadius: '50%', width: '48px', height: '48px' }}
               />
-              <MetaText>
+              <AuthorText>
                 <div>
                   <span>{author.name}</span>
                 </div>
-                <small>{publicationDate}</small>
-              </MetaText>
-            </MetaContainer>
+                <Small>{publicationDate}</Small>
+              </AuthorText>
+            </AuthorContainer>
           </Header>
 
           {coverImage && (

@@ -9,6 +9,12 @@ import { space } from '../../utils/configs/confSpace'
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 
+//Components
+import { H3 } from '../../components/typography/heading/Heading'
+import P from '../../components/typography/paragraph/Paragraph'
+import { Small } from '../../components/typography/small/Small'
+import LinkCta from '../../components/link-cta/LinkCta'
+
 const Container = styled.div`
   display: flex;
 
@@ -33,15 +39,55 @@ const Wrapper = styled.div`
   }
 `
 
+const Profile = styled.div`
+  display: flex;
+
+  align-items: center;
+  margin-bottom: ${space[5]};
+
+  ${mediaQuery.BREAKPOINT_2`
+    margin-bottom: ${space[0]};
+  `};
+`
+
 const AuthorImg = styled.div`
-  position: absolute;
   width: 80px;
   height: 80px;
 `
 
 const AuthorText = styled.div`
-  /* margin-left: ${space[4]}; */
+  padding-left: ${space[4]};
+  width: 100%;
 `
+
+const AuthorBio = styled.div`
+  ${mediaQuery.BREAKPOINT_2`
+    margin-left: 96px;
+  `};
+`
+
+const HideOnPhone = styled.div`
+  display: none;
+  ${mediaQuery.BREAKPOINT_2`
+    display: block;
+  `};
+`
+
+const ShowOnPhone = styled.div`
+  display: block;
+  ${mediaQuery.BREAKPOINT_2`
+    display: none;
+  `};
+`
+const AuthorName = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+/**
+ * This component was created to showcase author profiles in blog posts.
+ * @param {object} author - an object that contains information about an author
+ */
 
 export const Author = ({ author }) => {
   console.log('TCL: author', author)
@@ -49,7 +95,7 @@ export const Author = ({ author }) => {
   return (
     <Container>
       <Wrapper>
-        <span style={{ display: 'block', marginBottom: '24px' }}>
+        <Profile>
           <AuthorImg>
             <Img
               alt={name}
@@ -59,31 +105,35 @@ export const Author = ({ author }) => {
               style={{ borderRadius: '50%' }}
             />
           </AuthorImg>
-          <div style={{ paddingLeft: '96px' }}>
-            <p>WRITTEN BY</p>
-          </div>
-          <div style={{ marginBottom: '8px', paddingLeft: '96px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <h3>{name}</h3>
-              <div style={{ display: 'none' }}>
-                <a href={pageUrl} target="blank">
-                  Link
-                </a>
-              </div>
-            </div>
-          </div>
-        </span>
-        <AuthorText>
-          <div style={{ display: 'none' }}>
-            {affiliation && <p>{affiliation}</p>}
-          </div>
-          <small>{biography.biography}</small>
-          <div>
-            <a href={pageUrl} target="blank">
-              Link
-            </a>
-          </div>
-        </AuthorText>
+          <AuthorText>
+            <P>WRITTEN BY</P>
+            <AuthorName>
+              <H3>{name}</H3>
+              {pageUrl && (
+                <HideOnPhone>
+                  <LinkCta href={pageUrl} target="blank">
+                    Read more
+                  </LinkCta>
+                </HideOnPhone>
+              )}
+            </AuthorName>
+          </AuthorText>
+        </Profile>
+        <AuthorBio>
+          {affiliation && (
+            <HideOnPhone>
+              <P>{affiliation}</P>
+            </HideOnPhone>
+          )}
+          <Small>{biography.biography}</Small>
+          {pageUrl && (
+            <ShowOnPhone style={{ marginTop: `${space[5]}` }}>
+              <LinkCta href={pageUrl} target="blank">
+                Read more
+              </LinkCta>
+            </ShowOnPhone>
+          )}
+        </AuthorBio>
       </Wrapper>
     </Container>
   )
@@ -96,5 +146,5 @@ Author.propTypes = {
     biography: PropTypes.objectOf(PropTypes.string.isRequired),
     pageUrl: PropTypes.string,
     affiliation: PropTypes.string,
-  }),
+  }).isRequired,
 }
