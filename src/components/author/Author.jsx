@@ -45,7 +45,7 @@ export const Author = ({ name, picture, date, size }) => {
 
 Author.propTypes = {
   name: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
+  picture: PropTypes.object.isRequired,
   date: PropTypes.string,
   size: PropTypes.string,
 }
