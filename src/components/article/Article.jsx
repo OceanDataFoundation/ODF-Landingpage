@@ -9,9 +9,6 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 export const Article = styled.article``
 
 export const ArticleContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-
   ${mediaQuery.BREAKPOINT_3`
     padding-left: 64px;
   `};

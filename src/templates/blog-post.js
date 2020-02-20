@@ -70,8 +70,8 @@ const BlogPost = ({ data }) => {
           )}
 
           <ArticleContainer>
+            {teaser && <P lead>{teaser}</P>}
             <ArticleContent>
-              {teaser && <P lead>{teaser}</P>}
               {renderedContent}
               {keywords && (
                 <TagList>
