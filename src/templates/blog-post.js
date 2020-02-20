@@ -26,7 +26,6 @@ import { H1 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 
 const BlogPost = ({ data }) => {
-  console.log('TCL: BlogPost -> data', data)
   const {
     title,
     teaser,
@@ -37,7 +36,6 @@ const BlogPost = ({ data }) => {
     publicationDate,
     author,
   } = data.blogPost
-  console.log('TCL: BlogPost -> author', author)
 
   const renderedContent = documentToReactComponents(content.json)
 

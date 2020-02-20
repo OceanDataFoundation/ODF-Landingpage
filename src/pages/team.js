@@ -85,7 +85,6 @@ const TeamMemberAddress = styled.address`
 const TeamListPage = ({ data }) => {
   const teamPage = data.allContentfulPage.edges
   const teamPosts = data.allContentfulTeam.edges
-  console.log('TCL: TeamListPage -> teamPosts', teamPosts)
 
   return (
     <Layout>

@@ -92,7 +92,6 @@ const AuthorName = styled.div`
  */
 
 export const AuthorProfile = ({ author }) => {
-  console.log('TCL: author', author)
   const { name, picture, affiliation, pageUrl, biography } = author
   return (
     <Container>
