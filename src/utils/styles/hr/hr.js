@@ -11,6 +11,8 @@ import { css } from 'styled-components'
 import { colorNeutral } from '../../tokens/tokenColorNeutral'
 
 export const Hr = css`
+  margin-left: 0;
+  margin-right: 0;
   border: none;
   border-bottom: 1px solid ${colorNeutral.NEUTRAL_TINT_75};
 `

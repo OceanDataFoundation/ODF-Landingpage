@@ -19,14 +19,14 @@ export const ArticleContainer = styled.div`
 
 export const ArticleContent = styled.div`
   margin-top: ${space[6]};
-  margin-bottom: ${space[10]};
+  margin-bottom: ${space[6]};
 
   ${mediaQuery.BREAKPOINT_3`
     margin-top: ${space[8]};
   `};
 
-  p {
-    max-width: 70ch;
+  * {
+    max-width: 52rem;
 
     :last-child {
       margin-bottom: ${space[0]};
