@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 import Layout from '../components/site-layout/Layout'
 import SEO from '../components/seo/seo'
@@ -25,6 +24,8 @@ import LinkButton from '../components/link-button/LinkButton'
 import { H1 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 
+import RichTextRenderer from '../components/rich-text-renderer/RichTextRenderer'
+
 const BlogPost = ({ data }) => {
   const {
     title,
@@ -36,8 +37,6 @@ const BlogPost = ({ data }) => {
     publicationDate,
     author,
   } = data.blogPost
-
-  const renderedContent = documentToReactComponents(content.json)
 
   return (
     <Layout>
@@ -72,7 +71,7 @@ const BlogPost = ({ data }) => {
           <ArticleContainer>
             {teaser && <P lead>{teaser}</P>}
             <ArticleContent>
-              {renderedContent}
+              <RichTextRenderer richTextJson={content.json} />
               {keywords && (
                 <TagList>
                   {keywords.map((tag, index) => (
