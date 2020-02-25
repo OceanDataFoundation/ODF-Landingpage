@@ -35,6 +35,5 @@ export const ArticleContent = styled.div`
     height: auto;
     display: block;
     margin: ${space[4]} 0;
-    float: left;
   }
 `
