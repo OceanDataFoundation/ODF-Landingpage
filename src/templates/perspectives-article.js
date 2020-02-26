@@ -48,7 +48,7 @@ const PerspectivesArticle = ({ data }) => {
 
       <Container offset="true">
         <Article>
-          <Header>
+          <Header fullWidth>
             <H1>{title && title}</H1>
             <Author
               name={author.name}

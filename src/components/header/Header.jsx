@@ -4,6 +4,6 @@ import styled from 'styled-components'
 import { space } from '../../utils/configs/confSpace'
 
 export const Header = styled.header`
-  max-width: 70ch;
+  max-width: ${props => (props.fullWidth ? 'inherit' : '70ch')};
   margin: ${space[0]};
 `
