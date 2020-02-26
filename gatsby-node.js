@@ -67,17 +67,19 @@ exports.createPages = async ({ graphql, actions }) => {
     )
   })
 
-  // Create blog posts list
+  // Create perspectives article list
   // ----------------------------------------------------------------------------
-  const blogListTemplate = path.resolve(`./src/templates/blog-list.js`)
-  const blogPostTemplate = path.resolve(`./src/templates/blog-post.js`)
+  const perspectivesList = path.resolve(`./src/templates/perspectives-list.js`)
+  const perspectiveArticle = path.resolve(
+    `./src/templates/perspectives-article.js`
+  )
 
-  const blogPages = new Promise((resolve, reject) => {
+  const perspectivesPages = new Promise((resolve, reject) => {
     resolve(
       graphql(
         `
           query {
-            posts: allContentfulBlogPost(
+            posts: allContentfulPerspective(
               sort: { order: DESC, fields: [createdAt] }
             ) {
               edges {
@@ -99,29 +101,29 @@ exports.createPages = async ({ graphql, actions }) => {
         // For each of the chunks, call createPage()
         chunks.forEach((chunk, index) => {
           createPage({
-            path: `blog/page/${index + 1}`,
-            component: blogListTemplate,
+            path: `perspectives/${index + 1}`,
+            component: perspectivesList,
             context: {
               skip: PAGE_SIZE * index,
               limit: PAGE_SIZE,
               pageNumber: index + 1,
               pageAmount: chunks,
               hasNextPage: index != chunks.length - 1,
-              nextPageLink: `/blog/page/${index + 2}`,
+              nextPageLink: `/perspectives/${index + 2}`,
               hasPrevPage: index != chunks.length + 1,
-              prevPageLink: `/blog/page/${index}`,
+              prevPageLink: `/perspectives/${index}`,
             },
           })
         })
 
-        // Create a blog page
-        result.data.posts.edges.forEach(({ node }) => {
+        // Create an article page
+        result.data.posts.edges.forEach(({ node: { slug } }) => {
           // loop over split pages
           createPage({
-            path: `blog/${node.slug}`,
-            component: blogPostTemplate,
+            path: `perspectives/${slug}`,
+            component: perspectiveArticle,
             context: {
-              slug: node.slug,
+              slug,
             },
           })
         })
@@ -129,5 +131,5 @@ exports.createPages = async ({ graphql, actions }) => {
     )
   })
 
-  return { newsPages, blogPages }
+  return { newsPages, perspectivesPages }
 }

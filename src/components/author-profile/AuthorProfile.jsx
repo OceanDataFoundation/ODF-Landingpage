@@ -87,7 +87,7 @@ const AuthorName = styled.div`
 `
 
 /**
- * This component was created to showcase author profiles in blog posts.
+ * This component was created to showcase author profiles in perspective articles.
  * @param {object} author - an object that contains information about an author
  */
 

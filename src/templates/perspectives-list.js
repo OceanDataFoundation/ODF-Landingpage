@@ -45,29 +45,29 @@ const PaginationNumbers = styled(Small)`
   color: ${colorNeutral.NEUTRAL_TINT_35};
 `
 
-const BlogListPage = ({ data, pageContext }) => {
-  const blogPosts = data.allContentfulBlogPost.edges
+const PerspectivesListPage = ({ data, pageContext }) => {
+  const articles = data.allContentfulPerspective.edges
   const pageTotal = pageContext.pageAmount.length
 
   return (
     <Layout>
-      <SEO title="Blog Posts" />
+      <SEO title="Perspectives" />
 
       <Container offset="true">
         <Header>
-          <H1>Blog</H1>
+          <H1>Perspectives</H1>
         </Header>
 
         <Masonry col="2" minWidth={700}>
-          {blogPosts.map(({ node: post }) => (
-            <LinkBlock to={`/blog/${post.slug}`} key={post.id}>
-              {post.coverImage && <Img fluid={post.coverImage.fluid} />}
+          {articles.map(({ node: article }) => (
+            <LinkBlock to={`/perspectives/${article.slug}`} key={article.id}>
+              {article.coverImage && <Img fluid={article.coverImage.fluid} />}
               <NewsBlock>
-                <H2>{post.title}</H2>
-                <P style={{ marginBottom: '1rem' }}>{post.teaser}</P>
+                <H2>{article.title}</H2>
+                <P style={{ marginBottom: '1rem' }}>{article.teaser}</P>
                 <Author
-                  name={post.author.name}
-                  picture={post.author.picture.fixed}
+                  name={article.author.name}
+                  picture={article.author.picture.fixed}
                   size="32px"
                 />
               </NewsBlock>
@@ -106,11 +106,11 @@ const BlogListPage = ({ data, pageContext }) => {
   )
 }
 
-export default BlogListPage
+export default PerspectivesListPage
 
 export const pageQuery = graphql`
-  query BlogListPageQuery($skip: Int, $limit: Int) {
-    allContentfulBlogPost(
+  query PerspectivesListQuery($skip: Int, $limit: Int) {
+    allContentfulPerspective(
       skip: $skip
       limit: $limit
       sort: { order: DESC, fields: [publicationDate] }
@@ -141,7 +141,7 @@ export const pageQuery = graphql`
   }
 `
 
-BlogListPage.propTypes = {
+PerspectivesListPage.propTypes = {
   data: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
 }

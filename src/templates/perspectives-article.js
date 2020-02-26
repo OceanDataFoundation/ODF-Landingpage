@@ -26,7 +26,7 @@ import P from '../components/typography/paragraph/Paragraph'
 
 import RichTextRenderer from '../components/rich-text-renderer/RichTextRenderer'
 
-const BlogPost = ({ data }) => {
+const PerspectivesArticle = ({ data }) => {
   const {
     title,
     teaser,
@@ -36,7 +36,7 @@ const BlogPost = ({ data }) => {
     content,
     publicationDate,
     author,
-  } = data.blogPost
+  } = data.article
 
   return (
     <Layout>
@@ -84,7 +84,7 @@ const BlogPost = ({ data }) => {
           <AuthorProfile author={author} />
         </Article>
 
-        <LinkButton to="/blog/page/1" showArrow alignCenter>
+        <LinkButton to="/perspectives/1" showArrow alignCenter>
           See all posts
         </LinkButton>
       </Container>
@@ -92,11 +92,11 @@ const BlogPost = ({ data }) => {
   )
 }
 
-export default BlogPost
+export default PerspectivesArticle
 
 export const pageQuery = graphql`
-  query BlogQuery($slug: String) {
-    blogPost: contentfulBlogPost(slug: { eq: $slug }) {
+  query ArticleQuery($slug: String) {
+    article: contentfulPerspective(slug: { eq: $slug }) {
       title
       slug
       publicationDate(formatString: "MMMM DD, YYYY")
@@ -131,6 +131,6 @@ export const pageQuery = graphql`
   }
 `
 
-BlogPost.propTypes = {
+PerspectivesArticle.propTypes = {
   data: PropTypes.objectOf(PropTypes.object.isRequired),
 }
