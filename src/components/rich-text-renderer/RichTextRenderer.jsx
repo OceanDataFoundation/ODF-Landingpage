@@ -2,6 +2,7 @@ import React from 'react'
 
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 const renderOptions = {
   renderNode: {
@@ -17,9 +18,12 @@ const renderOptions = {
     // eslint-disable-next-line react/display-name
     [INLINES.HYPERLINK]: node => {
       return (
-        <a href={node.data.uri} target="_blank" rel="noopener noreferrer">
+        <OutboundLink
+          href={node.data.uri}
+          target="_blank"
+          rel="noopener noreferrer">
           {node.content[0].value}
-        </a>
+        </OutboundLink>
       )
     },
   },
