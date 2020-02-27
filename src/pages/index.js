@@ -3,13 +3,11 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
-// Tokens
-import { colorNeutral } from '../utils/tokens/tokenColorNeutral'
-
 // Components
 import Layout from '../components/site-layout/Layout'
 import SEO from '../components/seo/seo'
 
+import { Author } from '../components/author/Author'
 import { Container } from '../components/container/Container'
 import { Box } from '../components/box/Box'
 import Hero from '../components/hero/Hero'
@@ -156,11 +154,12 @@ const IndexPage = ({ data }) => {
                         style={{ maxHeight: '240px' }}
                       />
                     )}
-                    <H3>{article.title}</H3>
-                    <Meta style={{ color: colorNeutral.NEUTRAL_TINT_15 }}>
-                      <Time dateTime={article.publicationDate} />
-                    </Meta>
-                    <P>{article.teaser}</P>
+                    <H3 style={{ marginBottom: '1rem' }}>{article.title}</H3>
+                    <P style={{ margin: '1rem 0' }}>{article.teaser}</P>
+                    <Author
+                      name={article.author.name}
+                      picture={article.author.picture.fixed}
+                    />
                   </Article>
                 </LinkBlock>
               ))}
@@ -280,7 +279,7 @@ export const query = graphql`
             content
           }
           image {
-            fluid(maxWidth: 1800, quality: 80) {
+            fluid(maxWidth: 1800, quality: 60) {
               ...GatsbyContentfulFluid
             }
           }
@@ -367,7 +366,7 @@ export const query = graphql`
           title
           subtitle
           image {
-            fluid(maxWidth: 800, quality: 80) {
+            fluid(maxWidth: 800, quality: 60) {
               ...GatsbyContentfulFluid
             }
           }
@@ -389,7 +388,7 @@ export const query = graphql`
           title
           subtitle
           image {
-            fluid(maxWidth: 800, quality: 80) {
+            fluid(maxWidth: 800, quality: 60) {
               ...GatsbyContentfulFluid
             }
           }
