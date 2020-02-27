@@ -44,7 +44,7 @@ const IndexPage = ({ data }) => {
   const statementThree = data.statementThree.edges
 
   const pressRelease = data.allContentfulPressRelease.edges
-  const news = data.allContentfulNews.edges
+  const articles = data.allContentfulPerspective.edges
 
   const events = data.allContentfulEvents.edges
 
@@ -143,28 +143,30 @@ const IndexPage = ({ data }) => {
       <Container fluid>
         <Box>
           <Container as="div">
-            <SubHeading>Recent news</SubHeading>
+            <SubHeading>Recent Perspectives</SubHeading>
             <PressRelease>
-              {news.map(({ node: post }) => (
-                <LinkBlock to={`/news/${post.slug}`} key={post.id}>
-                  <Article key={post.id}>
-                    {post.image && (
+              {articles.map(({ node: article }) => (
+                <LinkBlock
+                  to={`/perspectives/${article.slug}`}
+                  key={article.id}>
+                  <Article key={article.id}>
+                    {article.coverImage && (
                       <Img
-                        fluid={post.image.fluid}
+                        fluid={article.coverImage.fluid}
                         style={{ maxHeight: '240px' }}
                       />
                     )}
-                    <H3>{post.title}</H3>
+                    <H3>{article.title}</H3>
                     <Meta style={{ color: colorNeutral.NEUTRAL_TINT_15 }}>
-                      <Time dateTime={post.createdAt} />
+                      <Time dateTime={article.publicationDate} />
                     </Meta>
-                    <P>{post.excerpt}</P>
+                    <P>{article.teaser}</P>
                   </Article>
                 </LinkBlock>
               ))}
             </PressRelease>
-            <LinkButton to="/news/page/1" showArrow pressRelease>
-              More news
+            <LinkButton to="/perspectives/1" showArrow pressRelease>
+              More perspectives
             </LinkButton>
           </Container>
         </Box>
@@ -313,16 +315,26 @@ export const query = graphql`
         }
       }
     }
-    allContentfulNews(limit: 3, sort: { order: DESC, fields: [createdAt] }) {
+    allContentfulPerspective(
+      limit: 3
+      sort: { order: DESC, fields: [publicationDate] }
+    ) {
       edges {
         node {
           id
-          createdAt(formatString: "MMMM D, YYYY")
+          publicationDate(formatString: "MMMM D, YYYY")
           title
-          excerpt
-          author
+          teaser
           slug
-          image {
+          author {
+            name
+            picture {
+              fixed(width: 80) {
+                ...GatsbyContentfulFixed
+              }
+            }
+          }
+          coverImage {
             fluid(maxWidth: 700) {
               ...GatsbyContentfulFluid
             }
@@ -431,7 +443,7 @@ IndexPage.propTypes = {
   data: PropTypes.shape({
     allContentfulEvents: PropTypes.object.isRequired,
     allContentfulHero: PropTypes.object.isRequired,
-    allContentfulNews: PropTypes.object.isRequired,
+    allContentfulPerspective: PropTypes.object.isRequired,
     allContentfulPressRelease: PropTypes.object.isRequired,
     allContentfulQuote: PropTypes.object.isRequired,
     allContentfulVideoHero: PropTypes.object.isRequired,
