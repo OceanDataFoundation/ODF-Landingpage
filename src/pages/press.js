@@ -13,12 +13,10 @@ import Masonry from '../components/masonry/Masonry'
 import { PressReleaseBlock } from '../components/press-release-block/PressReleaseBlock'
 import { Meta } from '../components/meta/Meta'
 import { Small } from '../components/typography/small/Small'
-import P from '../components/typography/paragraph/Paragraph'
 import LinkCta from '../components/link-cta/LinkCta'
 
 const PressRelease = ({ data }) => {
   const pressReleasePosts = data.allContentfulPressRelease.edges
-
   return (
     <Layout>
       <SEO title="Press releases" />
@@ -35,7 +33,11 @@ const PressRelease = ({ data }) => {
                   {post.location} | {post.date}
                 </Small>
               </Meta>
-              <P>{post.excerpt.excerpt}</P>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: post.excerpt.childMarkdownRemark.html,
+                }}
+              />
               {post.link && (
                 <LinkCta
                   href={post.link}
@@ -64,7 +66,9 @@ export const query = graphql`
           location
           date(formatString: "MMMM D, YYYY")
           excerpt {
-            excerpt
+            childMarkdownRemark {
+              html
+            }
           }
           link
         }

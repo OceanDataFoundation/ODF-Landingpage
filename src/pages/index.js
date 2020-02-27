@@ -43,7 +43,7 @@ const IndexPage = ({ data }) => {
   const statementTwo = data.statementTwo.edges
   const statementThree = data.statementThree.edges
 
-  const pressRelease = data.allContentfulPressRelease.edges
+  const pressReleases = data.allContentfulPressRelease.edges
   const articles = data.allContentfulPerspective.edges
 
   const events = data.allContentfulEvents.edges
@@ -192,7 +192,7 @@ const IndexPage = ({ data }) => {
           <Container as="div">
             <SubHeading>Press release</SubHeading>
             <PressRelease columnGap="large">
-              {pressRelease.map(({ node: post }) => (
+              {pressReleases.map(({ node: post }) => (
                 <Article key={post.id}>
                   <H3>{post.title}</H3>
                   <Meta>
