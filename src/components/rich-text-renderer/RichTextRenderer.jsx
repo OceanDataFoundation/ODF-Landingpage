@@ -10,7 +10,7 @@ const renderOptions = {
     [BLOCKS.EMBEDDED_ASSET]: node => {
       return (
         <img
-          src={`${node.data.target.fields.file['en-US'].url}?w=1200&q=80`}
+          src={`${node.data.target.fields.file['en-US'].url}?w=1200&q=60`}
           alt={node.data.target.fields.title['en-US']}
         />
       )

@@ -68,7 +68,7 @@ const IndexPage = ({ data }) => {
       />
 
       {heroPosts.map(({ node: post }) => (
-        <Hero key={post.id} bgImage={post.image.file.url}>
+        <Hero key={post.id} bgImage={post.image.fluid.src}>
           <Intro>
             <H1 size="larger" invert>
               {post.title}
@@ -280,8 +280,8 @@ export const query = graphql`
             content
           }
           image {
-            file {
-              url
+            fluid(maxWidth: 1800, quality: 80) {
+              ...GatsbyContentfulFluid
             }
           }
         }
