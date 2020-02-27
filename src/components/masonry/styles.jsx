@@ -21,6 +21,15 @@ export const MasonryDiv = styled.div`
   ${mediaQuery.BREAKPOINT_2`
     grid-template-columns: ${props =>
       props.col === '3'
+        ? `repeat(2, 1fr)`
+        : props.col === '2'
+        ? `repeat(2, 1fr)`
+        : `repeat(1, 1fr)`};
+  `};
+
+  ${mediaQuery.BREAKPOINT_3`
+    grid-template-columns: ${props =>
+      props.col === '3'
         ? `repeat(3, 1fr)`
         : props.col === '2'
         ? `repeat(2, 1fr)`
