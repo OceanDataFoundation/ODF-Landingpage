@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 // Tokens
 import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
@@ -32,7 +31,7 @@ const Li = styled.li`
   }
 `
 
-const A = styled(OutboundLink)`
+const A = styled.a`
   padding-bottom: ${space[2]};
   color: ${props =>
     props.invert

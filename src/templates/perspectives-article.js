@@ -13,8 +13,9 @@ import {
   ArticleContainer,
   ArticleContent,
 } from '../components/article/Article'
+import { Author } from '../components/author/Author'
+import { AuthorProfile } from '../components/author-profile/AuthorProfile'
 import { Header } from '../components/header/Header'
-import { Meta } from '../components/meta/Meta'
 import { Figure } from '../components/figure/Figure'
 import { Figcaption } from '../components/figcaption/Figcaption'
 import { TagList } from '../components/tag-list/TagList'
@@ -23,67 +24,67 @@ import LinkButton from '../components/link-button/LinkButton'
 import { H1 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 
-const NewsPage = ({ data }) => {
+import RichTextRenderer from '../components/rich-text-renderer/RichTextRenderer'
+
+const PerspectivesArticle = ({ data }) => {
   const {
-    createdAt,
-    author,
     title,
-    excerpt,
-    image,
-    imageCaption,
-    tags,
+    teaser,
+    coverImage,
+    coverCaption,
+    keywords,
     content,
-  } = data.news
+    publicationDate,
+    author,
+  } = data.article
 
   return (
     <Layout>
       <SEO
         title={title}
-        metaDescription={excerpt}
-        image={`https:${image.file.url}`}
+        metaDescription={teaser}
+        image={`https:${coverImage.file.url}`}
       />
 
       <Container offset="true">
         <Article>
-          <Header>
-            <Meta>
-              {createdAt}&nbsp;&nbsp;|&nbsp;&nbsp;By: {author && author}
-            </Meta>
+          <Header fullWidth>
             <H1>{title && title}</H1>
-            <P lead>{excerpt && excerpt}</P>
+            <Author
+              name={author.name}
+              picture={author.picture.fixed}
+              date={publicationDate}
+            />
           </Header>
 
-          {image && (
+          {coverImage && (
             <Figure>
-              <Img fluid={image.fluid} style={{ maxHeight: '600px' }} />
-              {imageCaption && (
+              <Img fluid={coverImage.fluid} style={{ maxHeight: '600px' }} />
+              {coverCaption && (
                 <Figcaption as="figcaption">
-                  {imageCaption.imageCaption && imageCaption.imageCaption}
+                  {coverCaption.coverCaption && coverCaption.coverCaption}
                 </Figcaption>
               )}
             </Figure>
           )}
 
           <ArticleContainer>
+            {teaser && <P lead>{teaser}</P>}
             <ArticleContent>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: content.childMarkdownRemark.html,
-                }}
-              />
-
-              {tags && (
+              <RichTextRenderer richTextJson={content.json} />
+              {keywords && (
                 <TagList>
-                  {tags.map((tag, index) => (
+                  {keywords.map((tag, index) => (
                     <li key={index}>{tag}</li>
                   ))}
                 </TagList>
               )}
             </ArticleContent>
           </ArticleContainer>
+          <AuthorProfile author={author} />
         </Article>
 
-        <LinkButton to="/news/page/1" showArrow alignCenter>
+        <LinkButton to="/perspectives/1" showArrow alignCenter>
           See all posts
         </LinkButton>
       </Container>
@@ -91,17 +92,29 @@ const NewsPage = ({ data }) => {
   )
 }
 
-export default NewsPage
+export default PerspectivesArticle
 
 export const pageQuery = graphql`
-  query NewsQuery($slug: String) {
-    news: contentfulNews(slug: { eq: $slug }) {
+  query ArticleQuery($slug: String) {
+    article: contentfulPerspective(slug: { eq: $slug }) {
       title
       slug
-      createdAt(formatString: "MMMM DD, YYYY")
-      excerpt
-      author
-      image {
+      publicationDate(formatString: "MMMM DD, YYYY")
+      teaser
+      author {
+        picture {
+          fixed(width: 80) {
+            ...GatsbyContentfulFixed
+          }
+        }
+        name
+        affiliation
+        biography {
+          biography
+        }
+        pageUrl
+      }
+      coverImage {
         fluid(maxWidth: 1200, quality: 80) {
           ...GatsbyContentfulFluid
         }
@@ -109,19 +122,15 @@ export const pageQuery = graphql`
           url
         }
       }
-      imageCaption {
-        imageCaption
-      }
+      coverCaption
       content {
-        childMarkdownRemark {
-          html
-        }
+        json
       }
-      tags
+      keywords
     }
   }
 `
 
-NewsPage.propTypes = {
+PerspectivesArticle.propTypes = {
   data: PropTypes.objectOf(PropTypes.object.isRequired),
 }

@@ -1,5 +1,4 @@
 const path = require(`path`)
-const slash = require(`slash`)
 const _ = require('lodash')
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -11,7 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const newsListTemplate = path.resolve(`./src/templates/news-list.js`)
   const newsPostTemplate = path.resolve(`./src/templates/news-post.js`)
 
-  return new Promise((resolve, reject) => {
+  const newsPages = new Promise((resolve, reject) => {
     resolve(
       graphql(
         `
@@ -67,4 +66,70 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     )
   })
+
+  // Create perspectives article list
+  // ----------------------------------------------------------------------------
+  const perspectivesList = path.resolve(`./src/templates/perspectives-list.js`)
+  const perspectiveArticle = path.resolve(
+    `./src/templates/perspectives-article.js`
+  )
+
+  const perspectivesPages = new Promise((resolve, reject) => {
+    resolve(
+      graphql(
+        `
+          query {
+            posts: allContentfulPerspective(
+              sort: { order: DESC, fields: [createdAt] }
+            ) {
+              edges {
+                node {
+                  slug
+                }
+              }
+            }
+          }
+        `
+      ).then(result => {
+        if (result.errors) {
+          reject(result.errors)
+        }
+
+        // Break the entries into chunks according to
+        let chunks = _.chunk(result.data.posts.edges, PAGE_SIZE)
+
+        // For each of the chunks, call createPage()
+        chunks.forEach((chunk, index) => {
+          createPage({
+            path: `perspectives/${index + 1}`,
+            component: perspectivesList,
+            context: {
+              skip: PAGE_SIZE * index,
+              limit: PAGE_SIZE,
+              pageNumber: index + 1,
+              pageAmount: chunks,
+              hasNextPage: index != chunks.length - 1,
+              nextPageLink: `/perspectives/${index + 2}`,
+              hasPrevPage: index != chunks.length + 1,
+              prevPageLink: `/perspectives/${index}`,
+            },
+          })
+        })
+
+        // Create an article page
+        result.data.posts.edges.forEach(({ node: { slug } }) => {
+          // loop over split pages
+          createPage({
+            path: `perspectives/${slug}`,
+            component: perspectiveArticle,
+            context: {
+              slug,
+            },
+          })
+        })
+      })
+    )
+  })
+
+  return { newsPages, perspectivesPages }
 }

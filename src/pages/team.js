@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
@@ -91,7 +92,7 @@ const TeamListPage = ({ data }) => {
 
       <Container offset="true">
         {teamPage.map(({ node: post }) => (
-          <Header>
+          <Header key={post.id}>
             <H1>{post.title}</H1>
             <div
               dangerouslySetInnerHTML={{
@@ -184,3 +185,7 @@ export const pageQuery = graphql`
     }
   }
 `
+
+TeamListPage.propTypes = {
+  data: PropTypes.object,
+}

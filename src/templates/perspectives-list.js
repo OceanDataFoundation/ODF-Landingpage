@@ -22,7 +22,7 @@ import { Header } from '../components/header/Header'
 import Masonry from '../components/masonry/Masonry'
 import LinkBlock from '../components/link-block/LinkBlock'
 import { NewsBlock } from '../components/news-block/NewsBlock'
-import { Meta } from '../components/meta/Meta'
+import { Author } from '../components/author/Author'
 
 import { H1, H2 } from '../components/typography/heading/Heading'
 import { Small } from '../components/typography/small/Small'
@@ -45,91 +45,92 @@ const PaginationNumbers = styled(Small)`
   color: ${colorNeutral.NEUTRAL_TINT_35};
 `
 
-const NewsListPage = ({ data, pageContext }) => {
-  const newsPosts = data.allContentfulNews.edges
+const PerspectivesListPage = ({ data, pageContext }) => {
+  const articles = data.allContentfulPerspective.edges
   const pageTotal = pageContext.pageAmount.length
 
   return (
     <Layout>
-      <SEO title="News posts" />
+      <SEO title="Perspectives" />
 
       <Container offset="true">
         <Header>
-          <H1>News</H1>
+          <H1>Perspectives</H1>
         </Header>
 
         <Masonry col="2" minWidth={700}>
-          {newsPosts.map(({ node: post }) => (
-            <LinkBlock to={`/news/${post.slug}`} key={post.id}>
-              {post.image && <Img fluid={post.image.fluid} />}
+          {articles.map(({ node: article }) => (
+            <LinkBlock to={`/perspectives/${article.slug}`} key={article.id}>
+              {article.coverImage && <Img fluid={article.coverImage.fluid} />}
               <NewsBlock>
-                <Meta>
-                  <Small>{post.createdAt}</Small>
-                </Meta>
-                <H2>{post.title}</H2>
-                <P>{post.excerpt}</P>
+                <H2>{article.title}</H2>
+                <P style={{ marginBottom: '1rem' }}>{article.teaser}</P>
+                <Author
+                  name={article.author.name}
+                  picture={article.author.picture.fixed}
+                  size="32px"
+                />
               </NewsBlock>
             </LinkBlock>
           ))}
         </Masonry>
 
-        <Pagination>
-          {pageContext.pageNumber === 1 ? (
-            <Small
-              style={{
-                color: colorNeutral.NEUTRAL_TINT_70,
-              }}>
-              Previous page
-            </Small>
-          ) : (
-            pageContext &&
-            pageContext.hasPrevPage && (
-              <Link to={pageContext.prevPageLink}>
-                <Small>Previous page</Small>
-              </Link>
-            )
-          )}
+        {pageContext.hasNextPage && (
+          <Pagination>
+            {pageContext.pageNumber === 1 ? (
+              <Small
+                style={{
+                  color: colorNeutral.NEUTRAL_TINT_70,
+                }}>
+                Previous page
+              </Small>
+            ) : (
+              pageContext.hasPrevPage && (
+                <Link to={pageContext.prevPageLink}>
+                  <Small>Previous page</Small>
+                </Link>
+              )
+            )}
 
-          <PaginationNumbers>
-            <Strong>{pageContext.pageNumber}</Strong> / {pageTotal}
-          </PaginationNumbers>
+            <PaginationNumbers>
+              <Strong>{pageContext.pageNumber}</Strong> / {pageTotal}
+            </PaginationNumbers>
 
-          {pageContext && pageContext.hasNextPage ? (
             <Link to={pageContext.nextPageLink}>
               <Small>Next page</Small>
             </Link>
-          ) : (
-            <Small
-              style={{
-                color: colorNeutral.NEUTRAL_TINT_70,
-              }}>
-              Next page
-            </Small>
-          )}
-        </Pagination>
+          </Pagination>
+        )}
       </Container>
     </Layout>
   )
 }
 
-export default NewsListPage
+export default PerspectivesListPage
 
 export const pageQuery = graphql`
-  query NewsListPageQuery($skip: Int, $limit: Int) {
-    allContentfulNews(
+  query PerspectivesListQuery($skip: Int, $limit: Int) {
+    allContentfulPerspective(
       skip: $skip
       limit: $limit
-      sort: { order: DESC, fields: [createdAt] }
+      sort: { order: DESC, fields: [publicationDate] }
     ) {
       edges {
         node {
           id
-          createdAt(formatString: "MMMM D, YYYY")
+          publicationDate(formatString: "MMMM D, YYYY")
           title
-          excerpt
-          author
+          teaser
           slug
-          image {
+          author {
+            name
+            picture {
+              fixed(width: 80) {
+                ...GatsbyContentfulFixed
+              }
+            }
+          }
+          coverImage {
             fluid(maxWidth: 700) {
               ...GatsbyContentfulFluid
             }
@@ -140,7 +141,7 @@ export const pageQuery = graphql`
   }
 `
 
-NewsListPage.propTypes = {
+PerspectivesListPage.propTypes = {
   data: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
 }

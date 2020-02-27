@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/site-layout/Layout'
@@ -61,3 +62,15 @@ export const pageQuery = graphql`
     }
   }
 `
+
+CookiesPage.propTypes = {
+  data: PropTypes.objectOf(
+    PropTypes.shape({
+      content: PropTypes.object.isRequired,
+      metaDescription: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      createdAt: PropTypes.string,
+      subtitle: PropTypes.string,
+    })
+  ).isRequired,
+}
