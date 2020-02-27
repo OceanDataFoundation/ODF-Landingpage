@@ -6,6 +6,9 @@ import Img from 'gatsby-image'
 import Layout from '../components/site-layout/Layout'
 import SEO from '../components/seo/seo'
 
+// Utils
+import { space } from '../utils/configs/confSpace.js'
+
 // Components
 import { Container } from '../components/container/Container'
 import {
@@ -37,6 +40,7 @@ const PerspectivesArticle = ({ data }) => {
     publicationDate,
     author,
   } = data.article
+  console.log('TCL: PerspectivesArticle -> coverCaption', coverCaption)
 
   return (
     <Layout>
@@ -61,15 +65,17 @@ const PerspectivesArticle = ({ data }) => {
             <Figure>
               <Img fluid={coverImage.fluid} style={{ maxHeight: '600px' }} />
               {coverCaption && (
-                <Figcaption as="figcaption">
-                  {coverCaption.coverCaption && coverCaption.coverCaption}
-                </Figcaption>
+                <Figcaption as="figcaption">{coverCaption}</Figcaption>
               )}
             </Figure>
           )}
 
           <ArticleContainer>
-            {teaser && <P lead>{teaser}</P>}
+            {teaser && (
+              <P lead style={{ marginTop: `${space[6]}` }}>
+                {teaser}
+              </P>
+            )}
             <ArticleContent>
               <RichTextRenderer richTextJson={content.json} />
               {keywords && (

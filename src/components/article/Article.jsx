@@ -19,7 +19,7 @@ export const ArticleContent = styled.div`
   margin-bottom: ${space[6]};
 
   ${mediaQuery.BREAKPOINT_3`
-    margin-top: ${space[8]};
+    margin-top: ${space[6]};
   `};
 
   * {
