@@ -80,7 +80,7 @@ exports.createPages = async ({ graphql, actions }) => {
         `
           query {
             posts: allContentfulPerspective(
-              sort: { order: DESC, fields: [createdAt] }
+              sort: { order: DESC, fields: [publicationDate] }
             ) {
               edges {
                 node {
