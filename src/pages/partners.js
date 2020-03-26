@@ -15,14 +15,23 @@ import { H1 } from '../components/typography/heading/Heading'
 import { Partner } from '../components/partner/Partner'
 
 const PartnersPage = ({ data }) => {
+  console.log('PartnersPage -> data', data)
   const partners = data.allContentfulPartner.edges
-  console.log('partners -> partners', partners)
+  const { page } = data
   return (
     <Layout>
-      <SEO title="Partners - Ocean Data Foundation " />
+      <SEO title={page.title} />
       <Container offset="true">
         <Header>
-          <H1>Partners</H1>
+          <H1>{page.title}</H1>
+          {page.content && (
+            <Header
+              as="div"
+              dangerouslySetInnerHTML={{
+                __html: page.content.childMarkdownRemark.html,
+              }}
+            />
+          )}
         </Header>
         {partners.map(({ node }) => (
           <Partner partner={node} key={node.id} />
@@ -36,6 +45,14 @@ export default PartnersPage
 
 export const pageQuery = graphql`
   query PartnerPageQuery {
+    page: contentfulPage(id: { eq: "0114f4de-8ebd-5c58-ad57-970fdbf8b010" }) {
+      title
+      content {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
     allContentfulPartner {
       edges {
         node {
