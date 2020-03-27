@@ -25,6 +25,13 @@ const PartnerContainer = styled.div`
   `}
 `
 
+const PartnerImage = styled(Img)`
+  margin: auto;
+  ${mediaQuery.BREAKPOINT_1`
+    margin: auto 0;
+`}
+`
+
 const PartnerText = styled.div`
   flex: 1;
   max-width: 70ch;
@@ -33,10 +40,12 @@ const PartnerText = styled.div`
 export const Partner = ({ partner }) => {
   return (
     <PartnerContainer>
-      <Img fixed={partner.logo.fixed} key={partner.id} />
+      <PartnerImage fixed={partner.logo.fixed} key={partner.id} />
       <PartnerText>
         <H3>{partner.name}</H3>
-        <P>{partner.description.description}</P>
+        {partner.description.description && (
+          <P>{partner.description.description}</P>
+        )}
       </PartnerText>
     </PartnerContainer>
   )
