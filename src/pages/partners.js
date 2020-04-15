@@ -61,6 +61,7 @@ export const pageQuery = graphql`
           description {
             description
           }
+          url
           logo {
             fixed(width: 256) {
               width

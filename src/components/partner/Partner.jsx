@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import Img from 'gatsby-image'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
@@ -9,20 +10,29 @@ import { space } from '../../utils/configs/confSpace'
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 // Components
-import Img from 'gatsby-image'
 import P from '../typography/paragraph/Paragraph'
 import { H3 } from '../typography/heading/Heading'
 
-const PartnerContainer = styled.div`
+const PartnerContainer = styled.a`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  margin-bottom: ${space[6]};
+  margin-bottom: ${space[8]};
   column-gap: ${space[6]};
+
+  cursor: pointer;
+  border-bottom: none;
 
   ${mediaQuery.BREAKPOINT_3`
     flex-direction: row;
   `}
+`
+
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 256px;
 `
 
 const PartnerImage = styled(Img)`
@@ -35,17 +45,29 @@ const PartnerImage = styled(Img)`
 const PartnerText = styled.div`
   flex: 1;
   max-width: 70ch;
+
+  ${mediaQuery.BREAKPOINT_3`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    h3 {
+      text-align: center;
+    }
+`}
 `
 
 export const Partner = ({ partner }) => {
+  const { url, name, description, logo, id } = partner
+
   return (
-    <PartnerContainer>
-      <PartnerImage fixed={partner.logo.fixed} key={partner.id} />
+    <PartnerContainer href={url} target="_blank" rel="noopener noreferrer">
+      <ImageContainer>
+        <PartnerImage fixed={logo.fixed} key={id} />
+      </ImageContainer>
       <PartnerText>
-        <H3>{partner.name}</H3>
-        {partner.description.description && (
-          <P>{partner.description.description}</P>
-        )}
+        {name && <H3>{name}</H3>}
+        {description && <P>{description.description}</P>}
       </PartnerText>
     </PartnerContainer>
   )
