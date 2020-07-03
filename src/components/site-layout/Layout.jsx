@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
           title
         }
       }
-      contentfulAsset(title: { eq: "odf-logo" }) {
+      contentfulAsset(title: { eq: "odp-logo" }) {
         description
         file {
           url
