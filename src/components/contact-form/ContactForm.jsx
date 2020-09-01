@@ -55,40 +55,43 @@ const ContactForm = () => {
 
       <InputCheckbox checked={checked} onChange={handleChange} />
 
-      {checked && (
-        <>
-          <Label>
-            Profession
-            <TextInput
-              placeholder="Researcher, student, CEO, unemployed"
-              type="text"
-              name="profession"
-              id="profession"
-            />
-          </Label>
+      <div
+        style={{
+          width: '100%',
+          display: checked ? 'inline-flex' : 'none',
+          flexDirection: 'column',
+        }}>
+        <Label>
+          Profession
+          <TextInput
+            placeholder="Researcher, student, CEO, unemployed"
+            type="text"
+            name="profession"
+            id="profession"
+          />
+        </Label>
 
-          <Label>
-            Organization
-            <TextInput
-              placeholder="University, Industry, Government, Citizen Science etc."
-              type="text"
-              name="organization"
-              id="organization"
-            />
-          </Label>
+        <Label>
+          Organization
+          <TextInput
+            placeholder="University, Industry, Government, Citizen Science etc."
+            type="text"
+            name="organization"
+            id="organization"
+          />
+        </Label>
 
-          <Label>
-            Expertise <small>(Required)</small>
-            <TextInput
-              placeholder="Data Ingestion, Ocean Science, SDKs, UX/UI"
-              type="text"
-              name="expertise"
-              id="expertise"
-              required
-            />
-          </Label>
-        </>
-      )}
+        <Label>
+          Expertise <small>(Required)</small>
+          <TextInput
+            placeholder="Data Ingestion, Ocean Science, SDKs, UX/UI"
+            type="text"
+            name="expertise"
+            id="expertise"
+            required
+          />
+        </Label>
+      </div>
 
       <Label htmlFor="subject">
         Subject <small>(Required)</small>
