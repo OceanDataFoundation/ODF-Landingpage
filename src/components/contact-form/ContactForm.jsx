@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 // Components
 import LinkButton from '../../components/link-button/LinkButton'
 import { TextInput } from '../../components/input-text/inputText'
+import { InputCheckbox } from '../../components/input-checkbox/InputCheckbox'
 import { Label } from '../../components/label/label'
 
 // Style
@@ -12,6 +13,9 @@ const Form = styled.form`
 `
 
 const ContactForm = () => {
+  const [checked, setChecked] = useState(false)
+  const handleChange = () => setChecked(!checked)
+
   return (
     <Form
       name="contact"
@@ -28,43 +32,88 @@ const ContactForm = () => {
       </p>
 
       <Label htmlFor="name">
-        Name
-        <TextInput placeholder="Your Name" type="text" name="name" id="name" />
+        Name <small>(Required)</small>
+        <TextInput
+          placeholder="Your Name"
+          type="text"
+          name="name"
+          id="name"
+          required
+        />
       </Label>
 
       <Label htmlFor="email">
-        Email
+        Email <small>(Required)</small>
         <TextInput
           placeholder="your@email.com"
           type="email"
           name="email"
           id="email"
+          required
         />
       </Label>
 
-      <Label htmlFor="checkbox" style={{ marginBottom: '20px' }}>
-        <input type="checkbox" name="checkbox" id="checkbox" />I want to
-        volunteer as an early adopter
-      </Label>
+      <InputCheckbox checked={checked} onChange={handleChange} />
+
+      {checked && (
+        <>
+          <Label>
+            Profession
+            <TextInput
+              placeholder="Researcher, student, CEO, unemployed"
+              type="text"
+              name="profession"
+              id="profession"
+            />
+          </Label>
+
+          <Label>
+            Organization
+            <TextInput
+              placeholder="University, Industry, Government, Citizen Science etc."
+              type="text"
+              name="organization"
+              id="organization"
+            />
+          </Label>
+
+          <Label>
+            Expertise <small>(Required)</small>
+            <TextInput
+              placeholder="Data Ingestion, Ocean Science, SDKs, UX/UI"
+              type="text"
+              name="expertise"
+              id="expertise"
+              required
+            />
+          </Label>
+        </>
+      )}
 
       <Label htmlFor="subject">
-        Subject
+        Subject <small>(Required)</small>
         <TextInput
           placeholder="Hello, Ocean Data Platform team!"
           type="text"
           name="subject"
           id="subject"
+          required
         />
       </Label>
 
       <Label htmlFor="message">
-        Message
+        Message <small>(Required)</small>
         <TextInput
           as="textarea"
           id="message"
-          placeholder="Your shoutout for us"
+          placeholder={
+            checked
+              ? 'Your message and early adopter request'
+              : 'Your shoutout for us'
+          }
           name="message"
           rows="10"
+          required
         />
       </Label>
 
