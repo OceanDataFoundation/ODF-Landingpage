@@ -32,7 +32,10 @@ const ContactForm = () => {
       </p>
 
       <Label htmlFor="name">
-        Name <small>(Required)</small>
+        Name{' '}
+        <span style={{ color: 'red', fontWeight: 'bold' }} aria-hidden="true">
+          *
+        </span>
         <TextInput
           placeholder="Your Name"
           type="text"
@@ -43,7 +46,10 @@ const ContactForm = () => {
       </Label>
 
       <Label htmlFor="email">
-        Email <small>(Required)</small>
+        Email{' '}
+        <span style={{ color: 'red', fontWeight: 'bold' }} aria-hidden="true">
+          *
+        </span>
         <TextInput
           placeholder="your@email.com"
           type="email"
@@ -82,7 +88,10 @@ const ContactForm = () => {
         </Label>
 
         <Label>
-          Expertise <small>(Required)</small>
+          Expertise{' '}
+          <span style={{ color: 'red', fontWeight: 'bold' }} aria-hidden="true">
+            *
+          </span>
           <TextInput
             placeholder="Data Ingestion, Ocean Science, SDKs, UX/UI"
             type="text"
@@ -94,7 +103,10 @@ const ContactForm = () => {
       </div>
 
       <Label htmlFor="subject">
-        Subject <small>(Required)</small>
+        Subject{' '}
+        <span style={{ color: 'red', fontWeight: 'bold' }} aria-hidden="true">
+          *
+        </span>
         <TextInput
           placeholder="Hello, Ocean Data Platform team!"
           type="text"
@@ -105,7 +117,10 @@ const ContactForm = () => {
       </Label>
 
       <Label htmlFor="message">
-        Message <small>(Required)</small>
+        Message{' '}
+        <span style={{ color: 'red', fontWeight: 'bold' }} aria-hidden="true">
+          *
+        </span>
         <TextInput
           as="textarea"
           id="message"
