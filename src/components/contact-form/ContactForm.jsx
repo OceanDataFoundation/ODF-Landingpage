@@ -88,7 +88,7 @@ const ContactForm = () => {
             type="text"
             name="expertise"
             id="expertise"
-            required={checked && 'true'}
+            required={checked && true}
           />
         </Label>
       </div>
