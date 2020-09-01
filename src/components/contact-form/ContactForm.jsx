@@ -42,10 +42,15 @@ const ContactForm = () => {
         />
       </Label>
 
+      <Label htmlFor="checkbox" style={{ marginBottom: '20px' }}>
+        <input type="checkbox" name="checkbox" id="checkbox" />I want to
+        volunteer as an early adopter
+      </Label>
+
       <Label htmlFor="subject">
         Subject
         <TextInput
-          placeholder="Hello Ocean Data Platform"
+          placeholder="Hello, Ocean Data Platform team!"
           type="text"
           name="subject"
           id="subject"
@@ -57,7 +62,7 @@ const ContactForm = () => {
         <TextInput
           as="textarea"
           id="message"
-          placeholder="Hello, ..."
+          placeholder="Your shoutout for us"
           name="message"
           rows="10"
         />
