@@ -21,11 +21,15 @@ const FlexContainer = styled.div`
   flex-direction: column;
 
   > * {
-    flex: 1;
+    width: 45%;
   }
 
   & > p {
     max-width: 70ch;
+  }
+
+  h2 {
+    font-size: 2rem;
   }
 
   ${mediaQuery.BREAKPOINT_3`
@@ -55,8 +59,14 @@ const ContactPage = ({ data }) => {
           <H1>{subtitle}</H1>
         </Header>
         <FlexContainer>
-          <P>{content.content}</P>
-          <ContactForm />
+          <div
+            dangerouslySetInnerHTML={{
+              __html: content.childMarkdownRemark.html,
+            }}
+          />
+          <div>
+            <ContactForm />
+          </div>
         </FlexContainer>
       </Container>
     </Layout>
@@ -77,7 +87,9 @@ export const pageQuery = graphql`
       subtitle
       metaDescription
       content {
-        content
+        childMarkdownRemark {
+          html
+        }
       }
     }
   }
