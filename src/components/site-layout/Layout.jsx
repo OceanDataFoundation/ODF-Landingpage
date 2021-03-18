@@ -5,17 +5,16 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
+import React from 'react'
 import styled from 'styled-components'
-
-// Components
-import Header from '../site-header/Header'
-import Footer from '../site-footer/Footer'
 
 // Style
 import { GlobalStyle } from '../../utils/styles/global-style'
+import Footer from '../site-footer/Footer'
+// Components
+import Header from '../site-header/Header'
 
 const ContentWrap = styled.div`
   min-height: 100vh;
@@ -46,7 +45,7 @@ const Layout = ({ children }) => {
           title
         }
       }
-      contentfulAsset(title: { eq: "odp-logo" }) {
+      contentfulAsset(contentful_id: { eq: "65Do8Cm2Ri4hQcJvhxTXP4" }) {
         description
         file {
           url

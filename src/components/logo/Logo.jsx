@@ -1,21 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
-
-// Token
-import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
-
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-
 // Styles
 import { SrOnly } from '../../utils/styles/utility-classes/sr-only'
 import { Transition } from '../../utils/styles/utility-classes/transition'
-
+// Token
+import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
 // Components
 import { H1 } from '../typography/heading/Heading'
 
