@@ -16,7 +16,39 @@
     If you don't have Yarn installed on your machine, follow installation
     instructions from [yarnpkg.org](https://yarnpkg.com/en/docs/install)
 
-1)  **Start developing.**
+2.  **Environments**
+
+    In the root folder of the project create two files; `.env.development` and
+    `.env.production`
+
+    The content of .env.development is:
+
+    ```
+    # All environment variables will be sourced
+    # and made available to gatsby-config.js, gatsby-node.js, etc.
+    # Do NOT commit this file to source control
+    CONTENTFUL_SPACE_ID='SPACE_ID_FROM_CONTENTFUL'
+    CONTENTFUL_ACCESS_TOKEN='ACCESS_TOKEN_FROM_CONTENTFUL'
+    CONTENTFUL_ENVIRONMENT='dev'
+    ```
+
+    and the content of .env.production is:
+
+    ```
+    # All environment variables will be sourced
+    # and made available to gatsby-config.js, gatsby-node.js, etc.
+    # Do NOT commit this file to source control
+    CONTENTFUL_SPACE_ID='SPACE_ID_FROM_CONTENTFUL'
+    CONTENTFUL_ACCESS_TOKEN='ACCESS_TOKEN_FROM_CONTENTFUL'
+    CONTENTFUL_ENVIRONMENT='master'
+    ```
+
+    SPACE_ID and ACCESS_TOKEN is here:
+
+    [Contentful](https://app.contentful.com/spaces/5025ikbx2abh/) -> API keys ->
+    Choose Gatsby Ocean Data Foundation API keys
+
+3.  **Start developing.**
 
     Navigate into the site’s directory and start it up.
 
@@ -28,7 +60,7 @@
     NB: Make sure you are on the development- or a feature branch before
     committing changes in your code.
 
-1)  **Open the source code and start editing!**
+4.  **Open the source code and start editing!**
 
     The site is now running at `http://localhost:8000`!
 
