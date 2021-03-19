@@ -1,20 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-
 import Img from 'gatsby-image'
-
-//Components
-import { H3 } from '../typography/heading/Heading'
-import P from '../typography/paragraph/Paragraph'
-import { Small } from '../typography/small/Small'
-import LinkCta from '../link-cta/LinkCta'
+import PropTypes from 'prop-types'
+import React from 'react'
+import styled from 'styled-components'
 
 // Utils
 import { space } from '../../utils/configs/confSpace'
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 import { borderWidth } from '../../utils/tokens/tokenBorderWidth'
+import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import LinkCta from '../link-cta/LinkCta'
+//Components
+import { H3 } from '../typography/heading/Heading'
+import P from '../typography/paragraph/Paragraph'
+import { Small } from '../typography/small/Small'
 
 const Container = styled.div`
   display: flex;

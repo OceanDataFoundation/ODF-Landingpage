@@ -8,7 +8,7 @@
 import { css } from 'styled-components'
 
 // Token
-import { colorNeutral } from '../../tokens/tokenColorNeutral'
+import { colorNeutral } from '../../tokens/tokenColorBrand'
 
 export const Hr = css`
   margin-left: 0;

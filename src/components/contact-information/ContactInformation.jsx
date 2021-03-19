@@ -1,19 +1,16 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
-
-// Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
-
-// Components
-import P from '../typography/paragraph/Paragraph'
-import { H6 } from '../typography/heading/Heading'
-
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
+// Tokens
+import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { H6 } from '../typography/heading/Heading'
+// Components
+import P from '../typography/paragraph/Paragraph'
 
 const ContactInformation = ({ contactInformation, invert }) => {
   const {

@@ -1,18 +1,15 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
-
-// Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
-
-// Components
-import { H6 } from '../typography/heading/Heading'
-
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
+// Tokens
+import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
+// Components
+import { H6 } from '../typography/heading/Heading'
 
 const Ul = styled.ul`
   padding: ${space[0]};

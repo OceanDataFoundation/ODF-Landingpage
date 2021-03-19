@@ -1,33 +1,27 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import PropTypes from 'prop-types'
+import React from 'react'
+import styled from 'styled-components'
 
-import Layout from '../components/site-layout/Layout'
+// Components
+import { Box } from '../components/box/Box'
+import { Container } from '../components/container/Container'
+import { Header } from '../components/header/Header'
+import PressRelease from '../components/press-release/PressRelease'
 import SEO from '../components/seo/seo'
-
-// Tokens
-import { colorNeutral } from '../utils/tokens/tokenColorNeutral'
-
+import Layout from '../components/site-layout/Layout'
+import { H1, H2 } from '../components/typography/heading/Heading'
+import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 // Config
 import { space } from '../utils/configs/confSpace'
 import { typeScale } from '../utils/configs/confTypeScale'
-
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
-
 // Styles
 import { Transition } from '../utils/styles/utility-classes/transition'
-
-// Components
-import { Container } from '../components/container/Container'
-import { Box } from '../components/box/Box'
-import { Header } from '../components/header/Header'
-import PressRelease from '../components/press-release/PressRelease'
-
-import { H1, H2 } from '../components/typography/heading/Heading'
-import { SubHeading } from '../components/typography/sub-heading/SubHeading'
+// Tokens
+import { colorNeutral } from '../utils/tokens/tokenColorBrand'
 
 const TeamMember = styled.div`
   position: relative;

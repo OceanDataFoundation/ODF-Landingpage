@@ -1,21 +1,15 @@
-import React from 'react'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
 
-// Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-
-// Config
 import { space } from '../../utils/configs/confSpace'
-
-// Components
-import { Container } from '../container/Container'
+import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 import ContactInformation from '../contact-information/ContactInformation'
+import { Container } from '../container/Container'
 import LinkList from '../link-list/LinkList'
 import { Small } from '../typography/small/Small'
 
-// Styles
 const StyledFooter = styled.footer`
   padding-top: ${space[10]};
   margin-top: ${space[10]};

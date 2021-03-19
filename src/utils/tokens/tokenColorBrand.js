@@ -5,27 +5,49 @@
 //
 
 export const colorBrandGreen = {
-  GREEN_TINT_95: '#e6fafa',
-  GREEN_TINT_90: '#ccf5f4',
-  GREEN_TINT_80: '#99ebe9',
-  GREEN_TINT_70: '#66e1de',
-  GREEN_TINT_60: '#33d7d3',
-  GREEN_TINT_50: '#00cdc8', // Default
-  GREEN_TINT_40: '#00a4a0',
-  GREEN_TINT_30: '#007b78',
-  GREEN_TINT_20: '#005250',
-  GREEN_TINT_10: '#002928',
-  GREEN_TINT_5: '#001414',
+  GREEN_TINT_50: '#6FF5D7', // Default
 }
 
 export const colorBrandBlue = {
-  GREEN_TINT_90: '#d3e6ef',
-  GREEN_TINT_80: '#a7cee0',
-  GREEN_TINT_70: '#7bb5d0',
-  GREEN_TINT_60: '#4f9dc1',
-  GREEN_TINT_50: '#2384b1', // Default
-  GREEN_TINT_40: '#1c6a8e',
-  GREEN_TINT_30: '#154f6a',
-  GREEN_TINT_20: '#0e3547',
-  GREEN_TINT_10: '#071a23',
+  BLUE_TINT_50: '#4A20EF', // Default
 }
+
+export const colorBrandPurple = {
+  PURPLE_TINT_50: '#200A3A' // Default
+}
+
+
+export const colorBrandOrange = {
+  PURPLE_TINT_50: '#E7862E' // Default
+}
+
+export const colorBrandYellow = {
+  PURPLE_TINT_50: '#FFD954' // Default
+}
+
+export const colorNeutral = {
+  NEUTRAL_TINT_100: '#ffffff',
+  NEUTRAL_TINT_95: '#f5f5f5',
+  NEUTRAL_TINT_90: '#e5e5e5',
+  NEUTRAL_TINT_85: '#d9d9d9',
+  NEUTRAL_TINT_80: '#cccccc',
+  NEUTRAL_TINT_75: '#bfbfbf',
+  NEUTRAL_TINT_70: '#b3b3b3',
+  NEUTRAL_TINT_65: '#a6a6a6',
+  NEUTRAL_TINT_60: '#999999',
+  NEUTRAL_TINT_55: '#8c8c8c',
+  NEUTRAL_TINT_50: '#7f7f7f',
+  NEUTRAL_TINT_45: '#737373',
+  NEUTRAL_TINT_40: '#666666',
+  NEUTRAL_TINT_35: '#595959',
+  NEUTRAL_TINT_30: '#4d4d4d',
+  NEUTRAL_TINT_25: '#404040',
+  NEUTRAL_TINT_20: '#333333',
+  NEUTRAL_TINT_15: '#262626', // Default text color
+  NEUTRAL_TINT_10: '#1a1a1a',
+  NEUTRAL_TINT_5: '#0d0d0d',
+  NEUTRAL_TINT_0: '#0f161b',
+}
+
+
+

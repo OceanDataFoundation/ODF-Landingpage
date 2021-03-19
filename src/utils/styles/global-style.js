@@ -7,13 +7,17 @@
 import { createGlobalStyle } from 'styled-components'
 
 // Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
+import { colorBrandPurple, colorNeutral } from '../../utils/tokens/tokenColorBrand'
 import { fontFamily } from '../../utils/tokens/tokenFontFamily'
-
 // Config
-import { typeScale } from '../configs/confTypeScale'
 import { space } from '../configs/confSpace'
-
+import { typeScale } from '../configs/confTypeScale'
+// Components
+import { Blockquote } from './blockquote/blockquote'
+import { Hr } from './hr/hr'
+import { GlobalLink } from './link/link'
+import { GlobalUnorderedList } from './list/unordered-list'
+import { Table } from './table/Table'
 // Styles
 import {
   GlobalH1,
@@ -25,11 +29,6 @@ import {
 } from './typography/heading'
 import { GlobalParagraph } from './typography/paragraph'
 import { GlobalStrong } from './typography/strong'
-import { GlobalLink } from './link/link'
-import { GlobalUnorderedList } from './list/unordered-list'
-import { Blockquote } from './blockquote/blockquote'
-import { Hr } from './hr/hr'
-import { Table } from './table/Table'
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -54,9 +53,9 @@ export const GlobalStyle = createGlobalStyle`
 
     padding: ${space[0]};
     margin: ${space[0]};
-    color: ${colorNeutral.NEUTRAL_TINT_15};
+    color: ${colorNeutral.NEUTRAL_TINT_100};
     font-family: ${fontFamily.FONT_FAMILY_1.join()};
-    background-color: ${colorNeutral.NEUTRAL_TINT_100};
+    background-color: ${colorBrandPurple.PURPLE_TINT_50};
   }
 
   /* Typography */

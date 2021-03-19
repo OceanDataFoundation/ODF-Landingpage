@@ -1,33 +1,28 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-
-import Layout from '../components/site-layout/Layout'
-import SEO from '../components/seo/seo'
-
-// Tokens
-import { colorNeutral } from '../utils/tokens/tokenColorNeutral'
-
-// Config
-import { space } from '../utils/configs/confSpace'
-
-// Mixins
-import { mediaQuery } from '../utils/mixins/mixMediaQuery'
+import PropTypes from 'prop-types'
+import React from 'react'
+import styled from 'styled-components'
 
 // Components
 import { Container } from '../components/container/Container'
 import { Header } from '../components/header/Header'
-import Masonry from '../components/masonry/Masonry'
 import LinkBlock from '../components/link-block/LinkBlock'
-import { NewsBlock } from '../components/news-block/NewsBlock'
+import Masonry from '../components/masonry/Masonry'
 import { Meta } from '../components/meta/Meta'
-
+import { NewsBlock } from '../components/news-block/NewsBlock'
+import SEO from '../components/seo/seo'
+import Layout from '../components/site-layout/Layout'
 import { H1, H2 } from '../components/typography/heading/Heading'
-import { Small } from '../components/typography/small/Small'
 import P from '../components/typography/paragraph/Paragraph'
+import { Small } from '../components/typography/small/Small'
 import { Strong } from '../components/typography/strong/Strong'
+// Config
+import { space } from '../utils/configs/confSpace'
+// Mixins
+import { mediaQuery } from '../utils/mixins/mixMediaQuery'
+// Tokens
+import { colorNeutral } from '../utils/tokens/tokenColorBrand'
 
 const Pagination = styled.div`
   margin-top: ${space[8]};

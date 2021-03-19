@@ -3,13 +3,10 @@ import styled from 'styled-components'
 
 // Utils
 import { space } from '../../utils/configs/confSpace'
-import { borderRadius } from '../../utils/tokens/tokenBorderRadius'
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
-
 // Style
 import { Transition } from '../../utils/styles/utility-classes/transition'
-
+import { borderRadius } from '../../utils/tokens/tokenBorderRadius'
+import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
 import { Label } from '../label/label'
 
 const CheckboxContainer = styled.div`

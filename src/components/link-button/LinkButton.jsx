@@ -1,24 +1,16 @@
-import React from 'react'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
 
-// Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
-import { borderRadius } from '../../utils/tokens/tokenBorderRadius'
-import { fontFamily } from '../../utils/tokens/tokenFontFamily'
-import { fontWeight } from '../../utils/tokens/tokenFontWeight'
-
-// Config
 import { space } from '../../utils/configs/confSpace'
 import { typeScale } from '../../utils/configs/confTypeScale'
-
-// Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-
-// Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
+import { borderRadius } from '../../utils/tokens/tokenBorderRadius'
+import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { fontFamily } from '../../utils/tokens/tokenFontFamily'
+import { fontWeight } from '../../utils/tokens/tokenFontWeight'
 
 const LinkButton = props => {
   const { children, to, showArrow, pressRelease, alignCenter, ...rest } = props

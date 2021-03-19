@@ -1,13 +1,12 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
-
-// Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-import { zIndex } from '../../utils/tokens/tokenZIndex'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
+// Tokens
+import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { zIndex } from '../../utils/tokens/tokenZIndex'
 
 const Wrapper = styled.div`
   position: relative;

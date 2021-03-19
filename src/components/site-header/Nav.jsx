@@ -1,17 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
-
-// Token
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
-
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-
+// Token
+import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 // Components
 import BurgerMenu from './BurgerMenu'
 

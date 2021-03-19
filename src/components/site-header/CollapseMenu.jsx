@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import { Link } from 'gatsby'
-import { useSpring, animated } from 'react-spring'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { animated, useSpring } from 'react-spring'
+import styled from 'styled-components'
 
 // Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
+import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 import { fontSize } from '../../utils/tokens/tokenFontSize'
 
 const CollapseWrapper = styled(animated.div)`

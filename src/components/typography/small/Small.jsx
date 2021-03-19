@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 // Config
 import { typeScale } from '../../../utils/configs/confTypeScale'
-import { colorNeutral } from '../../../utils/tokens/tokenColorNeutral'
+import { colorNeutral } from '../../../utils/tokens/tokenColorBrand'
 
 export const Small = styled.small`
   ${typeScale.TEXT_PRESET_1};

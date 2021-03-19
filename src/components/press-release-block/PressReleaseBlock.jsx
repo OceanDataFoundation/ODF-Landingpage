@@ -1,10 +1,9 @@
 import styled from 'styled-components'
 
-// Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-
 // Config
 import { space } from '../../utils/configs/confSpace'
+// Tokens
+import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 
 export const PressReleaseBlock = styled.div`
   padding: ${space[3]} 0 0 ${space[5]};

@@ -1,20 +1,18 @@
-import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-
-// Utils
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-import { zIndex } from '../../utils/tokens/tokenZIndex'
-import { space } from '../../utils/configs/confSpace'
-import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 // Hooks
 import { useDocumentScrollThrottled } from '../../hooks/useDocumentScroll'
-
+import { space } from '../../utils/configs/confSpace'
+import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+// Utils
+import { colorBrandPurple } from '../../utils/tokens/tokenColorBrand'
+import { zIndex } from '../../utils/tokens/tokenZIndex'
 // Components
 import Logo from '../logo/Logo'
-import Nav from './Nav'
 import CollapseMenu from './CollapseMenu'
+import Nav from './Nav'
 
 // Styles
 const StyledHeader = styled.header`
@@ -22,7 +20,7 @@ const StyledHeader = styled.header`
   position: fixed;
   top: 0px;
   width: 100%;
-  background-color: ${colorNeutral.NEUTRAL_TINT_0};
+  background-color: ${colorBrandPurple.PURPLE_TINT_50};
   padding: 0 ${space[4]};
 
   ${mediaQuery.BREAKPOINT_2`

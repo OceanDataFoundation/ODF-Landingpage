@@ -3,7 +3,8 @@ import styled from 'styled-components'
 
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-
+// Tokens
+import { colorBrandPurple } from '../../utils/tokens/tokenColorBrand'
 // Components
 import { Container } from '../container/Container'
 
@@ -17,7 +18,7 @@ const HeroContainer = styled(Container)`
   max-width: 100vw;
   height: 100vh;
   align-items: start;
-  background-color: black;
+  background-color: ${colorBrandPurple.PURPLE_TINT_50};
   background-image: url(${props => (props.bgImage ? props.bgImage : `none`)});
   background-size: cover;
   background-repeat: no-repeat;

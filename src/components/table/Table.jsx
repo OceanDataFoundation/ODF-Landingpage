@@ -1,14 +1,12 @@
 import styled from 'styled-components'
 
-// Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-
 // Config
 import { space } from '../../utils/configs/confSpace'
 import { typeScale } from '../../utils/configs/confTypeScale'
-
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+// Tokens
+import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 
 export const TableWrapper = styled.div``
 

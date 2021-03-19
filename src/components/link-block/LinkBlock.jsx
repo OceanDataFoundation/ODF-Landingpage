@@ -1,15 +1,13 @@
-import React from 'react'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
-
-// Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
-import { duration } from '../../utils/tokens/tokenDuration'
 
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
+// Tokens
+import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { duration } from '../../utils/tokens/tokenDuration'
 
 const LinkNews = props => {
   const { children, to } = props

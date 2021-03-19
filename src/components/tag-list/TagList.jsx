@@ -1,16 +1,13 @@
 import styled from 'styled-components'
 
-// Tokens
-import { borderRadius } from '../../utils/tokens/tokenBorderRadius'
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
-import { fontWeight } from '../../utils/tokens/tokenFontWeight'
-
 // Config
 import { space } from '../../utils/configs/confSpace'
-
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+// Tokens
+import { borderRadius } from '../../utils/tokens/tokenBorderRadius'
+import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { fontWeight } from '../../utils/tokens/tokenFontWeight'
 
 export const TagList = styled.ol`
   padding: ${space[4]} ${space[0]} ${space[0]} ${space[6]};

@@ -7,12 +7,11 @@
 
 import { css } from 'styled-components'
 
-// Token
-import { colorNeutral } from '../../tokens/tokenColorNeutral'
-import { fontSize } from '../../tokens/tokenFontSize'
-
 // Config
 import { space } from '../../configs/confSpace'
+// Token
+import { colorNeutral } from '../../tokens/tokenColorBrand'
+import { fontSize } from '../../tokens/tokenFontSize'
 
 export const Table = css`
   table {

@@ -1,15 +1,10 @@
 import styled from 'styled-components'
 
-// Tokens
-import { colorNeutral } from '../../../utils/tokens/tokenColorNeutral'
-
 // Config
-import { typeScale } from '../../../utils/configs/confTypeScale'
 import { space } from '../../../utils/configs/confSpace'
-
+import { typeScale } from '../../../utils/configs/confTypeScale'
 // Mixins
 import { mediaQuery } from '../../../utils/mixins/mixMediaQuery'
-
 // Global style
 import {
   GlobalH1,
@@ -19,6 +14,8 @@ import {
   GlobalH5,
   GlobalH6,
 } from '../../../utils/styles/typography/heading'
+// Tokens
+import { colorNeutral } from '../../../utils/tokens/tokenColorBrand'
 
 export const H1 = styled.h1`
   margin-bottom: ${props =>

@@ -54,7 +54,7 @@ export const LogoStyle = styled.img`
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-		width: 225px;
+		width: 207px;
   `};
 `
 

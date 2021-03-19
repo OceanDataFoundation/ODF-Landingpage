@@ -1,18 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import Img from 'gatsby-image'
-
-// Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorNeutral'
-import { zIndex } from '../../utils/tokens/tokenZIndex'
+import PropTypes from 'prop-types'
+import React from 'react'
+import styled from 'styled-components'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
-
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-
+// Tokens
+import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { zIndex } from '../../utils/tokens/tokenZIndex'
 // Components
 import { Container } from '../container/Container'
 

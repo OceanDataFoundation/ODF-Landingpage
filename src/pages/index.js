@@ -1,34 +1,32 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import PropTypes from 'prop-types'
+import React from 'react'
 
-// Components
-import Layout from '../components/site-layout/Layout'
-import SEO from '../components/seo/seo'
-
+import { ArrowDown } from '../components/arrow-down/ArrowDown'
+import { Article } from '../components/article/Article'
 import { Author } from '../components/author/Author'
-import { Container } from '../components/container/Container'
+import Blockquote from '../components/blockquote/Blockquote'
 import { Box } from '../components/box/Box'
+import { Container } from '../components/container/Container'
 import Hero from '../components/hero/Hero'
 import Intro from '../components/intro/Intro'
-import Blockquote from '../components/blockquote/Blockquote'
-import Statement from '../components/statement/Statement'
 import LinkBlock from '../components/link-block/LinkBlock'
-import PressRelease from '../components/press-release/PressRelease'
-import { Meta } from '../components/meta/Meta'
-import Time from '../components/time/Time'
-import { Article } from '../components/article/Article'
-import Video from '../components/video/Video'
-import { TableWrapper, Table, TBody, Tr, Td } from '../components/table/Table'
-import LinkCta from '../components/link-cta/LinkCta'
 import LinkButton from '../components/link-button/LinkButton'
-import { ArrowDown } from '../components/arrow-down/ArrowDown'
-
+import LinkCta from '../components/link-cta/LinkCta'
+import { Meta } from '../components/meta/Meta'
+import PressRelease from '../components/press-release/PressRelease'
+import SEO from '../components/seo/seo'
+// Components
+import Layout from '../components/site-layout/Layout'
+import Statement from '../components/statement/Statement'
+import { TBody, Table, TableWrapper, Td, Tr } from '../components/table/Table'
+import Time from '../components/time/Time'
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
-import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import P from '../components/typography/paragraph/Paragraph'
 import { Strong } from '../components/typography/strong/Strong'
+import { SubHeading } from '../components/typography/sub-heading/SubHeading'
+import Video from '../components/video/Video'
 
 const IndexPage = ({ data }) => {
   const { title, metaDescription } = data.contentfulPage
@@ -66,7 +64,7 @@ const IndexPage = ({ data }) => {
       />
 
       {heroPosts.map(({ node: post }) => (
-        <Hero key={post.id} bgImage={post.image.fluid.src}>
+        <Hero key={post.id}>
           <Intro>
             <H1 size="larger" invert>
               {post.title}
