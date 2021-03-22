@@ -3,7 +3,6 @@ import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { ArrowDown } from '../components/arrow-down/ArrowDown'
 import { Article } from '../components/article/Article'
 import { Author } from '../components/author/Author'
 import Blockquote from '../components/blockquote/Blockquote'
@@ -20,11 +19,9 @@ import SEO from '../components/seo/seo'
 // Components
 import Layout from '../components/site-layout/Layout'
 import Statement from '../components/statement/Statement'
-import { TBody, Table, TableWrapper, Td, Tr } from '../components/table/Table'
 import Time from '../components/time/Time'
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
-import { Strong } from '../components/typography/strong/Strong'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import Video from '../components/video/Video'
 
@@ -81,7 +78,7 @@ const IndexPage = ({ data }) => {
         </Hero>
       ))}
 
-      <Container id="quote" fluid>
+      {/* <Container id="quote" fluid>
         <Box>
           <Container as="div">
             {quotePosts.map(({ node: post }) => (
@@ -95,9 +92,9 @@ const IndexPage = ({ data }) => {
             ))}
           </Container>
         </Box>
-      </Container>
+      </Container> */}
 
-      {statementOne.map(({ node: post }) => (
+      {/* {statementOne.map(({ node: post }) => (
         <Statement
           key={post.id}
           image={post.image.fluid}
@@ -110,15 +107,15 @@ const IndexPage = ({ data }) => {
             }}
           />
         </Statement>
-      ))}
+      ))} */}
 
-      <Container id="video" fluid>
+      {/* <Container id="video" fluid>
         {videoPosts.map(({ node: post }) => (
           <Video key={post.id} videoId={post.videoId} />
         ))}
-      </Container>
+      </Container> */}
 
-      {statementTwo.map(({ node: post }) => (
+      {/* {statementTwo.map(({ node: post }) => (
         <Statement
           key={post.id}
           image={post.image.fluid}
@@ -132,16 +129,16 @@ const IndexPage = ({ data }) => {
             }}
           />
         </Statement>
-      ))}
+      ))} */}
 
       <Container fluid>
         <Box>
           <Container as="div">
-            <SubHeading>Recent Perspectives</SubHeading>
+            <SubHeading>News</SubHeading>
             <PressRelease>
               {articles.map(({ node: article }) => (
                 <LinkBlock
-                  to={`/perspectives/${article.slug}`}
+                  to={`/communcation/${article.slug}`}
                   key={article.id}>
                   <Article key={article.id}>
                     {article.coverImage && (
@@ -160,14 +157,14 @@ const IndexPage = ({ data }) => {
                 </LinkBlock>
               ))}
             </PressRelease>
-            <LinkButton to="/perspectives/1" showArrow pressRelease>
-              More perspectives
+            <LinkButton to="/communcation/1" showArrow pressRelease>
+              More news
             </LinkButton>
           </Container>
         </Box>
       </Container>
 
-      {statementThree.map(({ node: post }) => (
+      {/* {statementThree.map(({ node: post }) => (
         <Statement
           key={post.id}
           image={post.image.fluid}
@@ -180,9 +177,9 @@ const IndexPage = ({ data }) => {
             }}
           />
         </Statement>
-      ))}
+      ))} */}
 
-      <Container fluid>
+      {/* <Container fluid>
         <Box>
           <Container as="div">
             <SubHeading>Press release</SubHeading>
@@ -214,9 +211,9 @@ const IndexPage = ({ data }) => {
             </LinkButton>
           </Container>
         </Box>
-      </Container>
+      </Container> */}
 
-      <Container style={{ marginTop: '80px' }}>
+      {/* <Container style={{ marginTop: '80px' }}>
         <SubHeading>Connect</SubHeading>
         <H2>Upcoming Events</H2>
         <TableWrapper>
@@ -251,7 +248,7 @@ const IndexPage = ({ data }) => {
             </TBody>
           </Table>
         </TableWrapper>
-      </Container>
+      </Container> */}
     </Layout>
   )
 }

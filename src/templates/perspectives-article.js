@@ -1,33 +1,29 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import Layout from '../components/site-layout/Layout'
-import SEO from '../components/seo/seo'
-
-// Utils
-import { space } from '../utils/configs/confSpace.js'
-
-// Components
-import { Container } from '../components/container/Container'
 import {
   Article,
   ArticleContainer,
   ArticleContent,
 } from '../components/article/Article'
-import { Author } from '../components/author/Author'
 import { AuthorProfile } from '../components/author-profile/AuthorProfile'
-import { Header } from '../components/header/Header'
-import { Figure } from '../components/figure/Figure'
+import { Author } from '../components/author/Author'
+// Components
+import { Container } from '../components/container/Container'
 import { Figcaption } from '../components/figcaption/Figcaption'
-import { TagList } from '../components/tag-list/TagList'
+import { Figure } from '../components/figure/Figure'
+import { Header } from '../components/header/Header'
 import LinkButton from '../components/link-button/LinkButton'
-
+import RichTextRenderer from '../components/rich-text-renderer/RichTextRenderer'
+import SEO from '../components/seo/seo'
+import Layout from '../components/site-layout/Layout'
+import { TagList } from '../components/tag-list/TagList'
 import { H1 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
-
-import RichTextRenderer from '../components/rich-text-renderer/RichTextRenderer'
+// Utils
+import { space } from '../utils/configs/confSpace.js'
 
 const PerspectivesArticle = ({ data }) => {
   const {
@@ -90,7 +86,7 @@ const PerspectivesArticle = ({ data }) => {
           <AuthorProfile author={author} />
         </Article>
 
-        <LinkButton to="/perspectives/1" showArrow alignCenter>
+        <LinkButton to="/communcation/1" showArrow alignCenter>
           See all posts
         </LinkButton>
       </Container>

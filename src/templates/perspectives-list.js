@@ -55,7 +55,7 @@ const PerspectivesListPage = ({ data, pageContext }) => {
 
         <Masonry col="2" minWidth={700}>
           {articles.map(({ node: article }) => (
-            <LinkBlock to={`/perspectives/${article.slug}`} key={article.id}>
+            <LinkBlock to={`/communcation/${article.slug}`} key={article.id}>
               {article.coverImage && <Img fluid={article.coverImage.fluid} />}
               <NewsBlock>
                 <H2>{article.title}</H2>
