@@ -13,7 +13,7 @@ import { fontFamily } from '../../utils/tokens/tokenFontFamily'
 import { fontWeight } from '../../utils/tokens/tokenFontWeight'
 
 const LinkButton = props => {
-  const { children, to, showArrow, pressRelease, alignCenter, ...rest } = props
+  const { children, to, showArrow, pressRelease, alignCenter, invert, ...rest } = props
 
   return (
     <>
@@ -36,6 +36,15 @@ const LinkButton = props => {
   )
 }
 
+LinkButton.propTypes = {
+  children: PropTypes.node.isRequired,
+  to: PropTypes.string,
+  showArrow: PropTypes.bolean,
+  pressRelease: PropTypes.bolean,
+  alignCenter: PropTypes.bolean,
+  invert: PropTypes.bolean
+}
+
 const LinkButtonWrapper = styled.div`
   margin: 0 auto;
   display: ${props => (props.alignCenter ? `table` : 'inline-block')};
@@ -48,7 +57,7 @@ const LinkButtonWrapper = styled.div`
 const LinkButtonStyle = styled(Link)`
   padding: ${space[4]} ${space[8]};
   margin: 0 auto;
-  color: ${colorNeutral.NEUTRAL_TINT_15};
+  color: ${props => props.invert ? colorNeutral.NEUTRAL_TINT_15 : colorNeutral.NEUTRAL_TINT_100 };
   font-family: ${fontFamily.FONT_FAMILY_2};
   font-weight: ${fontWeight.FONT_WEIGHT_4};
   text-decoration: none;
@@ -101,7 +110,7 @@ const LinkButtonStyleArrow = styled.span`
   display: inline-block;
   position: absolute;
   top: 50%;
-  background-color: ${colorNeutral.NEUTRAL_TINT_15};
+  background-color: ${colorNeutral.NEUTRAL_TINT_100};
 
   ${Transition};
   transition-property: width, opacity;
@@ -113,7 +122,7 @@ const LinkButtonStyleArrow = styled.span`
     content: '';
     position: absolute;
     right: -2px;
-    background-color: ${colorNeutral.NEUTRAL_TINT_15};
+    background-color: ${colorNeutral.NEUTRAL_TINT_100};
   }
 
   ::before {

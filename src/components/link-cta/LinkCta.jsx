@@ -1,16 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
-
-// Tokens
-import { colorBrandBlue } from '../../utils/tokens/tokenColorBrand'
+import PropTypes from 'prop-types'
+import React from 'react'
+import styled from 'styled-components'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
-
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
+// Tokens
+import { colorBrandBlue, colorNeutral } from '../../utils/tokens/tokenColorBrand'
 
 const LinkCta = props => {
   const { children, href, target } = props
@@ -23,8 +21,14 @@ const LinkCta = props => {
   )
 }
 
+LinkCta.propTypes = {
+  children: PropTypes.node,
+  href: PropTypes.string,
+  target: PropTypes.string,
+}
+
 const LinkCtaStyle = styled(OutboundLink)`
-  color: ${colorBrandBlue.GREEN_TINT_40};
+  color: ${colorNeutral.NEUTRAL_TINT_100};
   text-decoration: none;
   position: relative;
   display: block;
@@ -40,7 +44,7 @@ const LinkCtaStyle = styled(OutboundLink)`
     position: absolute;
     top: -8px;
     left: -4px;
-    background-color: ${colorBrandBlue.GREEN_TINT_90};
+    background-color: ${colorNeutral.NEUTRAL_TINT_40};
     z-index: -1;
 
     ${Transition};
@@ -54,14 +58,15 @@ const LinkCtaStyle = styled(OutboundLink)`
       width: ${space[10]};
     }
 
+    // Arrow
     span {
       width: 60px;
       opacity: 1;
-      background-color: ${colorBrandBlue.GREEN_TINT_40};
+      background-color: ${colorNeutral.NEUTRAL_TINT_40};
 
       ::before,
       ::after {
-        background-color: ${colorBrandBlue.GREEN_TINT_40};
+        background-color: ${colorNeutral.NEUTRAL_TINT_40};
       }
     }
   }
@@ -99,9 +104,5 @@ const LinkCtaStyleArrow = styled.span`
     transform: rotate(-45deg);
   }
 `
-
-LinkCta.propTypes = {
-  children: PropTypes.node,
-}
 
 export default LinkCta

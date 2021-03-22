@@ -44,14 +44,6 @@ export const Tr = styled.tr`
   :not(:last-child) {
     border-bottom: 1px solid ${colorNeutral.NEUTRAL_TINT_75};
   }
-
-  :nth-child(odd) {
-    background-color: rgba(0, 0, 0, 0.03);
-
-    ${mediaQuery.BREAKPOINT_3`
-      background-color: ${colorNeutral.NEUTRAL_TINT_100};
-    `};
-  }
 `
 
 export const Td = styled.td`

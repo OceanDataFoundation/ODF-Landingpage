@@ -32,8 +32,8 @@ const A = styled.a`
   padding-bottom: ${space[2]};
   color: ${props =>
     props.invert
-      ? colorNeutral.NEUTRAL_TINT_100
-      : colorNeutral.NEUTRAL_TINT_15};
+      ? colorNeutral.NEUTRAL_TINT_15
+      : colorNeutral.NEUTRAL_TINT_100};
   text-decoration: none;
   border-bottom: ${props =>
     props.underline
@@ -46,8 +46,8 @@ const A = styled.a`
   :focus {
     color: ${props =>
       props.invert
-        ? colorNeutral.NEUTRAL_TINT_100
-        : colorNeutral.NEUTRAL_TINT_0};
+        ? colorNeutral.NEUTRAL_TINT_15
+        : colorNeutral.NEUTRAL_TINT_100};
     border-bottom-color: transparent !important;
   }
 `

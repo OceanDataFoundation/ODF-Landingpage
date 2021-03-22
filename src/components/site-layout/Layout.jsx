@@ -16,16 +16,6 @@ import Footer from '../site-footer/Footer'
 // Components
 import Header from '../site-header/Header'
 
-const ContentWrap = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-`
-
-const Main = styled.main`
-  flex: 1 0 auto;
-`
-
 const Layout = ({ children }) => {
   if (typeof window !== 'undefined') {
     require('smooth-scroll')('a[href*="#"]')
@@ -133,3 +123,13 @@ Layout.propTypes = {
 }
 
 export default Layout
+
+const ContentWrap = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+
+const Main = styled.main`
+  flex: 1 0 auto;
+`

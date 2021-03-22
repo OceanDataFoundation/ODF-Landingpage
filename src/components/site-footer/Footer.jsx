@@ -38,7 +38,7 @@ const Footer = props => {
       <Container col="3">
         <FooterCol>
           {relatedLinkList && (
-            <LinkList invert underline linkList={relatedLinkList} />
+            <LinkList underline linkList={relatedLinkList} />
           )}
 
           <Link
@@ -56,16 +56,15 @@ const Footer = props => {
         <FooterCol>
           {contactInformation && (
             <ContactInformation
-              invert
               contactInformation={contactInformation}
             />
           )}
         </FooterCol>
         <FooterCol>
           {socialLinkList && (
-            <LinkList invert inline linkList={socialLinkList} />
+            <LinkList inline linkList={socialLinkList} />
           )}
-          <Small invert style={{ marginTop: '2rem', display: 'block' }}>
+          <Small style={{ marginTop: '2rem', display: 'block' }}>
             &copy; {siteTitle} {new Date().getFullYear()}
           </Small>
         </FooterCol>

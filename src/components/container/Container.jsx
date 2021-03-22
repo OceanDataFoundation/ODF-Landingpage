@@ -1,14 +1,12 @@
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
-
-// Tokens
-import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
+import styled from 'styled-components'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
-
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+// Tokens
+import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
 
 export const Container = styled.section`
   width: 100%;

@@ -1,12 +1,10 @@
 import styled from 'styled-components'
 
-// Tokens
-import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
-
 import { space } from '../../utils/configs/confSpace'
-
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+// Tokens
+import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
 
 export const NewsBlock = styled.div`
   padding-top: ${space[4]};

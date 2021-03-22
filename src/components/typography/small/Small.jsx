@@ -9,6 +9,6 @@ export const Small = styled.small`
 
   color: ${props =>
     props.invert
-      ? colorNeutral.NEUTRAL_TINT_100
-      : colorNeutral.NEUTRAL_TINT_15};
+      ? colorNeutral.NEUTRAL_TINT_15
+      : colorNeutral.NEUTRAL_TINT_100};
 `

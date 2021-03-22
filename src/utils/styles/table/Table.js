@@ -20,14 +20,6 @@ export const Table = css`
 
     tr {
       border-bottom: 1px solid ${colorNeutral.NEUTRAL_TINT_80};
-
-      :nth-child(odd) {
-        background-color: ${colorNeutral.NEUTRAL_TINT_100};
-      }
-
-      :nth-child(odd) {
-        background-color: ${colorNeutral.NEUTRAL_TINT_95};
-      }
     }
 
     th,

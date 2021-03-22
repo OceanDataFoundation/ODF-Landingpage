@@ -66,20 +66,18 @@ const IndexPage = ({ data }) => {
       {heroPosts.map(({ node: post }) => (
         <Hero key={post.id}>
           <Intro>
-            <H1 size="larger" invert>
+            <H1 size="larger">
               {post.title}
             </H1>
-            <P lead invert>
+            <P lead>
               {post.content.content}
             </P>
             <LinkButton
               to="/#video"
-              invert="true"
               style={{ marginTop: '2rem', display: 'inline-block' }}>
               Watch video
             </LinkButton>
           </Intro>
-          <ArrowDown href="#quote" />
         </Hero>
       ))}
 

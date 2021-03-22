@@ -1,14 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-// Tokens
-import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
-
 // Config
 import { space } from '../../utils/configs/confSpace'
-
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+// Tokens
+import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
 
 const Intro = props => {
   const { children } = props

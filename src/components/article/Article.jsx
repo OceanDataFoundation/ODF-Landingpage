@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
-
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 
 export const Article = styled.article``
 
@@ -35,5 +35,9 @@ export const ArticleContent = styled.div`
     height: auto;
     display: block;
     margin: ${space[4]} 0;
+  }
+
+  a {
+    color: ${colorNeutral.NEUTRAL_TINT_100};
   }
 `
