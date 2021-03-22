@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { useDocumentScrollThrottled } from '../../hooks/useDocumentScroll'
 import { space } from '../../utils/configs/confSpace'
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
 // Utils
 import { colorBrandPurple } from '../../utils/tokens/tokenColorBrand'
 import { zIndex } from '../../utils/tokens/tokenZIndex'
@@ -17,11 +18,14 @@ import Nav from './Nav'
 // Styles
 const StyledHeader = styled.header`
   z-index: ${zIndex.Z_INDEX_7};
-  position: fixed;
+  //position: fixed;
   top: 0px;
   width: 100%;
   background-color: ${colorBrandPurple.PURPLE_TINT_50};
-  padding: 0 ${space[4]};
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  max-width: ${breakpoints.BREAKPOINT_4};
+  margin: 0 auto;
 
   ${mediaQuery.BREAKPOINT_2`
 		padding: 0 ${space[6]};
@@ -36,12 +40,17 @@ const StyledHeader = styled.header`
       props.hideHeader ? 'translateY(-110%)' : 'translateY(0)'};
     transition: transform 0.3s ease;
   `};
+
+  ${mediaQuery.BREAKPOINT_4`
+    //max-width: calc(${breakpoints.BREAKPOINT_4} + 98px);
+  `};
 `
 
 const FlexContainer = styled.div`
   display: flex;
   align-items: stretch;
   justify-content: space-between;
+  grid-column: 1 / span 12
 `
 
 const Header = props => {

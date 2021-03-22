@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import React from 'react'
+import styled from 'styled-components'
 
 import { Article } from '../components/article/Article'
 import { Author } from '../components/author/Author'
@@ -19,7 +20,6 @@ import SEO from '../components/seo/seo'
 // Components
 import Layout from '../components/site-layout/Layout'
 import Statement from '../components/statement/Statement'
-import Time from '../components/time/Time'
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
@@ -36,10 +36,7 @@ const IndexPage = ({ data }) => {
   const statementTwo = data.statementTwo.edges
   const statementThree = data.statementThree.edges
 
-  const pressReleases = data.allContentfulPressRelease.edges
   const articles = data.allContentfulPerspective.edges
-
-  const events = data.allContentfulEvents.edges
 
   return (
     <Layout>
@@ -60,21 +57,19 @@ const IndexPage = ({ data }) => {
         ]}
       />
 
-      {heroPosts.map(({ node: post }) => (
-        <Hero key={post.id}>
-          <Intro>
-            <H1 size="larger">
-              {post.title}
-            </H1>
-            <P lead>
-              {post.content.content}
-            </P>
-            <LinkButton
-              to="/#video"
-              style={{ marginTop: '2rem', display: 'inline-block' }}>
-              Watch video
-            </LinkButton>
-          </Intro>
+      {heroPosts.map(({ node: post, }) => (
+        <Hero key={post.id} bgImage={post.image.fluid.src}>
+          <H1 size="larger">
+            {post.title}
+          </H1>
+          <P lead>
+            {post.content.content}
+          </P>
+          <LinkButton
+            to="/#video"
+            style={{ marginTop: '2rem', display: 'inline-block' }}>
+            Watch video
+          </LinkButton>
         </Hero>
       ))}
 
@@ -109,11 +104,11 @@ const IndexPage = ({ data }) => {
         </Statement>
       ))} */}
 
-      {/* <Container id="video" fluid>
+      <VideoContainer id="video">
         {videoPosts.map(({ node: post }) => (
-          <Video key={post.id} videoId={post.videoId} />
+          <Video key={post.id} id="video" videoId={post.videoId} />
         ))}
-      </Container> */}
+      </VideoContainer>
 
       {/* {statementTwo.map(({ node: post }) => (
         <Statement
@@ -131,7 +126,7 @@ const IndexPage = ({ data }) => {
         </Statement>
       ))} */}
 
-      <Container fluid>
+      {/* <Container fluid>
         <Box>
           <Container as="div">
             <SubHeading>News</SubHeading>
@@ -162,7 +157,7 @@ const IndexPage = ({ data }) => {
             </LinkButton>
           </Container>
         </Box>
-      </Container>
+      </Container> */}
 
       {/* {statementThree.map(({ node: post }) => (
         <Statement
@@ -179,76 +174,6 @@ const IndexPage = ({ data }) => {
         </Statement>
       ))} */}
 
-      {/* <Container fluid>
-        <Box>
-          <Container as="div">
-            <SubHeading>Press release</SubHeading>
-            <PressRelease columnGap="large">
-              {pressReleases.map(({ node: post }) => (
-                <Article key={post.id}>
-                  <H3>{post.title}</H3>
-                  <Meta>
-                    {post.location} | <Time dateTime={post.date} />
-                  </Meta>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: post.excerpt.childMarkdownRemark.html,
-                    }}
-                  />
-                  {post.link && (
-                    <LinkCta
-                      href={post.link}
-                      target="_blank"
-                      rel="noopener noreferrer">
-                      Read more
-                    </LinkCta>
-                  )}
-                </Article>
-              ))}
-            </PressRelease>
-            <LinkButton to="/press/" showArrow pressRelease>
-              See all
-            </LinkButton>
-          </Container>
-        </Box>
-      </Container> */}
-
-      {/* <Container style={{ marginTop: '80px' }}>
-        <SubHeading>Connect</SubHeading>
-        <H2>Upcoming Events</H2>
-        <TableWrapper>
-          <Table>
-            <TBody>
-              {events.map(({ node: post }) => (
-                <Tr key={post.id}>
-                  <Td>
-                    <Strong>
-                      {!post.toDate
-                        ? `${post.fromDate}`
-                        : `${post.fromDate.split(' ')[0]} - ${post.toDate}`}
-                    </Strong>
-                  </Td>
-                  <Td>
-                    <Strong>{post.title}</Strong>
-                    <br />
-                    {post.location && post.location}
-                  </Td>
-                  <Td>
-                    {post.link && (
-                      <LinkCta
-                        href={post.link}
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        Visit event site
-                      </LinkCta>
-                    )}
-                  </Td>
-                </Tr>
-              ))}
-            </TBody>
-          </Table>
-        </TableWrapper>
-      </Container> */}
     </Layout>
   )
 }
@@ -445,3 +370,5 @@ IndexPage.propTypes = {
     statementTwo: PropTypes.object.isRequired,
   }),
 }
+
+const VideoContainer = styled.div``

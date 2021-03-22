@@ -15,8 +15,8 @@ export const Container = styled.section`
   margin-right: auto;
   margin-bottom: ${space[0]};
   margin-left: auto;
-  padding-right: ${props => (props.fluid ? 0 : space[4])};
-  padding-left: ${props => (props.fluid ? 0 : space[4])};
+  padding-right: ${props => (props.fluid ? 0 : space[3])};
+  padding-left: ${props => (props.fluid ? 0 : space[3])};
   display: grid;
   grid-template-columns: ${props =>
     props.col === '3'
@@ -47,7 +47,8 @@ export const Container = styled.section`
         ? `repeat(3, 1fr)`
         : props.col === '2'
         ? `repeat(2, 50%)`
-        : `repeat(1, 100%)`};
+        : `repeat(12, 1fr)`};
+    gap: 20px;
   `};
 `
 

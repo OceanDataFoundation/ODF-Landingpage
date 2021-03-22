@@ -12,6 +12,46 @@ import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 // Components
 import BurgerMenu from './BurgerMenu'
 
+const Nav = ({ navItems, open, setOpen }) => {
+  return (
+    <StyledNav role="navigation">
+      <NavList>
+        {/** Temp link, will make it's own page */}
+        <CustomLink
+        href="https://www.oceandata.earth/"
+        target="_blank">
+        The data platform
+        </CustomLink>
+        {navItems.map(item => (
+          <li key={item.id}>
+            {item.link && (
+              <Link
+                to={`${item.link.slug}`}
+                activeStyle={{
+                  paddingBottom: '.250rem',
+                  borderBottom: '1px solid white',
+                }}>
+                {item.text}
+              </Link>
+            )}
+          </li>
+        ))}
+      </NavList>
+      <BurgerWrapper>
+        <BurgerMenu open={open} setOpen={setOpen} />
+      </BurgerWrapper>
+    </StyledNav>
+  )
+}
+
+export default Nav
+
+Nav.propTypes = {
+  navItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
+}
+
 const StyledNav = styled.nav`
   justify-self: end;
   margin: auto 0;
@@ -62,36 +102,10 @@ const BurgerWrapper = styled.div`
     `}
 `
 
-const Nav = ({ navItems, open, setOpen }) => {
-  return (
-    <StyledNav role="navigation">
-      <NavList>
-        {navItems.map(item => (
-          <li key={item.id}>
-            {item.link && (
-              <Link
-                to={`${item.link.slug}`}
-                activeStyle={{
-                  paddingBottom: '.250rem',
-                  borderBottom: '1px solid white',
-                }}>
-                {item.text}
-              </Link>
-            )}
-          </li>
-        ))}
-      </NavList>
-      <BurgerWrapper>
-        <BurgerMenu open={open} setOpen={setOpen} />
-      </BurgerWrapper>
-    </StyledNav>
-  )
-}
+const CustomLink = styled.a`
 
-export default Nav
-
-Nav.propTypes = {
-  navItems: PropTypes.arrayOf(PropTypes.object).isRequired,
-  open: PropTypes.bool.isRequired,
-  setOpen: PropTypes.func.isRequired,
-}
+  &:hover {
+    padding-bottom: .250rem;
+    border-bottom: 1px solid white;
+  }
+`;
