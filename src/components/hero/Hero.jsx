@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react'
 import styled from 'styled-components'
 
@@ -17,24 +18,30 @@ const Hero = props => {
       {children}
     </Content>
 
-      {/* <BackgroundImage bgImage={bgImage}>
-      </BackgroundImage> */}
+      <Image src={bgImage} />
     </HeroContainer>
   )
+}
+
+Hero.propTypes = {
+  children: PropTypes.node,
+  bgImage: PropTypes.string
 }
 
 const Content = styled.div`
   grid-column: 1 / span 7;
 `
 
-const BackgroundImage = styled.div`
-  height: 200px;
-  max-width: 100vw;
+const Image = styled.img`
+  height: 500px;
+  width: 500px;
+  grid-column: 8 / 12;
+  /* max-width: 100vw;
   align-items: start;
   background-color: ${colorBrandPurple.PURPLE_TINT_50};
   background-image: url(${props => (props.bgImage ? props.bgImage : `none`)});
   background-repeat: no-repeat;
-  background-position: 65% 170px;
+  background-position: 65% 170px; */
 `;
 
 const HeroContainer = styled(Container)`
@@ -60,7 +67,6 @@ const HeroContainer = styled(Container)`
 
   ${mediaQuery.BREAKPOINT_4`
     background-position: right 35% bottom 45%;
-
   `};
 `
 

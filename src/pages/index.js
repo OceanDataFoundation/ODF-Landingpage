@@ -10,7 +10,6 @@ import Blockquote from '../components/blockquote/Blockquote'
 import { Box } from '../components/box/Box'
 import { Container } from '../components/container/Container'
 import Hero from '../components/hero/Hero'
-import Intro from '../components/intro/Intro'
 import LinkBlock from '../components/link-block/LinkBlock'
 import LinkButton from '../components/link-button/LinkButton'
 import LinkCta from '../components/link-cta/LinkCta'
@@ -24,6 +23,8 @@ import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import Video from '../components/video/Video'
+// Mixins
+import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 
 const IndexPage = ({ data }) => {
   const { title, metaDescription } = data.contentfulPage
@@ -34,8 +35,6 @@ const IndexPage = ({ data }) => {
 
   const statementOne = data.statementOne.edges
   const statementTwo = data.statementTwo.edges
-  const statementThree = data.statementThree.edges
-
   const articles = data.allContentfulPerspective.edges
 
   return (
@@ -73,49 +72,45 @@ const IndexPage = ({ data }) => {
         </Hero>
       ))}
 
-      {/* <Container id="quote" fluid>
-        <Box>
-          <Container as="div">
-            {quotePosts.map(({ node: post }) => (
-              <Blockquote key={post.id} cite={post.cite} author={post.author}>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: post.content.childMarkdownRemark.html,
-                  }}
-                />
-              </Blockquote>
-            ))}
-          </Container>
-        </Box>
-      </Container> */}
+      <Container id="quote">
+        <QuoteContainer>
+        {quotePosts.map(({ node: post }) => (
+          <Blockquote key={post.id} cite={post.cite} author={post.author}>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: post.content.childMarkdownRemark.html,
+              }}
+              />
+          </Blockquote>
+        ))}
+        </QuoteContainer>
+      </Container>
 
-      {/* {statementOne.map(({ node: post }) => (
-        <Statement
-          key={post.id}
-          image={post.image.fluid}
-          reverse={post.reverseOrder === 'Yes' ? post.reverseOrder : null}>
-          <SubHeading>{post.subtitle}</SubHeading>
-          <H2>{post.title}</H2>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: post.content.childMarkdownRemark.html,
-            }}
-          />
-        </Statement>
-      ))} */}
 
       <VideoContainer id="video">
         {videoPosts.map(({ node: post }) => (
           <Video key={post.id} id="video" videoId={post.videoId} />
-        ))}
+          ))}
       </VideoContainer>
 
-      {/* {statementTwo.map(({ node: post }) => (
+        {statementOne.map(({ node: post }) => (
+          <Statement
+            key={post.id}
+            image={post.image.fluid}>
+            <SubHeading>{post.subtitle}</SubHeading>
+            <H2>{post.title}</H2>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: post.content.childMarkdownRemark.html,
+              }}
+            />
+          </Statement>
+        ))}
+
+      {statementTwo.map(({ node: post }) => (
         <Statement
           key={post.id}
-          image={post.image.fluid}
-          reverse={post.reverseOrder === 'Yes' ? post.reverseOrder : null}
-          removeOffset={true}>
+          image={post.image.fluid}>
           <SubHeading>{post.subtitle}</SubHeading>
           <H2>{post.title}</H2>
           <div
@@ -124,55 +119,46 @@ const IndexPage = ({ data }) => {
             }}
           />
         </Statement>
-      ))} */}
+      ))}
 
-      {/* <Container fluid>
-        <Box>
-          <Container as="div">
-            <SubHeading>News</SubHeading>
-            <PressRelease>
-              {articles.map(({ node: article }) => (
-                <LinkBlock
-                  to={`/communcation/${article.slug}`}
-                  key={article.id}>
-                  <Article key={article.id}>
-                    {article.coverImage && (
-                      <Img
-                        fluid={article.coverImage.fluid}
-                        style={{ maxHeight: '240px' }}
-                      />
-                    )}
-                    <H3 style={{ marginBottom: '1rem' }}>{article.title}</H3>
-                    <P style={{ margin: '1rem 0' }}>{article.teaser}</P>
-                    <Author
-                      name={article.author.name}
-                      picture={article.author.picture.fixed}
-                    />
-                  </Article>
-                </LinkBlock>
-              ))}
-            </PressRelease>
-            <LinkButton to="/communcation/1" showArrow pressRelease>
-              More news
-            </LinkButton>
-          </Container>
-        </Box>
-      </Container> */}
+      <CenteredContainer>
+        <H1>Lets work together</H1>
+        <LinkButton to="/">
+          join us link
+        </LinkButton>
+      </CenteredContainer>
 
-      {/* {statementThree.map(({ node: post }) => (
-        <Statement
-          key={post.id}
-          image={post.image.fluid}
-          reverse={post.reverseOrder === 'Yes' ? post.reverseOrder : null}>
-          <SubHeading>{post.subtitle}</SubHeading>
-          <H2>{post.title}</H2>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: post.content.childMarkdownRemark.html,
-            }}
-          />
-        </Statement>
-      ))} */}
+      {/** lets wortk togeter heading */}
+      {/** join us link*/}
+
+      <NewsContainer>
+        <SubHeading>News</SubHeading>
+        <PressRelease>
+          {articles.map(({ node: article }) => (
+            <LinkBlock
+              to={`/communcation/${article.slug}`}
+              key={article.id}>
+              <Article key={article.id}>
+                {article.coverImage && (
+                  <Img
+                    fluid={article.coverImage.fluid}
+                    style={{ maxHeight: '240px' }}
+                  />
+                )}
+                <H3 style={{ marginBottom: '1rem' }}>{article.title}</H3>
+                <P style={{ margin: '1rem 0' }}>{article.teaser}</P>
+                <Author
+                  name={article.author.name}
+                  picture={article.author.picture.fixed}
+                />
+              </Article>
+            </LinkBlock>
+          ))}
+        </PressRelease>
+        <LinkButton to="/communcation/1" showArrow pressRelease>
+          More news
+        </LinkButton>
+      </NewsContainer>
 
     </Layout>
   )
@@ -372,3 +358,26 @@ IndexPage.propTypes = {
 }
 
 const VideoContainer = styled.div``
+
+const QuoteContainer = styled.div`
+  grid-column: 1 / span 12;
+
+  ${mediaQuery.BREAKPOINT_4`
+  grid-column: 3 / span 9;
+  `};
+`;
+
+const NewsContainer = styled(Container)`
+  grid-template-columns: repeat(1, 100%);
+
+  ${mediaQuery.BREAKPOINT_3`
+  grid-template-columns: repeat(1, 100%);
+  `};
+`;
+
+const CenteredContainer = styled(Container)`
+  grid-column: 1 / 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

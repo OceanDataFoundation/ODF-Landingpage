@@ -1,4 +1,5 @@
 import Vimeo from '@u-wave/react-vimeo'
+import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -22,5 +23,9 @@ const VideoStyle = styled.div`
   background-color: black;
   grid-column: 1 / span 12;
 `
+
+Video.propTypes = {
+  videoId: PropTypes.string
+}
 
 export default Video

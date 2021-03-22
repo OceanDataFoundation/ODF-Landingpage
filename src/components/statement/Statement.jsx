@@ -27,28 +27,37 @@ const Statement = props => {
 }
 
 const StatementContainer = styled(Container)`
-  padding-right: ${space[0]};
+  /* padding-right: ${space[0]};
   padding-left: ${space[0]};
-  position: relative;
+  position: relative; */
+  height: 100vh;
+  grid-column: 1 / span 12;
+  align-items: center;
+
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
 
   ${mediaQuery.BREAKPOINT_2`
-    margin-bottom: ${space[6]};
-    grid-template-columns: repeat(2, 1fr);
+    //margin-bottom: ${space[6]};
+    grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 5%;
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-    grid-column-gap: 10%;
+    //grid-column-gap: 10%;
   `};
 `
 
 const StatementImage = styled.div`
-  position: relative;
-  ${props => (props.removeOffset ? `margin: 40px 0 ${space[0]} 0` : null)};
+  //position: relative;
+  //${props => (props.removeOffset ? `margin: 40px 0 ${space[0]} 0` : null)};
+
+  grid-column: 1 / 7;
 
   ${mediaQuery.BREAKPOINT_2`
-    top: ${props => (props.removeOffset ? `0` : `-${space[8]}`)};
-    ${props => (props.removeOffset ? `margin: 50px 0 ${space[8]} 0` : null)};
+    // top: ${props => (props.removeOffset ? `0` : `-${space[8]}`)};
+    // ${props => (props.removeOffset ? `margin: 50px 0 ${space[8]} 0` : null)};
     ${props => (props.reverse ? `order: 2` : `order: 1`)};
   `};
 
@@ -56,42 +65,32 @@ const StatementImage = styled.div`
     ${props => (props.removeOffset ? `margin: 80px 0 ${space[8]} 0` : null)};
   `};
 
-  ::before {
-    ${mediaQuery.BREAKPOINT_3`
-      width: 160px;
-      height: 4px;
-      content: '';
-      position: absolute;
-      top: ${props => (props.removeOffset ? '24px' : '116px')};
-      left: ${props => (props.reverse ? '-120px' : 'calc(100% - 40px)')};
-      background-color: ${colorNeutral.NEUTRAL_TINT_85};
-      z-index: ${zIndex.Z_INDEX_2};
-    `};
-  }
-
   > div {
-    height: 200px;
+    //height: 200px;
 
     ${mediaQuery.BREAKPOINT_2`
-      height: 600px;
+      //height: 600px;
     `};
 
     ${mediaQuery.BREAKPOINT_3`
-      height: 800px;
+      height: 547px;
+      //width: 820px;
     `};
   }
 `
 
 const StatementContent = styled.div`
-  padding: ${space[4]};
+  //padding: ${space[4]};
+
+  grid-column: 7 / 11;
 
   ${mediaQuery.BREAKPOINT_2`
-    padding: calc(${space[7]}) 0 0 0;
+    // padding: calc(${space[7]}) 0 0 0;
     ${props => (props.reverse ? `order: 1` : `order: 2`)};
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-    padding: calc(${space[10]} * 2) 0 0 0;
+    //padding: calc(${space[10]} * 2) 0 0 0;
   `};
 `
 
