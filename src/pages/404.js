@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import React from 'react'
 
-import { Container } from '../components/container/Container'
+import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Header } from '../components/header/Header'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
@@ -12,7 +12,7 @@ const NotFoundPage = () => (
   <Layout>
     <SEO title="404: Not found" />
 
-    <Container offset="true" background="white">
+    <FullWidthContainer offset="true">
       <Header>
         <H1>Page not found</H1>
       </Header>
@@ -20,7 +20,7 @@ const NotFoundPage = () => (
       <Link to="/" style={{ borderBottom: 'none', color:"#fff" }}>
         &larr; Back to homepage
       </Link>
-    </Container>
+    </FullWidthContainer>
   </Layout>
 )
 

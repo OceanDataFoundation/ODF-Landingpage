@@ -8,7 +8,6 @@ import { space } from '../../utils/configs/confSpace'
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 // Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 import { zIndex } from '../../utils/tokens/tokenZIndex'
 // Components
 import { Container } from '../container/Container'
@@ -27,19 +26,11 @@ const Statement = props => {
 }
 
 const StatementContainer = styled(Container)`
-  /* padding-right: ${space[0]};
-  padding-left: ${space[0]};
-  position: relative; */
   height: 100vh;
-  grid-column: 1 / span 12;
-  align-items: center;
-
-  /* display: flex;
-  justify-content: center;
-  flex-direction: column; */
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
 
   ${mediaQuery.BREAKPOINT_2`
-    //margin-bottom: ${space[6]};
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 5%;
   `};
@@ -50,19 +41,19 @@ const StatementContainer = styled(Container)`
 `
 
 const StatementImage = styled.div`
-  //position: relative;
-  //${props => (props.removeOffset ? `margin: 40px 0 ${space[0]} 0` : null)};
+  position: relative;
+  ${props => (props.removeOffset ? `margin: 40px 0 ${space[0]} 0` : null)};
 
-  grid-column: 1 / 7;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  height: 200px;
 
   ${mediaQuery.BREAKPOINT_2`
-    // top: ${props => (props.removeOffset ? `0` : `-${space[8]}`)};
-    // ${props => (props.removeOffset ? `margin: 50px 0 ${space[8]} 0` : null)};
     ${props => (props.reverse ? `order: 2` : `order: 1`)};
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-    ${props => (props.removeOffset ? `margin: 80px 0 ${space[8]} 0` : null)};
+    grid-column: 1 / 7;
   `};
 
   > div {
@@ -80,30 +71,24 @@ const StatementImage = styled.div`
 `
 
 const StatementContent = styled.div`
-  //padding: ${space[4]};
-
-  grid-column: 7 / 11;
+  grid-column: 1 / -1;
+  grid-row: 1;
 
   ${mediaQuery.BREAKPOINT_2`
-    // padding: calc(${space[7]}) 0 0 0;
     ${props => (props.reverse ? `order: 1` : `order: 2`)};
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-    //padding: calc(${space[10]} * 2) 0 0 0;
+    grid-column: 7 / 13;
+    grid-row: 2;
   `};
 `
 
-StatementContainer.propTypes = {
+Statement.propTypes = {
   children: PropTypes.node,
-}
-
-StatementImage.propTypes = {
+  image: PropTypes.string,
   reverse: PropTypes.string,
-}
-
-StatementContent.propTypes = {
-  reverse: PropTypes.string,
+  removeOffset: PropTypes
 }
 
 export default Statement

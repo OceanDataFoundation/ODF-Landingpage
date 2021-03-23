@@ -7,6 +7,7 @@ import styled from 'styled-components'
 // Components
 import { Box } from '../components/box/Box'
 import { Container } from '../components/container/Container'
+import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Header } from '../components/header/Header'
 import PressRelease from '../components/press-release/PressRelease'
 import SEO from '../components/seo/seo'
@@ -86,7 +87,7 @@ const AboutPage = ({ data }) => {
     <Layout>
       <SEO title="The Ocean Data Foundation team" />
 
-      <Container offset="true">
+      <FullWidthContainer offset="true">
         {teamPage.map(({ node: post }) => (
           <div key={post.id}>
             <Header>
@@ -100,11 +101,9 @@ const AboutPage = ({ data }) => {
             />
           </div>
         ))}
-      </Container>
+      </FullWidthContainer>
 
-      <Container fluid style={{ marginTop: '4rem', marginBottom: '-4rem' }}>
-        <Box>
-          <Container as="div">
+      <FullWidthContainer>
             <SubHeading>Meet the team</SubHeading>
             <PressRelease columnGap="small" columnWidth="large">
               {teamPosts.map(({ node: post }) => (
@@ -144,9 +143,7 @@ const AboutPage = ({ data }) => {
                 </TeamMember>
               ))}
             </PressRelease>
-          </Container>
-        </Box>
-      </Container>
+          </FullWidthContainer>
     </Layout>
   )
 }

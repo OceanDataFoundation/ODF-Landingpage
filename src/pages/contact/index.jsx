@@ -1,19 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
 
-// Utils
-import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-
+import ContactForm from '../../components/contact-form/ContactForm'
+import { FullWidthContainer } from '../../components/container/FullWidthContainer'
+import { Header } from '../../components/header/Header'
+import SEO from '../../components/seo/seo'
 // Components
 import Layout from '../../components/site-layout/Layout'
-import SEO from '../../components/seo/seo'
-import { Container } from '../../components/container/Container'
-import { Header } from '../../components/header/Header'
 import { H1 } from '../../components/typography/heading/Heading'
-import P from '../../components/typography/paragraph/Paragraph'
-import ContactForm from '../../components/contact-form/ContactForm'
+// Utils
+import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 // Style
 const FlexContainer = styled.div`
@@ -54,7 +52,7 @@ const ContactPage = ({ data }) => {
   return (
     <Layout>
       <SEO title={title} description={metaDescription} />
-      <Container offset="true">
+      <FullWidthContainer offset="true">
         <Header>
           <H1>{subtitle}</H1>
         </Header>
@@ -68,7 +66,7 @@ const ContactPage = ({ data }) => {
             <ContactForm />
           </div>
         </FlexContainer>
-      </Container>
+      </FullWidthContainer>
     </Layout>
   )
 }

@@ -9,6 +9,7 @@ import { Author } from '../components/author/Author'
 import Blockquote from '../components/blockquote/Blockquote'
 import { Box } from '../components/box/Box'
 import { Container } from '../components/container/Container'
+import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import Hero from '../components/hero/Hero'
 import LinkBlock from '../components/link-block/LinkBlock'
 import LinkButton from '../components/link-button/LinkButton'
@@ -128,10 +129,7 @@ const IndexPage = ({ data }) => {
         </LinkButton>
       </CenteredContainer>
 
-      {/** lets wortk togeter heading */}
-      {/** join us link*/}
-
-      <NewsContainer>
+      <FullWidthContainer>
         <SubHeading>News</SubHeading>
         <PressRelease>
           {articles.map(({ node: article }) => (
@@ -158,7 +156,7 @@ const IndexPage = ({ data }) => {
         <LinkButton to="/communcation/1" showArrow pressRelease>
           More news
         </LinkButton>
-      </NewsContainer>
+      </FullWidthContainer>
 
     </Layout>
   )
@@ -364,14 +362,6 @@ const QuoteContainer = styled.div`
 
   ${mediaQuery.BREAKPOINT_4`
   grid-column: 3 / span 9;
-  `};
-`;
-
-const NewsContainer = styled(Container)`
-  grid-template-columns: repeat(1, 100%);
-
-  ${mediaQuery.BREAKPOINT_3`
-  grid-template-columns: repeat(1, 100%);
   `};
 `;
 

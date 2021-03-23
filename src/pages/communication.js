@@ -2,11 +2,12 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import React from 'react'
+import styled from 'styled-components'
 
 import { Article } from '../components/article/Article'
 import { Author } from '../components/author/Author'
-import { Box } from '../components/box/Box'
 import { Container } from '../components/container/Container'
+import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import LinkBlock from '../components/link-block/LinkBlock'
 import LinkButton from '../components/link-button/LinkButton'
 import LinkCta from '../components/link-cta/LinkCta'
@@ -20,7 +21,8 @@ import Time from '../components/time/Time'
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { Strong } from '../components/typography/strong/Strong'
-import { SubHeading } from '../components/typography/sub-heading/SubHeading'
+// Mixins
+import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 
 const Communcation = ({ data }) => {
   const { title, metaDescription } = data.contentfulPage
@@ -33,11 +35,8 @@ const Communcation = ({ data }) => {
   return (
     <Layout>
     <SEO title="Communication" />
-
-      <Container fluid>
-        <Box>
-          <Container as="div">
-            <SubHeading>News</SubHeading>
+          <FullWidthContainer offset>
+            <H1>News</H1>
             <PressRelease>
               {articles.map(({ node: article }) => (
                 <LinkBlock
@@ -63,16 +62,12 @@ const Communcation = ({ data }) => {
             <LinkButton to="/communcation/1" showArrow pressRelease>
               More news
             </LinkButton>
-          </Container>
-        </Box>
-      </Container>
+          </FullWidthContainer>
 
 
-      <Container fluid>
-        <Box>
-          <Container as="div">
-            <SubHeading>Press release</SubHeading>
-            <PressRelease columnGap="large">
+          <FullWidthContainer>
+            <H1>Press release</H1>
+            <PressRelease>
               {pressReleases.map(({ node: post }) => (
                 <Article key={post.id}>
                   <H3>{post.title}</H3>
@@ -98,12 +93,9 @@ const Communcation = ({ data }) => {
             <LinkButton to="/communcation/" showArrow pressRelease>
               See all
             </LinkButton>
-          </Container>
-        </Box>
-      </Container>
+          </FullWidthContainer>
 
-      <Container style={{ marginTop: '80px' }}>
-        <SubHeading>Connect</SubHeading>
+      <FullWidthContainer style={{ marginTop: '80px' }}>
         <H2>Upcoming Events</H2>
         <TableWrapper>
           <Table>
@@ -137,7 +129,7 @@ const Communcation = ({ data }) => {
             </TBody>
           </Table>
         </TableWrapper>
-      </Container>
+      </FullWidthContainer>
     </Layout>
   )
 }
@@ -216,3 +208,28 @@ Communcation.propTypes = {
     contentfulPage: PropTypes.object.isRequired,
   }),
 }
+
+const NewsContainer = styled(Container)`
+  grid-template-columns: repeat(1, 100%);
+
+  ${mediaQuery.BREAKPOINT_3`
+    grid-template-columns: repeat(1, 100%);
+    margin-top: 5rem;
+  `};
+`;
+
+const EventsContainer = styled(Container)`
+  grid-template-columns: repeat(1, 100%);
+
+  ${mediaQuery.BREAKPOINT_3`
+  grid-template-columns: repeat(1, 100%);
+  `};
+`;
+
+const PressReleaseContainer = styled(Container)`
+  grid-template-columns: repeat(1, 100%);
+
+  ${mediaQuery.BREAKPOINT_3`
+  grid-template-columns: repeat(3, 1fr);
+  `};
+`;
