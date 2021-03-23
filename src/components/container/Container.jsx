@@ -24,7 +24,7 @@ export const Container = styled.section`
       : props.col === '2'
       ? `repeat(1, 100%)`
       : `repeat(1, 100%)`};
-  gap: ${props => (props.col === '3' || '2' ? `0` : null)};
+  gap: ${props => (props.col === '3' || '2' ? `20px` : null)};
 
   ${mediaQuery.BREAKPOINT_2`
     padding-right: ${props => (props.fluid ? 0 : space[6])};
@@ -32,15 +32,15 @@ export const Container = styled.section`
     margin-top: ${props => (props.offset ? '140px' : '0')};
     grid-template-columns: ${props =>
       props.col === '3'
-        ? `repeat(2, 50%)`
+        ? `repeat(2, 1fr)`
         : props.col === '2'
-        ? `repeat(2, 50%)`
-        : `repeat(1, 100%)`};
+        ? `repeat(2, 1fr)`
+        : `1fr`};
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-    padding-right: ${props => (props.fluid ? 0 : space[8])};
-    padding-left: ${props => (props.fluid ? 0 : space[8])};
+    padding-right: ${props => (props.fluid ? 0 : space[7])};
+    padding-left: ${props => (props.fluid ? 0 : space[7])};
     margin-top: ${props => (props.offset ? '160px' : '0')};
     grid-template-columns: ${props =>
       props.col === '3'
@@ -48,7 +48,7 @@ export const Container = styled.section`
         : props.col === '2'
         ? `repeat(2, 50%)`
         : `repeat(12, 1fr)`};
-    gap: 20px;
+    gap: 40px;
   `};
 `
 

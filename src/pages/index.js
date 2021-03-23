@@ -7,14 +7,11 @@ import styled from 'styled-components'
 import { Article } from '../components/article/Article'
 import { Author } from '../components/author/Author'
 import Blockquote from '../components/blockquote/Blockquote'
-import { Box } from '../components/box/Box'
 import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import Hero from '../components/hero/Hero'
 import LinkBlock from '../components/link-block/LinkBlock'
 import LinkButton from '../components/link-button/LinkButton'
-import LinkCta from '../components/link-cta/LinkCta'
-import { Meta } from '../components/meta/Meta'
 import PressRelease from '../components/press-release/PressRelease'
 import SEO from '../components/seo/seo'
 // Components
@@ -62,14 +59,14 @@ const IndexPage = ({ data }) => {
           <H1 size="larger">
             {post.title}
           </H1>
-          <P lead>
-            {post.content.content}
-          </P>
           <LinkButton
             to="/#video"
             style={{ marginTop: '2rem', display: 'inline-block' }}>
             Watch video
           </LinkButton>
+          <P lead>
+            {post.content.content}
+          </P>
         </Hero>
       ))}
 
@@ -358,10 +355,10 @@ IndexPage.propTypes = {
 const VideoContainer = styled.div``
 
 const QuoteContainer = styled.div`
-  grid-column: 1 / span 12;
+  grid-column: 1 / - 1;
 
   ${mediaQuery.BREAKPOINT_4`
-  grid-column: 3 / span 9;
+  grid-column: 2 / 12;
   `};
 `;
 

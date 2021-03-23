@@ -21,7 +21,7 @@ const Video = props => {
 
 const VideoStyle = styled.div`
   background-color: black;
-  grid-column: 1 / span 12;
+  grid-column: 1 / -1 ;
 `
 
 Video.propTypes = {

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 // Hooks
 import { useDocumentScrollThrottled } from '../../hooks/useDocumentScroll'
+// Config
 import { space } from '../../utils/configs/confSpace'
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
@@ -14,44 +15,6 @@ import { zIndex } from '../../utils/tokens/tokenZIndex'
 import Logo from '../logo/Logo'
 import CollapseMenu from './CollapseMenu'
 import Nav from './Nav'
-
-// Styles
-const StyledHeader = styled.header`
-  z-index: ${zIndex.Z_INDEX_7};
-  //position: fixed;
-  top: 0px;
-  width: 100%;
-  background-color: ${colorBrandPurple.PURPLE_TINT_50};
-  display: grid;
-  grid-template-columns: repeat(12,1fr);
-  max-width: ${breakpoints.BREAKPOINT_4};
-  margin: 0 auto;
-
-  ${mediaQuery.BREAKPOINT_2`
-		padding: 0 ${space[6]};
-  `};
-
-  ${mediaQuery.BREAKPOINT_3`
-		padding: 0 ${space[8]};
-  `};
-
-  ${mediaQuery.BREAKPOINT_3`
-    transform: ${props =>
-      props.hideHeader ? 'translateY(-110%)' : 'translateY(0)'};
-    transition: transform 0.3s ease;
-  `};
-
-  ${mediaQuery.BREAKPOINT_4`
-    //max-width: calc(${breakpoints.BREAKPOINT_4} + 98px);
-  `};
-`
-
-const FlexContainer = styled.div`
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  grid-column: 1 / span 12
-`
 
 const Header = props => {
   const { siteTitle, logo, navItems } = props
@@ -91,3 +54,40 @@ Header.propTypes = {
   logo: PropTypes.object.isRequired,
   navItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
+
+// Styles
+const StyledHeader = styled.header`
+  z-index: ${zIndex.Z_INDEX_7};
+  //position: fixed;
+  top: 0px;
+  width: 100%;
+  background-color: ${colorBrandPurple.PURPLE_TINT_50};
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  max-width: ${breakpoints.BREAKPOINT_4};
+  margin: 0 auto;
+
+  padding-right: ${space[3]};
+  padding-left: ${space[3]};
+
+  ${mediaQuery.BREAKPOINT_2`
+    padding-right: ${space[6]};
+    padding-left: ${space[6]};
+  `};
+
+  ${mediaQuery.BREAKPOINT_3`
+    transform: ${props =>
+      props.hideHeader ? 'translateY(-110%)' : 'translateY(0)'};
+    transition: transform 0.3s ease;
+
+    padding-right: ${space[7]};
+    padding-left: ${space[7]};
+  `};
+`
+
+const FlexContainer = styled.div`
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  grid-column: 1 / span 12
+`

@@ -29,13 +29,21 @@ Hero.propTypes = {
 }
 
 const Content = styled.div`
-  grid-column: 1 / span 7;
+  grid-column: 1 / 7;
+  grid-row: 1 / 2;
+
+  p {
+    grid-row: 2;
+  }
 `
 
 const Image = styled.img`
-  height: 500px;
-  width: 500px;
-  grid-column: 8 / 12;
+  height: 1200px;
+  width: 1200px;
+  grid-row: 1 / 2;
+  grid-column: 5 / 12;
+
+
   /* max-width: 100vw;
   align-items: start;
   background-color: ${colorBrandPurple.PURPLE_TINT_50};

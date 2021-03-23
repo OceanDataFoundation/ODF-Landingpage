@@ -9,9 +9,9 @@ import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 export const Article = styled.article`
   grid-column: ${props =>
     props.col === '3'
-      ? `1 / span 4`
+      ? `1 / 4`
       : props.col === '2'
-      ? `1 / span 2`
+      ? `1 / 2`
       : `1 / 12`};
 `
 
