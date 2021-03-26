@@ -39,10 +39,10 @@ const LinkButton = props => {
 LinkButton.propTypes = {
   children: PropTypes.node.isRequired,
   to: PropTypes.string,
-  showArrow: PropTypes.bolean,
-  pressRelease: PropTypes.bolean,
-  alignCenter: PropTypes.bolean,
-  invert: PropTypes.bolean
+  showArrow: PropTypes.bool,
+  pressRelease: PropTypes.bool,
+  alignCenter: PropTypes.bool,
+  invert: PropTypes.bool
 }
 
 const LinkButtonWrapper = styled.div`
@@ -135,11 +135,5 @@ const LinkButtonStyleArrow = styled.span`
     transform: rotate(-45deg);
   }
 `
-
-LinkButtonStyle.propTypes = {
-  children: PropTypes.node,
-  to: PropTypes.string,
-  showArrow: PropTypes.bool,
-}
 
 export default LinkButton

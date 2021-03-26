@@ -8,14 +8,28 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import { colorBrandPurple } from '../../utils/tokens/tokenColorBrand'
 // Components
 import { Container } from '../container/Container'
+import LinkButton from '../link-button/LinkButton'
+import {H1} from '../typography/heading/Heading'
+import P from '../typography/paragraph/Paragraph'
 
 const Hero = props => {
-  const { children, bgImage } = props
+  const { children, bgImage, title, content, to } = props
 
   return (
   <HeroContainer>
     <Content>
-      {children}
+      {/* {children} */}
+      <H1 size="larger">
+        {title}
+      </H1>
+      <LinkButton
+        to={to}
+        style={{ marginTop: '2rem', display: 'inline-block' }}>
+        Watch video
+      </LinkButton>
+      <P lead>
+        {content}
+      </P>
     </Content>
 
       <Image src={bgImage} />
@@ -29,8 +43,15 @@ Hero.propTypes = {
 }
 
 const Content = styled.div`
-  grid-column: 1 / 7;
+  grid-column: 1 / -1;
   grid-row: 1 / 2;
+  margin-top: 2rem;
+
+  ${mediaQuery.BREAKPOINT_3`
+    grid-column: 1 / 7;
+    grid-row: 1 / 2;
+  `}
+
 
   p {
     grid-row: 2;
@@ -38,10 +59,17 @@ const Content = styled.div`
 `
 
 const Image = styled.img`
-  height: 1200px;
-  width: 1200px;
+  height: 200px;
+  width: 200px;
   grid-row: 1 / 2;
-  grid-column: 5 / 12;
+  grid-column: 1 / -1;
+
+  ${mediaQuery.BREAKPOINT_3`
+    height: 1200px;
+    width: 1200px;
+    grid-row: 1 / 2;
+    grid-column: 5 / 12;
+  `}
 
 
   /* max-width: 100vw;

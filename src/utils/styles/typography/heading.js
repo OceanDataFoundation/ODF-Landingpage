@@ -6,15 +6,13 @@
 //
 import { css } from 'styled-components'
 
-// Token
-import { fontWeight } from '../../tokens/tokenFontWeight'
-
 // Config
 import { space } from '../../configs/confSpace'
 import { typeScale } from '../../configs/confTypeScale'
-
 // Mixins
 import { mediaQuery } from '../../mixins/mixMediaQuery'
+// Token
+import { fontWeight } from '../../tokens/tokenFontWeight'
 
 const Heading = css`
   font-weight: ${fontWeight.FONT_WEIGHT_5};
@@ -87,8 +85,6 @@ export const GlobalH6 = css`
   h6 {
     ${Heading};
     ${typeScale.TEXT_PRESET_2}
-
-    text-transform: uppercase;
-    letter-spacing: 1px;
+   letter-spacing: 1px;
   }
 `

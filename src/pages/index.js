@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
+// Components
 import { Article } from '../components/article/Article'
 import { Author } from '../components/author/Author'
 import Blockquote from '../components/blockquote/Blockquote'
@@ -14,7 +15,6 @@ import LinkBlock from '../components/link-block/LinkBlock'
 import LinkButton from '../components/link-button/LinkButton'
 import PressRelease from '../components/press-release/PressRelease'
 import SEO from '../components/seo/seo'
-// Components
 import Layout from '../components/site-layout/Layout'
 import Statement from '../components/statement/Statement'
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
@@ -55,8 +55,14 @@ const IndexPage = ({ data }) => {
       />
 
       {heroPosts.map(({ node: post, }) => (
-        <Hero key={post.id} bgImage={post.image.fluid.src}>
-          <H1 size="larger">
+        <Hero
+          key={post.id}
+          bgImage={post.image.fluid.src}
+          title={post.title}
+          content={post.content.content}
+          to={"/#video"}
+        >
+          {/* <H1 size="larger">
             {post.title}
           </H1>
           <LinkButton
@@ -66,21 +72,21 @@ const IndexPage = ({ data }) => {
           </LinkButton>
           <P lead>
             {post.content.content}
-          </P>
+          </P> */}
         </Hero>
       ))}
 
       <Container id="quote">
         <QuoteContainer>
-        {quotePosts.map(({ node: post }) => (
-          <Blockquote key={post.id} cite={post.cite} author={post.author}>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.content.childMarkdownRemark.html,
-              }}
-              />
-          </Blockquote>
-        ))}
+          {quotePosts.map(({ node: post }) => (
+            <Blockquote key={post.id} cite={post.cite} author={post.author} highlightedQuote={post.highlightedQuote}>
+              <Quote
+                dangerouslySetInnerHTML={{
+                  __html: post.content.childMarkdownRemark.html,
+                }}
+                />
+            </Blockquote>
+          ))}
         </QuoteContainer>
       </Container>
 
@@ -192,6 +198,7 @@ export const query = graphql`
         node {
           id
           title
+          highlightedQuote
           content {
             childMarkdownRemark {
               html
@@ -354,17 +361,23 @@ IndexPage.propTypes = {
 
 const VideoContainer = styled.div``
 
-const QuoteContainer = styled.div`
-  grid-column: 1 / - 1;
-
-  ${mediaQuery.BREAKPOINT_4`
-  grid-column: 2 / 12;
-  `};
+const Quote = styled.div`
+  grid-column: 4 / 10;
 `;
 
 const CenteredContainer = styled(Container)`
-  grid-column: 1 / 12;
+  grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
+
+const QuoteContainer = styled.div`
+  grid-column: 1 / -1;
+  height: 80vh;
+
+  ${mediaQuery.BREAKPOINT_3`
+    height: 80vh;
+  `};
+`;
+

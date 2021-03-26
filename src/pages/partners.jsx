@@ -19,7 +19,7 @@ const Partners = ({ data }) => {
     <Layout>
       <SEO title="Partners" />
 
-      <FullWidthContainer offset>
+      <FullWidthContainer offset="true">
         <H1>Partners</H1>
         <Container col="3" fluid>
           {nodes.map(partner => <Partner key={partner.id} partner={partner} />)}

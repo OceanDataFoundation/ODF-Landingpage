@@ -25,7 +25,6 @@ import { Strong } from '../components/typography/strong/Strong'
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 
 const Communcation = ({ data }) => {
-  const { title, metaDescription } = data.contentfulPage
 
   const pressReleases = data.allContentfulPressRelease.edges
   const articles = data.allContentfulPerspective.edges
@@ -35,7 +34,7 @@ const Communcation = ({ data }) => {
   return (
     <Layout>
     <SEO title="Communication" />
-          <FullWidthContainer offset>
+          <FullWidthContainer offset="true">
             <H1>News</H1>
             <PressRelease>
               {articles.map(({ node: article }) => (
@@ -138,10 +137,6 @@ export default Communcation
 
 export const query = graphql`
   query CommuncationPageQuery {
-    contentfulPage(contentful_id: { eq: "2P6qkdN2Lx8fhXd3VOyKLx" }) {
-      title
-      metaDescription
-    }
     allContentfulPerspective(
       limit: 3
       sort: { order: DESC, fields: [publicationDate] }
@@ -205,7 +200,6 @@ Communcation.propTypes = {
     allContentfulEvents: PropTypes.object.isRequired,
     allContentfulPerspective: PropTypes.object.isRequired,
     allContentfulPressRelease: PropTypes.object.isRequired,
-    contentfulPage: PropTypes.object.isRequired,
   }),
 }
 

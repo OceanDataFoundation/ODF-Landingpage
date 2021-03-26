@@ -86,9 +86,9 @@ const StatementContent = styled.div`
 
 Statement.propTypes = {
   children: PropTypes.node,
-  image: PropTypes.string,
+  image: PropTypes.object,
   reverse: PropTypes.string,
-  removeOffset: PropTypes
+  removeOffset: PropTypes.string
 }
 
 export default Statement

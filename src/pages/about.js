@@ -35,14 +35,14 @@ const AboutPage = ({ data }) => {
       <FullWidthContainer offset="true">
         {personList.map(({ node: team }) => (
             <Accordion key={team.id} title={team.title}>
-              <Container col="3">
+              <Container fluid col="3">
               {team.persons.map(person => {
                 return (
                   <div key={person.id}>
-                    {person.portrait && <img
+                    {person.portrait && <TeamMemberImage
                       fluid={person.portrait.fluid}
                       />}
-                    <p>{person.fullName}</p>
+                    <Name>{person.fullName}</Name>
                     <p>{person.role}</p>
                   </div>
                 )})}
@@ -175,6 +175,11 @@ AboutPage.propTypes = {
   data: PropTypes.objectOf(PropTypes.object).isRequired,
 }
 
+const Name = styled.h6`
+  font-weight: bold;
+  margin: 0;
+`
+
 const TeamMember = styled.div`
   position: relative;
   overflow: hidden;
@@ -183,6 +188,8 @@ const TeamMember = styled.div`
 const TeamMemberImage = styled(Img)`
   width: 100%;
   height: 320px;
+  margin-bottom: 20px;
+  margin-top: 10px;
 
   img {
     object-fit: scale-down;
@@ -191,10 +198,6 @@ const TeamMemberImage = styled(Img)`
       object-fit: cover;
     `};
   }
-
-  ${mediaQuery.BREAKPOINT_3`
-    height: 480px;
-  `};
 `
 
 const TeamMemberInfo = styled.div`
