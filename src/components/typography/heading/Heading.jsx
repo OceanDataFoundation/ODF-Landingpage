@@ -23,6 +23,8 @@ export const H1 = styled.h1`
       ? space[5]
       : props.size === 'large'
       ? space[4]
+      : props.size === 'none'
+      ? space[0]
       : space[3]};
   color: ${props =>
     props.invert

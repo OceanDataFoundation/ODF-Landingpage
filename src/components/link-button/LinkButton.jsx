@@ -46,7 +46,7 @@ LinkButton.propTypes = {
 }
 
 const LinkButtonWrapper = styled.div`
-  margin: 0 auto;
+  margin: 0 auto 4rem auto;
   display: ${props => (props.alignCenter ? `table` : 'inline-block')};
 
   ${mediaQuery.BREAKPOINT_2`

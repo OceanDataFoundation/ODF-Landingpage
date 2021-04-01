@@ -62,10 +62,6 @@ const StyledHeader = styled.header`
   top: 0px;
   width: 100%;
   background-color: ${colorBrandPurple.PURPLE_TINT_50};
-  display: grid;
-  grid-template-columns: repeat(12,1fr);
-  max-width: ${breakpoints.BREAKPOINT_4};
-  margin: 0 auto;
 
   padding-right: 20px;
   padding-left: 20px;
@@ -89,5 +85,25 @@ const FlexContainer = styled.div`
   display: flex;
   align-items: stretch;
   justify-content: space-between;
-  grid-column: 1 / span 12
+  grid-column: 1 / span 12;
+  max-width: ${breakpoints.BREAKPOINT_4};
+  margin: 0 auto;
+
+  padding-right: ${space[0]};
+  padding-left: ${space[0]};
+
+  ${mediaQuery.BREAKPOINT_2`
+    padding-right: ${space[0]};
+    padding-left: ${space[0]};
+  `};
+
+  ${mediaQuery.BREAKPOINT_3`
+    padding-right: ${space[0]};
+    padding-left: ${space[0]};
+  `};
+
+  ${mediaQuery.BREAKPOINT_4`
+    padding-right: ${space[7]};
+    padding-left: ${space[7]};
+  `};
 `
