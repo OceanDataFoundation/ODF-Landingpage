@@ -16,6 +16,13 @@ const toggleAnimation = useSpring({ opacity: props.isOpen ? 1 : 0 })
     return (
       <CollapseWrapper style={toggleAnimation}>
         <NavList>
+          <li>
+            <CustomLink
+            href="https://www.oceandata.earth/"
+            target="_blank">
+            The data platform
+            </CustomLink>
+          </li>
           {navItems.map(item => (
             <li key={item.id}>
               <Link to={`${item.link.slug}`}>{item.text}</Link>
@@ -42,7 +49,16 @@ const CollapseWrapper = styled(animated.div)`
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 200;
 `
+
+const CustomLink = styled.a`
+
+  &:hover {
+    padding-bottom: .250rem;
+    border-bottom: 1px solid white;
+  }
+`;
 
 const NavList = styled.ul`
   list-style-type: none;

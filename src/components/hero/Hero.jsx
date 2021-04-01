@@ -13,12 +13,11 @@ import {H1} from '../typography/heading/Heading'
 import P from '../typography/paragraph/Paragraph'
 
 const Hero = props => {
-  const { children, bgImage, title, content, to } = props
+  const { bgImage, title, content, to } = props
 
   return (
   <HeroContainer>
     <Content>
-      {/* {children} */}
       <H1 size="larger">
         {title}
       </H1>
@@ -38,14 +37,17 @@ const Hero = props => {
 }
 
 Hero.propTypes = {
-  children: PropTypes.node,
-  bgImage: PropTypes.string
+  bgImage: PropTypes.string,
+  title: PropTypes.string,
+  content: PropTypes.string,
+  to: PropTypes.string
 }
 
 const Content = styled.div`
   grid-column: 1 / -1;
-  grid-row: 1 / 2;
+  grid-row: 1;
   margin-top: 2rem;
+  z-index: 100;
 
   ${mediaQuery.BREAKPOINT_3`
     grid-column: 1 / 7;
@@ -59,8 +61,8 @@ const Content = styled.div`
 `
 
 const Image = styled.img`
-  height: 200px;
-  width: 200px;
+  height: 700px;
+  width: 700px;
   grid-row: 1 / 2;
   grid-column: 1 / -1;
 
@@ -81,7 +83,9 @@ const Image = styled.img`
 `;
 
 const HeroContainer = styled(Container)`
-  height: 100vh;
+  grid-template-rows: repeat(2, 1fr);
+  margin-top: 8rem;
+
   /* display: grid;
   grid-template-columns: repeat(12, 1fr); */
   /* max-width: 100vw;
@@ -94,10 +98,12 @@ const HeroContainer = styled(Container)`
 
   ${mediaQuery.BREAKPOINT_2`
     //background-position: 85% 170px;
+    margin-top: 4rem;
   `};
 
   ${mediaQuery.BREAKPOINT_3`
     align-items: center;
+    height: calc(100vh - 55px);
     //background-position: center 40px;
   `};
 

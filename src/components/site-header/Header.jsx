@@ -58,7 +58,7 @@ Header.propTypes = {
 // Styles
 const StyledHeader = styled.header`
   z-index: ${zIndex.Z_INDEX_7};
-  //position: fixed;
+  position: fixed;
   top: 0px;
   width: 100%;
   background-color: ${colorBrandPurple.PURPLE_TINT_50};
@@ -67,8 +67,8 @@ const StyledHeader = styled.header`
   max-width: ${breakpoints.BREAKPOINT_4};
   margin: 0 auto;
 
-  padding-right: ${space[3]};
-  padding-left: ${space[3]};
+  padding-right: 20px;
+  padding-left: 20px;
 
   ${mediaQuery.BREAKPOINT_2`
     padding-right: ${space[6]};

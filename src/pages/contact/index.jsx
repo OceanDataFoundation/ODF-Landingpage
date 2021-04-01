@@ -3,47 +3,17 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
+// Components
 import ContactForm from '../../components/contact-form/ContactForm'
+import { Container } from '../../components/container/Container'
 import { FullWidthContainer } from '../../components/container/FullWidthContainer'
 import { Header } from '../../components/header/Header'
 import SEO from '../../components/seo/seo'
-// Components
 import Layout from '../../components/site-layout/Layout'
 import { H1 } from '../../components/typography/heading/Heading'
 // Utils
+import { space } from '../../utils/configs/confSpace'
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-
-// Style
-const FlexContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  > * {
-    width: 45%;
-  }
-
-  & > p {
-    max-width: 70ch;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  ${mediaQuery.BREAKPOINT_3`
-    flex-direction: row;
-    justify-content: space-between;
-
-    & > p {
-      flex: 4;
-      margin-right: 6rem;
-    }
-
-    & > form {
-      flex: 5;
-    }
-  `};
-`
 
 const ContactPage = ({ data }) => {
   const page = data.contentfulPage
@@ -56,16 +26,16 @@ const ContactPage = ({ data }) => {
         <Header>
           <H1>{subtitle}</H1>
         </Header>
-        <FlexContainer>
-          <div
+        <FormContainer>
+          <ContentContainer
             dangerouslySetInnerHTML={{
               __html: content.childMarkdownRemark.html,
             }}
           />
-          <div>
+          <ContactFormContainer>
             <ContactForm />
-          </div>
-        </FlexContainer>
+          </ContactFormContainer>
+        </FormContainer>
       </FullWidthContainer>
     </Layout>
   )
@@ -92,3 +62,35 @@ export const pageQuery = graphql`
     }
   }
 `
+
+const FormContainer = styled(Container)`
+  padding-right: ${space[0]};
+  padding-left: ${space[0]};
+
+  ${mediaQuery.BREAKPOINT_2`
+    grid-column: 1;
+    padding-right: ${space[0]};
+    padding-left: ${space[0]};
+  `};
+
+  ${mediaQuery.BREAKPOINT_3`
+    grid-column: 1;
+  `};
+
+`;
+
+const ContentContainer = styled.div`
+  grid-column : 1;
+
+  ${mediaQuery.BREAKPOINT_3`
+    grid-column: 1 / 6
+  `};
+`;
+
+const ContactFormContainer = styled.div`
+  grid-column : 1;
+
+  ${mediaQuery.BREAKPOINT_3`
+    grid-column: 7 / -1
+  `};
+`;

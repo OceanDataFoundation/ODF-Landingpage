@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import Layout from '../../components/site-layout/Layout'
-import SEO from '../../components/seo/seo'
-import { Container } from '../../components/container/Container'
+import { FullWidthContainer } from '../../components/container/FullWidthContainer'
 import { Header } from '../../components/header/Header'
+import SEO from '../../components/seo/seo'
+import Layout from '../../components/site-layout/Layout'
 import { H1 } from '../../components/typography/heading/Heading'
 import P from '../../components/typography/paragraph/Paragraph'
 
@@ -16,15 +16,15 @@ const Success = ({ data }) => {
   return (
     <Layout>
       <SEO title="Thank You" />
-      <Container offset="true">
+      <FullWidthContainer offset="true">
         <Header>
           <H1>{subtitle}</H1>
         </Header>
         <P>{content.content}</P>
-        <Link to="/" style={{ borderBottom: 'none' }}>
+        <Link to="/" style={{ borderBottom: 'none', color:"#fff" }}>
           &larr; Back to homepage
         </Link>
-      </Container>
+      </FullWidthContainer>
     </Layout>
   )
 }

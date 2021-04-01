@@ -8,7 +8,7 @@ import { typeScale } from '../../utils/configs/confTypeScale'
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import { Transition } from '../../utils/styles/utility-classes/transition'
 import { borderRadius } from '../../utils/tokens/tokenBorderRadius'
-import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { colorBrandBlue, colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
 import { fontFamily } from '../../utils/tokens/tokenFontFamily'
 import { fontWeight } from '../../utils/tokens/tokenFontWeight'
 
@@ -57,32 +57,23 @@ const LinkButtonWrapper = styled.div`
 const LinkButtonStyle = styled(Link)`
   padding: ${space[4]} ${space[8]};
   margin: 0 auto;
-  color: ${props => props.invert ? colorNeutral.NEUTRAL_TINT_15 : colorNeutral.NEUTRAL_TINT_100 };
+  color: ${props => props.invert ? colorNeutral.NEUTRAL_TINT_100 : colorNeutral.NEUTRAL_TINT_15 };
   font-family: ${fontFamily.FONT_FAMILY_2};
   font-weight: ${fontWeight.FONT_WEIGHT_4};
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
-  border-radius: ${borderRadius.BORDER_RADIUS_2};
+  border-radius: ${borderRadius.BORDER_RADIUS_6};
   border: none;
-  background: ${props =>
-    props.invert
-      ? `linear-gradient(
+  background: ${`linear-gradient(
         to right,
-        ${colorBrandGreen.GREEN_TINT_60} 50%,
-        ${colorBrandGreen.GREEN_TINT_80} 50%
-      )`
-      : `linear-gradient(
-        to right,
-        ${colorBrandGreen.GREEN_TINT_80} 50%,
-        ${colorBrandGreen.GREEN_TINT_60} 50%
-    )`};
-  background-size: calc(210%) calc(210%);
+        ${colorBrandBlue.BLUE_TINT_80},
+        ${colorBrandGreen.GREEN_TINT_50}
+      )`};
 
   ${typeScale.TEXT_PRESET_2};
   ${Transition};
-  transition-property: background-position;
 
   &:hover {
     cursor: pointer;
@@ -90,7 +81,6 @@ const LinkButtonStyle = styled(Link)`
 
   :hover,
   :focus {
-    background-position: calc(-95%) center;
 
     span {
       opacity: 1;

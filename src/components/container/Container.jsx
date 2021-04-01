@@ -15,8 +15,8 @@ export const Container = styled.section`
   margin-right: auto;
   margin-bottom: ${space[0]};
   margin-left: auto;
-  padding-right: ${props => (props.fluid ? 0 : space[3])};
-  padding-left: ${props => (props.fluid ? 0 : space[3])};
+  padding-right: ${props => (props.fluid ? 0 : '20px')};
+  padding-left: ${props => (props.fluid ? 0 : '20px')};
   display: grid;
   grid-template-columns: ${props =>
     props.col === '3'

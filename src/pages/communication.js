@@ -2,11 +2,9 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import React from 'react'
-import styled from 'styled-components'
 
 import { Article } from '../components/article/Article'
 import { Author } from '../components/author/Author'
-import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import LinkBlock from '../components/link-block/LinkBlock'
 import LinkButton from '../components/link-button/LinkButton'
@@ -21,8 +19,6 @@ import Time from '../components/time/Time'
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { Strong } from '../components/typography/strong/Strong'
-// Mixins
-import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 
 const Communcation = ({ data }) => {
 
@@ -202,28 +198,3 @@ Communcation.propTypes = {
     allContentfulPressRelease: PropTypes.object.isRequired,
   }),
 }
-
-const NewsContainer = styled(Container)`
-  grid-template-columns: repeat(1, 100%);
-
-  ${mediaQuery.BREAKPOINT_3`
-    grid-template-columns: repeat(1, 100%);
-    margin-top: 5rem;
-  `};
-`;
-
-const EventsContainer = styled(Container)`
-  grid-template-columns: repeat(1, 100%);
-
-  ${mediaQuery.BREAKPOINT_3`
-  grid-template-columns: repeat(1, 100%);
-  `};
-`;
-
-const PressReleaseContainer = styled(Container)`
-  grid-template-columns: repeat(1, 100%);
-
-  ${mediaQuery.BREAKPOINT_3`
-  grid-template-columns: repeat(3, 1fr);
-  `};
-`;

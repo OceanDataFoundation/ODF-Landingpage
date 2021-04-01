@@ -9,6 +9,7 @@ export const colorBrandGreen = {
 }
 
 export const colorBrandBlue = {
+  BLUE_TINT_80: '#5DB3E3',
   BLUE_TINT_50: '#4A20EF', // Default
 }
 
