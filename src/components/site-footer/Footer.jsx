@@ -28,7 +28,7 @@ const Footer = props => {
     <StyledFooter>
       <FullWidthContainer>
       <Line />
-      <FooterGrid>
+      <FooterGrid fluid>
 
         <FooterCol>
           {relatedLinkList && (
@@ -101,15 +101,9 @@ const FooterCol = styled.div`
 `
 
 const FooterGrid = styled(Container)`
-  grid-template-columns: repeat(1, 100%);
-
-  padding-right: ${space[0]};
-  padding-left: ${space[0]};
 
   ${mediaQuery.BREAKPOINT_2`
-  grid-template-columns: repeat(2, 1fr);
-    padding-right: ${space[0]};
-    padding-left: ${space[0]};
+    grid-template-columns: repeat(2, 1fr);
   `};
 
   ${mediaQuery.BREAKPOINT_3`

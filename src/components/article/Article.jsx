@@ -7,18 +7,10 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 
 export const Article = styled.article`
-  grid-column: ${props =>
-    props.col === '3'
-      ? `1 / 4`
-      : props.col === '2'
-      ? `1 / 2`
-      : `1 / 12`};
+  grid-column: 3 / 11;
 `
 
 export const ArticleContainer = styled.div`
-  ${mediaQuery.BREAKPOINT_3`
-    padding-left: 64px;
-  `};
 `
 
 export const ArticleContent = styled.div`
@@ -30,8 +22,6 @@ export const ArticleContent = styled.div`
   `};
 
   * {
-    max-width: 52rem;
-
     :last-child {
       margin-bottom: ${space[0]};
     }

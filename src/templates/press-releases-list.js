@@ -6,9 +6,9 @@ import styled from 'styled-components'
 
 // Components
 import { Container } from '../components/container/Container'
+import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Header } from '../components/header/Header'
 import LinkBlock from '../components/link-block/LinkBlock'
-import Masonry from '../components/masonry/Masonry'
 import { Meta } from '../components/meta/Meta'
 import { NewsBlock } from '../components/news-block/NewsBlock'
 import SEO from '../components/seo/seo'
@@ -24,22 +24,6 @@ import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 // Tokens
 import { colorNeutral } from '../utils/tokens/tokenColorBrand'
 
-const Pagination = styled.div`
-  margin-top: ${space[8]};
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  ${mediaQuery.BREAKPOINT_2`
-    justify-content: center;
-  `};
-`
-
-const PaginationNumbers = styled(Small)`
-  margin: 0 ${space[6]};
-  color: ${colorNeutral.NEUTRAL_TINT_35};
-`
-
 const NewsListPage = ({ data, pageContext }) => {
   const newsPosts = data.allContentfulNews.edges
   const pageTotal = pageContext.pageAmount.length
@@ -48,14 +32,14 @@ const NewsListPage = ({ data, pageContext }) => {
     <Layout>
       <SEO title="News posts" />
 
-      <Container offset="true">
+      <FullWidthContainer offset="true">
         <Header>
           <H1>Press Releases</H1>
         </Header>
 
-        <Masonry col="2" minWidth={700}>
+        <Container fluid col="3">
           {newsPosts.map(({ node: post }) => (
-            <LinkBlock to={`/news/${post.slug}`} key={post.id}>
+            <LinkBlock to={`/communcation/press/${post.slug}`} key={post.id}>
               {post.image && <Img fluid={post.image.fluid} />}
               <NewsBlock>
                 <Meta>
@@ -66,7 +50,7 @@ const NewsListPage = ({ data, pageContext }) => {
               </NewsBlock>
             </LinkBlock>
           ))}
-        </Masonry>
+        </Container>
 
         <Pagination>
           {pageContext.pageNumber === 1 ? (
@@ -102,7 +86,7 @@ const NewsListPage = ({ data, pageContext }) => {
             </Small>
           )}
         </Pagination>
-      </Container>
+      </FullWidthContainer>
     </Layout>
   )
 }
@@ -139,3 +123,19 @@ NewsListPage.propTypes = {
   data: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
 }
+
+const Pagination = styled.div`
+  margin-top: ${space[8]};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ${mediaQuery.BREAKPOINT_2`
+    justify-content: center;
+  `};
+`
+
+const PaginationNumbers = styled(Small)`
+  margin: 0 ${space[6]};
+  color: ${colorNeutral.NEUTRAL_TINT_35};
+`

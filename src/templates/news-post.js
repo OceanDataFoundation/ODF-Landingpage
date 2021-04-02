@@ -1,25 +1,23 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import Layout from '../components/site-layout/Layout'
-import SEO from '../components/seo/seo'
-
-// Components
-import { Container } from '../components/container/Container'
 import {
   Article,
   ArticleContainer,
   ArticleContent,
 } from '../components/article/Article'
-import { Header } from '../components/header/Header'
-import { Meta } from '../components/meta/Meta'
-import { Figure } from '../components/figure/Figure'
+// Components
+import { Container } from '../components/container/Container'
 import { Figcaption } from '../components/figcaption/Figcaption'
-import { TagList } from '../components/tag-list/TagList'
+import { Figure } from '../components/figure/Figure'
+import { Header } from '../components/header/Header'
 import LinkButton from '../components/link-button/LinkButton'
-
+import { Meta } from '../components/meta/Meta'
+import SEO from '../components/seo/seo'
+import Layout from '../components/site-layout/Layout'
+import { TagList } from '../components/tag-list/TagList'
 import { H1 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 
@@ -82,10 +80,6 @@ const NewsPage = ({ data }) => {
             </ArticleContent>
           </ArticleContainer>
         </Article>
-
-        <LinkButton to="/news/page/1" showArrow alignCenter>
-          See all posts
-        </LinkButton>
       </Container>
     </Layout>
   )

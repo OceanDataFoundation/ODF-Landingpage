@@ -7,7 +7,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create news posts list
   // ----------------------------------------------------------------------------
   const PAGE_SIZE = 10
-  const newsListTemplate = path.resolve(`./src/templates/news-list.js`)
+  const newsListTemplate = path.resolve(`./src/templates/press-releases-list.js`)
   const newsPostTemplate = path.resolve(`./src/templates/news-post.js`)
 
   const newsPages = new Promise((resolve, reject) => {
@@ -120,7 +120,7 @@ exports.createPages = async ({ graphql, actions }) => {
         result.data.posts.edges.forEach(({ node: { slug } }) => {
           // loop over split pages
           createPage({
-            path: `communcation/news/${slug}`,
+            path: `communcation/${slug}`,
             component: perspectiveArticle,
             context: {
               slug,

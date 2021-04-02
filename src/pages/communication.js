@@ -5,7 +5,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 // Components
-import { Article } from '../components/article/Article'
 import { Author } from '../components/author/Author'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Line } from '../components/line'

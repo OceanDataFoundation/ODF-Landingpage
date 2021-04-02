@@ -7,9 +7,9 @@ import styled from 'styled-components'
 // Components
 import { Author } from '../components/author/Author'
 import { Container } from '../components/container/Container'
+import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Header } from '../components/header/Header'
 import LinkBlock from '../components/link-block/LinkBlock'
-import Masonry from '../components/masonry/Masonry'
 import { NewsBlock } from '../components/news-block/NewsBlock'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
@@ -48,12 +48,12 @@ const PerspectivesListPage = ({ data, pageContext }) => {
     <Layout>
       <SEO title="Perspectives" />
 
-      <Container offset="true">
+      <FullWidthContainer offset="true">
         <Header>
           <H1>News</H1>
         </Header>
 
-        <Masonry col="2" minWidth={700}>
+        <Container fluid col="3">
           {articles.map(({ node: article }) => (
             <LinkBlock to={`/communcation/${article.slug}`} key={article.id}>
               {article.coverImage && <Img fluid={article.coverImage.fluid} />}
@@ -68,7 +68,7 @@ const PerspectivesListPage = ({ data, pageContext }) => {
               </NewsBlock>
             </LinkBlock>
           ))}
-        </Masonry>
+        </Container>
 
         {pageContext.hasNextPage && (
           <Pagination>
@@ -96,7 +96,7 @@ const PerspectivesListPage = ({ data, pageContext }) => {
             </Link>
           </Pagination>
         )}
-      </Container>
+      </FullWidthContainer>
     </Layout>
   )
 }

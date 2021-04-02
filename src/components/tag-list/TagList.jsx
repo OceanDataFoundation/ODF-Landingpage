@@ -51,6 +51,7 @@ export const TagList = styled.ol`
     padding: ${space[2]} ${space[4]};
     border-radius: ${borderRadius.BORDER_RADIUS_2};
     background-color: ${colorNeutral.NEUTRAL_TINT_95};
+    color: ${colorNeutral.NEUTRAL_TINT_15};
 
     :not(:last-child) {
       margin-right: ${space[4]};

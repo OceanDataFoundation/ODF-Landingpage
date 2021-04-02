@@ -14,6 +14,70 @@ import { H3 } from '../typography/heading/Heading'
 import P from '../typography/paragraph/Paragraph'
 import { Small } from '../typography/small/Small'
 
+/**
+ * This component was created to showcase author profiles in perspective articles.
+ * @param {object} author - an object that contains information about an author
+ */
+
+export const AuthorProfile = ({ author }) => {
+  const { name, picture, affiliation, pageUrl, biography } = author
+  return (
+    <Container>
+      <Wrapper>
+        <Profile>
+          <AuthorImg>
+            <Img
+              alt={name}
+              fixed={picture.fixed}
+              objectFit="cover"
+              objectPosition="50% 50%"
+              style={{ borderRadius: '50%', width: '80px', height: '80px' }}
+            />
+          </AuthorImg>
+          <AuthorText>
+            <P>WRITTEN BY</P>
+            <AuthorName>
+              <H3>{name}</H3>
+              {pageUrl && (
+                <HideOnPhone>
+                  <LinkCta href={pageUrl} target="blank">
+                    Read more
+                  </LinkCta>
+                </HideOnPhone>
+              )}
+            </AuthorName>
+          </AuthorText>
+        </Profile>
+        <AuthorBio>
+          {affiliation && (
+            <HideOnPhone>
+              <P>{affiliation}</P>
+            </HideOnPhone>
+          )}
+          <Small>{biography.biography}</Small>
+          {pageUrl && (
+            <ShowOnPhone style={{ marginTop: space[5] }}>
+              {/* <LinkCta href={pageUrl} target="blank">
+                Read more
+              </LinkCta> */}
+            </ShowOnPhone>
+          )}
+        </AuthorBio>
+      </Wrapper>
+    </Container>
+  )
+}
+
+AuthorProfile.propTypes = {
+  author: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    picture: PropTypes.objectOf(PropTypes.object.isRequired),
+    biography: PropTypes.objectOf(PropTypes.string.isRequired),
+    pageUrl: PropTypes.string,
+    affiliation: PropTypes.string,
+  }).isRequired,
+}
+
 const Container = styled.div`
   display: flex;
 
@@ -23,9 +87,6 @@ const Container = styled.div`
 
   max-width: 70ch;
 
-  ${mediaQuery.BREAKPOINT_3`
-    margin-left: ${space[10]};
-  `};
 `
 
 const Wrapper = styled.div`
@@ -83,67 +144,3 @@ const AuthorName = styled.div`
   display: flex;
   justify-content: space-between;
 `
-
-/**
- * This component was created to showcase author profiles in perspective articles.
- * @param {object} author - an object that contains information about an author
- */
-
-export const AuthorProfile = ({ author }) => {
-  const { name, picture, affiliation, pageUrl, biography } = author
-  return (
-    <Container>
-      <Wrapper>
-        <Profile>
-          <AuthorImg>
-            <Img
-              alt={name}
-              fixed={picture.fixed}
-              objectFit="cover"
-              objectPosition="50% 50%"
-              style={{ borderRadius: '50%', width: '80px', height: '80px' }}
-            />
-          </AuthorImg>
-          <AuthorText>
-            <P>WRITTEN BY</P>
-            <AuthorName>
-              <H3>{name}</H3>
-              {pageUrl && (
-                <HideOnPhone>
-                  <LinkCta href={pageUrl} target="blank">
-                    Read more
-                  </LinkCta>
-                </HideOnPhone>
-              )}
-            </AuthorName>
-          </AuthorText>
-        </Profile>
-        <AuthorBio>
-          {affiliation && (
-            <HideOnPhone>
-              <P>{affiliation}</P>
-            </HideOnPhone>
-          )}
-          <Small>{biography.biography}</Small>
-          {pageUrl && (
-            <ShowOnPhone style={{ marginTop: space[5] }}>
-              <LinkCta href={pageUrl} target="blank">
-                Read more
-              </LinkCta>
-            </ShowOnPhone>
-          )}
-        </AuthorBio>
-      </Wrapper>
-    </Container>
-  )
-}
-
-AuthorProfile.propTypes = {
-  author: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    picture: PropTypes.objectOf(PropTypes.object.isRequired),
-    biography: PropTypes.objectOf(PropTypes.string.isRequired),
-    pageUrl: PropTypes.string,
-    affiliation: PropTypes.string,
-  }).isRequired,
-}

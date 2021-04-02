@@ -2,20 +2,21 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import React from 'react'
+import styled from 'styled-components'
 
+import { ArrowDown } from '../components/arrow-down/ArrowDown'
+// Components
 import {
   Article,
   ArticleContainer,
   ArticleContent,
 } from '../components/article/Article'
 import { AuthorProfile } from '../components/author-profile/AuthorProfile'
-import { Author } from '../components/author/Author'
-// Components
 import { Container } from '../components/container/Container'
+import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Figcaption } from '../components/figcaption/Figcaption'
 import { Figure } from '../components/figure/Figure'
-import { Header } from '../components/header/Header'
-import LinkButton from '../components/link-button/LinkButton'
+import { Line } from '../components/line'
 import RichTextRenderer from '../components/rich-text-renderer/RichTextRenderer'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
@@ -33,7 +34,6 @@ const PerspectivesArticle = ({ data }) => {
     coverCaption,
     keywords,
     content,
-    publicationDate,
     author,
   } = data.article
   console.log('TCL: PerspectivesArticle -> coverCaption', coverCaption)
@@ -46,50 +46,48 @@ const PerspectivesArticle = ({ data }) => {
         image={`https:${coverImage.file.url}`}
       />
 
-      <Container offset="true">
-        <Article>
-          <Header fullWidth>
-            <H1>{title && title}</H1>
-            <Author
-              name={author.name}
-              picture={author.picture.fixed}
-              date={publicationDate}
-            />
-          </Header>
+      <FullWidthContainer offset="true">
+        <CustomHeader>
+          <H1>News</H1>
+          <Line />
+        </CustomHeader>
 
-          {coverImage && (
-            <Figure>
-              <Img fluid={coverImage.fluid} style={{ maxHeight: '600px' }} />
-              {coverCaption && (
-                <Figcaption as="figcaption">{coverCaption}</Figcaption>
-              )}
-            </Figure>
-          )}
+        <Container fluid>
+          <Article>
 
-          <ArticleContainer>
-            {teaser && (
-              <P lead style={{ marginTop: `${space[6]}` }}>
-                {teaser}
-              </P>
+            {coverImage && (
+              <Figure coverImage>
+                <Img fluid={coverImage.fluid} style={{ maxHeight: '600px' }} />
+                {coverCaption && (
+                  <Figcaption as="figcaption">{coverCaption}</Figcaption>
+                )}
+              </Figure>
             )}
-            <ArticleContent>
-              <RichTextRenderer richTextJson={content.json} />
-              {keywords && (
-                <TagList>
-                  {keywords.map((tag, index) => (
-                    <li key={index}>{tag}</li>
-                  ))}
-                </TagList>
-              )}
-            </ArticleContent>
-          </ArticleContainer>
-          <AuthorProfile author={author} />
-        </Article>
 
-        <LinkButton to="/communcation/1" showArrow alignCenter>
-          See all posts
-        </LinkButton>
-      </Container>
+            <ArticleContainer>
+              <H1>{title && title}</H1>
+              {teaser && (
+                <P lead style={{ marginTop: `${space[6]}` }}>
+                  {teaser}
+                </P>
+              )}
+              <ArticleContent>
+                <RichTextRenderer richTextJson={content.json} />
+                {keywords && (
+                  <TagList>
+                    {keywords.map((tag, index) => (
+                      <li key={index}>{tag}</li>
+                    ))}
+                  </TagList>
+                )}
+              </ArticleContent>
+            </ArticleContainer>
+            <AuthorProfile author={author} />
+          </Article>
+
+        </Container>
+
+      </FullWidthContainer>
     </Layout>
   )
 }
@@ -136,3 +134,7 @@ export const pageQuery = graphql`
 PerspectivesArticle.propTypes = {
   data: PropTypes.objectOf(PropTypes.object.isRequired),
 }
+
+const CustomHeader = styled.div`
+  position: relative;
+`;
