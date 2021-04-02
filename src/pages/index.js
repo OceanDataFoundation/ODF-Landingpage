@@ -62,17 +62,6 @@ const IndexPage = ({ data }) => {
           content={post.content.content}
           to={"/#video"}
         >
-          {/* <H1 size="larger">
-            {post.title}
-          </H1>
-          <LinkButton
-            to="/#video"
-            style={{ marginTop: '2rem', display: 'inline-block' }}>
-            Watch video
-          </LinkButton>
-          <P lead>
-            {post.content.content}
-          </P> */}
         </Hero>
       ))}
 
@@ -137,7 +126,7 @@ const IndexPage = ({ data }) => {
         <PressRelease>
           {articles.map(({ node: article }) => (
             <LinkBlock
-              to={`/communcation/${article.slug}`}
+              to={`/communcation/news/${article.slug}`}
               key={article.id}>
               <Article key={article.id}>
                 {article.coverImage && (
@@ -156,7 +145,7 @@ const IndexPage = ({ data }) => {
             </LinkBlock>
           ))}
         </PressRelease>
-        <LinkButton to="/communcation/1" showArrow pressRelease>
+        <LinkButton to="/communcation/news/1" showArrow pressRelease>
           More news
         </LinkButton>
       </FullWidthContainer>

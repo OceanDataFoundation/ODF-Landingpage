@@ -57,7 +57,7 @@ const Communcation = ({ data }) => {
             </LinkBlock>
           ))}
         </PressRelease>
-        <LinkButton to="/communcation/1" showArrow pressRelease>
+        <LinkButton to="/communcation/news/1" showArrow pressRelease>
           More news
         </LinkButton>
       </FullWidthContainer>
@@ -90,7 +90,7 @@ const Communcation = ({ data }) => {
             </div>
           ))}
         </PressRelease>
-        <LinkButton to="/communcation/press" showArrow pressRelease>
+        <LinkButton to="/communcation/press/1" showArrow pressRelease>
           See all
         </LinkButton>
       </FullWidthContainer>

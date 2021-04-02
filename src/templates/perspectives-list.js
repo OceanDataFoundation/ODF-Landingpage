@@ -50,7 +50,7 @@ const PerspectivesListPage = ({ data, pageContext }) => {
 
       <Container offset="true">
         <Header>
-          <H1>Perspectives</H1>
+          <H1>News</H1>
         </Header>
 
         <Masonry col="2" minWidth={700}>

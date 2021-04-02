@@ -1,16 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
+import { InputCheckbox } from '../../components/input-checkbox/InputCheckbox'
+import { TextInput } from '../../components/input-text/inputText'
+import { Label } from '../../components/label/label'
 // Components
 import LinkButton from '../../components/link-button/LinkButton'
-import { TextInput } from '../../components/input-text/inputText'
-import { InputCheckbox } from '../../components/input-checkbox/InputCheckbox'
-import { Label } from '../../components/label/label'
-
-// Style
-const Form = styled.form`
-  width: 100%;
-`
 
 const ContactForm = () => {
   const [checked, setChecked] = useState(false)
@@ -142,4 +137,10 @@ const ContactForm = () => {
   )
 }
 
+// Style
+const Form = styled.form`
+  width: 100%;
+`
+
 export default ContactForm
+

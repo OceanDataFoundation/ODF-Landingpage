@@ -9,7 +9,48 @@ import { Transition } from '../../utils/styles/utility-classes/transition'
 // Tokens
 import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 // Components
-import { H6 } from '../typography/heading/Heading'
+import { H3 } from '../typography/heading/Heading'
+
+const LinkList = props => {
+  const { linkList, invert, inline, underline } = props
+  const { text, listItems } = linkList
+
+  return (
+    <>
+      <H3 invert={invert}>{text}</H3>
+      <Ul inline={inline}>
+        {listItems.map(item => (
+          <Li key={item.id}>
+            <A
+              invert={invert}
+              underline={underline}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ borderBottom: 'none' }}>
+              {!item.image && item.text}
+              {item.image && (
+                <img
+                  src={item.image.file.url}
+                  alt={item.image.description}
+                  width="40"
+                  style={{ marginTop: '5px' }}
+                />
+              )}
+            </A>
+          </Li>
+        ))}
+      </Ul>
+    </>
+  )
+}
+
+LinkList.propTypes = {
+  linkList: PropTypes.object.isRequired,
+  invert: PropTypes.bool,
+  inline: PropTypes.bool,
+  underline: PropTypes.bool,
+}
 
 const Ul = styled.ul`
   padding: ${space[0]};
@@ -48,49 +89,9 @@ const A = styled.a`
       props.invert
         ? colorNeutral.NEUTRAL_TINT_15
         : colorNeutral.NEUTRAL_TINT_100};
+
     border-bottom-color: transparent !important;
   }
 `
-
-const LinkList = props => {
-  const { linkList, invert, inline, underline } = props
-  const { text, listItems } = linkList
-
-  return (
-    <>
-      <H6 invert={invert}>{text}</H6>
-      <Ul inline={inline}>
-        {listItems.map(item => (
-          <Li key={item.id}>
-            <A
-              invert={invert}
-              underline={underline}
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ borderBottom: 'none' }}>
-              {!item.image && item.text}
-              {item.image && (
-                <img
-                  src={item.image.file.url}
-                  alt={item.image.description}
-                  width="40"
-                  style={{ marginTop: '5px' }}
-                />
-              )}
-            </A>
-          </Li>
-        ))}
-      </Ul>
-    </>
-  )
-}
-
-LinkList.propTypes = {
-  linkList: PropTypes.object.isRequired,
-  invert: PropTypes.bool,
-  inline: PropTypes.bool,
-  underline: PropTypes.bool,
-}
 
 export default LinkList

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+// Components
 import { Container } from './Container'
 
 export const FullWidthContainer = styled(Container)`

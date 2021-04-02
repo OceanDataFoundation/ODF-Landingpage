@@ -3,27 +3,18 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
+// Style
 import { space } from '../../utils/configs/confSpace'
-import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
+// Mixins
+import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
+// Components
 import ContactInformation from '../contact-information/ContactInformation'
 import { Container } from '../container/Container'
+import { FullWidthContainer } from '../container/FullWidthContainer'
+import { Line } from '../line'
 import LinkList from '../link-list/LinkList'
+import { H3 } from '../typography/heading/Heading'
 import { Small } from '../typography/small/Small'
-
-const StyledFooter = styled.footer`
-  padding-top: ${space[10]};
-  margin-top: ${space[10]};
-
-  background-color: ${colorNeutral.NEUTRAL_TINT_0};
-`
-
-const FooterCol = styled.div`
-  padding-bottom: ${space[10]};
-
-  h6 {
-    margin-bottom: ${space[4]};
-  }
-`
 
 const Footer = props => {
   const {
@@ -35,7 +26,10 @@ const Footer = props => {
 
   return (
     <StyledFooter>
-      <Container col="3">
+      <FullWidthContainer>
+      <Line />
+      <FooterGrid>
+
         <FooterCol>
           {relatedLinkList && (
             <LinkList underline linkList={relatedLinkList} />
@@ -53,6 +47,11 @@ const Footer = props => {
             Use of Cookies
           </Link>
         </FooterCol>
+
+        <FooterCol>
+          <H3>Partners</H3>
+        </FooterCol>
+
         <FooterCol>
           {contactInformation && (
             <ContactInformation
@@ -60,6 +59,7 @@ const Footer = props => {
             />
           )}
         </FooterCol>
+
         <FooterCol>
           {socialLinkList && (
             <LinkList inline linkList={socialLinkList} />
@@ -68,7 +68,11 @@ const Footer = props => {
             &copy; {siteTitle} {new Date().getFullYear()}
           </Small>
         </FooterCol>
-      </Container>
+
+      </FooterGrid>
+
+
+      </FullWidthContainer>
     </StyledFooter>
   )
 }
@@ -81,3 +85,34 @@ Footer.propTypes = {
   relatedLinkList: PropTypes.object,
   socialLinkList: PropTypes.object,
 }
+
+const StyledFooter = styled.footer`
+  padding-top: ${space[10]};
+  margin-top: ${space[10]};
+  margin-bottom: ${space[10]};
+`
+
+const FooterCol = styled.div`
+  grid-column: span 1;
+
+    ${mediaQuery.BREAKPOINT_3`
+      grid-column: span 3;
+  `};
+`
+
+const FooterGrid = styled(Container)`
+  grid-template-columns: repeat(1, 100%);
+
+  padding-right: ${space[0]};
+  padding-left: ${space[0]};
+
+  ${mediaQuery.BREAKPOINT_2`
+  grid-template-columns: repeat(2, 1fr);
+    padding-right: ${space[0]};
+    padding-left: ${space[0]};
+  `};
+
+  ${mediaQuery.BREAKPOINT_3`
+    grid-template-columns: repeat(12, 1fr);
+  `};
+`

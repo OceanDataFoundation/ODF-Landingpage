@@ -8,7 +8,7 @@ import { space } from '../../utils/configs/confSpace'
 import { Transition } from '../../utils/styles/utility-classes/transition'
 // Tokens
 import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
-import { H6 } from '../typography/heading/Heading'
+import { H3 } from '../typography/heading/Heading'
 // Components
 import P from '../typography/paragraph/Paragraph'
 
@@ -41,8 +41,13 @@ const ContactInformation = ({ contactInformation, invert }) => {
 
   return (
     <>
-      {name && <H6 invert={invert}>{name}</H6>}
-      <P invert={invert}>
+      <H3>Contact</H3>
+      <P>
+        {name && (
+          <>
+            {name} <br />
+          </>
+        )}
         {streetAddress && (
           <>
             {streetAddress} <br />

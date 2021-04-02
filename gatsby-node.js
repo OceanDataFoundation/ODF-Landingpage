@@ -37,7 +37,7 @@ exports.createPages = async ({ graphql, actions }) => {
         // For each of the chunks, call createPage()
         chunks.forEach((chunk, index) => {
           createPage({
-            path: `news/page/${index + 1}`,
+            path: `/communcation/press/${index + 1}`,
             component: newsListTemplate,
             context: {
               skip: PAGE_SIZE * index,
@@ -45,9 +45,9 @@ exports.createPages = async ({ graphql, actions }) => {
               pageNumber: index + 1,
               pageAmount: chunks,
               hasNextPage: index != chunks.length - 1,
-              nextPageLink: `/news/page/${index + 2}`,
+              nextPageLink: `/communcation/press/${index + 2}`,
               hasPrevPage: index != chunks.length + 1,
-              prevPageLink: `/news/page/${index}`,
+              prevPageLink: `/communcation/press/${index}`,
             },
           })
         })
@@ -56,7 +56,7 @@ exports.createPages = async ({ graphql, actions }) => {
         result.data.posts.edges.forEach(({ node }) => {
           // loop over split pages
           createPage({
-            path: `news/${node.slug}`,
+            path: `communcation/press/${node.slug}`,
             component: newsPostTemplate,
             context: {
               slug: node.slug,
@@ -101,7 +101,7 @@ exports.createPages = async ({ graphql, actions }) => {
         // For each of the chunks, call createPage()
         chunks.forEach((chunk, index) => {
           createPage({
-            path: `communcation/${index + 1}`,
+            path: `communcation/news/${index + 1}`,
             component: perspectivesList,
             context: {
               skip: PAGE_SIZE * index,
@@ -109,9 +109,9 @@ exports.createPages = async ({ graphql, actions }) => {
               pageNumber: index + 1,
               pageAmount: chunks,
               hasNextPage: index != chunks.length - 1,
-              nextPageLink: `/communcation/${index + 2}`,
+              nextPageLink: `/communcation/news/${index + 2}`,
               hasPrevPage: index != chunks.length + 1,
-              prevPageLink: `/communcation/${index}`,
+              prevPageLink: `/communcation/news/${index}`,
             },
           })
         })
@@ -120,7 +120,7 @@ exports.createPages = async ({ graphql, actions }) => {
         result.data.posts.edges.forEach(({ node: { slug } }) => {
           // loop over split pages
           createPage({
-            path: `communcation/${slug}`,
+            path: `communcation/news/${slug}`,
             component: perspectiveArticle,
             context: {
               slug,
