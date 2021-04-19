@@ -7,7 +7,11 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 
 export const Article = styled.article`
-  grid-column: 3 / 11;
+  grid-column: 1 / -1;
+
+  ${mediaQuery.BREAKPOINT_3`
+    grid-column: 3 / 11;
+  `};
 `
 
 export const ArticleContainer = styled.div`

@@ -34,7 +34,7 @@ const Paragraph = styled.p`
     ${props =>
       props.lead ? typeScale.TEXT_PRESET_4 : typeScale.TEXT_PRESET_2};
 
-      margin-bottom: ${space[6]};
+      margin-bottom: ${space[4]};
       line-height: ${props => (props.lead ? `1.5` : `inherit`)}
   `};
 `

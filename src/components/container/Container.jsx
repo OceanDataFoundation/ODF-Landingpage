@@ -48,7 +48,7 @@ export const Container = styled.section`
         : props.col === '2'
         ? `repeat(2, 50%)`
         : `repeat(12, 1fr)`};
-    gap: 40px;
+    gap: 20px;
   `};
 `
 

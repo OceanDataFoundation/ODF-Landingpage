@@ -8,7 +8,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // ----------------------------------------------------------------------------
   const PAGE_SIZE = 10
   const newsListTemplate = path.resolve(`./src/templates/press-releases-list.js`)
-  const newsPostTemplate = path.resolve(`./src/templates/news-post.js`)
+  const newsPostTemplate = path.resolve(`./src/templates/press-release.js`)
 
   const newsPages = new Promise((resolve, reject) => {
     resolve(
@@ -37,7 +37,7 @@ exports.createPages = async ({ graphql, actions }) => {
         // For each of the chunks, call createPage()
         chunks.forEach((chunk, index) => {
           createPage({
-            path: `/communcation/press/${index + 1}`,
+            path: `/communication/press/${index + 1}`,
             component: newsListTemplate,
             context: {
               skip: PAGE_SIZE * index,
@@ -45,9 +45,9 @@ exports.createPages = async ({ graphql, actions }) => {
               pageNumber: index + 1,
               pageAmount: chunks,
               hasNextPage: index != chunks.length - 1,
-              nextPageLink: `/communcation/press/${index + 2}`,
+              nextPageLink: `/communication/press/${index + 2}`,
               hasPrevPage: index != chunks.length + 1,
-              prevPageLink: `/communcation/press/${index}`,
+              prevPageLink: `/communication/press/${index}`,
             },
           })
         })
@@ -56,7 +56,7 @@ exports.createPages = async ({ graphql, actions }) => {
         result.data.posts.edges.forEach(({ node }) => {
           // loop over split pages
           createPage({
-            path: `communcation/press/${node.slug}`,
+            path: `communication/press/${node.slug}`,
             component: newsPostTemplate,
             context: {
               slug: node.slug,
@@ -67,10 +67,10 @@ exports.createPages = async ({ graphql, actions }) => {
     )
   })
 
-  // Create communcation article list
+  // Create communication article list
   // ----------------------------------------------------------------------------
-  const perspectivesList = path.resolve(`./src/templates/perspectives-list.js`)
-  const perspectiveArticle = path.resolve(
+  const newsList = path.resolve(`./src/templates/perspectives-list.js`)
+  const newsArticle = path.resolve(
     `./src/templates/perspectives-article.js`
   )
 
@@ -101,17 +101,17 @@ exports.createPages = async ({ graphql, actions }) => {
         // For each of the chunks, call createPage()
         chunks.forEach((chunk, index) => {
           createPage({
-            path: `communcation/news/${index + 1}`,
-            component: perspectivesList,
+            path: `communication/news/${index + 1}`,
+            component: newsList,
             context: {
               skip: PAGE_SIZE * index,
               limit: PAGE_SIZE,
               pageNumber: index + 1,
               pageAmount: chunks,
               hasNextPage: index != chunks.length - 1,
-              nextPageLink: `/communcation/news/${index + 2}`,
+              nextPageLink: `/communication/news/${index + 2}`,
               hasPrevPage: index != chunks.length + 1,
-              prevPageLink: `/communcation/news/${index}`,
+              prevPageLink: `/communication/news/${index}`,
             },
           })
         })
@@ -120,8 +120,8 @@ exports.createPages = async ({ graphql, actions }) => {
         result.data.posts.edges.forEach(({ node: { slug } }) => {
           // loop over split pages
           createPage({
-            path: `communcation/${slug}`,
-            component: perspectiveArticle,
+            path: `communication/news/${slug}`,
+            component: newsArticle,
             context: {
               slug,
             },

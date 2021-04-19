@@ -116,8 +116,8 @@ const IndexPage = ({ data }) => {
 
       <CenteredContainer>
         <H1>Lets work together</H1>
-        <LinkButton to="/">
-          join us link
+        <LinkButton to="/contact">
+          join us
         </LinkButton>
       </CenteredContainer>
 
@@ -126,13 +126,13 @@ const IndexPage = ({ data }) => {
         <PressRelease>
           {articles.map(({ node: article }) => (
             <LinkBlock
-              to={`/communcation/news/${article.slug}`}
+              to={`/communication/news/${article.slug}`}
               key={article.id}>
               <Article key={article.id}>
                 {article.coverImage && (
                   <Img
                     fluid={article.coverImage.fluid}
-                    style={{ maxHeight: '240px' }}
+                    style={{ minHeight: '329px' }}
                   />
                 )}
                 <H3 style={{ marginBottom: '1rem' }}>{article.title}</H3>
@@ -145,7 +145,7 @@ const IndexPage = ({ data }) => {
             </LinkBlock>
           ))}
         </PressRelease>
-        <LinkButton to="/communcation/news/1" showArrow pressRelease>
+        <LinkButton to="/communication/news/1" showArrow pressRelease>
           More news
         </LinkButton>
       </FullWidthContainer>

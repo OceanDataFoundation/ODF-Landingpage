@@ -2,84 +2,95 @@ import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import React from 'react'
-
-// Components
 import {
   Article,
   ArticleContainer,
   ArticleContent,
 } from '../components/article/Article'
-import { AuthorProfile } from '../components/author-profile/AuthorProfile'
-import { Container } from '../components/container/Container'
+// Components
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
+import { Container } from '../components/container/Container'
 import { Figcaption } from '../components/figcaption/Figcaption'
 import { Figure } from '../components/figure/Figure'
 import { Header } from '../components/header/Header'
-import { ArrowLeft } from '../components/arrow/ArrowLeft'
 import { Line } from '../components/line/Line'
-import RichTextRenderer from '../components/rich-text-renderer/RichTextRenderer'
+import {ArrowLeft} from '../components/arrow/ArrowLeft'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
+import { TagList } from '../components/tag-list/TagList'
 import { H1 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
+
 // Utils
 import { space } from '../utils/configs/confSpace.js'
 
-const PerspectivesArticle = ({ data }) => {
+const NewsPage = ({ data }) => {
   const {
     title,
-    teaser,
-    coverImage,
-    coverCaption,
+    excerpt,
+    image,
+    imageCaption,
+    tags,
     content,
-    author,
-  } = data.article
-  console.log('TCL: PerspectivesArticle -> coverCaption', coverCaption)
+  } = data.news
 
   return (
     <Layout>
       <SEO
         title={title}
-        metaDescription={teaser}
-        image={`https:${coverImage.file.url}`}
+        metaDescription={excerpt}
+        image={`https:${image.file.url}`}
       />
 
       <FullWidthContainer offset="true">
         <Header style={{marginBottom: "12px"}}>
           <Link to="/communication/news/1">
             <ArrowLeft style={{marginBottom:"40px"}} />
-            <H1>News</H1>
+            <H1>Press release</H1>
           </Link>
           <Line />
         </Header>
 
         <Container fluid>
           <Article>
-
-            {coverImage && (
+            {image && (
               <Figure coverImage>
-                <Img fluid={coverImage.fluid} style={{ maxHeight: '600px' }} />
-                {coverCaption && (
-                  <Figcaption as="figcaption">{coverCaption}</Figcaption>
+                <Img fluid={image.fluid} style={{ maxHeight: '600px' }} />
+                {imageCaption && (
+                  <Figcaption as="figcaption">
+                    {imageCaption.imageCaption && imageCaption.imageCaption}
+                  </Figcaption>
                 )}
               </Figure>
             )}
 
             <ArticleContainer>
-              <H1>{title && title}</H1>
-              {teaser && (
+            <H1>{title && title}</H1>
+              {excerpt && (
                 <P lead style={{ marginTop: `${space[6]}` }}>
-                  {teaser}
+                  {excerpt}
                 </P>
               )}
+
               <ArticleContent>
-                <RichTextRenderer richTextJson={content.json} />
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: content.childMarkdownRemark.html,
+                  }}
+                />
+
+                {tags && (
+                  <TagList>
+                    {tags.map((tag, index) => (
+                      <li key={index}>{tag}</li>
+                    ))}
+                  </TagList>
+                )}
               </ArticleContent>
             </ArticleContainer>
-            <AuthorProfile author={author} />
           </Article>
         </Container>
-        <Link to="/communication/news/1" style={{borderBottom: "none"}}>
+        <Link to="/communication/press/1" style={{borderBottom: "none"}}>
           <ArrowLeft style={{marginBottom:"40px"}} />
         </Link>
       </FullWidthContainer>
@@ -87,29 +98,15 @@ const PerspectivesArticle = ({ data }) => {
   )
 }
 
-export default PerspectivesArticle
+export default NewsPage
 
 export const pageQuery = graphql`
-  query ArticleQuery($slug: String) {
-    article: contentfulPerspective(slug: { eq: $slug }) {
+  query NewsQuery($slug: String) {
+    news: contentfulNews(slug: { eq: $slug }) {
       title
       slug
-      publicationDate(formatString: "MMMM DD, YYYY")
-      teaser
-      author {
-        picture {
-          fixed(width: 80) {
-            ...GatsbyContentfulFixed
-          }
-        }
-        name
-        affiliation
-        biography {
-          biography
-        }
-        pageUrl
-      }
-      coverImage {
+      excerpt
+      image {
         fluid(maxWidth: 1200, quality: 80) {
           ...GatsbyContentfulFluid
         }
@@ -117,14 +114,19 @@ export const pageQuery = graphql`
           url
         }
       }
-      coverCaption
-      content {
-        json
+      imageCaption {
+        imageCaption
       }
+      content {
+        childMarkdownRemark {
+          html
+        }
+      }
+      tags
     }
   }
 `
 
-PerspectivesArticle.propTypes = {
+NewsPage.propTypes = {
   data: PropTypes.objectOf(PropTypes.object.isRequired),
 }

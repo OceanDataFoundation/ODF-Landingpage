@@ -5,7 +5,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 // Components
-import { Author } from '../components/author/Author'
 import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Header } from '../components/header/Header'
@@ -13,10 +12,13 @@ import LinkBlock from '../components/link-block/LinkBlock'
 import { NewsBlock } from '../components/news-block/NewsBlock'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
-import { H1, H2 } from '../components/typography/heading/Heading'
+import { Line } from '../components/line/Line'
+import { H1, H4 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { Small } from '../components/typography/small/Small'
 import { Strong } from '../components/typography/strong/Strong'
+import { ArrowLeft } from '../components/arrow/ArrowLeft'
+import { ArrowRight } from '../components/arrow/ArrowRight'
 // Config
 import { space } from '../utils/configs/confSpace'
 // Mixins
@@ -24,47 +26,31 @@ import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 // Tokens
 import { colorNeutral } from '../utils/tokens/tokenColorBrand'
 
-const Pagination = styled.div`
-  margin-top: ${space[8]};
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  ${mediaQuery.BREAKPOINT_2`
-    justify-content: center;
-  `};
-`
-
-const PaginationNumbers = styled(Small)`
-  margin: 0 ${space[6]};
-  color: ${colorNeutral.NEUTRAL_TINT_35};
-`
-
 const PerspectivesListPage = ({ data, pageContext }) => {
   const articles = data.allContentfulPerspective.edges
   const pageTotal = pageContext.pageAmount.length
 
   return (
     <Layout>
-      <SEO title="Perspectives" />
+      <SEO title="News" />
 
       <FullWidthContainer offset="true">
-        <Header>
-          <H1>News</H1>
+        <Header style={{marginBottom: "12px"}}>
+          <Link to="/communication">
+            <ArrowLeft style={{marginBottom:"40px"}} />
+            <H1>News</H1>
+          </Link>
+          <Line />
         </Header>
 
         <Container fluid col="3">
           {articles.map(({ node: article }) => (
-            <LinkBlock to={`/communcation/${article.slug}`} key={article.id}>
-              {article.coverImage && <Img fluid={article.coverImage.fluid} />}
+            <LinkBlock to={`/communication/news/${article.slug}`} key={article.id}>
+              {article.coverImage && <Img fluid={article.coverImage.fluid} style={{ minHeight: '329px', maxHeight: '329px' }} />}
               <NewsBlock>
-                <H2>{article.title}</H2>
-                <P style={{ marginBottom: '1rem' }}>{article.teaser}</P>
-                <Author
-                  name={article.author.name}
-                  picture={article.author.picture.fixed}
-                  size="32px"
-                />
+                <H4>{article .title}</H4>
+                <P style={{ marginBottom: '2rem' }}>{article.teaser}</P>
+                 <ArrowRight />
               </NewsBlock>
             </LinkBlock>
           ))}
@@ -117,14 +103,6 @@ export const pageQuery = graphql`
           title
           teaser
           slug
-          author {
-            name
-            picture {
-              fixed(width: 80) {
-                ...GatsbyContentfulFixed
-              }
-            }
-          }
           coverImage {
             fluid(maxWidth: 700) {
               ...GatsbyContentfulFluid
@@ -140,3 +118,19 @@ PerspectivesListPage.propTypes = {
   data: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
 }
+
+const Pagination = styled.div`
+  margin-top: ${space[8]};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ${mediaQuery.BREAKPOINT_2`
+    justify-content: center;
+  `};
+`
+
+const PaginationNumbers = styled(Small)`
+  margin: 0 ${space[6]};
+  color: ${colorNeutral.NEUTRAL_TINT_35};
+`

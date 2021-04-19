@@ -19,7 +19,7 @@ const LinkNewsStyle = styled(Link)`
   color: ${colorNeutral.NEUTRAL_TINT_15};
   text-decoration: none;
   border-bottom: none;
-  margin: 0 !important;
+  margin-bottom: 40px;
 
   h2 {
     ${Transition};

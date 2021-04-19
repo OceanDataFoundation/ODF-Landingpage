@@ -11,7 +11,7 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import ContactInformation from '../contact-information/ContactInformation'
 import { Container } from '../container/Container'
 import { FullWidthContainer } from '../container/FullWidthContainer'
-import { Line } from '../line'
+import { Line } from '../line/Line'
 import LinkList from '../link-list/LinkList'
 import { H3 } from '../typography/heading/Heading'
 import { Small } from '../typography/small/Small'
@@ -49,7 +49,18 @@ const Footer = props => {
         </FooterCol>
 
         <FooterCol>
-          <H3>Partners</H3>
+          <H3>WEF Network</H3>
+          <Link
+            to="/"
+            style={{
+              paddingBottom: '2px',
+              color: 'white',
+              borderBottomColor: 'white',
+              display: 'inline-block',
+            }}>
+            Input link here
+          </Link>
+
         </FooterCol>
 
         <FooterCol>
@@ -87,12 +98,17 @@ Footer.propTypes = {
 }
 
 const StyledFooter = styled.footer`
-  padding-top: ${space[10]};
-  margin-top: ${space[10]};
-  margin-bottom: ${space[10]};
+  margin-top: ${space[5]};
+
+  ${mediaQuery.BREAKPOINT_3`
+    padding-top: ${space[10]};
+    margin-top: ${space[10]};
+    margin-bottom: ${space[10]};
+  `};
 `
 
 const FooterCol = styled.div`
+
   grid-column: span 1;
 
     ${mediaQuery.BREAKPOINT_3`

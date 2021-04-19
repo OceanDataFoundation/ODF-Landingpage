@@ -5,11 +5,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 // Components
-import { Author } from '../components/author/Author'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
-import { Line } from '../components/line'
+import { Line } from '../components/line/Line'
 import LinkBlock from '../components/link-block/LinkBlock'
-import LinkButton from '../components/link-button/LinkButton'
 import LinkCta from '../components/link-cta/LinkCta'
 import { Meta } from '../components/meta/Meta'
 import PressRelease from '../components/press-release/PressRelease'
@@ -20,8 +18,15 @@ import Time from '../components/time/Time'
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { Strong } from '../components/typography/strong/Strong'
+import { ArrowRight } from '../components/arrow/ArrowRight'
+// Config
+import { space } from '../utils/configs/confSpace'
+// Tokens
+import { colorNeutral } from '../utils/tokens/tokenColorBrand'
+// Mixins
+import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 
-const Communcation = ({ data }) => {
+const Communication = ({ data }) => {
 
   const pressReleases = data.allContentfulPressRelease.edges
   const articles = data.allContentfulPerspective.edges
@@ -39,26 +44,27 @@ const Communcation = ({ data }) => {
         <PressRelease>
           {articles.map(({ node: article }) => (
             <LinkBlock
-              to={`/communcation/${article.slug}`}
+              to={`/communication/news/${article.slug}`}
               key={article.id}>
                 {article.coverImage && (
                   <Img
                     fluid={article.coverImage.fluid}
-                    style={{ maxHeight: '240px' }}
+                    style={{ minHeight: '329px', maxHeight: '329px' }}
                   />
                 )}
                 <H3 style={{ marginBottom: '1rem' }}>{article.title}</H3>
-                <P style={{ margin: '1rem 0' }}>{article.teaser}</P>
-                <Author
-                  name={article.author.name}
-                  picture={article.author.picture.fixed}
-                />
+                <P style={{ margin: '2rem 0' }}>{article.teaser}</P>
+                <ArrowRight />
             </LinkBlock>
           ))}
         </PressRelease>
-        <LinkButton to="/communcation/news/1" showArrow pressRelease>
-          More news
-        </LinkButton>
+
+        <Link href="/communication/news/1">
+          <LinkText>
+            All news
+          </LinkText>
+          <ArrowRight />
+          </Link>
       </FullWidthContainer>
 
       <FullWidthContainer>
@@ -79,24 +85,27 @@ const Communcation = ({ data }) => {
                 }}
               />
               {post.link && (
-                <LinkCta
-                  href={post.link}
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  Read more
-                </LinkCta>
+                <Link href={post.link} target="_blank"
+                rel="noopener noreferrer">
+                <ArrowRight />
+                </Link>
               )}
             </div>
           ))}
         </PressRelease>
-        <LinkButton to="/communcation/press/1" showArrow pressRelease>
-          See all
-        </LinkButton>
+
+        <Link href="/communication/press/1">
+          <LinkText>
+            All press releases
+          </LinkText>
+          <ArrowRight />
+        </Link>
+
       </FullWidthContainer>
 
       <FullWidthContainer style={{ marginTop: '80px' }}>
         <Header>
-          <H2>Upcoming Events</H2>
+          <H2>  Events</H2>
           <Line />
         </Header>
         <TableWrapper>
@@ -136,7 +145,7 @@ const Communcation = ({ data }) => {
   )
 }
 
-export default Communcation
+export default Communication
 
 export const query = graphql`
   query CommuncationPageQuery {
@@ -151,14 +160,6 @@ export const query = graphql`
           title
           teaser
           slug
-          author {
-            name
-            picture {
-              fixed(width: 80) {
-                ...GatsbyContentfulFixed
-              }
-            }
-          }
           coverImage {
             fluid(maxWidth: 700) {
               ...GatsbyContentfulFluid
@@ -198,7 +199,7 @@ export const query = graphql`
   }
 `
 
-Communcation.propTypes = {
+Communication.propTypes = {
   data: PropTypes.shape({
     allContentfulEvents: PropTypes.object.isRequired,
     allContentfulPerspective: PropTypes.object.isRequired,
@@ -207,3 +208,28 @@ Communcation.propTypes = {
 }
 
 const Header = styled.div``;
+
+const Link = styled.a`
+  padding-bottom: ${space[2]};
+  color: ${colorNeutral.NEUTRAL_TINT_100};
+  text-decoration: none;
+  font-size: 36px;
+  border-bottom: 0px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 6rem;
+
+  &:hover {
+    // TODO: Add hover style to link
+  }
+
+`;
+
+const LinkText = styled.div`
+  margin-right: ${space[4]};
+  font-weight: 500;
+
+  ${mediaQuery.BREAKPOINT_2`
+      margin-right: ${space[6]};
+  `};
+`;

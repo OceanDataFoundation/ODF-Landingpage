@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 // Config
-import { space } from '../utils/configs/confSpace'
+import { space } from '../../utils/configs/confSpace'
 // Tokens
-import { colorNeutral } from '../utils/tokens/tokenColorBrand'
+import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 
 export const Line = styled.hr`
   width: 100%;
