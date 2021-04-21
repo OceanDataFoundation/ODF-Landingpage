@@ -7,8 +7,6 @@ import styled from 'styled-components'
 import { space } from '../../utils/configs/confSpace'
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-// Tokens
-import { zIndex } from '../../utils/tokens/tokenZIndex'
 // Components
 import { Container } from '../container/Container'
 
@@ -26,30 +24,26 @@ const Statement = props => {
 }
 
 const StatementContainer = styled(Container)`
-  height: 100vh;
   display: grid;
-  grid-template-rows: 1fr 2fr 1fr;
 
   ${mediaQuery.BREAKPOINT_2`
+    height: 60vh;
     grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr 2fr 1fr;
     grid-column-gap: 5%;
-  `};
-
-  ${mediaQuery.BREAKPOINT_3`
-    //grid-column-gap: 10%;
   `};
 `
 
-const StatementImage = styled.div`
+export const StatementImage = styled.div`
   position: relative;
   ${props => (props.removeOffset ? `margin: 40px 0 ${space[0]} 0` : null)};
+  margin: 0 -20px 40px -20px;
 
   grid-column: 1 / -1;
-  grid-row: 2;
-  height: 200px;
 
   ${mediaQuery.BREAKPOINT_2`
     ${props => (props.reverse ? `order: 2` : `order: 1`)};
+    margin: 0;
   `};
 
   ${mediaQuery.BREAKPOINT_3`
@@ -57,30 +51,23 @@ const StatementImage = styled.div`
   `};
 
   > div {
-    //height: 200px;
-
-    ${mediaQuery.BREAKPOINT_2`
-      //height: 600px;
-    `};
-
     ${mediaQuery.BREAKPOINT_3`
       height: 547px;
-      //width: 820px;
     `};
   }
 `
 
-const StatementContent = styled.div`
+export const StatementContent = styled.div`
   grid-column: 1 / -1;
-  grid-row: 1;
+  margin-bottom: 100px;
 
   ${mediaQuery.BREAKPOINT_2`
     ${props => (props.reverse ? `order: 1` : `order: 2`)};
+    margin-bottom: 0;
   `};
 
   ${mediaQuery.BREAKPOINT_3`
     grid-column: 7 / 13;
-    grid-row: 2;
   `};
 `
 

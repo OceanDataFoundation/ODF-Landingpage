@@ -4,8 +4,6 @@ import styled from 'styled-components'
 
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-// Tokens
-import { colorBrandPurple } from '../../utils/tokens/tokenColorBrand'
 // Components
 import { Container } from '../container/Container'
 import LinkButton from '../link-button/LinkButton'
@@ -21,17 +19,16 @@ const Hero = props => {
       <H1 size="larger">
         {title}
       </H1>
-      <LinkButton
-        to={to}
-        style={{ marginTop: '2rem', display: 'inline-block' }}>
+      <CustomLinkButton
+        to={to}>
         Watch video
-      </LinkButton>
-      <P lead>
+      </CustomLinkButton>
+      <CustomP lead>
         {content}
-      </P>
+      </CustomP>
     </Content>
 
-      <Image src={bgImage} />
+    <Image src={bgImage} />
     </HeroContainer>
   )
 }
@@ -43,15 +40,28 @@ Hero.propTypes = {
   to: PropTypes.string
 }
 
+const CustomLinkButton = styled(LinkButton)`
+  margin-bottom: 200px;
+`;
+
+const CustomP = styled(P)`
+   margin-bottom: 100px;
+
+   ${mediaQuery.BREAKPOINT_3`
+    margin-bottom: 0px;
+  `}
+`;
+
 const Content = styled.div`
   grid-column: 1 / -1;
   grid-row: 1;
-  margin-top: 2rem;
+  margin-top: 70vh;
   z-index: 100;
 
   ${mediaQuery.BREAKPOINT_3`
-    grid-column: 1 / 7;
-    grid-row: 1 / 2;
+    grid-column: 1 / 8;
+    grid-row: 1;
+    margin-top: 0;
   `}
 
 
@@ -61,50 +71,34 @@ const Content = styled.div`
 `
 
 const Image = styled.img`
-  height: 700px;
-  width: 700px;
+  height: 650px;
+  width: 650px;
   grid-row: 1 / 2;
   grid-column: 1 / -1;
+  position: absolute;
+  left: 86px;
+  top: 50px;
 
   ${mediaQuery.BREAKPOINT_3`
+    position: relative;
     height: 1200px;
     width: 1200px;
     grid-row: 1 / 2;
     grid-column: 5 / 12;
   `}
-
-
-  /* max-width: 100vw;
-  align-items: start;
-  background-color: ${colorBrandPurple.PURPLE_TINT_50};
-  background-image: url(${props => (props.bgImage ? props.bgImage : `none`)});
-  background-repeat: no-repeat;
-  background-position: 65% 170px; */
 `;
 
 const HeroContainer = styled(Container)`
-  grid-template-rows: repeat(2, 1fr);
-  margin-top: 8rem;
-
-  /* display: grid;
-  grid-template-columns: repeat(12, 1fr); */
-  /* max-width: 100vw;
-  align-items: start;
-  background-color: ${colorBrandPurple.PURPLE_TINT_50};
-  background-image: url(${props => (props.bgImage ? props.bgImage : `none`)});
-  //background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 65% 170px; */
+  overflow: hidden;
 
   ${mediaQuery.BREAKPOINT_2`
-    //background-position: 85% 170px;
     margin-top: 4rem;
+    overflow: initial;
   `};
 
   ${mediaQuery.BREAKPOINT_3`
     align-items: center;
     height: calc(100vh - 55px);
-    //background-position: center 40px;
   `};
 
   ${mediaQuery.BREAKPOINT_4`

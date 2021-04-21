@@ -2,25 +2,24 @@ import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import React from 'react'
+
+import {ArrowLeft} from '../components/arrow/ArrowLeft'
 import {
   Article,
   ArticleContainer,
   ArticleContent,
 } from '../components/article/Article'
+import { Container } from '../components/container/Container'
 // Components
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
-import { Container } from '../components/container/Container'
 import { Figcaption } from '../components/figcaption/Figcaption'
 import { Figure } from '../components/figure/Figure'
 import { Header } from '../components/header/Header'
 import { Line } from '../components/line/Line'
-import {ArrowLeft} from '../components/arrow/ArrowLeft'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
-import { TagList } from '../components/tag-list/TagList'
 import { H1 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
-
 // Utils
 import { space } from '../utils/configs/confSpace.js'
 
@@ -79,13 +78,6 @@ const NewsPage = ({ data }) => {
                   }}
                 />
 
-                {tags && (
-                  <TagList>
-                    {tags.map((tag, index) => (
-                      <li key={index}>{tag}</li>
-                    ))}
-                  </TagList>
-                )}
               </ArticleContent>
             </ArticleContainer>
           </Article>

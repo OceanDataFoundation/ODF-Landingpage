@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
+import { ArrowRight } from '../components/arrow/ArrowRight'
 // Components
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Line } from '../components/line/Line'
@@ -18,13 +19,12 @@ import Time from '../components/time/Time'
 import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { Strong } from '../components/typography/strong/Strong'
-import { ArrowRight } from '../components/arrow/ArrowRight'
 // Config
 import { space } from '../utils/configs/confSpace'
-// Tokens
-import { colorNeutral } from '../utils/tokens/tokenColorBrand'
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
+// Tokens
+import { colorNeutral } from '../utils/tokens/tokenColorBrand'
 
 const Communication = ({ data }) => {
 
@@ -220,7 +220,9 @@ const Link = styled.a`
   margin-bottom: 6rem;
 
   &:hover {
-    // TODO: Add hover style to link
+   ${ArrowRight} {
+    transform: translateX(20px);
+   }
   }
 
 `;

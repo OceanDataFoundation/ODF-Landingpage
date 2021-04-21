@@ -12,6 +12,7 @@ export const ArrowRight = styled.div`
   background-color: ${colorNeutral.NEUTRAL_TINT_100};
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
+  transition: all ease-in-out 0.2s;
 
   ::before,
   ::after {
@@ -33,5 +34,9 @@ export const ArrowRight = styled.div`
     right: 5px;
     top: -14px;
     transform: rotate(-45deg);
+  }
+
+  :hover {
+    //transform: translateX(20px);
   }
 `

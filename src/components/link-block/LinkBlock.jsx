@@ -6,8 +6,9 @@ import styled from 'styled-components'
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
 // Tokens
-import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 import { duration } from '../../utils/tokens/tokenDuration'
+import { ArrowRight } from '../arrow/ArrowRight'
 
 const LinkNews = props => {
   const { children, to } = props
@@ -35,14 +36,8 @@ const LinkNewsStyle = styled(Link)`
 
   :hover,
   :focus {
-    h2 {
-      color: ${colorBrandGreen.GREEN_TINT_50};
-    }
-
-    picture {
-      img {
-        transform: scale(1.1);
-      }
+    ${ArrowRight} {
+      transform: translateX(20px);
     }
   }
 `

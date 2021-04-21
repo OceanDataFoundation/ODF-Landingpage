@@ -48,20 +48,7 @@ const PressReleaseContainer = styled(Container)`
 
     :not(:last-child) {
       padding-bottom: ${space[4]};
-      margin-bottom: ${space[6]};
-
-      ::after {
-        width: 16px;
-        height: 4px;
-        content: '';
-        position: absolute;
-        bottom: 0;
-        background-color: ${colorBrandGreen.GREEN_TINT_50};
-
-        ${mediaQuery.BREAKPOINT_3`
-        display: none;
-      `};
-      }
+      margin-bottom: ${space[0]};
     }
 
     ${mediaQuery.BREAKPOINT_3`

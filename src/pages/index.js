@@ -5,19 +5,21 @@ import React from 'react'
 import styled from 'styled-components'
 
 // Components
+import { ArrowRight } from '../components/arrow/ArrowRight'
 import { Article } from '../components/article/Article'
-import { Author } from '../components/author/Author'
 import Blockquote from '../components/blockquote/Blockquote'
 import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
+import { Header } from '../components/header/Header'
 import Hero from '../components/hero/Hero'
+import { Line } from '../components/line/Line'
 import LinkBlock from '../components/link-block/LinkBlock'
 import LinkButton from '../components/link-button/LinkButton'
 import PressRelease from '../components/press-release/PressRelease'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
-import Statement from '../components/statement/Statement'
-import { H1, H2, H3 } from '../components/typography/heading/Heading'
+import Statement, { StatementContent, StatementImage } from '../components/statement/Statement'
+import { H2, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import Video from '../components/video/Video'
@@ -86,21 +88,7 @@ const IndexPage = ({ data }) => {
           ))}
       </VideoContainer>
 
-        {statementOne.map(({ node: post }) => (
-          <Statement
-            key={post.id}
-            image={post.image.fluid}>
-            <SubHeading>{post.subtitle}</SubHeading>
-            <H2>{post.title}</H2>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.content.childMarkdownRemark.html,
-              }}
-            />
-          </Statement>
-        ))}
-
-      {statementTwo.map(({ node: post }) => (
+      {statementOne.map(({ node: post }) => (
         <Statement
           key={post.id}
           image={post.image.fluid}>
@@ -114,15 +102,33 @@ const IndexPage = ({ data }) => {
         </Statement>
       ))}
 
+      {statementTwo.map(({ node: post }) => (
+        <CustomStatement
+          key={post.id}
+          image={post.image.fluid}>
+          <SubHeading>{post.subtitle}</SubHeading>
+          <H2>{post.title}</H2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: post.content.childMarkdownRemark.html,
+            }}
+          />
+        </CustomStatement>
+      ))}
+
       <CenteredContainer>
-        <H1>Lets work together</H1>
+        <H2>Lets work together</H2>
         <LinkButton to="/contact">
           join us
         </LinkButton>
       </CenteredContainer>
 
       <FullWidthContainer>
-        <SubHeading>News</SubHeading>
+        <Header style={{marginBottom: "12px"}}>
+            <H2>News</H2>
+          <Line />
+        </Header>
+
         <PressRelease>
           {articles.map(({ node: article }) => (
             <LinkBlock
@@ -137,17 +143,11 @@ const IndexPage = ({ data }) => {
                 )}
                 <H3 style={{ marginBottom: '1rem' }}>{article.title}</H3>
                 <P style={{ margin: '1rem 0' }}>{article.teaser}</P>
-                <Author
-                  name={article.author.name}
-                  picture={article.author.picture.fixed}
-                />
               </Article>
+              <ArrowRight />
             </LinkBlock>
           ))}
         </PressRelease>
-        <LinkButton to="/communication/news/1" showArrow pressRelease>
-          More news
-        </LinkButton>
       </FullWidthContainer>
 
     </Layout>
@@ -220,14 +220,6 @@ export const query = graphql`
           title
           teaser
           slug
-          author {
-            name
-            picture {
-              fixed(width: 80) {
-                ...GatsbyContentfulFixed
-              }
-            }
-          }
           coverImage {
             fluid(maxWidth: 700) {
               ...GatsbyContentfulFluid
@@ -348,7 +340,25 @@ IndexPage.propTypes = {
   }),
 }
 
-const VideoContainer = styled.div``
+const CustomStatement = styled(Statement)`
+  grid-row: 1 / 2;
+
+  ${StatementContent} {
+    grid-row: 1 / 2;
+    z-index: 50;
+    margin-top: 40px;
+  }
+
+  ${StatementImage} {
+    grid-row: 1 / 2;
+    right: -170px;
+    top: -140px;
+  }
+`;
+
+const VideoContainer = styled.div`
+margin-bottom: 4rem;
+`
 
 const Quote = styled.div`
   grid-column: 4 / 10;
@@ -363,10 +373,12 @@ const CenteredContainer = styled(Container)`
 
 const QuoteContainer = styled.div`
   grid-column: 1 / -1;
-  height: 80vh;
+  //height: 80vh;
+  margin-bottom: 4rem;
 
   ${mediaQuery.BREAKPOINT_3`
     height: 80vh;
+    margin-bottom: 0;
   `};
 `;
 

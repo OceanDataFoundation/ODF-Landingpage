@@ -32,9 +32,9 @@ export const H1 = styled.h1`
       : colorNeutral.NEUTRAL_TINT_100};
   ${props =>
     props.size === 'large'
-      ? typeScale.TEXT_PRESET_4
+      ? typeScale.TEXT_PRESET_6
       : props.size === 'larger'
-      ? typeScale.TEXT_PRESET_4
+      ? typeScale.TEXT_PRESET_6
       : GlobalH1};
 
   ${mediaQuery.BREAKPOINT_2`

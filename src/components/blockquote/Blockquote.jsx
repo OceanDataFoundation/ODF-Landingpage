@@ -35,8 +35,8 @@ const HightlightedBlockquote = styled.blockquote`
   grid-column: 1  / -1;
   color: ${colorBrandGreen.GREEN_TINT_50};
   font-size:  ${fontSize.FONT_SIZE_4};
-  margin: 0 0 2rem 0;
-  padding: 0;
+  margin: 0 0 100px 0;
+  padding: 0 0 0 1rem;
 
   ${mediaQuery.BREAKPOINT_3`
       grid-column: 3  / 12;
@@ -59,7 +59,7 @@ const BlockquoteContainer = styled.blockquote`
   p {
     ${typeScale.TEXT_PRESET_2};
   }
-`
+`;
 
 const BlockquoteContent = styled.div`
   grid-column: 1 / -1;
@@ -69,7 +69,6 @@ const BlockquoteContent = styled.div`
     ${mediaQuery.BREAKPOINT_3`
       grid-column: 4 / 11;
     `};
-  }
 `
 
 const BlockquoteFooter = styled.footer`
