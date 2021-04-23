@@ -37,6 +37,7 @@ const HightlightedBlockquote = styled.blockquote`
   font-size:  ${fontSize.FONT_SIZE_4};
   margin: 0 0 100px 0;
   padding: 0 0 0 1rem;
+  font-family: 'Domine';
 
   ${mediaQuery.BREAKPOINT_3`
       grid-column: 3  / 12;

@@ -14,6 +14,8 @@ import P from '../typography/paragraph/Paragraph'
 export const Partner = ({ partner }) => {
   const { url, name, description, logo, id } = partner
 
+  console.log('partner', partner);
+
   return (
     <PartnerContainer href={url} target="_blank" rel="noopener noreferrer">
       <ImageContainer>

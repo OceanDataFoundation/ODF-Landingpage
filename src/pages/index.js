@@ -352,6 +352,10 @@ const CustomStatement = styled(Statement)`
     grid-column: 1 / 9;
     z-index: 50;
 
+    ${mediaQuery.BREAKPOINT_2`
+        grid-column: 3 / 8;
+    `};
+
     ${mediaQuery.BREAKPOINT_3`
         grid-column: 3 / 8;
     `};
@@ -363,12 +367,13 @@ const CustomStatement = styled(Statement)`
     top: -140px;
 
     ${mediaQuery.BREAKPOINT_2`
-      right: -300px;
+
     `};
 
     > div {
     ${mediaQuery.BREAKPOINT_3`
-      top: -300px;
+      //right: -300px;
+      //top: -300px;
       height: 1500px;
       width: 1500px;
       position: absolute;
@@ -379,10 +384,6 @@ const CustomStatement = styled(Statement)`
 
     ${mediaQuery.BREAKPOINT_3`
       grid-column: 8 / 13;
-
-      img {
-        height: 1200px:
-      }
     `};
 
     > div {
