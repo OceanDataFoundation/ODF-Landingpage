@@ -343,10 +343,13 @@ IndexPage.propTypes = {
 const CustomStatement = styled(Statement)`
   grid-row: 1 / 2;
 
-  //margin-bottom: 0;
+  ${mediaQuery.BREAKPOINT_2`
+      margin-bottom: -150px;
+  `};
 
   ${StatementContent} {
     grid-row: 1 / 2;
+    grid-column: 1 / 9;
     z-index: 50;
 
     ${mediaQuery.BREAKPOINT_3`
@@ -358,14 +361,18 @@ const CustomStatement = styled(Statement)`
     grid-row: 1 / 2;
     right: -170px;
     top: -140px;
-      position: absolute;
-      left: 0;
+
+    ${mediaQuery.BREAKPOINT_2`
+      right: -300px;
+    `};
 
     > div {
     ${mediaQuery.BREAKPOINT_3`
       top: -300px;
       height: 1500px;
       width: 1500px;
+      position: absolute;
+      left: 0;
     `};
   }
 

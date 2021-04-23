@@ -59,8 +59,8 @@ const Content = styled.div`
   margin-top: 70vh;
   z-index: 100;
 
-  ${mediaQuery.BREAKPOINT_3`
-    grid-column: 1 / 8;
+  ${mediaQuery.BREAKPOINT_2`
+    grid-column: 1 / 12;
     grid-row: 1;
     margin-top: 0;
     margin-bottom: 40px;
@@ -72,7 +72,7 @@ const Content = styled.div`
     ${H1} {
       grid-row: 1;
       display: flex;
-      align-items: end;
+      align-items: flex-end;
     }
 
     ${CustomLinkButton} {
@@ -82,6 +82,10 @@ const Content = styled.div`
     ${CustomP} {
       grid-row: 3;
     }
+  `}
+
+  ${mediaQuery.BREAKPOINT_3`
+    grid-column: 1 / 8;
   `}
 
 
@@ -98,6 +102,16 @@ const Image = styled.img`
   position: absolute;
   left: 86px;
   top: 50px;
+
+  ${mediaQuery.BREAKPOINT_2`
+    position: relative;
+    height: 600px;
+    width: 600px;
+    grid-row: 1 / 2;
+    grid-column: 8 / 12;
+    top: 50px;
+    left: 186px;
+  `}
 
   ${mediaQuery.BREAKPOINT_3`
     position: relative;
