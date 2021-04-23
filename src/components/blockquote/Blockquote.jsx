@@ -56,6 +56,7 @@ const BlockquoteContainer = styled.blockquote`
   border: none;
   font-style: normal;
 
+
   p {
     ${typeScale.TEXT_PRESET_2};
   }

@@ -13,6 +13,6 @@ export const fontSize = {
   FONT_SIZE_5: '1.750rem', // 28px (H3)
   FONT_SIZE_6: '2.500rem', // 32px (H2)
   FONT_SIZE_7: '2.750rem', // 40px (H1)
-  FONT_SIZE_8: '3.375rem', // 44px (H1 large)
+  FONT_SIZE_8: '3rem', // 44px (H1 large)
   FONT_SIZE_9: '4.250rem', // 68px (H1 extra large)
 }

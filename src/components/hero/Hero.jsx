@@ -41,7 +41,8 @@ Hero.propTypes = {
 }
 
 const CustomLinkButton = styled(LinkButton)`
-  margin-bottom: 200px;
+  max-width: 200px;
+  max-height: 60px;
 `;
 
 const CustomP = styled(P)`
@@ -62,6 +63,25 @@ const Content = styled.div`
     grid-column: 1 / 8;
     grid-row: 1;
     margin-top: 0;
+    margin-bottom: 40px;
+
+    display: grid;
+    height: 90vh;
+    grid-template-rows: 2fr 1fr 1fr;
+
+    ${H1} {
+      grid-row: 1;
+      display: flex;
+      align-items: end;
+    }
+
+    ${CustomLinkButton} {
+      grid-row: 2;
+    }
+
+    ${CustomP} {
+      grid-row: 3;
+    }
   `}
 
 
@@ -85,6 +105,7 @@ const Image = styled.img`
     width: 1200px;
     grid-row: 1 / 2;
     grid-column: 5 / 12;
+    top: 0;
   `}
 `;
 
@@ -97,7 +118,6 @@ const HeroContainer = styled(Container)`
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-    align-items: center;
     height: calc(100vh - 55px);
   `};
 

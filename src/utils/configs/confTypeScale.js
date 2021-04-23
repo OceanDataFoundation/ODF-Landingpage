@@ -55,14 +55,14 @@ export const typeScale = {
     {
       'font-size': fontSize.FONT_SIZE_8,
       'line-height': lineHeight.LINE_HEIGHT_8,
-      'letter-spacing': '-1px',
+      'letter-spacing': '2px',
     },
   ],
   TEXT_PRESET_9: [
     {
       'font-size': fontSize.FONT_SIZE_9,
       'line-height': lineHeight.LINE_HEIGHT_9,
-      'letter-spacing': '-1px',
+      'letter-spacing': '2px',
     },
   ],
 }

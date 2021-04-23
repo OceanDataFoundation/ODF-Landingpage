@@ -19,7 +19,7 @@ import PressRelease from '../components/press-release/PressRelease'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
 import Statement, { StatementContent, StatementImage } from '../components/statement/Statement'
-import { H2, H3 } from '../components/typography/heading/Heading'
+import { H2, H3, H4 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import Video from '../components/video/Video'
@@ -93,7 +93,7 @@ const IndexPage = ({ data }) => {
           key={post.id}
           image={post.image.fluid}>
           <SubHeading>{post.subtitle}</SubHeading>
-          <H2>{post.title}</H2>
+          <H3>{post.title}</H3>
           <div
             dangerouslySetInnerHTML={{
               __html: post.content.childMarkdownRemark.html,
@@ -107,7 +107,7 @@ const IndexPage = ({ data }) => {
           key={post.id}
           image={post.image.fluid}>
           <SubHeading>{post.subtitle}</SubHeading>
-          <H2>{post.title}</H2>
+          <H3>{post.title}</H3>
           <div
             dangerouslySetInnerHTML={{
               __html: post.content.childMarkdownRemark.html,
@@ -343,21 +343,56 @@ IndexPage.propTypes = {
 const CustomStatement = styled(Statement)`
   grid-row: 1 / 2;
 
+  //margin-bottom: 0;
+
   ${StatementContent} {
     grid-row: 1 / 2;
     z-index: 50;
-    margin-top: 40px;
+
+    ${mediaQuery.BREAKPOINT_3`
+        grid-column: 3 / 8;
+    `};
   }
 
   ${StatementImage} {
     grid-row: 1 / 2;
     right: -170px;
     top: -140px;
+      position: absolute;
+      left: 0;
+
+    > div {
+    ${mediaQuery.BREAKPOINT_3`
+      top: -300px;
+      height: 1500px;
+      width: 1500px;
+    `};
+  }
+
+
+    ${mediaQuery.BREAKPOINT_3`
+      grid-column: 8 / 13;
+
+      img {
+        height: 1200px:
+      }
+    `};
+
+    > div {
+        ${mediaQuery.BREAKPOINT_3`
+            height: 1200px:
+            //weight: 1200px:
+        `};
+      }
   }
 `;
 
 const VideoContainer = styled.div`
-margin-bottom: 4rem;
+  margin-bottom: 4rem;
+
+  ${mediaQuery.BREAKPOINT_3`
+    margin-bottom: 100px;
+  `};
 `
 
 const Quote = styled.div`
@@ -373,12 +408,12 @@ const CenteredContainer = styled(Container)`
 
 const QuoteContainer = styled.div`
   grid-column: 1 / -1;
-  //height: 80vh;
   margin-bottom: 4rem;
 
   ${mediaQuery.BREAKPOINT_3`
-    height: 80vh;
-    margin-bottom: 0;
+    ${mediaQuery.BREAKPOINT_3`
+      margin-bottom: 100px;
+    `};
   `};
 `;
 

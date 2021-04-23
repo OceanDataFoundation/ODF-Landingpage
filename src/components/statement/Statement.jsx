@@ -25,12 +25,12 @@ const Statement = props => {
 
 const StatementContainer = styled(Container)`
   display: grid;
+  position: relative;
 
   ${mediaQuery.BREAKPOINT_2`
-    height: 60vh;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 1fr 2fr 1fr;
     grid-column-gap: 5%;
+    margin-bottom: 200px;
   `};
 `
 

@@ -66,15 +66,6 @@ export const H1 = styled.h1`
         ? typeScale.TEXT_PRESET_8
         : GlobalH1};
   `};
-
-  ${mediaQuery.BREAKPOINT_4`
-    ${props =>
-      props.size === 'large'
-        ? typeScale.TEXT_PRESET_8
-        : props.size === 'larger'
-        ? typeScale.TEXT_PRESET_9
-        : GlobalH1};
-  `};
 `
 
 export const H2 = styled.h2`
