@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
-import Accordion from '../components/accordion/Accordion'
 // Components
+import Accordion from '../components/accordion/Accordion'
 import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import SEO from '../components/seo/seo'

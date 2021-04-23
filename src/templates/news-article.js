@@ -3,6 +3,7 @@ import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import { ArrowLeft } from '../components/arrow/ArrowLeft'
 // Components
 import {
   Article,
@@ -15,7 +16,6 @@ import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Figcaption } from '../components/figcaption/Figcaption'
 import { Figure } from '../components/figure/Figure'
 import { Header } from '../components/header/Header'
-import { ArrowLeft } from '../components/arrow/ArrowLeft'
 import { Line } from '../components/line/Line'
 import RichTextRenderer from '../components/rich-text-renderer/RichTextRenderer'
 import SEO from '../components/seo/seo'
@@ -25,7 +25,7 @@ import P from '../components/typography/paragraph/Paragraph'
 // Utils
 import { space } from '../utils/configs/confSpace.js'
 
-const PerspectivesArticle = ({ data }) => {
+const NewsArticle = ({ data }) => {
   const {
     title,
     teaser,
@@ -34,7 +34,7 @@ const PerspectivesArticle = ({ data }) => {
     content,
     author,
   } = data.article
-  console.log('TCL: PerspectivesArticle -> coverCaption', coverCaption)
+  console.log('TCL: NewsArticle -> coverCaption', coverCaption)
 
   return (
     <Layout>
@@ -87,7 +87,7 @@ const PerspectivesArticle = ({ data }) => {
   )
 }
 
-export default PerspectivesArticle
+export default NewsArticle
 
 export const pageQuery = graphql`
   query ArticleQuery($slug: String) {
@@ -125,6 +125,6 @@ export const pageQuery = graphql`
   }
 `
 
-PerspectivesArticle.propTypes = {
+NewsArticle.propTypes = {
   data: PropTypes.objectOf(PropTypes.object.isRequired),
 }

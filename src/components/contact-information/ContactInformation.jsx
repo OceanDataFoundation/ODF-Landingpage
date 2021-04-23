@@ -12,7 +12,7 @@ import { H3 } from '../typography/heading/Heading'
 // Components
 import P from '../typography/paragraph/Paragraph'
 
-const ContactInformation = ({ contactInformation, invert }) => {
+const ContactInformation = ({ contactInformation, invert, noHeading }) => {
   const {
     name,
     streetAddress,
@@ -41,7 +41,7 @@ const ContactInformation = ({ contactInformation, invert }) => {
 
   return (
     <>
-      <H3>Contact</H3>
+      {!noHeading && <H3>Contact</H3>}
       <P>
         {name && (
           <>
@@ -95,6 +95,7 @@ const Link = styled.a`
 ContactInformation.propTypes = {
   contactInformation: PropTypes.objectOf(PropTypes.string).isRequired,
   invert: PropTypes.bool,
+  noHeading: PropTypes.bool
 }
 
 export default ContactInformation

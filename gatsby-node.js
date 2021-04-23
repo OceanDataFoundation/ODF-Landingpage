@@ -10,7 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const newsListTemplate = path.resolve(`./src/templates/press-releases-list.js`)
   const newsPostTemplate = path.resolve(`./src/templates/press-release.js`)
 
-  const newsPages = new Promise((resolve, reject) => {
+  const pressReleasePages = new Promise((resolve, reject) => {
     resolve(
       graphql(
         `
@@ -69,12 +69,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create communication article list
   // ----------------------------------------------------------------------------
-  const newsList = path.resolve(`./src/templates/perspectives-list.js`)
+  const newsList = path.resolve(`./src/templates/news-list.js`)
   const newsArticle = path.resolve(
-    `./src/templates/perspectives-article.js`
+    `./src/templates/news-article.js`
   )
 
-  const perspectivesPages = new Promise((resolve, reject) => {
+  const newsPages = new Promise((resolve, reject) => {
     resolve(
       graphql(
         `
@@ -131,5 +131,5 @@ exports.createPages = async ({ graphql, actions }) => {
     )
   })
 
-  return { newsPages, perspectivesPages }
+  return { pressReleasePages, newsPages }
 }

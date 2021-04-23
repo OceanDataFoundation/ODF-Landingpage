@@ -12,12 +12,12 @@ import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 import { H3 } from '../typography/heading/Heading'
 
 const LinkList = props => {
-  const { linkList, invert, inline, underline } = props
+  const { linkList, invert, inline, underline, noHeading } = props
   const { text, listItems } = linkList
 
   return (
     <>
-      <H3 invert={invert}>{text}</H3>
+      {!noHeading && <H3 invert={invert}>{text}</H3>}
       <Ul inline={inline}>
         {listItems.map(item => (
           <Li key={item.id}>
@@ -50,6 +50,7 @@ LinkList.propTypes = {
   invert: PropTypes.bool,
   inline: PropTypes.bool,
   underline: PropTypes.bool,
+  noHeading: PropTypes.bool
 }
 
 const Ul = styled.ul`

@@ -8,6 +8,7 @@ import { space } from '../../utils/configs/confSpace'
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 // Components
+import Accordion from '../accordion/Accordion'
 import ContactInformation from '../contact-information/ContactInformation'
 import { Container } from '../container/Container'
 import { FullWidthContainer } from '../container/FullWidthContainer'
@@ -27,60 +28,114 @@ const Footer = props => {
   return (
     <StyledFooter>
       <FullWidthContainer>
-      <Line />
-      <FooterGrid fluid>
 
-        <FooterCol>
-          {relatedLinkList && (
-            <LinkList underline linkList={relatedLinkList} />
-          )}
+        <MobileFooter>
+          <Accordion title={relatedLinkList.text}>
+            {relatedLinkList && (
+              <LinkList noHeading underline linkList={relatedLinkList} />
+            )}
 
-          <Link
-            to="/use-of-cookies"
-            style={{
-              paddingBottom: '2px',
-              marginTop: '32px',
-              color: 'white',
-              borderBottomColor: 'white',
-              display: 'inline-block',
-            }}>
-            Use of Cookies
-          </Link>
-        </FooterCol>
+            <Link
+              to="/use-of-cookies"
+              style={{
+                paddingBottom: '2px',
+                marginTop: '32px',
+                color: 'white',
+                borderBottomColor: 'white',
+                display: 'inline-block',
+              }}>
+              Use of Cookies
+            </Link>
+          </Accordion>
 
-        <FooterCol>
-          <H3>WEF Network</H3>
-          <Link
-            to="/"
-            style={{
-              paddingBottom: '2px',
-              color: 'white',
-              borderBottomColor: 'white',
-              display: 'inline-block',
-            }}>
-            Input link here
-          </Link>
+          <Accordion title={"WEF Network  "}>
+              <Link
+                to="/"
+                style={{
+                  paddingBottom: '2px',
+                  color: 'white',
+                  borderBottomColor: 'white',
+                  display: 'inline-block',
+                }}>
+                Input link here
+              </Link>
+          </Accordion>
 
-        </FooterCol>
+          <Accordion title={"Contact"}>
+            {contactInformation && (
+              <ContactInformation noHeading
+                contactInformation={contactInformation}
+              />
+            )}
+          </Accordion>
 
-        <FooterCol>
-          {contactInformation && (
-            <ContactInformation
-              contactInformation={contactInformation}
-            />
-          )}
-        </FooterCol>
-
-        <FooterCol>
           {socialLinkList && (
             <LinkList inline linkList={socialLinkList} />
           )}
           <Small style={{ marginTop: '2rem', display: 'block' }}>
             &copy; {siteTitle} {new Date().getFullYear()}
           </Small>
-        </FooterCol>
 
-      </FooterGrid>
+        </MobileFooter>
+
+        <DesktopFooter>
+          <Line />
+          <FooterGrid fluid>
+
+            <FooterCol>
+              {relatedLinkList && (
+                <LinkList underline linkList={relatedLinkList} />
+              )}
+
+              <Link
+                to="/use-of-cookies"
+                style={{
+                  paddingBottom: '2px',
+                  marginTop: '32px',
+                  color: 'white',
+                  borderBottomColor: 'white',
+                  display: 'inline-block',
+                }}>
+                Use of Cookies
+              </Link>
+            </FooterCol>
+
+            <FooterCol>
+              <H3>WEF Network</H3>
+              <Link
+                to="/"
+                style={{
+                  paddingBottom: '2px',
+                  color: 'white',
+                  borderBottomColor: 'white',
+                  display: 'inline-block',
+                }}>
+                Input link here
+              </Link>
+            </FooterCol>
+
+            <FooterCol>
+              {contactInformation && (
+                <ContactInformation
+                  contactInformation={contactInformation}
+                />
+              )}
+            </FooterCol>
+
+            <FooterCol>
+              {socialLinkList && (
+                <LinkList inline linkList={socialLinkList} />
+              )}
+              <Small style={{ marginTop: '2rem', display: 'block' }}>
+                &copy; {siteTitle} {new Date().getFullYear()}
+              </Small>
+            </FooterCol>
+
+          </FooterGrid>
+
+        </DesktopFooter>
+
+
 
 
       </FullWidthContainer>
@@ -96,6 +151,23 @@ Footer.propTypes = {
   relatedLinkList: PropTypes.object,
   socialLinkList: PropTypes.object,
 }
+
+const MobileFooter = styled.div`
+
+  margin-bottom: 3rem;
+
+  ${mediaQuery.BREAKPOINT_3`
+    display: none;
+    margin-bottom: 0;
+  `};
+`;
+
+const DesktopFooter = styled.div`
+  display: none;
+  ${mediaQuery.BREAKPOINT_3`
+    display: block;
+  `};
+`;
 
 const StyledFooter = styled.footer`
   margin-top: ${space[5]};

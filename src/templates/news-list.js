@@ -4,21 +4,21 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
+import { ArrowLeft } from '../components/arrow/ArrowLeft'
+import { ArrowRight } from '../components/arrow/ArrowRight'
 // Components
 import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Header } from '../components/header/Header'
+import { Line } from '../components/line/Line'
 import LinkBlock from '../components/link-block/LinkBlock'
 import { NewsBlock } from '../components/news-block/NewsBlock'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
-import { Line } from '../components/line/Line'
 import { H1, H4 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { Small } from '../components/typography/small/Small'
 import { Strong } from '../components/typography/strong/Strong'
-import { ArrowLeft } from '../components/arrow/ArrowLeft'
-import { ArrowRight } from '../components/arrow/ArrowRight'
 // Config
 import { space } from '../utils/configs/confSpace'
 // Mixins
@@ -26,7 +26,7 @@ import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 // Tokens
 import { colorNeutral } from '../utils/tokens/tokenColorBrand'
 
-const PerspectivesListPage = ({ data, pageContext }) => {
+const NewsListPage = ({ data, pageContext }) => {
   const articles = data.allContentfulPerspective.edges
   const pageTotal = pageContext.pageAmount.length
 
@@ -87,7 +87,7 @@ const PerspectivesListPage = ({ data, pageContext }) => {
   )
 }
 
-export default PerspectivesListPage
+export default NewsListPage
 
 export const pageQuery = graphql`
   query PerspectivesListQuery($skip: Int, $limit: Int) {
@@ -114,7 +114,7 @@ export const pageQuery = graphql`
   }
 `
 
-PerspectivesListPage.propTypes = {
+NewsListPage.propTypes = {
   data: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
 }

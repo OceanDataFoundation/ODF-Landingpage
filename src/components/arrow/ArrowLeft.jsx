@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+// Styles
+import { Transition } from '../../utils/styles/utility-classes/transition'
 // Tokens
 import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 
@@ -12,6 +14,11 @@ export const ArrowLeft = styled.div`
   background-color: ${colorNeutral.NEUTRAL_TINT_100};
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
+  ${Transition};
+
+  :hover {
+    transform: translateX(20px);
+  }
 
   ::before,
   ::after {

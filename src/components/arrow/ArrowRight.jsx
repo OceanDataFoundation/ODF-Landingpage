@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+// Styles
+import { Transition } from '../../utils/styles/utility-classes/transition'
 // Tokens
 import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 
@@ -12,7 +14,11 @@ export const ArrowRight = styled.div`
   background-color: ${colorNeutral.NEUTRAL_TINT_100};
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
-  transition: all ease-in-out 0.2s;
+  ${Transition};
+
+  :hover {
+    transform: translateX(20px);
+  }
 
   ::before,
   ::after {
