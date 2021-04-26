@@ -19,7 +19,7 @@ export const Partner = ({ partner }) => {
   return (
     <PartnerContainer href={url} target="_blank" rel="noopener noreferrer">
       <ImageContainer>
-        <PartnerImage fluid={logo.fluid.src} key={id} />
+        <PartnerImage fluid={logo.fluid} key={id} />
       </ImageContainer>
       <PartnerText>
         {name && <H3>{name}</H3>}
@@ -48,11 +48,13 @@ const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 256px;
-  background-color: grey;
+  background-color: white;
 `
 
 const PartnerImage = styled(Img)`
-
+  height: auto;
+  max-height: 256px;
+  width: 300px;
 
 `
 

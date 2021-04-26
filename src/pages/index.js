@@ -374,7 +374,7 @@ const CustomStatement = styled(Statement)`
     ${mediaQuery.BREAKPOINT_3`
       //right: -300px;
       //top: -300px;
-      height: 1500px;
+      height: 1500px;1
       width: 1500px;
       position: absolute;
       left: 0;
