@@ -1,21 +1,18 @@
 import styled from 'styled-components'
 
-// Tokens
-import { colorBrandGreen } from '../../../utils/tokens/tokenColorBrand'
-
+import { space } from '../../../utils/configs/confSpace'
 // Config
 import { typeScale } from '../../../utils/configs/confTypeScale'
-import { space } from '../../../utils/configs/confSpace'
-
 // Mixins
 import { mediaQuery } from '../../../utils/mixins/mixMediaQuery'
+// Tokens
+import { colorBrandGreen } from '../../../utils/tokens/tokenColorBrand'
 
 export const SubHeading = styled.span`
   ${typeScale.TEXT_PRESET_2};
 
-  margin-bottom: ${space[6]};
+  margin-bottom: ${space[4]};
   color: ${colorBrandGreen.GREEN_TINT_30};
-  text-transform: uppercase;
   letter-spacing: 2px;
   display: block;
 

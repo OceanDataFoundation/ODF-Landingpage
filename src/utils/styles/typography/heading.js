@@ -23,7 +23,6 @@ export const GlobalH1 = css`
     ${Heading};
     ${typeScale.TEXT_PRESET_6};
 
-    margin-top: calc((1 - 2.6) * 0.5rem);
     font-weight: ${fontWeight.FONT_WEIGHT_3};
 
     ${mediaQuery.BREAKPOINT_3`
@@ -50,6 +49,8 @@ export const GlobalH3 = css`
   h3 {
     ${Heading};
     ${typeScale.TEXT_PRESET_4};
+    margin-top: 0;
+    margin-bottom: ${space[7]};
 
     font-weight: ${fontWeight.FONT_WEIGHT_3};
 

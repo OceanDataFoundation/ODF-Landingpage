@@ -12,14 +12,15 @@ import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Header } from '../components/header/Header'
 import Hero from '../components/hero/Hero'
-import { Line } from '../components/line/Line'
+import Line  from '../components/line/Line'
 import LinkBlock from '../components/link-block/LinkBlock'
 import LinkButton from '../components/link-button/LinkButton'
+import AnimatedLogo from '../components/logo/AnimatedLogo'
 import PressRelease from '../components/press-release/PressRelease'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
 import Statement, { StatementContent, StatementImage } from '../components/statement/Statement'
-import { H2, H3, H4 } from '../components/typography/heading/Heading'
+import { H2, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import Video from '../components/video/Video'
@@ -67,6 +68,8 @@ const IndexPage = ({ data }) => {
         </Hero>
       ))}
 
+      {/* <AnimatedLogo /> */}
+
       <Container id="quote">
         <QuoteContainer>
           {quotePosts.map(({ node: post }) => (
@@ -102,26 +105,29 @@ const IndexPage = ({ data }) => {
         </Statement>
       ))}
 
-      {statementTwo.map(({ node: post }) => (
-        <CustomStatement
-          key={post.id}
-          image={post.image.fluid}>
-          <SubHeading>{post.subtitle}</SubHeading>
-          <H3>{post.title}</H3>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: post.content.childMarkdownRemark.html,
-            }}
-          />
-        </CustomStatement>
-      ))}
+      <CustomContainer>
+        {statementTwo.map(({ node: post }) => (
+          <CustomStatement
+            key={post.id}
+            image={post.image.fluid}>
+            <SubHeading>{post.subtitle}</SubHeading>
+            <H3>{post.title}</H3>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: post.content.childMarkdownRemark.html,
+              }}
+            />
+          </CustomStatement>
+        ))}
 
-      <CenteredContainer>
-        <H2>Lets work together</H2>
-        <LinkButton to="/contact">
-          join us
-        </LinkButton>
-      </CenteredContainer>
+        <CenteredContainer>
+          <H2>Lets work together</H2>
+          <LinkButton to="/contact">
+            join us
+          </LinkButton>
+        </CenteredContainer>
+      </CustomContainer>
+
 
       <FullWidthContainer>
         <Header style={{marginBottom: "12px"}}>
@@ -138,7 +144,7 @@ const IndexPage = ({ data }) => {
                 {article.coverImage && (
                   <Img
                     fluid={article.coverImage.fluid}
-                    style={{ minHeight: '329px' }}
+                    style={{ minHeight: '329px', marginBottom: '24px' }}
                   />
                 )}
                 <H3 style={{ marginBottom: '1rem' }}>{article.title}</H3>
@@ -340,6 +346,11 @@ IndexPage.propTypes = {
   }),
 }
 
+const CustomContainer = styled.div`
+  display: grid;
+  grid-template-rows: 1fr;
+`;
+
 const CustomStatement = styled(Statement)`
   grid-row: 1 / 2;
 
@@ -349,11 +360,11 @@ const CustomStatement = styled(Statement)`
 
   ${StatementContent} {
     grid-row: 1 / 2;
-    grid-column: 1 / 9;
+    grid-column: 1 / -1;
     z-index: 50;
 
     ${mediaQuery.BREAKPOINT_2`
-        grid-column: 3 / 8;
+        grid-column: 1 / 9;
     `};
 
     ${mediaQuery.BREAKPOINT_3`
@@ -367,29 +378,25 @@ const CustomStatement = styled(Statement)`
     top: -140px;
 
     ${mediaQuery.BREAKPOINT_2`
-
+        right: -350px;
     `};
 
     > div {
     ${mediaQuery.BREAKPOINT_3`
-      //right: -300px;
-      //top: -300px;
-      height: 1500px;1
+      height: 1500px;
       width: 1500px;
       position: absolute;
       left: 0;
     `};
   }
 
-
     ${mediaQuery.BREAKPOINT_3`
-      grid-column: 8 / 13;
+      grid-column: 4 / 13;
     `};
 
     > div {
         ${mediaQuery.BREAKPOINT_3`
             height: 1200px:
-            //weight: 1200px:
         `};
       }
   }

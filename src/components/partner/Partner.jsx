@@ -49,6 +49,7 @@ const ImageContainer = styled.div`
   align-items: center;
   min-height: 256px;
   background-color: white;
+  margin-bottom: 24px;
 `
 
 const PartnerImage = styled(Img)`

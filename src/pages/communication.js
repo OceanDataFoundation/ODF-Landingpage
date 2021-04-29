@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { ArrowRight } from '../components/arrow/ArrowRight'
 // Components
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
-import { Line } from '../components/line/Line'
+import Line  from '../components/line/Line'
 import LinkBlock from '../components/link-block/LinkBlock'
 import LinkCta from '../components/link-cta/LinkCta'
 import { Meta } from '../components/meta/Meta'
@@ -49,7 +49,7 @@ const Communication = ({ data }) => {
                 {article.coverImage && (
                   <Img
                     fluid={article.coverImage.fluid}
-                    style={{ minHeight: '329px', maxHeight: '329px' }}
+                    style={{ minHeight: '329px', maxHeight: '329px', marginBottom: '24px' }}
                   />
                 )}
                 <H3 style={{ marginBottom: '1rem' }}>{article.title}</H3>

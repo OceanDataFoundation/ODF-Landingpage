@@ -12,7 +12,7 @@ import Accordion from '../accordion/Accordion'
 import ContactInformation from '../contact-information/ContactInformation'
 import { Container } from '../container/Container'
 import { FullWidthContainer } from '../container/FullWidthContainer'
-import { Line } from '../line/Line'
+import Line from '../line/Line'
 import LinkList from '../link-list/LinkList'
 import { H3 } from '../typography/heading/Heading'
 import { Small } from '../typography/small/Small'
@@ -79,7 +79,7 @@ const Footer = props => {
         </MobileFooter>
 
         <DesktopFooter>
-          <Line />
+          <Line largeMargin />
           <FooterGrid fluid>
 
             <FooterCol>
