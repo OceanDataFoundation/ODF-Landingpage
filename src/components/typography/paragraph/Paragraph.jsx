@@ -23,7 +23,7 @@ const P = props => {
 export default P
 
 const Paragraph = styled.p`
-  ${typeScale.TEXT_PRESET_2};
+  ${typeScale.TEXT_PRESET_1};
 
   color: ${props =>
     props.invert
@@ -32,10 +32,10 @@ const Paragraph = styled.p`
 
   ${mediaQuery.BREAKPOINT_2`
     ${props =>
-      props.lead ? typeScale.TEXT_PRESET_4 : typeScale.TEXT_PRESET_2};
+      props.lead ? typeScale.TEXT_PRESET_4 : typeScale.TEXT_PRESET_1};
 
       margin-bottom: ${space[4]};
-      line-height: ${props => (props.lead ? `1.5` : `inherit`)}
+      line-height: ${props => (props.lead ? `1.5` : `22px`)}
   `};
 `
 

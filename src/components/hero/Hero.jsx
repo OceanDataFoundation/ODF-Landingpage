@@ -16,9 +16,9 @@ const Hero = props => {
   return (
   <HeroContainer>
     <Content>
-      <H1 size="larger">
-        {title}
-      </H1>
+        <H1 size="larger">
+          {title}
+        </H1>
       <CustomLinkButton
         to={to}>
         Watch video
@@ -66,7 +66,7 @@ const Content = styled.div`
     margin-bottom: 40px;
 
     display: grid;
-    height: 90vh;
+    height: 100vh;
     grid-template-rows: 2fr 1fr 1fr;
 
     ${H1} {
@@ -81,6 +81,8 @@ const Content = styled.div`
 
     ${CustomP} {
       grid-row: 3;
+      display: flex;
+      align-items: flex-end;
     }
   `}
 
@@ -132,7 +134,7 @@ const HeroContainer = styled(Container)`
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-    height: calc(100vh - 55px);
+    //height: calc(100vh - 55px);
   `};
 
   ${mediaQuery.BREAKPOINT_4`

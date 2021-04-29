@@ -7,22 +7,21 @@
 
 import { css } from 'styled-components'
 
+// Style
+import { Transition } from '../../styles/utility-classes/transition'
 // Token
 import { colorBrandGreen } from '../../tokens/tokenColorBrand'
 
-// Style
-import { Transition } from '../../styles/utility-classes/transition'
-
 export const GlobalLink = css`
-  color: ${colorBrandGreen.GREEN_TINT_30};
+  color: ${colorBrandGreen.GREEN_TINT_50};
   text-decoration: none;
-  border-bottom: 1px solid ${colorBrandGreen.GREEN_TINT_30};
+  border-bottom: 1px solid ${colorBrandGreen.GREEN_TINT_50};
 
   ${Transition};
 
   :hover,
   :focus {
-    color: ${colorBrandGreen.GREEN_TINT_20};
+    color: ${colorBrandGreen.GREEN_TINT_50};
     border-bottom-color: transparent;
   }
 `

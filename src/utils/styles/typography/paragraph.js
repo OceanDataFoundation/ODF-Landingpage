@@ -13,7 +13,7 @@ import { typeScale } from '../../configs/confTypeScale'
 
 export const GlobalParagraph = css`
   p {
-    ${typeScale.TEXT_PRESET_2};
+    ${typeScale.TEXT_PRESET_1};
     margin-top: ${space[0]};
     font-family: ${fontFamily.FONT_FAMILY_2.join()};
 

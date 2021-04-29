@@ -15,12 +15,11 @@ import Hero from '../components/hero/Hero'
 import Line  from '../components/line/Line'
 import LinkBlock from '../components/link-block/LinkBlock'
 import LinkButton from '../components/link-button/LinkButton'
-import AnimatedLogo from '../components/logo/AnimatedLogo'
 import PressRelease from '../components/press-release/PressRelease'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
 import Statement, { StatementContent, StatementImage } from '../components/statement/Statement'
-import { H2, H3 } from '../components/typography/heading/Heading'
+import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import Video from '../components/video/Video'
@@ -67,8 +66,6 @@ const IndexPage = ({ data }) => {
         >
         </Hero>
       ))}
-
-      {/* <AnimatedLogo /> */}
 
       <Container id="quote">
         <QuoteContainer>

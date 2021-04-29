@@ -58,11 +58,4 @@ export const typeScale = {
       'letter-spacing': '2px',
     },
   ],
-  TEXT_PRESET_9: [
-    {
-      'font-size': fontSize.FONT_SIZE_9,
-      'line-height': lineHeight.LINE_HEIGHT_9,
-      'letter-spacing': '2px',
-    },
-  ],
 }

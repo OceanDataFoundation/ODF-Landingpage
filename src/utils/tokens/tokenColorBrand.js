@@ -5,7 +5,7 @@
 //
 
 export const colorBrandGreen = {
-  GREEN_TINT_50: '#6FF5D7', // Default
+  GREEN_TINT_50: '#02FFD1', // Default
 }
 
 export const colorBrandBlue = {
@@ -16,7 +16,6 @@ export const colorBrandBlue = {
 export const colorBrandPurple = {
   PURPLE_TINT_50: '#200A3A' // Default
 }
-
 
 export const colorBrandOrange = {
   PURPLE_TINT_50: '#E7862E' // Default

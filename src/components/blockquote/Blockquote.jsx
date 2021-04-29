@@ -59,7 +59,7 @@ const BlockquoteContainer = styled.blockquote`
 
 
   p {
-    ${typeScale.TEXT_PRESET_2};
+    ${typeScale.TEXT_PRESET_1};
   }
 `;
 

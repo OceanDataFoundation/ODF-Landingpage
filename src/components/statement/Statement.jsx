@@ -29,7 +29,7 @@ const StatementContainer = styled(Container)`
 
   ${mediaQuery.BREAKPOINT_2`
     grid-template-columns: repeat(12, 1fr);
-    grid-column-gap: 5%;
+    grid-column-gap: 20px;
     margin-bottom: 200px;
   `};
 `

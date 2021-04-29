@@ -39,7 +39,13 @@ const Header = props => {
   return (
     <StyledHeader hideHeader={hideHeader}>
       <FlexContainer>
-        <Logo logo={logo} siteTitle={siteTitle} />
+          <Logo logo={logo} siteTitle={siteTitle} />
+
+        {/* <p>Centre for the forth Industrial Revolution
+Connected to World Economic Forum
+      </p> */}
+
+
         <Nav navItems={navItems} open={open} setOpen={setOpen} />
       </FlexContainer>
       <CollapseMenu navItems={navItems} isOpen={open} handleNavbar={setOpen} />
