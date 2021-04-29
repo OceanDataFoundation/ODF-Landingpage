@@ -40,8 +40,8 @@ const Footer = props => {
               style={{
                 paddingBottom: '2px',
                 marginTop: '32px',
-                color: 'white',
-                borderBottomColor: 'white',
+                color: '#02FFD1',
+                borderBottomColor: '#02FFD1',
                 display: 'inline-block',
               }}>
               Use of Cookies
@@ -53,8 +53,8 @@ const Footer = props => {
                 to="/"
                 style={{
                   paddingBottom: '2px',
-                  color: 'white',
-                  borderBottomColor: 'white',
+                  color: '#02FFD1',
+                  borderBottomColor: '#02FFD1',
                   display: 'inline-block',
                 }}>
                 Input link here
@@ -92,8 +92,8 @@ const Footer = props => {
                 style={{
                   paddingBottom: '2px',
                   marginTop: '32px',
-                  color: 'white',
-                  borderBottomColor: 'white',
+                  color: '#02FFD1',
+                  borderBottomColor: '#02FFD1',
                   display: 'inline-block',
                 }}>
                 Use of Cookies
@@ -106,8 +106,8 @@ const Footer = props => {
                 to="/"
                 style={{
                   paddingBottom: '2px',
-                  color: 'white',
-                  borderBottomColor: 'white',
+                  color: '#02FFD1',
+                  borderBottomColor: '#02FFD1',
                   display: 'inline-block',
                 }}>
                 Input link here
@@ -153,7 +153,6 @@ Footer.propTypes = {
 }
 
 const MobileFooter = styled.div`
-
   margin-bottom: 3rem;
 
   ${mediaQuery.BREAKPOINT_3`
@@ -180,7 +179,6 @@ const StyledFooter = styled.footer`
 `
 
 const FooterCol = styled.div`
-
   grid-column: span 1;
 
     ${mediaQuery.BREAKPOINT_3`

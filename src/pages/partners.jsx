@@ -24,7 +24,7 @@ const Partners = ({ data }) => {
       <FullWidthContainer offset="true">
 
       <Header style={{marginBottom: "12px"}}>
-        <H1>Partners</H1>
+        <H1 size="larger">Partners</H1>
         <Line />
       </Header>
 

@@ -45,7 +45,7 @@ const NewsPage = ({ data }) => {
         <Header style={{marginBottom: "12px"}}>
           <Link to="/communication/news/1">
             <ArrowLeft style={{marginBottom:"40px"}} />
-            <H1>Press release</H1>
+            <H1 size="larger">Press release</H1>
           </Link>
           <Line />
         </Header>

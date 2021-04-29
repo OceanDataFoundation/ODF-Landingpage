@@ -6,7 +6,7 @@ import { Transition } from '../../utils/styles/utility-classes/transition'
 import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 
 export const ArrowLeft = styled.div`
-  width: 100px;
+  width: 80px;
   height: 4px;
   content: '';
   display: block;

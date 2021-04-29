@@ -3,10 +3,10 @@ import styled from 'styled-components'
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
 // Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
 
 export const ArrowRight = styled.div`
-  width: 100px;
+  width: 80px;
   height: 4px;
   content: '';
   display: block;
@@ -18,6 +18,7 @@ export const ArrowRight = styled.div`
 
   :hover {
     transform: translateX(20px);
+    //background-color: ${colorBrandGreen.GREEN_TINT_50};
   }
 
   ::before,
@@ -40,9 +41,5 @@ export const ArrowRight = styled.div`
     right: 5px;
     top: -14px;
     transform: rotate(-45deg);
-  }
-
-  :hover {
-    //transform: translateX(20px);
   }
 `

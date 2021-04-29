@@ -7,7 +7,7 @@ import { space } from '../../utils/configs/confSpace'
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
 // Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
 // Components
 import { H3 } from '../typography/heading/Heading'
 
@@ -75,11 +75,11 @@ const A = styled.a`
   color: ${props =>
     props.invert
       ? colorNeutral.NEUTRAL_TINT_15
-      : colorNeutral.NEUTRAL_TINT_100};
+      : colorBrandGreen.GREEN_TINT_50};
   text-decoration: none;
   border-bottom: ${props =>
     props.underline
-      ? `1px solid ${colorNeutral.NEUTRAL_TINT_100} !important`
+      ? `1px solid ${colorBrandGreen.GREEN_TINT_50} !important`
       : ''};
 
   ${Transition};

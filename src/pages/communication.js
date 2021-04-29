@@ -24,7 +24,7 @@ import { space } from '../utils/configs/confSpace'
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 // Tokens
-import { colorNeutral } from '../utils/tokens/tokenColorBrand'
+import { colorBrandGreen, colorNeutral } from '../utils/tokens/tokenColorBrand'
 
 const Communication = ({ data }) => {
 
@@ -38,7 +38,7 @@ const Communication = ({ data }) => {
     <SEO title="Communication" />
       <FullWidthContainer offset="true">
         <Header>
-          <H1>News</H1>
+          <H1 size="larger">News</H1>
           <Line />
         </Header>
         <PressRelease>
@@ -69,7 +69,7 @@ const Communication = ({ data }) => {
 
       <FullWidthContainer>
         <Header>
-        <H1>Press release</H1>
+        <H1 size="larger">Press release</H1>
           <Line />
         </Header>
         <PressRelease>
@@ -211,7 +211,7 @@ const Header = styled.div``;
 
 const Link = styled.a`
   padding-bottom: ${space[2]};
-  color: ${colorNeutral.NEUTRAL_TINT_100};
+  color: ${colorBrandGreen.GREEN_TINT_50};
   text-decoration: none;
   font-size: 36px;
   border-bottom: 0px;

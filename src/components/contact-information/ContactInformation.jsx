@@ -7,7 +7,7 @@ import { space } from '../../utils/configs/confSpace'
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
 // Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
 import { H3 } from '../typography/heading/Heading'
 // Components
 import P from '../typography/paragraph/Paragraph'
@@ -79,15 +79,14 @@ const ContactInformation = ({ contactInformation, invert, noHeading }) => {
 
 const Link = styled.a`
   padding-bottom: ${space[2]};
-  color: ${colorNeutral.NEUTRAL_TINT_100};
+  color: ${colorBrandGreen.GREEN_TINT_50};
   text-decoration: none;
-  border-bottom: 1px solid ${colorNeutral.NEUTRAL_TINT_100};
+  border-bottom: 1px solid ${colorBrandGreen.GREEN_TINT_50};
 
   ${Transition};
 
   :hover,
   :focus {
-    color: ${colorNeutral.NEUTRAL_TINT_100};
     border-bottom-color: transparent;
   }
 `

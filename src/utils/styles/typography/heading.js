@@ -54,10 +54,6 @@ export const GlobalH3 = css`
     margin-bottom: ${space[7]};
 
     font-weight: ${fontWeight.FONT_WEIGHT_3};
-
-    ${mediaQuery.BREAKPOINT_3`
-      ${typeScale.TEXT_PRESET_5};
-    `};
   }
 `
 

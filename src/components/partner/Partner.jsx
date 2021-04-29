@@ -5,16 +5,12 @@ import styled from 'styled-components'
 
 // Config
 import { space } from '../../utils/configs/confSpace'
-// Mixins
-import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-import { H3 } from '../typography/heading/Heading'
 // Components
+import { H3 } from '../typography/heading/Heading'
 import P from '../typography/paragraph/Paragraph'
 
 export const Partner = ({ partner }) => {
   const { url, name, description, logo, id } = partner
-
-  console.log('partner', partner);
 
   return (
     <PartnerContainer href={url} target="_blank" rel="noopener noreferrer">

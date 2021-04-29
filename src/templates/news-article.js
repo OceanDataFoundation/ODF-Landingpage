@@ -48,7 +48,7 @@ const NewsArticle = ({ data }) => {
         <Header style={{marginBottom: "12px"}}>
           <Link to="/communication/news/1">
             <ArrowLeft style={{marginBottom:"40px"}} />
-            <H1>News</H1>
+            <H1 size="larger">News</H1>
           </Link>
           <Line />
         </Header>

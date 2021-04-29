@@ -19,7 +19,7 @@ export const AuthorProfile = ({ author }) => {
         <AuthorName>
           <H5 style={{marginBottom:"0px"}}>{name}</H5>
         </AuthorName>
-        <a style={{color: "#fff"}} href={pageUrl} target="blank">
+        <a style={{color: "#02FFD1"}} href={pageUrl} target="blank">
           Read more
         </a>
       </AuthorText>

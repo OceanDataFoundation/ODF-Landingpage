@@ -24,7 +24,7 @@ import { space } from '../utils/configs/confSpace'
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 // Tokens
-import { colorNeutral } from '../utils/tokens/tokenColorBrand'
+import { colorBrandGreen, colorNeutral } from '../utils/tokens/tokenColorBrand'
 
 const NewsListPage = ({ data, pageContext }) => {
   const articles = data.allContentfulPerspective.edges
@@ -38,7 +38,7 @@ const NewsListPage = ({ data, pageContext }) => {
         <Header style={{marginBottom: "12px"}}>
           <Link to="/communication">
             <ArrowLeft style={{marginBottom:"40px"}} />
-            <H1>News</H1>
+            <H1 size="larger">News</H1>
           </Link>
           <Line />
         </Header>
@@ -59,10 +59,7 @@ const NewsListPage = ({ data, pageContext }) => {
         {pageContext.hasNextPage && (
           <Pagination>
             {pageContext.pageNumber === 1 ? (
-              <Small
-                style={{
-                  color: colorNeutral.NEUTRAL_TINT_70,
-                }}>
+              <Small>
                 Previous page
               </Small>
             ) : (
@@ -132,5 +129,5 @@ const Pagination = styled.div`
 
 const PaginationNumbers = styled(Small)`
   margin: 0 ${space[6]};
-  color: ${colorNeutral.NEUTRAL_TINT_35};
+  color: ${colorNeutral.NEUTRAL_TINT_100};
 `

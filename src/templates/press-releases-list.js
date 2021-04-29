@@ -40,7 +40,7 @@ const NewsListPage = ({ data, pageContext }) => {
         <Header style={{marginBottom: "12px"}}>
           <Link to="/communication">
             <ArrowLeft style={{marginBottom:"40px"}} />
-            <H1>Press Releases</H1>
+            <H1 size="larger">Press Releases</H1>
           </Link>
           <Line />
         </Header>
@@ -48,7 +48,7 @@ const NewsListPage = ({ data, pageContext }) => {
         <Container fluid col="3">
           {newsPosts.map(({ node: post }) => (
             <LinkBlock to={`/communication/press/${post.slug}`} key={post.id}>
-              {post.image && <Img fluid={post.image.fluid} style={{ minHeight: '329px', maxHeight: '329px' }} />}
+              {post.image && <Img fluid={post.image.fluid} style={{ minHeight: '329px', maxHeight: '329px', marginBottom: '24px' }} />}
               <NewsBlock>
                 {/* <Meta>
                   <Small>{post.createdAt}</Small>
