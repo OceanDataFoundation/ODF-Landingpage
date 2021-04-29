@@ -73,20 +73,20 @@ const S_AccordionIcon = styled.div`
   }
 
   ${mediaQuery.BREAKPOINT_3`
-    height: 56px;
-    width: 56px;
+    height: 36px;
+    width: 36px;
 
     & span {
-      width: 2rem;
+      width: 18px;
       height: 5px;
     }
 
     span:nth-child(1) {
-      transform: translateX(14px) rotate(-90deg);
+      transform: translateX(9px) rotate(-90deg);
     }
 
     span:nth-child(2) {
-      transform: translateX(-14px)
+      transform: translateX(-9px)
     }
   `};
 `;
@@ -135,8 +135,8 @@ const S_AccordionTitle = styled.button`
 
       ${mediaQuery.BREAKPOINT_3`
         span:nth-child(2) {
-          width: 1rem;
-          transform: translateX(-16px)
+          width: 18px;
+          transform: translateX(-9px)
         }
     `};
     }

@@ -8,6 +8,7 @@ import ContactForm from '../../components/contact-form/ContactForm'
 import { Container } from '../../components/container/Container'
 import { FullWidthContainer } from '../../components/container/FullWidthContainer'
 import { Header } from '../../components/header/Header'
+import Line from '../../components/line/Line'
 import SEO from '../../components/seo/seo'
 import Layout from '../../components/site-layout/Layout'
 import { H1 } from '../../components/typography/heading/Heading'
@@ -24,7 +25,8 @@ const ContactPage = ({ data }) => {
       <SEO title={title} description={metaDescription} />
       <FullWidthContainer offset="true">
         <Header>
-          <H1>{subtitle}</H1>
+          <H1 size="larger">{subtitle}</H1>
+          <Line />
         </Header>
         <FormContainer>
           <ContentContainer
@@ -83,7 +85,8 @@ const ContentContainer = styled.div`
   grid-column : 1;
 
   ${mediaQuery.BREAKPOINT_3`
-    grid-column: 1 / 6
+    grid-column: 1 / 6;
+    margin-top: 30px;
   `};
 `;
 

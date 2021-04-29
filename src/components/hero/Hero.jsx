@@ -7,7 +7,7 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 // Components
 import { Container } from '../container/Container'
 import LinkButton from '../link-button/LinkButton'
-import {H1} from '../typography/heading/Heading'
+import { H1 } from '../typography/heading/Heading'
 import P from '../typography/paragraph/Paragraph'
 
 const Hero = props => {

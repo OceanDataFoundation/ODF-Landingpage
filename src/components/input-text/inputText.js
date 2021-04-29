@@ -16,7 +16,7 @@ export const TextInput = styled.input`
   margin-top: ${space[3]};
   margin-bottom: ${space[5]};
 
-  ${typeScale.TEXT_PRESET_2};
+  ${typeScale.TEXT_PRESET_1};
   ${Transition};
 
   :hover,

@@ -15,6 +15,7 @@ import { mediaQuery } from '../../mixins/mixMediaQuery'
 import { fontWeight } from '../../tokens/tokenFontWeight'
 
 const Heading = css`
+  margin-top: 0;
   font-weight: ${fontWeight.FONT_WEIGHT_5};
 `
 
