@@ -16,13 +16,15 @@ const Hero = props => {
   return (
   <HeroContainer>
     <Content>
+      <TextAndLinkContainer>
         <H1 size="larger">
           {title}
         </H1>
-      <CustomLinkButton
-        to={to}>
-        Watch video
-      </CustomLinkButton>
+        <CustomLinkButton
+          to={to}>
+          Watch video
+        </CustomLinkButton>
+      </TextAndLinkContainer>
       <CustomP lead>
         {content}
       </CustomP>
@@ -40,16 +42,30 @@ Hero.propTypes = {
   to: PropTypes.string
 }
 
+const TextAndLinkContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  ${H1} {
+
+    ${mediaQuery.BREAKPOINT_3`
+    margin-bottom: 6rem;
+  `}
+  }
+`;
+
 const CustomLinkButton = styled(LinkButton)`
   max-width: 200px;
   max-height: 60px;
+  margin-bottom: 0;
 `;
 
 const CustomP = styled(P)`
    margin-bottom: 100px;
 
    ${mediaQuery.BREAKPOINT_3`
-    margin-bottom: 0px;
+    margin-bottom: -50px;
   `}
 `;
 
@@ -67,27 +83,21 @@ const Content = styled.div`
 
     display: grid;
     height: 100vh;
-    grid-template-rows: 2fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
 
-    ${H1} {
+    ${TextAndLinkContainer} {
       grid-row: 1;
-      display: flex;
-      align-items: flex-end;
     }
 
-    ${CustomLinkButton} {
+    ${CustomP} {
       grid-row: 2;
-    }
-
-    ${CustomP} {
-      grid-row: 3;
       display: flex;
       align-items: flex-end;
     }
   `}
 
   ${mediaQuery.BREAKPOINT_3`
-    grid-column: 1 / 8;
+    grid-column: 1 / 7;
   `}
 
 

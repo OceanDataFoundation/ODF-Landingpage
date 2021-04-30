@@ -67,7 +67,7 @@ export const StatementContent = styled.div`
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-    grid-column: 7 / 13;
+    grid-column: 8 / 13;
   `};
 `
 

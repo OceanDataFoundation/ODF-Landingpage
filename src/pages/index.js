@@ -19,7 +19,7 @@ import PressRelease from '../components/press-release/PressRelease'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
 import Statement, { StatementContent, StatementImage } from '../components/statement/Statement'
-import { H1, H2, H3 } from '../components/typography/heading/Heading'
+import { H2, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
 import Video from '../components/video/Video'
@@ -360,12 +360,8 @@ const CustomStatement = styled(Statement)`
     grid-column: 1 / -1;
     z-index: 50;
 
-    ${mediaQuery.BREAKPOINT_2`
-        grid-column: 1 / 9;
-    `};
-
     ${mediaQuery.BREAKPOINT_3`
-        grid-column: 3 / 8;
+        grid-column: 1 / 6;
     `};
   }
 
@@ -425,6 +421,7 @@ const QuoteContainer = styled.div`
   ${mediaQuery.BREAKPOINT_3`
     ${mediaQuery.BREAKPOINT_3`
       margin-bottom: 100px;
+      margin-top: 6rem;
     `};
   `};
 `;
