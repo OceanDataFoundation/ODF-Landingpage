@@ -211,7 +211,7 @@ const Header = styled.div``;
 
 const Link = styled.a`
   padding-bottom: ${space[2]};
-  color: ${colorBrandGreen.GREEN_TINT_50};
+  color: ${colorNeutral.NEUTRAL_TINT_100};
   text-decoration: none;
   font-size: 36px;
   border-bottom: 0px;

@@ -10,9 +10,11 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import { breakpoints } from '../../utils/tokens/tokenBreakpoints'
 // Utils
 import { colorBrandPurple } from '../../utils/tokens/tokenColorBrand'
+import { fontFamily } from '../../utils/tokens/tokenFontFamily'
 import { zIndex } from '../../utils/tokens/tokenZIndex'
 // Components
 import Logo from '../logo/Logo'
+import P from '../typography/paragraph/Paragraph'
 import CollapseMenu from './CollapseMenu'
 import Nav from './Nav'
 
@@ -39,11 +41,13 @@ const Header = props => {
   return (
     <StyledHeader hideHeader={hideHeader}>
       <FlexContainer>
+
+        <LogoAndTextContainer>
           <Logo logo={logo} siteTitle={siteTitle} />
 
-        {/* <p>Centre for the forth Industrial Revolution
-Connected to World Economic Forum
-      </p> */}
+        <CustomP>Centre for the forth Industrial Revolution Connected to World Economic Forum</CustomP>
+
+        </LogoAndTextContainer>
 
 
         <Nav navItems={navItems} open={open} setOpen={setOpen} />
@@ -68,7 +72,6 @@ const StyledHeader = styled.header`
   top: 0px;
   width: 100%;
   background-color: ${colorBrandPurple.PURPLE_TINT_50};
-
   padding-right: 20px;
   padding-left: 20px;
 
@@ -79,13 +82,31 @@ const StyledHeader = styled.header`
 
   ${mediaQuery.BREAKPOINT_3`
     transform: ${props =>
-      props.hideHeader ? 'translateY(-110%)' : 'translateY(0)'};
+      props.hideHeader ? 'translateY(-160%)' : 'translateY(0)'};
     transition: transform 0.3s ease;
 
     padding-right: ${space[7]};
     padding-left: ${space[7]};
   `};
 `
+
+const CustomP = styled(P)`
+  font-family: ${fontFamily.FONT_FAMILY_1.join()};
+  font-weight: 500;
+  position: absolute;
+  top: 80px;
+  max-width: 350px;
+  display: none;
+
+  ${mediaQuery.BREAKPOINT_3`
+    display: block;
+  `};
+`;
+
+const LogoAndTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const FlexContainer = styled.div`
   display: flex;

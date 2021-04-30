@@ -77,6 +77,7 @@ const LinkButtonStyle = styled(Link)`
 
   &:hover {
     cursor: pointer;
+    color: ${colorNeutral.NEUTRAL_TINT_15};
   }
 
   :hover,
