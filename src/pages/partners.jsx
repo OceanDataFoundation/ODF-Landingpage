@@ -31,7 +31,7 @@ const Partners = ({ data }) => {
       </Header>
 
         <CustomP lead>
-        We strongly believe that partnerships with others that share our vision are the way to create sustainable oceans. We are growing our partners and continuously looking to join forces.
+        We strongly believe that partnerships with others that share our vision is the way to create solutions for a productive and healthy ocean. We are growing and continuously looking to join forces with new partners and projects from science, civil society, public and the private sectors.
         </CustomP>
 
         <Container col="3" fluid>
