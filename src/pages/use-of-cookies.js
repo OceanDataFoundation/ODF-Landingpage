@@ -1,33 +1,32 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
+import React from 'react'
 
-import Layout from '../components/site-layout/Layout'
-import SEO from '../components/seo/seo'
-
-// Components
-import { Container } from '../components/container/Container'
 import {
   Article,
   ArticleContainer,
   ArticleContent,
 } from '../components/article/Article'
+// Components
+import { Container } from '../components/container/Container'
+import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Header } from '../components/header/Header'
-import { Meta } from '../components/meta/Meta'
+import Line from '../components/line/Line'
+import SEO from '../components/seo/seo'
+import Layout from '../components/site-layout/Layout'
 import { H1 } from '../components/typography/heading/Heading'
 
 const CookiesPage = ({ data }) => {
   const page = data.contentfulPage
-  const { createdAt, title, content, metaDescription } = page
+  const { title, content, metaDescription } = page
 
   return (
     <Layout>
       <SEO title={title} description={metaDescription} />
-      <Container offset="true">
-        <Article>
+      <FullWidthContainer offset="true">
           <Header>
-            <Meta>{createdAt}</Meta>
             <H1>{title}</H1>
+            <Line />
           </Header>
 
           <ArticleContainer style={{ paddingLeft: '0' }}>
@@ -39,8 +38,7 @@ const CookiesPage = ({ data }) => {
               />
             </ArticleContent>
           </ArticleContainer>
-        </Article>
-      </Container>
+      </FullWidthContainer>
     </Layout>
   )
 }
@@ -50,7 +48,6 @@ export default CookiesPage
 export const pageQuery = graphql`
   query {
     contentfulPage(contentful_id: { eq: "5XOW93nZ6sGRHMAUUa66SM" }) {
-      createdAt(formatString: "MMMM DD, YYYY")
       title
       subtitle
       metaDescription
@@ -69,7 +66,6 @@ CookiesPage.propTypes = {
       content: PropTypes.object.isRequired,
       metaDescription: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-      createdAt: PropTypes.string,
       subtitle: PropTypes.string,
     })
   ).isRequired,

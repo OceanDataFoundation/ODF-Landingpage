@@ -10,7 +10,7 @@ import { css } from 'styled-components'
 // Config
 import { space } from '../../configs/confSpace'
 // Token
-import { colorNeutral } from '../../tokens/tokenColorBrand'
+import { colorBrandPurple, colorNeutral } from '../../tokens/tokenColorBrand'
 import { fontSize } from '../../tokens/tokenFontSize'
 
 export const Table = css`
@@ -36,8 +36,8 @@ export const Table = css`
       white-space: nowrap;
       text-align: left;
       vertical-align: top;
-      border-bottom: 1px solid ${colorNeutral.NEUTRAL_TINT_40};
-      background-color: ${colorNeutral.NEUTRAL_TINT_90};
+      border-bottom: 1px solid ${colorNeutral.NEUTRAL_TINT_80};
+      background-color: ${colorBrandPurple.PURPLE_TINT_50};
     }
   }
 `
