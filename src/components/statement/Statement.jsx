@@ -47,7 +47,7 @@ export const StatementImage = styled.div`
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-    grid-column: 1 / 7;
+    grid-column: ${props => (props.reverse ? `7 / 13` : ` 1 / 7`)};
   `};
 
   > div {
@@ -64,10 +64,10 @@ export const StatementContent = styled.div`
   ${mediaQuery.BREAKPOINT_2`
     ${props => (props.reverse ? `order: 1` : `order: 2`)};
     margin-bottom: 0;
-  `};
+    `};
 
   ${mediaQuery.BREAKPOINT_3`
-    grid-column: 8 / 13;
+    grid-column: ${props => (props.reverse ? `1 / 7` : `8 / 13`)};
   `};
 `
 
