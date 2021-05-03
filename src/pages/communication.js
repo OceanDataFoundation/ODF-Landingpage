@@ -24,7 +24,7 @@ import { space } from '../utils/configs/confSpace'
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 // Tokens
-import { colorBrandGreen, colorNeutral } from '../utils/tokens/tokenColorBrand'
+import { colorNeutral } from '../utils/tokens/tokenColorBrand'
 
 const Communication = ({ data }) => {
 

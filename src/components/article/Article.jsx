@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { space } from '../../utils/configs/confSpace'
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
 
 export const Article = styled.article`
   grid-column: 1 / -1;

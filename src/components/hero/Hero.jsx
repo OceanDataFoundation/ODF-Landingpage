@@ -143,10 +143,6 @@ const HeroContainer = styled(Container)`
     overflow: initial;
   `};
 
-  ${mediaQuery.BREAKPOINT_3`
-    //height: calc(100vh - 55px);
-  `};
-
   ${mediaQuery.BREAKPOINT_4`
     background-position: right 35% bottom 45%;
   `};
