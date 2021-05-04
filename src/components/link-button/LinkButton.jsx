@@ -13,22 +13,20 @@ import { fontFamily } from '../../utils/tokens/tokenFontFamily'
 import { fontWeight } from '../../utils/tokens/tokenFontWeight'
 
 const LinkButton = props => {
-  const { children, to, showArrow, pressRelease, invert, ...rest } = props
+  const { children, to, pressRelease, invert, ...rest } = props
 
   return (
     <>
       {pressRelease ? (
         <LinkButtonWrapper
           pressRelease={pressRelease}>
-          <LinkButtonStyle to={to} {...rest}>
+          <LinkButtonStyle to={to} invert={invert} {...rest}>
             {children}
-            {showArrow ? <LinkButtonStyleArrow /> : null}
           </LinkButtonStyle>
         </LinkButtonWrapper>
       ) : (
         <LinkButtonStyle to={to} {...rest}>
           {children}
-          {showArrow ? <LinkButtonStyleArrow /> : null}
         </LinkButtonStyle>
       )}
     </>
@@ -38,7 +36,6 @@ const LinkButton = props => {
 LinkButton.propTypes = {
   children: PropTypes.node.isRequired,
   to: PropTypes.string,
-  showArrow: PropTypes.bool,
   pressRelease: PropTypes.bool,
   invert: PropTypes.bool
 }
@@ -77,7 +74,14 @@ const LinkButtonStyle = styled(Link)`
 
   &:hover {
     cursor: pointer;
-    color: ${colorNeutral.NEUTRAL_TINT_15};
+    transform: scale(1.05);
+    /* background: ${`linear-gradient(
+        to right,
+        ${colorBrandBlue.BLUE_TINT_80},
+        ${colorBrandGreen.GREEN_TINT_50}
+      )`}; */
+      //filter: brightness(0.8);
+      color: ${colorNeutral.NEUTRAL_TINT_15};
   }
 
   :hover,
