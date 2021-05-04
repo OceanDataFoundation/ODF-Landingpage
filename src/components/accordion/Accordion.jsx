@@ -41,8 +41,10 @@ const S_Accordion = styled.div`
   margin: 0;
 `;
 
-const AccordionText = styled.div`
+const AccordionText = styled.h2`
   margin-right: ${space[4]};
+  margin-bottom: 0;
+  font-size: 36px;
 `;
 
 
@@ -98,13 +100,13 @@ const S_AccordionTitle = styled.button`
   position: relative;
   display: flex;
   align-items: center;
-  padding: 0;
+  padding: 0 0 16px 0;
   border: none;
   border-radius: 0;
   background-color: ${colorBrandPurple.PURPLE_TINT_50};
   color: ${colorNeutral.NEUTRAL_TINT_100};
   line-height: 5rem;
-  margin-bottom: ${space[4]};
+  margin-bottom: ${space[7]};
   font-size: ${fontSize.FONT_SIZE_4};
   border-bottom: 2px solid ${colorNeutral.NEUTRAL_TINT_100};
 
@@ -112,6 +114,7 @@ const S_AccordionTitle = styled.button`
   ${mediaQuery.BREAKPOINT_3`
     border-bottom: 4px solid ${colorNeutral.NEUTRAL_TINT_100};
     font-size: ${fontSize.FONT_SIZE_6};
+    padding: 0 0 30px 0;
   `};
 
   &:hover,
