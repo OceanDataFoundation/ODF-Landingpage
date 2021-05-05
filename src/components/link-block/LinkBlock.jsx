@@ -6,7 +6,7 @@ import styled from 'styled-components'
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
 // Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
 import { duration } from '../../utils/tokens/tokenDuration'
 import { ArrowRight } from '../arrow/ArrowRight'
 
@@ -38,6 +38,11 @@ const LinkNewsStyle = styled(Link)`
   :focus {
     ${ArrowRight} {
       transform: translateX(20px);
+      background-color: ${colorBrandGreen.GREEN_TINT_50};
+
+      ::before,::after {
+        background-color: ${colorBrandGreen.GREEN_TINT_50};
+      }
     }
   }
 `

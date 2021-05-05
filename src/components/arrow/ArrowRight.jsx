@@ -18,7 +18,11 @@ export const ArrowRight = styled.div`
 
   :hover {
     transform: translateX(20px);
-    //background-color: ${colorBrandGreen.GREEN_TINT_50};
+    background-color: ${colorBrandGreen.GREEN_TINT_50};
+    ::before,
+    ::after {
+      background-color: ${colorBrandGreen.GREEN_TINT_50};
+    }
   }
 
   ::before,

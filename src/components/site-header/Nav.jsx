@@ -8,7 +8,7 @@ import { space } from '../../utils/configs/confSpace'
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 // Token
-import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
 // Components
 import BurgerMenu from './BurgerMenu'
 
@@ -84,8 +84,8 @@ const NavList = styled.ul`
     :hover,
     :focus {
       padding-bottom: ${space[2]};
-      color: ${colorNeutral.NEUTRAL_TINT_100};
-      border-bottom: 1px solid ${colorNeutral.NEUTRAL_TINT_100};
+      color: ${colorBrandGreen.GREEN_TINT_50};
+      border-bottom: 1px solid ${colorBrandGreen.GREEN_TINT_50};
     }
   }
 

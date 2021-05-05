@@ -130,7 +130,7 @@ const ContactForm = () => {
         />
       </Label>
 
-      <LinkButton as="button" type="submit" showArrow>
+      <LinkButton as="button" type="submit">
         Send
       </LinkButton>
     </Form>

@@ -5,7 +5,7 @@ import { animated, useSpring } from 'react-spring'
 import styled from 'styled-components'
 
 // Tokens
-import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
 import { fontSize } from '../../utils/tokens/tokenFontSize'
 
 const CollapseMenu = props => {
@@ -84,6 +84,7 @@ const NavList = styled.ul`
 
     &:hover {
       border-bottom: 1px solid ${colorNeutral.NEUTRAL_TINT_100};
+      color: ${colorBrandGreen.GREEN_TINT_50};
     }
   }
 `

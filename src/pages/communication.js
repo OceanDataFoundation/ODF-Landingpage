@@ -24,7 +24,7 @@ import { space } from '../utils/configs/confSpace'
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 // Tokens
-import { colorNeutral } from '../utils/tokens/tokenColorBrand'
+import { colorBrandGreen, colorNeutral } from '../utils/tokens/tokenColorBrand'
 
 const Communication = ({ data }) => {
 
@@ -221,7 +221,8 @@ const Link = styled.a`
 
   &:hover {
    ${ArrowRight} {
-    transform: translateX(20px);
+    //transform: translateX(20px);
+    background-color: ${colorBrandGreen.GREEN_TINT_50};
    }
   }
 
