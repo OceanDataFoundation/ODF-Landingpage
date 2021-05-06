@@ -50,9 +50,6 @@ const NewsListPage = ({ data, pageContext }) => {
             <LinkBlock to={`/communication/press/${post.slug}`} key={post.id}>
               {post.image && <Img fluid={post.image.fluid} style={{ minHeight: '329px', maxHeight: '329px', marginBottom: '24px' }} />}
               <NewsBlock>
-                {/* <Meta>
-                  <Small>{post.createdAt}</Small>
-                </Meta> */}
                 <H4>{post.title}</H4>
                 <P style={{ marginBottom: '2rem' }}>{post.excerpt}</P>
               </NewsBlock>

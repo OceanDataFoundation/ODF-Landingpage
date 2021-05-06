@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 // Components
 import { Container } from '../container/Container'
+import OctopusSVG from '../icons/OctopusSVG'
 import LinkButton from '../link-button/LinkButton'
 import { H1 } from '../typography/heading/Heading'
 import P from '../typography/paragraph/Paragraph'
@@ -30,7 +31,10 @@ const Hero = props => {
       </CustomP>
     </Content>
 
-    <Image src={bgImage} />
+    {/* <Image src={bgImage} /> */}
+    <IconContainer>
+      <OctopusSVG />
+    </IconContainer>
     </HeroContainer>
   )
 }
@@ -76,7 +80,7 @@ const Content = styled.div`
   z-index: 100;
 
   ${mediaQuery.BREAKPOINT_2`
-    grid-column: 1 / 12;
+    grid-column: 1 / 11;
     grid-row: 1;
     margin-top: 0;
     margin-bottom: 40px;
@@ -106,7 +110,7 @@ const Content = styled.div`
   }
 `
 
-const Image = styled.img`
+const IconContainer = styled.div`
   height: 650px;
   width: 650px;
   grid-row: 1 / 2;

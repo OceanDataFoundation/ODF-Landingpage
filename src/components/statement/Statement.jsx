@@ -9,14 +9,16 @@ import { space } from '../../utils/configs/confSpace'
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 // Components
 import { Container } from '../container/Container'
+import SphereSVG from '../icons/SphereSVG'
 
 const Statement = props => {
-  const { children, image, reverse, removeOffset, ...rest } = props
+  const { children, image, reverse, removeOffset, svg, ...rest } = props
 
   return (
     <StatementContainer {...rest}>
       <StatementImage reverse={reverse} removeOffset={removeOffset}>
-        <Img fluid={image} />
+        { image && <Img fluid={image} /> }
+        { svg && <SphereSVG /> }
       </StatementImage>
       <StatementContent reverse={reverse}>{children}</StatementContent>
     </StatementContainer>
@@ -75,6 +77,7 @@ Statement.propTypes = {
   children: PropTypes.node,
   image: PropTypes.object,
   reverse: PropTypes.string,
+  svg: PropTypes.bool,
   removeOffset: PropTypes.string
 }
 
