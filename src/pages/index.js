@@ -106,7 +106,7 @@ const IndexPage = ({ data }) => {
         {statementTwo.map(({ node: post }) => (
           <CustomStatement
             key={post.id}
-            image={post.image.fluid}>
+            svg>
             <SubHeading>{post.subtitle}</SubHeading>
             <H3>{post.title}</H3>
             <div
@@ -133,6 +133,7 @@ const IndexPage = ({ data }) => {
         </Header>
 
         <PressRelease>
+          {/* {contentfulArticleList.} */}
           {articles.map(({ node: article }) => (
             <LinkBlock
               to={`/communication/news/${article.slug}`}
@@ -277,33 +278,11 @@ export const query = graphql`
           id
           title
           subtitle
-          image {
-            fluid(maxWidth: 800, quality: 60) {
-              ...GatsbyContentfulFluid
-            }
-          }
-          content {
-            childMarkdownRemark {
-              html
-            }
-          }
-          reverseOrder
-        }
-      }
-    }
-    statementThree: allContentfulStatement(
-      filter: { contentful_id: { eq: "3j6lTSUDtdoe6MvOk3abcH" } }
-    ) {
-      edges {
-        node {
-          id
-          title
-          subtitle
-          image {
-            fluid(maxWidth: 800, quality: 100) {
-              ...GatsbyContentfulFluid
-            }
-          }
+          # image {
+          #   fluid(maxWidth: 800, quality: 60) {
+          #     ...GatsbyContentfulFluid
+          #   }
+          # }
           content {
             childMarkdownRemark {
               html
@@ -325,6 +304,23 @@ export const query = graphql`
         }
       }
     }
+    contentfulArticleList(contentful_id: {eq: "1f2Cy0Hi0ar4OUOKzNtfJJ"}) {
+      id
+      article {
+        ... on ContentfulNews {
+          id
+          title
+        }
+        ... on ContentfulPerspective {
+          id
+          title
+        }
+        ... on ContentfulPressRelease {
+          id
+          title
+        }
+      }
+    }
   }
 `
 
@@ -338,7 +334,6 @@ IndexPage.propTypes = {
     allContentfulVideoHero: PropTypes.object.isRequired,
     contentfulPage: PropTypes.object.isRequired,
     statementOne: PropTypes.object.isRequired,
-    statementThree: PropTypes.object.isRequired,
     statementTwo: PropTypes.object.isRequired,
   }),
 }
