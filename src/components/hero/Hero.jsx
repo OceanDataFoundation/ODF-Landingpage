@@ -12,7 +12,7 @@ import { H1 } from '../typography/heading/Heading'
 import P from '../typography/paragraph/Paragraph'
 
 const Hero = props => {
-  const { bgImage, title, content, to } = props
+  const { title, content, to } = props
 
   return (
   <HeroContainer>
@@ -40,7 +40,7 @@ const Hero = props => {
 }
 
 Hero.propTypes = {
-  bgImage: PropTypes.string,
+  // bgImage: PropTypes.string,
   title: PropTypes.string,
   content: PropTypes.string,
   to: PropTypes.string

@@ -221,8 +221,12 @@ const Link = styled.a`
 
   &:hover {
    ${ArrowRight} {
-    //transform: translateX(20px);
+    transform: translateX(20px);
     background-color: ${colorBrandGreen.GREEN_TINT_50};
+    ::before,
+    ::after {
+      background-color: ${colorBrandGreen.GREEN_TINT_50};
+    }
    }
   }
 
