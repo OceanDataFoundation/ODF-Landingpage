@@ -3,9 +3,9 @@ import styled from 'styled-components'
 
 // Components
 import { InputCheckbox } from '../../components/input-checkbox/InputCheckbox'
-import { TextInput } from '../../components/input-text/inputText'
 import { Label } from '../../components/label/label'
 import LinkButton from '../../components/link-button/LinkButton'
+import { TextInput } from '../../components/text-input/TextInput'
 
 const ContactForm = () => {
   const [checked, setChecked] = useState(false)

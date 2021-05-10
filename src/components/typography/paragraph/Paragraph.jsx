@@ -20,6 +20,11 @@ const P = props => {
   )
 }
 
+P.propTypes = {
+  children: PropTypes.node,
+  lead: PropTypes.bool,
+}
+
 export default P
 
 const Paragraph = styled.p`
@@ -38,7 +43,3 @@ const Paragraph = styled.p`
       line-height: ${props => (props.lead ? `1.5` : `22px`)}
   `};
 `
-
-P.propTypes = {
-  lead: PropTypes.bool,
-}
