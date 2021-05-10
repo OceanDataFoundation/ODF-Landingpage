@@ -33,8 +33,6 @@ Success.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export default Success
-
 export const pageQuery = graphql`
   query {
     contentfulPage(slug: { eq: "thank-you" }) {
@@ -45,3 +43,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default Success

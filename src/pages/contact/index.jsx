@@ -48,8 +48,6 @@ ContactPage.propTypes = {
   contenfulPage: PropTypes.objectOf(PropTypes.string),
 }
 
-export default ContactPage
-
 export const pageQuery = graphql`
   query {
     contentfulPage(contentful_id: { eq: "pem5BiuDhHKHCutzx8ql7" }) {
@@ -97,3 +95,5 @@ const ContactFormContainer = styled.div`
     grid-column: 7 / -1
   `};
 `;
+
+export default ContactPage

@@ -122,14 +122,15 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
 
 const ContentWrap = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-`
+  `
 
 const Main = styled.main`
   flex: 1 0 auto;
 `
+
+export default Layout

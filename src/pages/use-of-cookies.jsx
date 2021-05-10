@@ -2,13 +2,11 @@ import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
 
+// Components
 import {
-  Article,
   ArticleContainer,
   ArticleContent,
 } from '../components/article/Article'
-// Components
-import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Header } from '../components/header/Header'
 import Line from '../components/line/Line'
@@ -43,8 +41,6 @@ const CookiesPage = ({ data }) => {
   )
 }
 
-export default CookiesPage
-
 export const pageQuery = graphql`
   query {
     contentfulPage(contentful_id: { eq: "5XOW93nZ6sGRHMAUUa66SM" }) {
@@ -70,3 +66,5 @@ CookiesPage.propTypes = {
     })
   ).isRequired,
 }
+
+export default CookiesPage

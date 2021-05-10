@@ -25,6 +25,14 @@ const Statement = props => {
   )
 }
 
+Statement.propTypes = {
+  children: PropTypes.node,
+  image: PropTypes.object,
+  reverse: PropTypes.string,
+  svg: PropTypes.bool,
+  removeOffset: PropTypes.string
+}
+
 const StatementContainer = styled(Container)`
   display: grid;
   position: relative;
@@ -72,13 +80,5 @@ export const StatementContent = styled.div`
     grid-column: ${props => (props.reverse ? `1 / 7` : `8 / 13`)};
   `};
 `
-
-Statement.propTypes = {
-  children: PropTypes.node,
-  image: PropTypes.object,
-  reverse: PropTypes.string,
-  svg: PropTypes.bool,
-  removeOffset: PropTypes.string
-}
 
 export default Statement

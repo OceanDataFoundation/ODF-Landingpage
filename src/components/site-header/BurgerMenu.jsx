@@ -8,6 +8,23 @@ import { space } from '../../utils/configs/confSpace'
 import { colorNeutral } from '../../utils/tokens/tokenColorBrand'
 import { zIndex } from '../../utils/tokens/tokenZIndex'
 
+const BurgerMenu = ({ open, setOpen }) => {
+  return (
+    <Wrapper onClick={() => setOpen(!open)}>
+      <div className={open ? 'open' : ''}>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+      </div>
+    </Wrapper>
+  )
+}
+
+BurgerMenu.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
+}
+
 const Wrapper = styled.div`
   position: relative;
   padding-top: ${space[3]};
@@ -38,21 +55,4 @@ const Wrapper = styled.div`
   }
 `
 
-const BurgerMenu = ({ open, setOpen }) => {
-  return (
-    <Wrapper onClick={() => setOpen(!open)}>
-      <div className={open ? 'open' : ''}>
-        <span>&nbsp;</span>
-        <span>&nbsp;</span>
-        <span>&nbsp;</span>
-      </div>
-    </Wrapper>
-  )
-}
-
 export default BurgerMenu
-
-BurgerMenu.propTypes = {
-  open: PropTypes.bool.isRequired,
-  setOpen: PropTypes.func.isRequired,
-}

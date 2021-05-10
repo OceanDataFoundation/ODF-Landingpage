@@ -19,13 +19,13 @@ const Video = props => {
   )
 }
 
+Video.propTypes = {
+  videoId: PropTypes.string
+}
+
 const VideoStyle = styled.div`
   background-color: black;
   grid-column: 1 / -1 ;
 `
-
-Video.propTypes = {
-  videoId: PropTypes.string
-}
 
 export default Video

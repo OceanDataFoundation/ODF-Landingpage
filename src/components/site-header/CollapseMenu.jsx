@@ -35,8 +35,6 @@ const toggleAnimation = useSpring({ opacity: props.isOpen ? 1 : 0 })
   return null
 }
 
-export default CollapseMenu
-
 CollapseMenu.propTypes = {
   navItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   isOpen: PropTypes.bool.isRequired,
@@ -88,3 +86,5 @@ const NavList = styled.ul`
     }
   }
 `
+
+export default CollapseMenu

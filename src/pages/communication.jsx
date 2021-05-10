@@ -145,8 +145,6 @@ const Communication = ({ data }) => {
   )
 }
 
-export default Communication
-
 export const query = graphql`
   query CommuncationPageQuery {
     allContentfulPerspective(
@@ -240,3 +238,5 @@ const LinkText = styled.div`
       margin-right: ${space[6]};
   `};
 `;
+
+export default Communication

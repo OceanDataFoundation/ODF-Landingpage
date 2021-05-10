@@ -44,8 +44,6 @@ const Nav = ({ navItems, open, setOpen }) => {
   )
 }
 
-export default Nav
-
 Nav.propTypes = {
   navItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   open: PropTypes.bool.isRequired,
@@ -109,3 +107,5 @@ const CustomLink = styled.a`
     border-bottom: 1px solid white;
   }
 `;
+
+export default Nav
