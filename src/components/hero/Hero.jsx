@@ -54,8 +54,8 @@ const TextAndLinkContainer = styled.div`
   ${H1} {
 
     ${mediaQuery.BREAKPOINT_3`
-    margin-bottom: 6rem;
-  `}
+      margin-bottom: 6rem;
+    `}
   }
 `;
 

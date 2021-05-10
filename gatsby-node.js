@@ -69,9 +69,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create communication article list
   // ----------------------------------------------------------------------------
-  const newsList = path.resolve(`./src/templates/news-list.js`)
+  const newsList = path.resolve(`./src/templates/NewsList.jsx`)
   const newsArticle = path.resolve(
-    `./src/templates/news-article.js`
+    `./src/templates/NewsArticle.jsx`
   )
 
   const newsPages = new Promise((resolve, reject) => {

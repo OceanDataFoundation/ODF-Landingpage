@@ -24,7 +24,7 @@ export const Container = styled.section`
       : props.col === '2'
       ? `repeat(1, 100%)`
       : `repeat(1, 100%)`};
-  gap: ${props => (props.col === '3' || '2' ? `20px` : null)};
+  gap: ${props => (props.col === ('3' || '2') ? `20px` : null)};
 
   ${mediaQuery.BREAKPOINT_2`
     padding-right: ${props => (props.fluid ? 0 : space[6])};

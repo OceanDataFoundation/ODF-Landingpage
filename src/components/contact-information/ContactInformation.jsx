@@ -7,9 +7,9 @@ import { space } from '../../utils/configs/confSpace'
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
 // Tokens
-import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
-import { H3 } from '../typography/heading/Heading'
+import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
 // Components
+import { H3 } from '../typography/heading/Heading'
 import P from '../typography/paragraph/Paragraph'
 
 const ContactInformation = ({ contactInformation, invert, noHeading }) => {

@@ -1,12 +1,8 @@
+import PropTypes from 'prop-types'
 import React from 'react'
-// import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-// Asset
-import iconLeftQuote from '../../images/icon-left-quote.svg'
-import iconRightQuote from '../../images/icon-right-quote.svg'
 // Config
-import { space } from '../../utils/configs/confSpace'
 import { typeScale } from '../../utils/configs/confTypeScale'
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
@@ -30,6 +26,14 @@ const Blockquote = props => {
     </BlockquoteContainer>
   )
 }
+
+Blockquote.propTypes = {
+  children: PropTypes.node,
+  cite: PropTypes.string,
+  author: PropTypes.string,
+  highlightedQuote: PropTypes.string,
+}
+
 
 const HightlightedBlockquote = styled.blockquote`
   grid-column: 1  / -1;
@@ -56,7 +60,6 @@ const BlockquoteContainer = styled.blockquote`
   position: relative;
   border: none;
   font-style: normal;
-
 
   p {
     ${typeScale.TEXT_PRESET_1};

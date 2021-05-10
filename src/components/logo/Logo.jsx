@@ -15,6 +15,27 @@ import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
 // Components
 import { H1 } from '../typography/heading/Heading'
 
+export const Logo = ({ logo, siteTitle }) => {
+  const { description, file } = logo
+
+  return (
+    <LogoLink to="/">
+      <LogoHeading>{`Welcome to ${siteTitle}`}</LogoHeading>
+      <LogoStyle src={file.url} alt={description} />
+    </LogoLink>
+  )
+}
+
+export default Logo
+
+Logo.propTypes = {
+  siteTitle: PropTypes.string.isRequired,
+  logo: PropTypes.shape({
+    description: PropTypes.string,
+    file: PropTypes.objectOf(PropTypes.string),
+  }).isRequired,
+}
+
 export const LogoLink = styled(Link)`
   ${Transition};
 
@@ -57,24 +78,3 @@ export const LogoStyle = styled.img`
 		width: 207px;
   `};
 `
-
-export const Logo = ({ logo, siteTitle }) => {
-  const { description, file } = logo
-
-  return (
-    <LogoLink to="/">
-      <LogoHeading>{`Welcome to ${siteTitle}`}</LogoHeading>
-      <LogoStyle src={file.url} alt={description} />
-    </LogoLink>
-  )
-}
-
-export default Logo
-
-Logo.propTypes = {
-  siteTitle: PropTypes.string.isRequired,
-  logo: PropTypes.shape({
-    description: PropTypes.string,
-    file: PropTypes.objectOf(PropTypes.string),
-  }).isRequired,
-}

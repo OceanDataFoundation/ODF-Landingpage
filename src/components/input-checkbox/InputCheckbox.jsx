@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -8,6 +9,31 @@ import { Transition } from '../../utils/styles/utility-classes/transition'
 import { borderRadius } from '../../utils/tokens/tokenBorderRadius'
 import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
 import { Label } from '../label/label'
+
+export const InputCheckbox = ({ checked, ...props }) => (
+  <LabelCheckbox htmlFor="checkbox">
+    <CheckboxContainer>
+      <HiddenCheckbox
+        id="checkbox"
+        name="checkbox"
+        checked={checked}
+        {...props}
+      />
+      <StyledCheckbox checked={checked}>
+        <Icon viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12" />
+        </Icon>
+      </StyledCheckbox>
+    </CheckboxContainer>
+    <span style={{ marginLeft: 8 }}>
+      I want to volunteer as an early adopter
+    </span>
+  </LabelCheckbox>
+)
+
+InputCheckbox.propTypes = {
+  checked: PropTypes.bool
+}
 
 const CheckboxContainer = styled.div`
   display: inline-block;
@@ -27,7 +53,7 @@ const Icon = styled.svg`
 const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   border: 0;
   clip: rect(0 0 0 0);
-  clippath: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -69,24 +95,3 @@ const LabelCheckbox = styled(Label)`
     cursor: pointer;
   }
 `
-
-export const InputCheckbox = ({ checked, ...props }) => (
-  <LabelCheckbox htmlFor="checkbox">
-    <CheckboxContainer>
-      <HiddenCheckbox
-        id="checkbox"
-        name="checkbox"
-        checked={checked}
-        {...props}
-      />
-      <StyledCheckbox checked={checked}>
-        <Icon viewBox="0 0 24 24">
-          <polyline points="20 6 9 17 4 12" />
-        </Icon>
-      </StyledCheckbox>
-    </CheckboxContainer>
-    <span style={{ marginLeft: 8 }}>
-      I want to volunteer as an early adopter
-    </span>
-  </LabelCheckbox>
-)

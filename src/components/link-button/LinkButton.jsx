@@ -75,12 +75,6 @@ const LinkButtonStyle = styled(Link)`
   &:hover {
     cursor: pointer;
     transform: scale(1.05);
-    /* background: ${`linear-gradient(
-        to right,
-        ${colorBrandBlue.BLUE_TINT_80},
-        ${colorBrandGreen.GREEN_TINT_50}
-      )`}; */
-      //filter: brightness(0.8);
       color: ${colorNeutral.NEUTRAL_TINT_15};
   }
 
@@ -96,43 +90,6 @@ const LinkButtonStyle = styled(Link)`
   ${mediaQuery.BREAKPOINT_2`
     padding: ${space[4]} ${space[8]};
   `};
-`
-
-const LinkButtonStyleArrow = styled.span`
-  width: 0;
-  height: 2px;
-  margin-top: -2px;
-  margin-left: 12px;
-  margin-right: 12px;
-  content: '';
-  opacity: 0;
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  background-color: ${colorNeutral.NEUTRAL_TINT_100};
-
-  ${Transition};
-  transition-property: width, opacity;
-
-  ::before,
-  ::after {
-    width: 8px;
-    height: 2px;
-    content: '';
-    position: absolute;
-    right: -2px;
-    background-color: ${colorNeutral.NEUTRAL_TINT_100};
-  }
-
-  ::before {
-    bottom: 2px;
-    transform: rotate(45deg);
-  }
-
-  ::after {
-    top: 2px;
-    transform: rotate(-45deg);
-  }
 `
 
 export default LinkButton

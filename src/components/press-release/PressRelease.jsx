@@ -6,8 +6,6 @@ import styled from 'styled-components'
 import { space } from '../../utils/configs/confSpace'
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
-// Tokens
-import { colorBrandGreen } from '../../utils/tokens/tokenColorBrand'
 // Components
 import { Container } from '../container/Container'
 

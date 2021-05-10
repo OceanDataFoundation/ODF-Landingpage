@@ -49,7 +49,6 @@ const Header = props => {
 
         </LogoAndTextContainer>
 
-
         <Nav navItems={navItems} open={open} setOpen={setOpen} />
       </FlexContainer>
       <CollapseMenu navItems={navItems} isOpen={open} handleNavbar={setOpen} />
@@ -65,7 +64,6 @@ Header.propTypes = {
   navItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
-// Styles
 const StyledHeader = styled.header`
   z-index: ${zIndex.Z_INDEX_7};
   position: fixed;

@@ -16,6 +16,11 @@ const LinkNews = props => {
   return <LinkNewsStyle to={to}>{children}</LinkNewsStyle>
 }
 
+LinkNews.propTypes = {
+  children: PropTypes.node,
+  to: PropTypes.string,
+}
+
 const LinkNewsStyle = styled(Link)`
   color: ${colorNeutral.NEUTRAL_TINT_15};
   text-decoration: none;
@@ -46,10 +51,5 @@ const LinkNewsStyle = styled(Link)`
     }
   }
 `
-
-LinkNewsStyle.propTypes = {
-  children: PropTypes.node,
-  to: PropTypes.string,
-}
 
 export default LinkNews

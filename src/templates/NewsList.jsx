@@ -24,9 +24,9 @@ import { space } from '../utils/configs/confSpace'
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 // Tokens
-import { colorBrandGreen, colorNeutral } from '../utils/tokens/tokenColorBrand'
+import { colorNeutral } from '../utils/tokens/tokenColorBrand'
 
-const NewsListPage = ({ data, pageContext }) => {
+const NewsList = ({ data, pageContext }) => {
   const articles = data.allContentfulPerspective.edges
   const pageTotal = pageContext.pageAmount.length
 
@@ -84,7 +84,7 @@ const NewsListPage = ({ data, pageContext }) => {
   )
 }
 
-export default NewsListPage
+export default NewsList
 
 export const pageQuery = graphql`
   query PerspectivesListQuery($skip: Int, $limit: Int) {
@@ -111,7 +111,7 @@ export const pageQuery = graphql`
   }
 `
 
-NewsListPage.propTypes = {
+NewsList.propTypes = {
   data: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
 }

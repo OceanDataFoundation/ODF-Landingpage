@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
+// Components
 import { InputCheckbox } from '../../components/input-checkbox/InputCheckbox'
 import { TextInput } from '../../components/input-text/inputText'
 import { Label } from '../../components/label/label'
-// Components
 import LinkButton from '../../components/link-button/LinkButton'
 
 const ContactForm = () => {
@@ -137,7 +137,6 @@ const ContactForm = () => {
   )
 }
 
-// Style
 const Form = styled.form`
   width: 100%;
 `

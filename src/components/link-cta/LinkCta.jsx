@@ -3,12 +3,10 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
-// Config
-import { space } from '../../utils/configs/confSpace'
 // Styles
 import { Transition } from '../../utils/styles/utility-classes/transition'
 // Tokens
-import { colorBrandBlue, colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
+import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBrand'
 import { SmallArrowRight } from '../arrow/SmallArrowRight'
 
 const LinkCta = props => {
@@ -17,7 +15,6 @@ const LinkCta = props => {
   return (
     <LinkCtaStyle href={href} target={target} rel="noreferrer">
       {children}
-      {/* <LinkCtaStyleArrow /> */}
       <SmallArrowRight />
     </LinkCtaStyle>
   )
@@ -66,16 +63,16 @@ const LinkCtaStyle = styled(OutboundLink)`
     ${Transition};
   }
 
-    span {
-      width: 60px;
-      opacity: 1;
-      background-color: ${colorNeutral.NEUTRAL_TINT_40};
+  span {
+    width: 60px;
+    opacity: 1;
+    background-color: ${colorNeutral.NEUTRAL_TINT_40};
 
-      ::before,
-      ::after {
-        background-color: ${colorNeutral.NEUTRAL_TINT_40};
-      }
+    ::before,
+    ::after {
+      background-color: ${colorNeutral.NEUTRAL_TINT_40};
     }
+  }
 `
 
 export default LinkCta
