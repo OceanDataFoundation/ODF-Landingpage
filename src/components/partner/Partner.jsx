@@ -56,4 +56,7 @@ const PartnerImage = styled(Img)`
 `
 
 const PartnerText = styled.div`
+  ${H3} {
+    margin-bottom: 37px;
+  }
 `

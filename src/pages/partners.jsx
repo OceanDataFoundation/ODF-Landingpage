@@ -11,13 +11,15 @@ import Line from '../components/line/Line'
 import { Partner } from '../components/partner/Partner'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
+import { TextBlock } from '../components/text-block/TextBlock'
 import { H1 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 
 const Partners = ({ data }) => {
 
-  const {nodes} = data.allContentfulPartner;
+  const { nodes } = data.allContentfulPartner;
+  const textBlockList = data.contentfulTextBlockList.textBlocks;
 
   return (
     <Layout>
@@ -30,9 +32,15 @@ const Partners = ({ data }) => {
         <Line />
       </Header>
 
-        <CustomP lead>
-        We strongly believe that partnerships with others that share our vision is the way to create solutions for a productive and healthy ocean. We are growing and continuously looking to join forces with new partners and projects from science, civil society, public and the private sectors.
-        </CustomP>
+        <CustomP lead
+          dangerouslySetInnerHTML={{
+            __html: data.intro.introText.content[0].content[0].value
+          }}
+        />
+
+        <CustomContainer fluid>
+          {textBlockList.map(textblock => ( <TextBlock key={textblock.id} textblock={textblock}/> ))}
+        </CustomContainer>
 
         <Container col="3" fluid>
           {nodes.map(partner => <Partner key={partner.id} partner={partner} />)}
@@ -64,17 +72,60 @@ export const query = graphql`
         }
       }
     }
+    intro: contentfulIntro(contentful_id: {eq: "239nU51A0WXgdjPiphq3ka"}) {
+      id
+      title
+      contentful_id
+      introText {
+        id
+        content {
+          content {
+            value
+            nodeType
+          }
+        }
+      }
+    }
+    contentfulTextBlockList(contentful_id: {eq: "6NRLfUFMkM7XiqkeO4GDi7"}) {
+    id
+    title
+    textBlocks {
+      title
+      id
+      bodyText {
+        content {
+          content {
+            value
+          }
+        }
+      }
+    }
+  }
   }
 `
 
 Partners.propTypes = {
   data: PropTypes.shape({
     allContentfulPartner: PropTypes.object.isRequired,
+    intro: PropTypes.object.isRequired,
+    contentfulTextBlockList: PropTypes.object.isRequired
   }),
 }
 
 const CustomP = styled(P)`
+    ${mediaQuery.BREAKPOINT_2`
+      margin-bottom: 95px !important;
+    `};
     ${mediaQuery.BREAKPOINT_3`
       width: 50%;
     `};
+`;
+
+const CustomContainer = styled(Container)`
+  margin-bottom: 50px;
+
+  ${mediaQuery.BREAKPOINT_3`
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 130px;
+  `};
 `;

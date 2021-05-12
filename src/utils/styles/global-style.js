@@ -49,7 +49,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    ${typeScale.TEXT_PRESET_2};
+    ${typeScale.TEXT_PRESET_1};
 
     padding: ${space[0]};
     margin: ${space[0]};
