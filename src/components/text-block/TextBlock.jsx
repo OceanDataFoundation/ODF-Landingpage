@@ -7,11 +7,11 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 import { H3 } from '../typography/heading/Heading'
 
 export const TextBlock = ({ textblock }) => {
-  const { title, bodyText } = textblock
+  const { heading, bodyText } = textblock
 
   return (
     <StyledTextBlock>
-      <H3>{title}</H3>
+      <H3>{heading}</H3>
       <div
         dangerouslySetInnerHTML={{
           __html: bodyText.content[0].content[0].value

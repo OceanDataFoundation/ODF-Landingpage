@@ -90,7 +90,7 @@ export const query = graphql`
     id
     title
     textBlocks {
-      title
+      heading
       id
       bodyText {
         content {
