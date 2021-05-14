@@ -40,14 +40,19 @@ Blockquote.propTypes = {
 export const HightlightedBlockquote = styled.blockquote`
   margin: 0;
   grid-column: 1  / -1;
+  padding: 0 0 0 0;
 
   p {
     color: ${colorBrandGreen.GREEN_TINT_50};
     font-size:  ${fontSize.FONT_SIZE_4} !important;
     line-height: auto !important;
     margin: 0;
-    padding: 0 0 0 1rem;
+    padding: 0 0 1rem 1rem;
     font-family: 'Domine';
+
+    &:last-child {
+      padding-bottom: 0;
+    }
   }
 
   ${mediaQuery.BREAKPOINT_3`
@@ -55,6 +60,7 @@ export const HightlightedBlockquote = styled.blockquote`
 
       p {
         line-height: auto !important;
+        padding: 0 0 1rem 1rem;
         font-size:  ${fontSize.FONT_SIZE_6} !important;
       }
   `};

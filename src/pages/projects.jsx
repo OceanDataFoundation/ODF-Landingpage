@@ -26,6 +26,8 @@ const Projects = ({ data }) => {
   const textBlockList = data.contentfulTextBlockList.textBlocks;
   const quotePosts = data.allContentfulQuote.edges
 
+  console.log('textBlockList', textBlockList);
+
   return (
     <Layout>
       <SEO title="Projects" />
@@ -86,17 +88,15 @@ export default Projects
 
 export const pageQuery = graphql`
   query ProjectsQuery {
-    contentfulTextBlockList(contentful_id: {eq: "ycG1FMWJ1GHx7gMB7zH6M"}) {
-    title
+  contentfulTextBlockList(contentful_id: {eq: "ycG1FMWJ1GHx7gMB7zH6M"}) {
     id
+    title
     textBlocks {
       id
       heading
       bodyText {
-        content {
-          content {
-            value
-          }
+        childMarkdownRemark {
+          html
         }
       }
     }
@@ -221,8 +221,11 @@ const QuoteContainer = styled.div`
     ${mediaQuery.BREAKPOINT_3`
 
       p {
-        padding-left: 0;
         font-size:  ${fontSize.FONT_SIZE_4} !important;
+        padding-bottom: 27px;
+        :last-child {
+          padding-bottom: 0;
+        }
       }
   `};
   }

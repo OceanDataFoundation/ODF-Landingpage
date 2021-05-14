@@ -90,18 +90,16 @@ export const query = graphql`
     id
     title
     textBlocks {
-      heading
       id
+      heading
       bodyText {
-        content {
-          content {
-            value
-          }
+        childMarkdownRemark {
+          html
         }
       }
     }
   }
-  }
+}
 `
 
 Partners.propTypes = {

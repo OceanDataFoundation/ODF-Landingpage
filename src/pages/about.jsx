@@ -73,7 +73,7 @@ const AboutPage = ({ data }) => {
                   return (
                     <Faq key={question.id}>
                       <Question>{question.question.question}</Question>
-                      <P>{question.answer.answer}</P>
+                      <CustomP>{question.answer.answer}</CustomP>
                     </Faq>
                   )
                 })}
@@ -145,6 +145,10 @@ export const pageQuery = graphql`
 AboutPage.propTypes = {
   data: PropTypes.objectOf(PropTypes.object).isRequired,
 }
+
+const CustomP = styled(P)`
+  font-weight: 300;
+`;
 
 const CustomH2 = styled(H2)`
   margin-bottom: 20px;
