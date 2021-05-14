@@ -12,7 +12,7 @@ export const typeScale = {
   TEXT_PRESET_1: [
     {
       'font-size': fontSize.FONT_SIZE_1,
-      'line-height': lineHeight.LINE_HEIGHT_1,
+      'line-height': 'auto',
       'letter-spacing': '0.5px'
     },
   ],

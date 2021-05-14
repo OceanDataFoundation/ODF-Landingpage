@@ -133,3 +133,28 @@ exports.createPages = async ({ graphql, actions }) => {
 
   return { pressReleasePages, newsPages }
 }
+
+exports.createSchemaCustomization = ({ actions }) => {
+	const { createTypes } = actions
+	const typeDefs = `
+    type ContentfulStatement implements Node {
+      reverseOrder: Boolean
+    }
+  `
+	createTypes(typeDefs)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -40,6 +40,6 @@ const Paragraph = styled.p`
       props.lead ? typeScale.TEXT_PRESET_4 : typeScale.TEXT_PRESET_1};
 
       margin-bottom: ${space[4]};
-      line-height: ${props => (props.lead ? `1.5` : `22px`)}
+      line-height: ${props => (props.lead ? `1.5` : `auto`)}
   `};
 `

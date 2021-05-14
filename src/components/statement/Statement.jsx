@@ -28,7 +28,7 @@ const Statement = props => {
 Statement.propTypes = {
   children: PropTypes.node,
   image: PropTypes.object,
-  reverse: PropTypes.string,
+  reverse: PropTypes.bool,
   svg: PropTypes.bool,
   removeOffset: PropTypes.string
 }
@@ -57,7 +57,7 @@ export const StatementImage = styled.div`
   `};
 
   ${mediaQuery.BREAKPOINT_3`
-    grid-column: ${props => (props.reverse ? `7 / 13` : ` 1 / 7`)};
+    grid-column: ${props => (props.reverse ? `7 / 13` : `1 / 7`)};
   `};
 
   > div {
@@ -69,11 +69,12 @@ export const StatementImage = styled.div`
 
 export const StatementContent = styled.div`
   grid-column: 1 / -1;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 
   ${mediaQuery.BREAKPOINT_2`
     ${props => (props.reverse ? `order: 1` : `order: 2`)};
     margin-bottom: 0;
+    margin-bottom: 100px;
     `};
 
   ${mediaQuery.BREAKPOINT_3`

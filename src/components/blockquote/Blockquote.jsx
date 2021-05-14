@@ -17,7 +17,9 @@ const Blockquote = props => {
 
   return (
     <BlockquoteContainer>
-      {highlightedQuote && <HightlightedBlockquote>&quot;{highlightedQuote}&quot;</HightlightedBlockquote>}
+      {highlightedQuote &&
+        <HightlightedBlockquote
+          dangerouslySetInnerHTML={{ __html: highlightedQuote.childMarkdownRemark.html}} />}
       <BlockquoteContent>{children}</BlockquoteContent>
       <BlockquoteFooter>
         <BlockquoteAuthor>{author}</BlockquoteAuthor>
@@ -31,22 +33,30 @@ Blockquote.propTypes = {
   children: PropTypes.node,
   cite: PropTypes.string,
   author: PropTypes.string,
-  highlightedQuote: PropTypes.string,
+  highlightedQuote: PropTypes.object,
 }
 
 
-const HightlightedBlockquote = styled.blockquote`
+export const HightlightedBlockquote = styled.blockquote`
+  margin: 0;
   grid-column: 1  / -1;
-  color: ${colorBrandGreen.GREEN_TINT_50};
-  font-size:  ${fontSize.FONT_SIZE_4};
-  margin: 0 0 100px 0;
-  padding: 0 0 0 1rem;
-  font-family: 'Domine';
+
+  p {
+    color: ${colorBrandGreen.GREEN_TINT_50};
+    font-size:  ${fontSize.FONT_SIZE_4} !important;
+    line-height: auto !important;
+    margin: 0;
+    padding: 0 0 0 1rem;
+    font-family: 'Domine';
+  }
 
   ${mediaQuery.BREAKPOINT_3`
       grid-column: 3  / 12;
-      margin: 0 0 5rem 0;
-      font-size:  ${fontSize.FONT_SIZE_6};
+
+      p {
+        line-height: auto !important;
+        font-size:  ${fontSize.FONT_SIZE_6} !important;
+      }
   `};
 `;
 

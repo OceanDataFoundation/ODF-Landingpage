@@ -191,7 +191,11 @@ export const query = graphql`
         node {
           id
           title
-          highlightedQuote
+          highlightedQuote {
+            childMarkdownRemark {
+              html
+            }
+          }
           content {
             childMarkdownRemark {
               html
