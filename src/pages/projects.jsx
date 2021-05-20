@@ -22,11 +22,8 @@ import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 import { fontSize } from '../utils/tokens/tokenFontSize'
 
 const Projects = ({ data }) => {
-  // const personList = data.allContentfulPersonList.edges
   const textBlockList = data.contentfulTextBlockList.textBlocks;
   const quotePosts = data.allContentfulQuote.edges
-
-  console.log('textBlockList', textBlockList);
 
   return (
     <Layout>

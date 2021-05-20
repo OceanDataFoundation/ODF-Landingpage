@@ -140,6 +140,9 @@ exports.createSchemaCustomization = ({ actions }) => {
     type ContentfulStatement implements Node {
       reverseOrder: Boolean
     }
+    type allContentfulPersonList implements Node {
+      textBlocks: [ContentfulTextBlock] @link(by: "id", from: "textBlocks___NODE")
+    }
   `
 	createTypes(typeDefs)
 }

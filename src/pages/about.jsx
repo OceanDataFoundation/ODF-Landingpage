@@ -14,6 +14,7 @@ import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
 import Statement from '../components/statement/Statement'
 import { StatementContent, StatementImage } from '../components/statement/Statement'
+import {TextBlock} from '../components/text-block/TextBlock'
 import { H1, H2 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 // Mixins
@@ -49,7 +50,7 @@ const AboutPage = ({ data }) => {
           {personList.map(({ node: team }) => (
             <Accordion key={team.id} title={team.title}>
               <Container fluid col="3">
-              {team.persons.map(person => {
+              {team.persons && team.persons.map(person => {
                 return (
                   <div key={person.id}>
                     {person.portrait && <TeamMemberImage
@@ -58,8 +59,13 @@ const AboutPage = ({ data }) => {
                     <Name>{person.fullName}</Name>
                     <p>{person.role}</p>
                   </div>
-                )})}
+                )})
+                }
               </Container>
+              {team.textBlocks &&<TextBlockContainer fluid>
+                {team.textBlocks.map(textblock => ( <TextBlock key={textblock.id} textblock={textblock}/> ))}
+              </TextBlockContainer>}
+
             </Accordion>
           ))}
         </TeamContainer>
@@ -102,6 +108,14 @@ export const pageQuery = graphql`
           portrait {
             fluid(maxWidth: 700) {
               ...GatsbyContentfulFluid
+            }
+          }
+        }
+        textBlocks {
+          id
+          bodyText {
+            childMarkdownRemark {
+              html
             }
           }
         }
@@ -221,3 +235,9 @@ const TeamMemberImage = styled(Img)`
     `};
   }
 `
+
+const TextBlockContainer = styled(Container)`
+  > div{
+    grid-column: 1 / 7;
+  }
+`;
