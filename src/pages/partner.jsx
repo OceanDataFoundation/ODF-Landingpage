@@ -8,7 +8,7 @@ import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Header } from '../components/header/Header'
 import Line from '../components/line/Line'
-import { Partner } from '../components/partner/Partner'
+import { OnePartner } from '../components/partner/OnePartner'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
 import { TextBlock } from '../components/text-block/TextBlock'
@@ -16,19 +16,19 @@ import { H1 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 
-const Partners = ({ data }) => {
+const Partner = ({ data }) => {
 
   const { nodes } = data.allContentfulPartner;
   const textBlockList = data.contentfulTextBlockList.textBlocks;
 
   return (
     <Layout>
-      <SEO title="Partners" />
+      <SEO title="Partner" />
 
       <FullWidthContainer offset="true">
 
       <Header style={{marginBottom: "12px"}}>
-        <H1 size="larger">Partners</H1>
+        <H1 size="larger">Partner</H1>
         <Line />
       </Header>
 
@@ -43,7 +43,7 @@ const Partners = ({ data }) => {
         </CustomContainer>
 
         <Container col="3" fluid>
-          {nodes.map(partner => <Partner key={partner.id} partner={partner} />)}
+          {nodes.map(partner => <OnePartner key={partner.id} partner={partner} />)}
         </Container>
       </FullWidthContainer>
 
@@ -51,7 +51,7 @@ const Partners = ({ data }) => {
   )
 }
 
-export default Partners
+export default Partner
 
 export const query = graphql`
   query PartnerQuery {
@@ -102,7 +102,7 @@ export const query = graphql`
 }
 `
 
-Partners.propTypes = {
+Partner.propTypes = {
   data: PropTypes.shape({
     allContentfulPartner: PropTypes.object.isRequired,
     intro: PropTypes.object.isRequired,

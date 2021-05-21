@@ -12,20 +12,15 @@ const CollapseMenu = props => {
 const { navItems } = props
 const toggleAnimation = useSpring({ opacity: props.isOpen ? 1 : 0 })
 
-  if (props.isOpen === true) {
-    return (
-      <CollapseWrapper style={toggleAnimation}>
+
+if (props.isOpen === true) {
+  return (
+    <CollapseWrapper style={toggleAnimation}>
         <NavList>
-          <li>
-            <CustomLink
-            href="https://www.oceandata.earth/"
-            target="_blank">
-            The data platform
-            </CustomLink>
-          </li>
           {navItems.map(item => (
             <li key={item.id}>
-              <Link to={`${item.link.slug}`}>{item.text}</Link>
+              {item.link && <Link to={`${item.link.slug}`}>{item.text}</Link> }
+              {item.externalLink && <CustomLink href={`${item.externalLink}`} target="_blank">{item.text}</CustomLink>}
             </li>
           ))}
         </NavList>

@@ -38,7 +38,7 @@ const NewsListPage = ({ data, pageContext }) => {
       <FullWidthContainer offset="true">
 
         <Header style={{marginBottom: "12px"}}>
-          <Link to="/communication">
+          <Link to="/news">
             <ArrowLeft style={{marginBottom:"40px"}} />
             <H1 size="larger">Press Releases</H1>
           </Link>
@@ -47,7 +47,7 @@ const NewsListPage = ({ data, pageContext }) => {
 
         <Container fluid col="3">
           {newsPosts.map(({ node: post }) => (
-            <LinkBlock to={`/communication/press/${post.slug}`} key={post.id}>
+            <LinkBlock to={`/news/press/${post.slug}`} key={post.id}>
               {post.image && <Img fluid={post.image.fluid} style={{ minHeight: '329px', maxHeight: '329px', marginBottom: '24px' }} />}
               <NewsBlock>
                 <H4>{post.title}</H4>

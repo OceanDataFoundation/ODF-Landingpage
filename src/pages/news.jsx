@@ -26,7 +26,7 @@ import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 // Tokens
 import { colorBrandGreen, colorNeutral } from '../utils/tokens/tokenColorBrand'
 
-const Communication = ({ data }) => {
+const News = ({ data }) => {
 
   const pressReleases = data.allContentfulPressRelease.edges
   const articles = data.allContentfulPerspective.edges
@@ -35,7 +35,7 @@ const Communication = ({ data }) => {
 
   return (
     <Layout>
-    <SEO title="Communication" />
+    <SEO title="News" />
       <FullWidthContainer offset="true">
         <Header>
           <H1 size="larger">News</H1>
@@ -44,7 +44,7 @@ const Communication = ({ data }) => {
         <PressRelease>
           {articles.map(({ node: article }) => (
             <LinkBlock
-              to={`/communication/news/${article.slug}`}
+              to={`/news/${article.slug}`}
               key={article.id}>
                 {article.coverImage && (
                   <Img
@@ -59,7 +59,7 @@ const Communication = ({ data }) => {
           ))}
         </PressRelease>
 
-        <Link href="/communication/news/1">
+        <Link href="/news/1">
           <LinkText>
             All news
           </LinkText>
@@ -94,7 +94,7 @@ const Communication = ({ data }) => {
           ))}
         </PressRelease>
 
-        <Link href="/communication/press/1">
+        <Link href="/news/press/1">
           <LinkText>
             All press releases
           </LinkText>
@@ -197,7 +197,7 @@ export const query = graphql`
   }
 `
 
-Communication.propTypes = {
+News.propTypes = {
   data: PropTypes.shape({
     allContentfulEvents: PropTypes.object.isRequired,
     allContentfulPerspective: PropTypes.object.isRequired,
@@ -239,4 +239,4 @@ const LinkText = styled.div`
   `};
 `;
 
-export default Communication
+export default News

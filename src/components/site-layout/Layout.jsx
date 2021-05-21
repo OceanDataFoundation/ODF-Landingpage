@@ -47,6 +47,7 @@ const Layout = ({ children }) => {
         navItems {
           id
           text
+          externalLink
           link {
             slug
           }
@@ -104,6 +105,7 @@ const Layout = ({ children }) => {
         logo={logo}
         navItems={navItems}
       />
+
 
       <ContentWrap>
         <Main>{children}</Main>

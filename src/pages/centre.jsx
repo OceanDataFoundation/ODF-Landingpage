@@ -20,7 +20,7 @@ import P from '../components/typography/paragraph/Paragraph'
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 
-const AboutPage = ({ data }) => {
+const CentrePage = ({ data }) => {
   const personList = data.allContentfulPersonList.edges
   const faqList = data.allContentfulFaqList.edges
 
@@ -92,7 +92,7 @@ const AboutPage = ({ data }) => {
   )
 }
 
-export default AboutPage
+export default CentrePage
 
 export const pageQuery = graphql`
   query AboutPageQuery {
@@ -156,7 +156,7 @@ export const pageQuery = graphql`
   }
 `
 
-AboutPage.propTypes = {
+CentrePage.propTypes = {
   data: PropTypes.objectOf(PropTypes.object).isRequired,
 }
 

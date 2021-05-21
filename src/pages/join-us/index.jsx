@@ -16,7 +16,7 @@ import { H1 } from '../../components/typography/heading/Heading'
 import { space } from '../../utils/configs/confSpace'
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
-const ContactPage = ({ data }) => {
+const JoinUsPage = ({ data }) => {
   const page = data.contentfulPage
   const { title, subtitle, content, metaDescription } = page
 
@@ -43,7 +43,7 @@ const ContactPage = ({ data }) => {
   )
 }
 
-ContactPage.propTypes = {
+JoinUsPage.propTypes = {
   data: PropTypes.objectOf(PropTypes.object),
   contenfulPage: PropTypes.objectOf(PropTypes.string),
 }
@@ -96,4 +96,4 @@ const ContactFormContainer = styled.div`
   `};
 `;
 
-export default ContactPage
+export default JoinUsPage

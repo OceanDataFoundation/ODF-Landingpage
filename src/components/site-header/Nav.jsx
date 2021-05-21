@@ -13,15 +13,10 @@ import { colorBrandGreen, colorNeutral } from '../../utils/tokens/tokenColorBran
 import BurgerMenu from './BurgerMenu'
 
 const Nav = ({ navItems, open, setOpen }) => {
+
   return (
     <StyledNav role="navigation">
       <NavList>
-        {/** Temp link, will make it's own page */}
-        <CustomLink
-        href="https://www.oceandata.earth/"
-        target="_blank">
-        The data platform
-        </CustomLink>
         {navItems.map(item => (
           <li key={item.id}>
             {item.link && (
@@ -34,6 +29,7 @@ const Nav = ({ navItems, open, setOpen }) => {
                 {item.text}
               </Link>
             )}
+            {item.externalLink && <CustomLink href={`${item.externalLink}`} target="_blank">{item.text}</CustomLink> }
           </li>
         ))}
       </NavList>

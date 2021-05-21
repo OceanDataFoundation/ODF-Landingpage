@@ -43,7 +43,7 @@ const NewsPage = ({ data }) => {
 
       <FullWidthContainer offset="true">
         <Header style={{marginBottom: "12px"}}>
-          <Link to="/communication/news/1">
+          <Link to="/news/1">
             <ArrowLeft style={{marginBottom:"40px"}} />
             <H1 size="larger">Press release</H1>
           </Link>
@@ -82,7 +82,7 @@ const NewsPage = ({ data }) => {
             </ArticleContainer>
           </Article>
         </Container>
-        <Link to="/communication/press/1" style={{borderBottom: "none"}}>
+        <Link to="/news/press/1" style={{borderBottom: "none"}}>
           <ArrowLeft style={{marginBottom:"40px"}} />
         </Link>
       </FullWidthContainer>

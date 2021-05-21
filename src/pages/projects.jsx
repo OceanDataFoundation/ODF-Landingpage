@@ -71,7 +71,7 @@ const Projects = ({ data }) => {
         </QuoteContainer>
 
       <CenteredContainer>
-          <LinkButton to="/contact">
+          <LinkButton to="/join-us">
           Download project principles
           </LinkButton>
         </CenteredContainer>

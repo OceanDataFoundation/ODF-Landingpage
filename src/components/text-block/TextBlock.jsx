@@ -9,8 +9,6 @@ import { H3 } from '../typography/heading/Heading'
 export const TextBlock = ({ textblock }) => {
   const { heading, bodyText } = textblock
 
-  console.log('bodyText', bodyText)
-
   return (
     <StyledTextBlock>
       <H3>{heading}</H3>

@@ -46,7 +46,7 @@ const NewsArticle = ({ data }) => {
 
       <FullWidthContainer offset="true">
         <Header style={{marginBottom: "12px"}}>
-          <Link to="/communication/news/1">
+          <Link to="/news/1">
             <ArrowLeft style={{marginBottom:"40px"}} />
             <H1 size="larger">News</H1>
           </Link>
@@ -79,7 +79,7 @@ const NewsArticle = ({ data }) => {
             <AuthorProfile author={author} />
           </Article>
         </Container>
-        <Link to="/communication/news/1" style={{borderBottom: "none"}}>
+        <Link to="/news/1" style={{borderBottom: "none"}}>
           <ArrowLeft style={{marginBottom:"40px"}} />
         </Link>
       </FullWidthContainer>

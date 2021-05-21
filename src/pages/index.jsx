@@ -119,7 +119,7 @@ const IndexPage = ({ data }) => {
 
         <CenteredContainer>
           <H2>Lets work together</H2>
-          <LinkButton to="/contact">
+          <LinkButton to="/join-us">
             join us
           </LinkButton>
         </CenteredContainer>
@@ -136,7 +136,7 @@ const IndexPage = ({ data }) => {
           {/* {contentfulArticleList.} */}
           {articles.map(({ node: article }) => (
             <LinkBlock
-              to={`/communication/news/${article.slug}`}
+              to={`/news/${article.slug}`}
               key={article.id}>
               <Article key={article.id}>
                 {article.coverImage && (
