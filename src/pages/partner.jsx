@@ -32,19 +32,20 @@ const Partner = ({ data }) => {
         <Line />
       </Header>
 
-        <CustomP lead
-          dangerouslySetInnerHTML={{
-            __html: data.intro.introText.content[0].content[0].value
-          }}
-        />
+      <Container col="3" fluid>
+        {nodes.map(partner => <OnePartner key={partner.id} partner={partner} />)}
+      </Container>
 
-        <CustomContainer fluid>
-          {textBlockList.map(textblock => ( <TextBlock key={textblock.id} textblock={textblock}/> ))}
-        </CustomContainer>
+      <CustomP lead
+        dangerouslySetInnerHTML={{
+          __html: data.intro.introText.content[0].content[0].value
+        }}
+      />
 
-        <Container col="3" fluid>
-          {nodes.map(partner => <OnePartner key={partner.id} partner={partner} />)}
-        </Container>
+      <CustomContainer fluid>
+        {textBlockList.map(textblock => ( <TextBlock key={textblock.id} textblock={textblock}/> ))}
+      </CustomContainer>
+
       </FullWidthContainer>
 
     </Layout>
