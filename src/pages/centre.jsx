@@ -21,7 +21,7 @@ import P from '../components/typography/paragraph/Paragraph'
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 
 const CentrePage = ({ data }) => {
-  const personList = data.allContentfulPersonList.edges
+  const PersonList = data.allContentfulPersonLists.edges
   const faqList = data.allContentfulFaqList.edges
 
   return (
@@ -47,26 +47,30 @@ const CentrePage = ({ data }) => {
         </CustomStatement>
 
         <TeamContainer>
-          {personList.map(({ node: team }) => (
-            <Accordion key={team.id} title={team.title}>
-              <Container fluid col="3">
-              {team.persons && team.persons.map(person => {
-                return (
-                  <div key={person.id}>
-                    {person.portrait && <TeamMemberImage
-                      fluid={person.portrait.fluid}
-                      />}
-                    <Name>{person.fullName}</Name>
-                    <p>{person.role}</p>
-                  </div>
-                )})
-                }
-              </Container>
-              {team.textBlocks &&<TextBlockContainer fluid>
-                {team.textBlocks.map(textblock => ( <TextBlock key={textblock.id} textblock={textblock}/> ))}
-              </TextBlockContainer>}
+          {PersonList.map(({ node: personLists }) => (
+            <div key={personLists.id}>
+            {personLists.personLists.map(team => (
+                <Accordion key={team.id} title={team.title}>
+                  <Container fluid col="3">
+                  {team.persons && team.persons.map(person => {
+                    return (
+                      <div key={person.id}>
+                        {person.portrait && <TeamMemberImage
+                          fluid={person.portrait.fluid}
+                          />}
+                        <Name>{person.fullName}</Name>
+                        <p>{person.role}</p>
+                      </div>
+                    )})
+                    }
+                  </Container>
+                  {team.textBlocks &&<TextBlockContainer fluid>
+                    {team.textBlocks.map(textblock => ( <TextBlock key={textblock.id} textblock={textblock}/> ))}
+                  </TextBlockContainer>}
 
-            </Accordion>
+                </Accordion>
+            ))}
+            </div>
           ))}
         </TeamContainer>
 
@@ -96,26 +100,30 @@ export default CentrePage
 
 export const pageQuery = graphql`
   query AboutPageQuery {
-  allContentfulPersonList {
+  allContentfulPersonLists(filter: {contentful_id: {eq: "5bM1DQx9rwgo6VcMJxkWn"}}) {
     edges {
       node {
         title
         id
-        persons {
-          fullName
-          role
+        personLists {
+          title
           id
-          portrait {
+          persons {
+            fullName
+            role
+            id
+            portrait {
             fluid(maxWidth: 700) {
               ...GatsbyContentfulFluid
             }
           }
-        }
-        textBlocks {
-          id
-          bodyText {
-            childMarkdownRemark {
-              html
+          }
+          textBlocks {
+            id
+            bodyText {
+              childMarkdownRemark {
+                html
+              }
             }
           }
         }
