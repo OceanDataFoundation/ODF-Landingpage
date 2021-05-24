@@ -9,7 +9,7 @@ import { space } from '../../utils/configs/confSpace'
 import { H3 } from '../typography/heading/Heading'
 import P from '../typography/paragraph/Paragraph'
 
-export const OnePartner = ({ partner }) => {
+export const Partner = ({ partner }) => {
   const { url, name, description, logo, id } = partner
 
   return (
@@ -25,7 +25,7 @@ export const OnePartner = ({ partner }) => {
   )
 }
 
-OnePartner.propTypes = {
+Partner.propTypes = {
   partner: PropTypes.object.isRequired,
 }
 
