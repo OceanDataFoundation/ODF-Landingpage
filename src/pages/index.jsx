@@ -74,12 +74,12 @@ const IndexPage = ({ data }) => {
       <Container id="quote">
         <QuoteContainer>
           {quotePosts.map(({ node: post }) => (
-            <Blockquote key={post.id} cite={post.cite} author={post.author} highlightedQuote={post.highlightedQuote}>
-              <Quote
+            <Blockquote key={post.id} highlightedQuote={post.highlightedQuote}>
+              {/* <Quote
                 dangerouslySetInnerHTML={{
                   __html: post.content.childMarkdownRemark.html,
                 }}
-                />
+                /> */}
             </Blockquote>
           ))}
         </QuoteContainer>
@@ -216,13 +216,6 @@ export const query = graphql`
               html
             }
           }
-          content {
-            childMarkdownRemark {
-              html
-            }
-          }
-          cite
-          author
         }
       }
     }

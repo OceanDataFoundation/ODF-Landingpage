@@ -37,10 +37,12 @@ const News = ({ data }) => {
     <Layout>
     <SEO title="News" />
       <FullWidthContainer offset="true">
+
         <Header>
-          <H1 size="larger">News</H1>
+          <H1 size="larger">{data.contentfulPage.title}</H1>
           <Line />
         </Header>
+
         <PressRelease>
           {articles.map(({ node: article }) => (
             <LinkBlock
@@ -145,6 +147,15 @@ const News = ({ data }) => {
   )
 }
 
+News.propTypes = {
+  data: PropTypes.shape({
+    allContentfulEvents: PropTypes.object.isRequired,
+    allContentfulPerspective: PropTypes.object.isRequired,
+    allContentfulPressRelease: PropTypes.object.isRequired,
+    contentfulPage: PropTypes.string
+  }),
+}
+
 export const query = graphql`
   query CommuncationPageQuery {
     allContentfulPerspective(
@@ -194,16 +205,12 @@ export const query = graphql`
         }
       }
     }
+    contentfulPage(contentful_id: {eq: "m6TPx3rVGMGx7Ymvf8Pua"}) {
+    id
+    title
   }
-`
-
-News.propTypes = {
-  data: PropTypes.shape({
-    allContentfulEvents: PropTypes.object.isRequired,
-    allContentfulPerspective: PropTypes.object.isRequired,
-    allContentfulPressRelease: PropTypes.object.isRequired,
-  }),
 }
+`
 
 const Header = styled.div``;
 

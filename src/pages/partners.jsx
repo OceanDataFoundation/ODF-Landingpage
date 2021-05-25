@@ -29,7 +29,7 @@ const PartnersPage = ({ data }) => {
       <FullWidthContainer offset="true">
 
       <Header style={{marginBottom: "12px"}}>
-        <H1 size="larger">Partners</H1>
+        <H1 size="larger">{data.contentfulPage.title}</H1>
         <Line />
       </Header>
 
@@ -57,7 +57,14 @@ const PartnersPage = ({ data }) => {
   )
 }
 
-export default PartnersPage
+PartnersPage.propTypes = {
+  data: PropTypes.shape({
+    allContentfulPartner: PropTypes.object.isRequired,
+    intro: PropTypes.object.isRequired,
+    contentfulTextBlockList: PropTypes.object.isRequired,
+    contentfulPage: PropTypes.string
+  }),
+}
 
 export const query = graphql`
   query PartnerQuery {
@@ -106,16 +113,12 @@ export const query = graphql`
       }
     }
   }
+  contentfulPage(contentful_id: {eq: "eoSKHszrf83CiK4CFARGq"}) {
+    id
+    title
+  }
 }
 `
-
-PartnersPage.propTypes = {
-  data: PropTypes.shape({
-    allContentfulPartner: PropTypes.object.isRequired,
-    intro: PropTypes.object.isRequired,
-    contentfulTextBlockList: PropTypes.object.isRequired
-  }),
-}
 
 const CustomP = styled(P)`
     ${mediaQuery.BREAKPOINT_2`
@@ -134,3 +137,5 @@ const CustomContainer = styled(Container)`
     margin-bottom: 130px;
   `};
 `;
+
+export default PartnersPage

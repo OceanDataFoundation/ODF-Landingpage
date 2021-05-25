@@ -18,16 +18,18 @@ import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 
 const ContactPage = ({ data }) => {
   const page = data.contentfulPage
-  const { title, subtitle, content, metaDescription } = page
+  const { title, content, metaDescription } = page
 
   return (
     <Layout>
       <SEO title={title} description={metaDescription} />
       <FullWidthContainer offset="true">
+
         <Header>
-          <H1 size="larger">{subtitle}</H1>
+          <H1 size="larger">{data.contentfulPage.title}</H1>
           <Line />
         </Header>
+
         <FormContainer>
           <ContentContainer
             dangerouslySetInnerHTML={{
@@ -59,6 +61,10 @@ export const pageQuery = graphql`
           html
         }
       }
+    }
+    contentfulPage(contentful_id: {eq: "pem5BiuDhHKHCutzx8ql7"}) {
+      id
+      title
     }
   }
 `
