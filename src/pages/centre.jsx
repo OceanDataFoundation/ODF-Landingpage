@@ -34,7 +34,7 @@ const CentrePage = ({ data }) => {
       <FullWidthContainer offset="true">
 
         <Header>
-          <H1>Our Story</H1>
+          <H1 size="larger">{data.contentfulPage.title}</H1>
           <Line />
         </Header>
 
@@ -61,8 +61,6 @@ const CentrePage = ({ data }) => {
             }}
           />
         </CustomStatement>
-
-        {/** Mission and values three column layout here */}
 
         <QuoteContainer>
           {quotePosts.map(({ node: post }) => (
@@ -187,6 +185,10 @@ export const pageQuery = graphql`
         }
       }
     }
+  }
+  contentfulPage(contentful_id: {eq: "6Y54nuw3s7Nk1tNOAopLGd"}) {
+    id
+    title
   }
 }
 `
