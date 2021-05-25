@@ -29,7 +29,6 @@ const NewsPage = ({ data }) => {
     excerpt,
     image,
     imageCaption,
-    tags,
     content,
   } = data.news
 
@@ -90,7 +89,9 @@ const NewsPage = ({ data }) => {
   )
 }
 
-export default NewsPage
+NewsPage.propTypes = {
+  data: PropTypes.objectOf(PropTypes.object.isRequired),
+}
 
 export const pageQuery = graphql`
   query NewsQuery($slug: String) {
@@ -119,6 +120,4 @@ export const pageQuery = graphql`
   }
 `
 
-NewsPage.propTypes = {
-  data: PropTypes.objectOf(PropTypes.object.isRequired),
-}
+export default NewsPage

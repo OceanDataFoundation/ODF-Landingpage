@@ -7,19 +7,19 @@ import { space } from '../../utils/configs/confSpace'
 // Mixins
 import { mediaQuery } from '../../utils/mixins/mixMediaQuery'
 // Components
-import { Container } from '../container/Container'
+import { Container } from './Container'
 
-const PressRelease = props => {
+const ThreeColumnsContainer = props => {
   const { children, columnGap, columnWidth } = props
 
   return (
-    <PressReleaseContainer columnGap={columnGap} columnWidth={columnWidth}>
+    <CustomContainer columnGap={columnGap} columnWidth={columnWidth}>
       {children}
-    </PressReleaseContainer>
+    </CustomContainer>
   )
 }
 
-const PressReleaseContainer = styled(Container)`
+const CustomContainer = styled(Container)`
   padding-right: ${space[0]};
   padding-left: ${space[0]};
   margin-bottom: ${space[6]};
@@ -65,10 +65,10 @@ const PressReleaseContainer = styled(Container)`
   }
 `
 
-PressRelease.propTypes = {
+ThreeColumnsContainer.propTypes = {
   children: PropTypes.node,
   columnGap: PropTypes.oneOf(['small', 'large']),
   columnWidth: PropTypes.oneOf(['small', 'large']),
 }
 
-export default PressRelease
+export default ThreeColumnsContainer

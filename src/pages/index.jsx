@@ -10,12 +10,12 @@ import { Article } from '../components/article/Article'
 import Blockquote from '../components/blockquote/Blockquote'
 import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
+import PressRelease from '../components/container/ThreeColumnsContainer'
 import { Header } from '../components/header/Header'
 import Hero from '../components/hero/Hero'
 import Line  from '../components/line/Line'
 import LinkBlock from '../components/link-block/LinkBlock'
 import LinkButton from '../components/link-button/LinkButton'
-import PressRelease from '../components/press-release/PressRelease'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
 import Statement, { StatementContent, StatementImage } from '../components/statement/Statement'
@@ -34,6 +34,9 @@ const IndexPage = ({ data }) => {
   const statementOne = data.statementOne.edges
   const statementTwo = data.statementTwo.edges
   const articles = data.allContentfulPerspective.edges
+  const articlesTwo = data.contentfulArticleList.article
+
+  console.log('articlesTwo', articlesTwo);
 
   return (
     <Layout>

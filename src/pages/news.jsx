@@ -7,11 +7,11 @@ import styled from 'styled-components'
 import { ArrowRight } from '../components/arrow/ArrowRight'
 // Components
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
+import ThreeColumnsContainer from '../components/container/ThreeColumnsContainer'
 import Line  from '../components/line/Line'
 import LinkBlock from '../components/link-block/LinkBlock'
 import LinkCta from '../components/link-cta/LinkCta'
 import { Meta } from '../components/meta/Meta'
-import PressRelease from '../components/press-release/PressRelease'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
 import { TBody, Table, TableWrapper, Td, Tr } from '../components/table/Table'
@@ -43,7 +43,7 @@ const News = ({ data }) => {
           <Line />
         </Header>
 
-        <PressRelease>
+        <ThreeColumnsContainer>
           {articles.map(({ node: article }) => (
             <LinkBlock
               to={`/news/${article.slug}`}
@@ -59,7 +59,7 @@ const News = ({ data }) => {
                 <ArrowRight />
             </LinkBlock>
           ))}
-        </PressRelease>
+        </ThreeColumnsContainer>
 
         <Link href="/news/1">
           <LinkText>
@@ -74,7 +74,7 @@ const News = ({ data }) => {
         <H1 size="larger">Press release</H1>
           <Line />
         </Header>
-        <PressRelease>
+        <ThreeColumnsContainer>
           {pressReleases.map(({ node: post }) => (
             <div key={post.id}>
               <H3>{post.title}</H3>
@@ -94,7 +94,7 @@ const News = ({ data }) => {
               )}
             </div>
           ))}
-        </PressRelease>
+        </ThreeColumnsContainer>
 
         <Link href="/news/press/1">
           <LinkText>
@@ -152,7 +152,7 @@ News.propTypes = {
     allContentfulEvents: PropTypes.object.isRequired,
     allContentfulPerspective: PropTypes.object.isRequired,
     allContentfulPressRelease: PropTypes.object.isRequired,
-    contentfulPage: PropTypes.string
+    contentfulPage: PropTypes.object.isRequired
   }),
 }
 

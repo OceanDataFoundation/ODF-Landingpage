@@ -84,7 +84,10 @@ const NewsList = ({ data, pageContext }) => {
   )
 }
 
-export default NewsList
+NewsList.propTypes = {
+  data: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
+}
 
 export const pageQuery = graphql`
   query PerspectivesListQuery($skip: Int, $limit: Int) {
@@ -111,11 +114,6 @@ export const pageQuery = graphql`
   }
 `
 
-NewsList.propTypes = {
-  data: PropTypes.object.isRequired,
-  pageContext: PropTypes.object.isRequired,
-}
-
 const Pagination = styled.div`
   margin-top: ${space[8]};
   display: flex;
@@ -131,3 +129,5 @@ const PaginationNumbers = styled(Small)`
   margin: 0 ${space[6]};
   color: ${colorNeutral.NEUTRAL_TINT_100};
 `
+
+export default NewsList

@@ -34,7 +34,6 @@ const NewsArticle = ({ data }) => {
     content,
     author,
   } = data.article
-  console.log('TCL: NewsArticle -> coverCaption', coverCaption)
 
   return (
     <Layout>
@@ -87,7 +86,9 @@ const NewsArticle = ({ data }) => {
   )
 }
 
-export default NewsArticle
+NewsArticle.propTypes = {
+  data: PropTypes.objectOf(PropTypes.object.isRequired),
+}
 
 export const pageQuery = graphql`
   query ArticleQuery($slug: String) {
@@ -125,6 +126,4 @@ export const pageQuery = graphql`
   }
 `
 
-NewsArticle.propTypes = {
-  data: PropTypes.objectOf(PropTypes.object.isRequired),
-}
+export default NewsArticle
