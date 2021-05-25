@@ -47,7 +47,6 @@ const Layout = ({ children }) => {
         navItems {
           id
           text
-          externalLink
           link {
             slug
           }

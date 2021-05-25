@@ -29,7 +29,6 @@ const Nav = ({ navItems, open, setOpen }) => {
                 {item.text}
               </Link>
             )}
-            {item.externalLink && <CustomLink href={`${item.externalLink}`} target="_blank">{item.text}</CustomLink> }
           </li>
         ))}
       </NavList>

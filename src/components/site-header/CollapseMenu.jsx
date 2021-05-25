@@ -20,7 +20,6 @@ if (props.isOpen === true) {
           {navItems.map(item => (
             <li key={item.id}>
               {item.link && <Link to={`${item.link.slug}`}>{item.text}</Link> }
-              {item.externalLink && <CustomLink href={`${item.externalLink}`} target="_blank">{item.text}</CustomLink>}
             </li>
           ))}
         </NavList>
