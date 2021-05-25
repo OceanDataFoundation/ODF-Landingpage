@@ -24,7 +24,7 @@ const Platform = ({ data }) => {
       <FullWidthContainer offset="true">
 
         <Header style={{marginBottom: "12px"}}>
-          <H1 size="larger">Platform</H1>
+          <H1 size="larger">{data.contentfulPage.title}</H1>
           <Line />
         </Header>
 
@@ -63,6 +63,10 @@ export const pageQuery = graphql`
         }
       }
       reverseOrder
+    }
+    contentfulPage(contentful_id: {eq: "1zeS4V9eI39mEig4rKRpM9"}) {
+      id
+      title
     }
   }
 `
