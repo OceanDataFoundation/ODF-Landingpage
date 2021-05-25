@@ -70,12 +70,6 @@ const Projects = ({ data }) => {
           ))}
         </QuoteContainer>
 
-      <CenteredContainer>
-          <LinkButton to="/join-us">
-          Download project principles
-          </LinkButton>
-        </CenteredContainer>
-
       </FullWidthContainer>
     </Layout>
   )
