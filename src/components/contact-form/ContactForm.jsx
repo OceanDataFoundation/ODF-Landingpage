@@ -15,7 +15,7 @@ const ContactForm = () => {
     <Form
       name="contact"
       method="post"
-      action="/join-us/success/"
+      action="/contact/success/"
       data-netlify="true"
       data-netlify-honeypot="bot-field">
       {/* The `form-name` hidden field is required to support form submissions without JavaScript */}

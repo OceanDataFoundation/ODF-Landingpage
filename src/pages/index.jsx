@@ -119,12 +119,11 @@ const IndexPage = ({ data }) => {
 
         <CenteredContainer>
           <H2>Lets work together</H2>
-          <LinkButton to="/join-us">
+          <LinkButton to="/contact">
             join us
           </LinkButton>
         </CenteredContainer>
       </CustomContainer>
-
 
       <FullWidthContainer>
         <Header style={{marginBottom: "12px"}}>
