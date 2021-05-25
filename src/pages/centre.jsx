@@ -6,6 +6,8 @@ import styled from 'styled-components'
 
 // Components
 import Accordion from '../components/accordion/Accordion'
+import Blockquote from '../components/blockquote/Blockquote'
+import { HightlightedBlockquote } from '../components/blockquote/Blockquote'
 import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Header } from '../components/header/Header'
@@ -14,13 +16,16 @@ import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
 import Statement from '../components/statement/Statement'
 import { StatementContent, StatementImage } from '../components/statement/Statement'
-import { H1, H2, H3 } from '../components/typography/heading/Heading'
-import P from '../components/typography/paragraph/Paragraph'
+import { TextBlock } from '../components/text-block/TextBlock'
+import { H1, H3 } from '../components/typography/heading/Heading'
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
+import { fontSize } from '../utils/tokens/tokenFontSize'
 
 const CentrePage = ({ data }) => {
   const PersonList = data.allContentfulPersonLists.edges
+  const quotePosts = data.allContentfulQuote.edges
+  const textBlockList = data.contentfulTextBlockList.textBlocks;
 
   return (
     <Layout>
@@ -58,6 +63,16 @@ const CentrePage = ({ data }) => {
         </CustomStatement>
 
         {/** Mission and values three column layout here */}
+
+        <QuoteContainer>
+          {quotePosts.map(({ node: post }) => (
+            <Blockquote key={post.id} highlightedQuote={post.highlightedQuote} />
+          ))}
+        </QuoteContainer>
+
+        <CustomContainer fluid>
+          {textBlockList.map(textblock => ( <TextBlock key={textblock.id} textblock={textblock}/> ))}
+        </CustomContainer>
 
         <TeamContainer>
           {PersonList.map(({ node: personLists }) => (
@@ -145,6 +160,34 @@ export const pageQuery = graphql`
     }
     reverseOrder
   }
+  allContentfulQuote(
+    filter: { contentful_id: { eq: "241q7ySP9319Q5HnwHIAaO" } }
+  ) {
+    edges {
+      node {
+        id
+        title
+        highlightedQuote {
+          childMarkdownRemark {
+            html
+          }
+        }
+      }
+    }
+  }
+  contentfulTextBlockList(contentful_id: {eq: "1oFWwJ3edfZHr51VvyOgs1"}) {
+    id
+    title
+    textBlocks {
+      id
+      heading
+      bodyText {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+  }
 }
 `
 
@@ -152,38 +195,41 @@ CentrePage.propTypes = {
   data: PropTypes.objectOf(PropTypes.object).isRequired,
 }
 
-const CustomP = styled(P)`
-  font-weight: 300;
-`;
-
-const CustomH2 = styled(H2)`
-  margin-bottom: 20px;
+const CustomContainer = styled(Container)`
+  margin-bottom: 50px;
 
   ${mediaQuery.BREAKPOINT_3`
-    margin-bottom: 40px;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 145px;
   `};
 `;
 
-const Question = styled(P)`
-  font-weight: bold;
-  margin-bottom: 10px !important;
-`;
+const QuoteContainer = styled.div`
+  grid-column: 1 / -1;
+  margin-bottom: 4rem;
 
-const FaqContainer = styled.div`
+  ${HightlightedBlockquote} {
+    ${mediaQuery.BREAKPOINT_3`
+
+      p {
+        font-size:  ${fontSize.FONT_SIZE_4} !important;
+        padding-bottom: 27px;
+        :last-child {
+          padding-bottom: 0;
+        }
+      }
+  `};
+  }
+
   ${mediaQuery.BREAKPOINT_3`
-    grid-column: 4 / 10;
+    ${mediaQuery.BREAKPOINT_3`
+      margin-bottom: 100px;
+      margin-top: 6rem;
+    `};
   `};
 `;
 
 const TeamContainer = styled.div`
-  ${mediaQuery.BREAKPOINT_3`
-    margin-bottom: 100px;
-  `};
-`;
-
-const Faq = styled.div`
-  margin-bottom: 60px;
-
   ${mediaQuery.BREAKPOINT_3`
     margin-bottom: 100px;
   `};
@@ -227,9 +273,3 @@ const TeamMemberImage = styled(Img)`
     `};
   }
 `
-
-// const TextBlockContainer = styled(Container)`
-//   > div{
-//     grid-column: 1 / 7;
-//   }
-// `;

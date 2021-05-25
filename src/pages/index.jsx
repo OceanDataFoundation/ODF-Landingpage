@@ -22,7 +22,6 @@ import Statement, { StatementContent, StatementImage } from '../components/state
 import { H2, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { SubHeading } from '../components/typography/sub-heading/SubHeading'
-import Video from '../components/video/Video'
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 
@@ -31,7 +30,6 @@ const IndexPage = ({ data }) => {
 
   const heroPosts = data.allContentfulHero.edges
   const quotePosts = data.allContentfulQuote.edges
-  const videoPosts = data.allContentfulVideoHero.edges
 
   const statementOne = data.statementOne.edges
   const statementTwo = data.statementTwo.edges
@@ -62,10 +60,16 @@ const IndexPage = ({ data }) => {
           bgImage={post.image.fluid.src}
           title={post.title}
           content={post.content.content}
-          to={"/#video"}
         >
         </Hero>
       ))}
+
+      <CenteredContainer>
+        <H2>Lets work together</H2>
+        <LinkButton to="/contact">
+          join us
+        </LinkButton>
+      </CenteredContainer>
 
       <Container id="quote">
         <QuoteContainer>
@@ -81,12 +85,7 @@ const IndexPage = ({ data }) => {
         </QuoteContainer>
       </Container>
 
-
-      <VideoContainer id="video">
-        {videoPosts.map(({ node: post }) => (
-          <Video key={post.id} id="video" videoId={post.videoId} />
-          ))}
-      </VideoContainer>
+      {/** 3 column with projects */}
 
       {statementOne.map(({ node: post }) => (
         <Statement
@@ -117,12 +116,6 @@ const IndexPage = ({ data }) => {
           </CustomStatement>
         ))}
 
-        <CenteredContainer>
-          <H2>Lets work together</H2>
-          <LinkButton to="/contact">
-            join us
-          </LinkButton>
-        </CenteredContainer>
       </CustomContainer>
 
       <FullWidthContainer>
@@ -157,7 +150,16 @@ const IndexPage = ({ data }) => {
   )
 }
 
-export default IndexPage
+IndexPage.propTypes = {
+  data: PropTypes.shape({
+    allContentfulHero: PropTypes.object.isRequired,
+    allContentfulQuote: PropTypes.object.isRequired,
+    contentfulPage: PropTypes.object.isRequired,
+    allContentfulPerspective: PropTypes.object.isRequired,
+    statementOne: PropTypes.object.isRequired,
+    statementTwo: PropTypes.object.isRequired,
+  }),
+}
 
 export const query = graphql`
   query FrontPageQuery {
@@ -183,39 +185,6 @@ export const query = graphql`
         }
       }
     }
-    allContentfulQuote(
-      filter: { contentful_id: { eq: "27f4To0O1ACAWoyg4NR5xJ" } }
-    ) {
-      edges {
-        node {
-          id
-          title
-          highlightedQuote {
-            childMarkdownRemark {
-              html
-            }
-          }
-          content {
-            childMarkdownRemark {
-              html
-            }
-          }
-          cite
-          author
-        }
-      }
-    }
-    allContentfulVideoHero(
-      filter: { contentful_id: { eq: "1tgrK4wxSh8Ja7kGZ2YaLH" } }
-    ) {
-      edges {
-        node {
-          id
-          title
-          videoId
-        }
-      }
-    }
     allContentfulPerspective(
       limit: 3
       sort: { order: DESC, fields: [publicationDate] }
@@ -235,19 +204,25 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPressRelease(limit: 3, sort: { fields: [date], order: DESC }) {
+    allContentfulQuote(
+      filter: { contentful_id: { eq: "27f4To0O1ACAWoyg4NR5xJ" } }
+    ) {
       edges {
         node {
           id
           title
-          location
-          date(formatString: "MMMM D, YYYY")
-          excerpt {
+          highlightedQuote {
             childMarkdownRemark {
               html
             }
           }
-          link
+          content {
+            childMarkdownRemark {
+              html
+            }
+          }
+          cite
+          author
         }
       }
     }
@@ -281,29 +256,12 @@ export const query = graphql`
           id
           title
           subtitle
-          # image {
-          #   fluid(maxWidth: 800, quality: 60) {
-          #     ...GatsbyContentfulFluid
-          #   }
-          # }
           content {
             childMarkdownRemark {
               html
             }
           }
           reverseOrder
-        }
-      }
-    }
-    allContentfulEvents(sort: { fields: [fromDate], order: ASC }) {
-      edges {
-        node {
-          id
-          title
-          location
-          fromDate(formatString: "D MMMM, YYYY")
-          toDate(formatString: "D MMMM, YYYY")
-          link
         }
       }
     }
@@ -326,20 +284,6 @@ export const query = graphql`
     }
   }
 `
-
-IndexPage.propTypes = {
-  data: PropTypes.shape({
-    allContentfulEvents: PropTypes.object.isRequired,
-    allContentfulHero: PropTypes.object.isRequired,
-    allContentfulPerspective: PropTypes.object.isRequired,
-    allContentfulPressRelease: PropTypes.object.isRequired,
-    allContentfulQuote: PropTypes.object.isRequired,
-    allContentfulVideoHero: PropTypes.object.isRequired,
-    contentfulPage: PropTypes.object.isRequired,
-    statementOne: PropTypes.object.isRequired,
-    statementTwo: PropTypes.object.isRequired,
-  }),
-}
 
 const CustomContainer = styled.div`
   display: grid;
@@ -393,14 +337,6 @@ const CustomStatement = styled(Statement)`
   }
 `;
 
-const VideoContainer = styled.div`
-  margin-bottom: 4rem;
-
-  ${mediaQuery.BREAKPOINT_3`
-    margin-bottom: 100px;
-  `};
-`
-
 const Quote = styled.div`
   grid-column: 4 / 10;
 `;
@@ -417,10 +353,10 @@ const QuoteContainer = styled.div`
   margin-bottom: 4rem;
 
   ${mediaQuery.BREAKPOINT_3`
-    ${mediaQuery.BREAKPOINT_3`
       margin-bottom: 100px;
       margin-top: 6rem;
-    `};
   `};
 `;
 
+
+export default IndexPage
