@@ -14,7 +14,6 @@ import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
 import Statement from '../components/statement/Statement'
 import { StatementContent, StatementImage } from '../components/statement/Statement'
-// import {TextBlock} from '../components/text-block/TextBlock'
 import { H1, H2 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 // Mixins
@@ -22,7 +21,6 @@ import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 
 const CentrePage = ({ data }) => {
   const PersonList = data.allContentfulPersonLists.edges
-  const faqList = data.allContentfulFaqList.edges
 
   return (
     <Layout>
@@ -64,10 +62,6 @@ const CentrePage = ({ data }) => {
                     )})
                     }
                   </Container>
-                  {/* This will be added in when the design is ready
-                  {team.textBlocks &&<TextBlockContainer fluid>
-                    {team.textBlocks.map(textblock => ( <TextBlock key={textblock.id} textblock={textblock}/> ))}
-                  </TextBlockContainer>} */}
 
                 </Accordion>
             ))}
@@ -75,23 +69,7 @@ const CentrePage = ({ data }) => {
           ))}
         </TeamContainer>
 
-        <Container fluid>
-          <FaqContainer>
-            <CustomH2>Faq</CustomH2>
-            {faqList.map(({ node: faq}) => (
-              <div key={faq.id}>
-                {faq.questions.map(question => {
-                  return (
-                    <Faq key={question.id}>
-                      <Question>{question.question.question}</Question>
-                      <CustomP>{question.answer.answer}</CustomP>
-                    </Faq>
-                  )
-                })}
-              </div>
-            ))}
-          </FaqContainer>
-        </Container>
+
       </FullWidthContainer>
     </Layout>
   )
@@ -119,50 +97,25 @@ export const pageQuery = graphql`
             }
           }
           }
-          # This will come later
-          # textBlocks {
-          #   id
-          #   bodyText {
-          #     childMarkdownRemark {
-          #       html
-          #     }
-          #   }
-          # }
         }
       }
     }
   }
-  ourStory: contentfulStatement(contentful_id: {eq: "1i5XVfyCJM85bLmq0kGAOD"}) {
-    id
-    title
-    content {
-        childMarkdownRemark {
-          html
-        }
-      }
-    image {
-      fluid(maxWidth: 700) {
-        ...GatsbyContentfulFluid
-      }
-    }
-    reverseOrder
-  }
-  allContentfulFaqList {
-    edges {
-      node {
-        id
-        questions {
-          id
-          question {
-            question
-          }
-          answer {
-            answer
+    ourStory: contentfulStatement(contentful_id: {eq: "1i5XVfyCJM85bLmq0kGAOD"}) {
+      id
+      title
+      content {
+          childMarkdownRemark {
+            html
           }
         }
+      image {
+        fluid(maxWidth: 700) {
+          ...GatsbyContentfulFluid
+        }
       }
+      reverseOrder
     }
-  }
   }
 `
 
