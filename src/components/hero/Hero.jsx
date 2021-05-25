@@ -21,10 +21,6 @@ const Hero = props => {
         <H1 size="larger">
           {title}
         </H1>
-        <CustomLinkButton
-          to={to}>
-          Watch video
-        </CustomLinkButton>
       </TextAndLinkContainer>
       <CustomP lead>
         {content}
@@ -59,17 +55,11 @@ const TextAndLinkContainer = styled.div`
   }
 `;
 
-const CustomLinkButton = styled(LinkButton)`
-  max-width: 200px;
-  max-height: 60px;
-  margin-bottom: 0;
-`;
-
 const CustomP = styled(P)`
    margin-bottom: 100px;
 
    ${mediaQuery.BREAKPOINT_3`
-    margin-bottom: -50px;
+    margin-bottom: 0px;
   `}
 `;
 
