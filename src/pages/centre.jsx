@@ -14,7 +14,7 @@ import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
 import Statement from '../components/statement/Statement'
 import { StatementContent, StatementImage } from '../components/statement/Statement'
-import { H1, H2 } from '../components/typography/heading/Heading'
+import { H1, H2, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
@@ -29,20 +29,35 @@ const CentrePage = ({ data }) => {
       <FullWidthContainer offset="true">
 
         <Header>
-          <H1>{data.ourStory.title}</H1>
+          <H1>Our Story</H1>
           <Line />
         </Header>
 
         <CustomStatement
           fluid
-          image={data.ourStory.image.fluid}
-          reverse={data.ourStory.reverseOrder}>
+          image={data.statementOne.image.fluid}
+          reverse={data.statementOne.reverseOrder}>
+          <H3>{data.statementOne.title}</H3>
           <div
             dangerouslySetInnerHTML={{
-              __html: data.ourStory.content.childMarkdownRemark.html,
+              __html: data.statementOne.content.childMarkdownRemark.html,
             }}
           />
         </CustomStatement>
+
+        <CustomStatement
+          fluid
+          image={data.statementTwo.image.fluid}
+          reverse={data.statementTwo.reverseOrder}>
+          <H3>{data.statementTwo.title}</H3>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: data.statementTwo.content.childMarkdownRemark.html,
+            }}
+          />
+        </CustomStatement>
+
+        {/** Mission and values three column layout here */}
 
         <TeamContainer>
           {PersonList.map(({ node: personLists }) => (
@@ -68,7 +83,6 @@ const CentrePage = ({ data }) => {
             </div>
           ))}
         </TeamContainer>
-
 
       </FullWidthContainer>
     </Layout>
@@ -101,22 +115,37 @@ export const pageQuery = graphql`
       }
     }
   }
-    ourStory: contentfulStatement(contentful_id: {eq: "1i5XVfyCJM85bLmq0kGAOD"}) {
-      id
-      title
-      content {
-          childMarkdownRemark {
-            html
-          }
-        }
-      image {
-        fluid(maxWidth: 700) {
-          ...GatsbyContentfulFluid
+  statementOne: contentfulStatement(contentful_id: {eq: "1i5XVfyCJM85bLmq0kGAOD"}) {
+    id
+    title
+    content {
+        childMarkdownRemark {
+          html
         }
       }
-      reverseOrder
+    image {
+      fluid(maxWidth: 700) {
+        ...GatsbyContentfulFluid
+      }
     }
+    reverseOrder
   }
+  statementTwo: contentfulStatement(contentful_id: {eq: "4rbhcZGkZXpzFdN4bWBf9d"}) {
+    id
+    title
+    content {
+        childMarkdownRemark {
+          html
+        }
+      }
+    image {
+      fluid(maxWidth: 700) {
+        ...GatsbyContentfulFluid
+      }
+    }
+    reverseOrder
+  }
+}
 `
 
 CentrePage.propTypes = {
