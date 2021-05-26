@@ -14,6 +14,7 @@ import Statement from '../components/statement/Statement'
 import { StatementContent, StatementImage } from '../components/statement/Statement'
 import { TextBlock } from '../components/text-block/TextBlock'
 import { H1, H3 } from '../components/typography/heading/Heading'
+import P from '../components/typography/paragraph/Paragraph'
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 
@@ -31,7 +32,13 @@ const Projects = ({ data }) => {
           <Line />
         </Header>
 
-        <CustomStatement
+        <CustomP lead
+          dangerouslySetInnerHTML={{
+            __html: data.intro.introText.content[0].content[0].value
+          }}
+        />
+
+        {/* <CustomStatement
           fluid
           image={data.statementOne.image.fluid}
           reverse={data.statementOne.reverseOrder}>
@@ -41,23 +48,11 @@ const Projects = ({ data }) => {
               __html: data.statementOne.content.childMarkdownRemark.html,
             }}
           />
-        </CustomStatement>
+        </CustomStatement> */}
 
         <CustomContainer fluid>
           {textBlockList.map(textblock => ( <TextBlock key={textblock.id} textblock={textblock}/> ))}
         </CustomContainer>
-
-        <CustomStatementTwo
-          fluid
-          image={data.statementTwo.image.fluid}
-          reverse={data.statementTwo.reverseOrder}>
-          <H3>{data.statementTwo.title}</H3>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: data.statementTwo.content.childMarkdownRemark.html,
-            }}
-          />
-        </CustomStatementTwo>
 
       </FullWidthContainer>
     </Layout>
@@ -79,35 +74,19 @@ export const pageQuery = graphql`
       }
     }
   }
-  statementOne: contentfulStatement(contentful_id: {eq: "6MLpJFZ3eXnOLzxIJVeNqa"}) {
+  intro: contentfulIntro(contentful_id: {eq: "2IM7JtOtRDVA0JZrmxi92O"}) {
     id
     title
-    content {
-        childMarkdownRemark {
-          html
+    contentful_id
+    introText {
+      id
+      content {
+        content {
+          value
+          nodeType
         }
       }
-    image {
-      fluid(maxWidth: 700) {
-        ...GatsbyContentfulFluid
-      }
     }
-    reverseOrder
-  }
-  statementTwo: contentfulStatement(contentful_id: {eq: "6xfOhArtLUoSGBjAnFtxps"}) {
-    id
-    title
-    content {
-        childMarkdownRemark {
-          html
-        }
-      }
-    image {
-      fluid(maxWidth: 700) {
-        ...GatsbyContentfulFluid
-      }
-    }
-    reverseOrder
   }
   contentfulPage(contentful_id: {eq: "5AEeLK9WtdaZIzha6dVUpJ"}) {
     id
@@ -128,6 +107,16 @@ const CustomContainer = styled(Container)`
     margin-bottom: 145px;
   `};
 `;
+
+const CustomP = styled(P)`
+    ${mediaQuery.BREAKPOINT_2`
+      margin-bottom: 95px !important;
+    `};
+    ${mediaQuery.BREAKPOINT_3`
+      width: 50%;
+    `};
+`;
+
 
 const CustomStatement = styled(Statement)`
 
@@ -156,21 +145,5 @@ const CustomStatement = styled(Statement)`
   }
 `;
 
-const CustomStatementTwo = styled(CustomStatement)`
-
-    ${H3} {
-      margin-bottom: 35px;
-    }
-
-    ${StatementContent} {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-  }
-
-  ${mediaQuery.BREAKPOINT_3`
-      margin-bottom: 0;
-  `};
-`;
 
 export default Projects

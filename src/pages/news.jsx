@@ -71,7 +71,7 @@ const News = ({ data }) => {
 
       <FullWidthContainer>
         <Header>
-        <H1 size="larger">Press release</H1>
+        <H1 size="larger">Blogs</H1>
           <Line />
         </Header>
         <ThreeColumnsContainer>
@@ -107,7 +107,7 @@ const News = ({ data }) => {
 
       <FullWidthContainer style={{ marginTop: '80px' }}>
         <Header>
-          <H2>  Events</H2>
+          <H2>Events</H2>
           <Line />
         </Header>
         <TableWrapper>
