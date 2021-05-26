@@ -1,26 +1,28 @@
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
+import { ArrowRight } from '../components/arrow/ArrowRight'
 // Components
 import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Header } from '../components/header/Header'
 import Line from '../components/line/Line'
+import LinkBlock from '../components/link-block/LinkBlock'
+import { NewsBlock } from '../components/news-block/NewsBlock'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
-import Statement from '../components/statement/Statement'
-import { StatementContent, StatementImage } from '../components/statement/Statement'
 import { TextBlock } from '../components/text-block/TextBlock'
-import { H1, H3 } from '../components/typography/heading/Heading'
+import { H1, H4 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
-import ProjectList from '../templates/ProjectList';
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 
 const Projects = ({ data }) => {
   const textBlockList = data.contentfulTextBlockList.textBlocks;
+  const projectArticles = data.allContentfulProject.edges
 
   return (
     <Layout>
@@ -39,23 +41,22 @@ const Projects = ({ data }) => {
           }}
         />
 
-        {/* <ProjectList /> */}
-
-        {/* <CustomStatement
-          fluid
-          image={data.statementOne.image.fluid}
-          reverse={data.statementOne.reverseOrder}>
-          <H3>{data.statementOne.title}</H3>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: data.statementOne.content.childMarkdownRemark.html,
-            }}
-          />
-        </CustomStatement> */}
-
         <CustomContainer fluid>
           {textBlockList.map(textblock => ( <TextBlock key={textblock.id} textblock={textblock}/> ))}
         </CustomContainer>
+
+        <Container fluid col="3">
+          {projectArticles.map(({ node: article }) => (
+            <LinkBlock to={`/projects/${article.slug}`} key={article.id}>
+              {article.coverImage && <Img fluid={article.coverImage.fluid} style={{ minHeight: '329px', maxHeight: '329px', marginBottom: '24px' }} />}
+              <NewsBlock>
+                <H4>{article.title}</H4>
+                <P style={{ marginBottom: '2rem' }}>{article.teaser}</P>
+              </NewsBlock>
+              <ArrowRight />
+            </LinkBlock>
+          ))}
+        </Container>
 
       </FullWidthContainer>
     </Layout>
@@ -77,6 +78,21 @@ export const pageQuery = graphql`
       }
     }
   }
+  allContentfulProject {
+      edges {
+        node {
+          id
+          title
+          teaser
+          slug
+          coverImage {
+            fluid(maxWidth: 700) {
+              ...GatsbyContentfulFluid
+            }
+          }
+        }
+      }
+    }
   intro: contentfulIntro(contentful_id: {eq: "2IM7JtOtRDVA0JZrmxi92O"}) {
     id
     title
@@ -107,7 +123,6 @@ const CustomContainer = styled(Container)`
 
   ${mediaQuery.BREAKPOINT_3`
     grid-template-columns: repeat(4, 1fr);
-    margin-bottom: 145px;
   `};
 `;
 
@@ -118,34 +133,6 @@ const CustomP = styled(P)`
     ${mediaQuery.BREAKPOINT_3`
       width: 50%;
     `};
-`;
-
-
-const CustomStatement = styled(Statement)`
-
-  ${H3} {
-    margin-bottom: 6px;
-  }
-
-  ${mediaQuery.BREAKPOINT_2`
-    margin-bottom: 100px;
-  `};
-
-  ${mediaQuery.BREAKPOINT_3`
-      margin-bottom: 145px;
-  `};
-
-  ${StatementImage} {
-    ${mediaQuery.BREAKPOINT_3`
-        grid-column: ${props => (props.reverse ? `7 / 13` : ` 1 / 7`)};
-      `};
-    }
-
-  ${StatementContent} {
-    ${mediaQuery.BREAKPOINT_3`
-      grid-column: ${props => (props.reverse ? `1 / 6` : `8 / 13`)};
-    `};
-  }
 `;
 
 

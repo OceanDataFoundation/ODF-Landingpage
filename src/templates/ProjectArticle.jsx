@@ -3,19 +3,21 @@ import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import {ArrowLeft} from '../components/arrow/ArrowLeft'
+import { ArrowLeft } from '../components/arrow/ArrowLeft'
+// Components
 import {
   Article,
   ArticleContainer,
   ArticleContent,
 } from '../components/article/Article'
+import { AuthorProfile } from '../components/author-profile/AuthorProfile'
 import { Container } from '../components/container/Container'
-// Components
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Figcaption } from '../components/figcaption/Figcaption'
 import { Figure } from '../components/figure/Figure'
 import { Header } from '../components/header/Header'
 import Line  from '../components/line/Line'
+import RichTextRenderer from '../components/rich-text-renderer/RichTextRenderer'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
 import { H1 } from '../components/typography/heading/Heading'
@@ -24,25 +26,29 @@ import P from '../components/typography/paragraph/Paragraph'
 import { space } from '../utils/configs/confSpace.js'
 
 const ProjectArticle = ({ data }) => {
+
+  console.log(data);
+
   const {
     title,
-    excerpt,
-    image,
-    imageCaption,
+    teaser,
+    coverImage,
+    coverCaption,
     content,
-  } = data.news
+    author,
+  } = data.projects
 
   return (
     <Layout>
       <SEO
         title={title}
-        metaDescription={excerpt}
-        image={`https:${image.file.url}`}
+        metaDescription={teaser}
+        image={`https:${coverImage.file.url}`}
       />
 
       <FullWidthContainer offset="true">
         <Header style={{marginBottom: "12px"}}>
-          <Link to="/projects/1">
+          <Link to="/projects">
             <ArrowLeft style={{marginBottom:"40px"}} />
             <H1 size="larger">Projects</H1>
           </Link>
@@ -51,37 +57,31 @@ const ProjectArticle = ({ data }) => {
 
         <Container fluid>
           <Article>
-            {image && (
+
+            {coverImage && (
               <Figure coverImage>
-                <Img fluid={image.fluid} style={{ maxHeight: '600px' }} />
-                {imageCaption && (
-                  <Figcaption as="figcaption">
-                    {imageCaption.imageCaption && imageCaption.imageCaption}
-                  </Figcaption>
+                <Img fluid={coverImage.fluid} style={{ maxHeight: '600px' }} />
+                {coverCaption && (
+                  <Figcaption as="figcaption">{coverCaption}</Figcaption>
                 )}
               </Figure>
             )}
 
             <ArticleContainer>
-            <H1>{title && title}</H1>
-              {excerpt && (
+              <H1>{title && title}</H1>
+              {teaser && (
                 <P lead style={{ marginTop: `${space[6]}` }}>
-                  {excerpt}
+                  {teaser}
                 </P>
               )}
-
               <ArticleContent>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: content.childMarkdownRemark.html,
-                  }}
-                />
-
+                <RichTextRenderer richTextJson={content.json} />
               </ArticleContent>
             </ArticleContainer>
+            <AuthorProfile author={author} />
           </Article>
         </Container>
-        <Link to="/projects/1" style={{borderBottom: "none"}}>
+        <Link to="/projects" style={{borderBottom: "none"}}>
           <ArrowLeft style={{marginBottom:"40px"}} />
         </Link>
       </FullWidthContainer>
@@ -95,11 +95,23 @@ ProjectArticle.propTypes = {
 
 export const pageQuery = graphql`
   query ProjectArticleQuery($slug: String) {
-    news: contentfulNews(slug: { eq: $slug }) {
+    projects: contentfulProject(slug: { eq: $slug }) {
       title
       slug
-      excerpt
-      image {
+      teaser
+      author {
+        name
+        affiliation
+        biography {
+          biography
+        }
+        pageUrl
+      }
+      content {
+        json
+      }
+      coverCaption
+      coverImage {
         fluid(maxWidth: 1200, quality: 80) {
           ...GatsbyContentfulFluid
         }
@@ -107,15 +119,6 @@ export const pageQuery = graphql`
           url
         }
       }
-      imageCaption {
-        imageCaption
-      }
-      content {
-        childMarkdownRemark {
-          html
-        }
-      }
-      tags
     }
   }
 `

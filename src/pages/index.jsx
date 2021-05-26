@@ -83,8 +83,7 @@ const IndexPage = ({ data }) => {
 
       <FullWidthContainer style={{marginBottom: "64px"}}>
         <Header style={{marginBottom: "12px"}}>
-            <H2>Projects</H2>
-          <Line />
+          <H2>Projects</H2>
         </Header>
 
         <ThreeColumnsContainer>

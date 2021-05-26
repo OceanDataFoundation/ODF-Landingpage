@@ -131,7 +131,47 @@ exports.createPages = async ({ graphql, actions }) => {
     )
   })
 
-  return { pressReleasePages, newsPages }
+  // Create Project articvle page
+  // ----------------------------------------------------------------------------
+  const projectArticle = path.resolve(`./src/templates/ProjectArticle.jsx`)
+
+  const projectPages = new Promise((resolve, reject) => {
+    resolve(
+      graphql(
+        `
+          query {
+            projects: allContentfulProject {
+              edges {
+                node {
+                  slug
+                }
+              }
+            }
+          }
+        `
+      ).then(result => {
+        if (result.errors) {
+          reject(result.errors)
+        }
+
+        // Create an article page
+        result.data.projects.edges.forEach(({ node: { slug } }) => {
+          // loop over split pages
+          createPage({
+            path: `projects/${slug}`,
+            component: projectArticle,
+            context: {
+              slug,
+            },
+          })
+        })
+      })
+    )
+  })
+
+
+
+  return { pressReleasePages, newsPages, projectPages }
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
