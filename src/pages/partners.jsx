@@ -8,6 +8,7 @@ import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Header } from '../components/header/Header'
 import Line from '../components/line/Line'
+import LinkButton from '../components/link-button/LinkButton'
 import { Partner } from '../components/partner/partner'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
@@ -51,6 +52,12 @@ const PartnersPage = ({ data }) => {
         {textBlockList.map(textblock => ( <TextBlock key={textblock.id} textblock={textblock}/> ))}
       </CustomContainer>
 
+      <ButtonContainer fluid>
+        <LinkButton to="/contact">
+          join us
+        </LinkButton>
+      </ButtonContainer>
+
       </FullWidthContainer>
 
     </Layout>
@@ -62,7 +69,7 @@ PartnersPage.propTypes = {
     allContentfulPartner: PropTypes.object.isRequired,
     intro: PropTypes.object.isRequired,
     contentfulTextBlockList: PropTypes.object.isRequired,
-    contentfulPage: PropTypes.string
+    contentfulPage: PropTypes.object
   }),
 }
 
@@ -119,6 +126,9 @@ export const query = graphql`
   }
 }
 `
+
+const ButtonContainer = styled(Container)`
+`;
 
 const CustomP = styled(P)`
     ${mediaQuery.BREAKPOINT_2`

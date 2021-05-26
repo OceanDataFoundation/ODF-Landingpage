@@ -10,7 +10,7 @@ import { Article } from '../components/article/Article'
 import Blockquote from '../components/blockquote/Blockquote'
 import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
-import PressRelease from '../components/container/ThreeColumnsContainer'
+import ThreeColumnsContainer from '../components/container/ThreeColumnsContainer'
 import { Header } from '../components/header/Header'
 import Hero from '../components/hero/Hero'
 import Line  from '../components/line/Line'
@@ -34,9 +34,8 @@ const IndexPage = ({ data }) => {
   const statementOne = data.statementOne.edges
   const statementTwo = data.statementTwo.edges
   const articles = data.allContentfulPerspective.edges
-  const articlesTwo = data.contentfulArticleList.article
-
-  console.log('articlesTwo', articlesTwo);
+  const projects = data.allContentfulProject.edges
+  // const projectsTwo = data.contentfulArticleList.article
 
   return (
     <Layout>
@@ -77,18 +76,37 @@ const IndexPage = ({ data }) => {
       <Container id="quote">
         <QuoteContainer>
           {quotePosts.map(({ node: post }) => (
-            <Blockquote key={post.id} highlightedQuote={post.highlightedQuote}>
-              {/* <Quote
-                dangerouslySetInnerHTML={{
-                  __html: post.content.childMarkdownRemark.html,
-                }}
-                /> */}
-            </Blockquote>
+            <Blockquote key={post.id} highlightedQuote={post.highlightedQuote}></Blockquote>
           ))}
         </QuoteContainer>
       </Container>
 
-      {/** 3 column with projects */}
+      <FullWidthContainer style={{marginBottom: "64px"}}>
+        <Header style={{marginBottom: "12px"}}>
+            <H2>Projects</H2>
+          <Line />
+        </Header>
+
+        <ThreeColumnsContainer>
+          {projects.map(({ node: project }) => (
+            <LinkBlock
+              to={`/projects/${project.slug}`}
+              key={project.id}>
+              <Article key={project.id}>
+                {project.coverImage && (
+                  <Img
+                    fluid={project.coverImage.fluid}
+                    style={{ minHeight: '329px', marginBottom: '24px' }}
+                  />
+                )}
+                <H3 style={{ marginBottom: '1rem' }}>{project.title}</H3>
+                <P style={{ margin: '1rem 0' }}>{project.teaser}</P>
+              </Article>
+              <ArrowRight />
+            </LinkBlock>
+          ))}
+        </ThreeColumnsContainer>
+      </FullWidthContainer>
 
       {statementOne.map(({ node: post }) => (
         <Statement
@@ -127,7 +145,7 @@ const IndexPage = ({ data }) => {
           <Line />
         </Header>
 
-        <PressRelease>
+        <ThreeColumnsContainer>
           {/* {contentfulArticleList.} */}
           {articles.map(({ node: article }) => (
             <LinkBlock
@@ -146,7 +164,7 @@ const IndexPage = ({ data }) => {
               <ArrowRight />
             </LinkBlock>
           ))}
-        </PressRelease>
+        </ThreeColumnsContainer>
       </FullWidthContainer>
 
     </Layout>
@@ -159,6 +177,7 @@ IndexPage.propTypes = {
     allContentfulQuote: PropTypes.object.isRequired,
     contentfulPage: PropTypes.object.isRequired,
     allContentfulPerspective: PropTypes.object.isRequired,
+    allContentfulProject: PropTypes.object.isRequired,
     statementOne: PropTypes.object.isRequired,
     statementTwo: PropTypes.object.isRequired,
   }),
@@ -207,6 +226,23 @@ export const query = graphql`
         }
       }
     }
+    allContentfulProject (
+    limit: 3
+  ) {
+    edges {
+      node {
+        id
+        title
+        teaser
+        slug
+        coverImage {
+            fluid(maxWidth: 700) {
+              ...GatsbyContentfulFluid
+            }
+          }
+      }
+    }
+  }
     allContentfulQuote(
       filter: { contentful_id: { eq: "27f4To0O1ACAWoyg4NR5xJ" } }
     ) {
@@ -331,10 +367,6 @@ const CustomStatement = styled(Statement)`
         `};
       }
   }
-`;
-
-const Quote = styled.div`
-  grid-column: 4 / 10;
 `;
 
 const CenteredContainer = styled(Container)`

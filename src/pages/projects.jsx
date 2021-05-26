@@ -15,6 +15,7 @@ import { StatementContent, StatementImage } from '../components/statement/Statem
 import { TextBlock } from '../components/text-block/TextBlock'
 import { H1, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
+import ProjectList from '../templates/ProjectList';
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 
@@ -37,6 +38,8 @@ const Projects = ({ data }) => {
             __html: data.intro.introText.content[0].content[0].value
           }}
         />
+
+        {/* <ProjectList /> */}
 
         {/* <CustomStatement
           fluid

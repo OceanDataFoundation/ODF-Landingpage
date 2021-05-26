@@ -66,7 +66,7 @@ const News = ({ data }) => {
             All news
           </LinkText>
           <ArrowRight />
-          </Link>
+        </Link>
       </FullWidthContainer>
 
       <FullWidthContainer>
