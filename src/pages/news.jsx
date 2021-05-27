@@ -5,6 +5,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { ArrowRight } from '../components/arrow/ArrowRight'
+import { SmallArrowRight } from '../components/arrow/SmallArrowRight'
 // Components
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import ThreeColumnsContainer from '../components/container/ThreeColumnsContainer'
@@ -51,12 +52,12 @@ const News = ({ data }) => {
                 {article.coverImage && (
                   <Img
                     fluid={article.coverImage.fluid}
-                    style={{ minHeight: '329px', maxHeight: '329px', marginBottom: '24px' }}
+                    style={{ minHeight: '329px', maxHeight: '329px', marginBottom: '32px' }}
                   />
                 )}
                 <H3 style={{ marginBottom: '1rem' }}>{article.title}</H3>
-                <P style={{ margin: '2rem 0' }}>{article.teaser}</P>
-                <ArrowRight />
+                <P style={{ margin: '12px 0 2rem 0' }}>{article.teaser}</P>
+                <SmallArrowRight />
             </LinkBlock>
           ))}
         </ThreeColumnsContainer>
@@ -89,7 +90,7 @@ const News = ({ data }) => {
               {post.link && (
                 <Link href={post.link} target="_blank"
                 rel="noopener noreferrer">
-                <ArrowRight />
+                <SmallArrowRight />
                 </Link>
               )}
             </div>

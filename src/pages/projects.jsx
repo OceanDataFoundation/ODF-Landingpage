@@ -15,7 +15,7 @@ import { NewsBlock } from '../components/news-block/NewsBlock'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
 import { TextBlock } from '../components/text-block/TextBlock'
-import { H1, H4 } from '../components/typography/heading/Heading'
+import { H1, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 // Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
@@ -48,11 +48,9 @@ const Projects = ({ data }) => {
         <Container fluid col="3">
           {projectArticles.map(({ node: article }) => (
             <LinkBlock to={`/projects/${article.slug}`} key={article.id}>
-              {article.coverImage && <Img fluid={article.coverImage.fluid} style={{ minHeight: '329px', maxHeight: '329px', marginBottom: '24px' }} />}
-              <NewsBlock>
-                <H4>{article.title}</H4>
-                <P style={{ marginBottom: '2rem' }}>{article.teaser}</P>
-              </NewsBlock>
+              {article.coverImage && <Img fluid={article.coverImage.fluid} style={{ minHeight: '329px', maxHeight: '329px', marginBottom: '32px' }} />}
+                <H3 style={{ marginBottom: '1rem' }}>{article.title}</H3>
+                <P style={{ marginBottom: '12px 0 2rem 0' }}>{article.teaser}</P>
               <ArrowRight />
             </LinkBlock>
           ))}

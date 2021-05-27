@@ -47,7 +47,6 @@ const AccordionText = styled.h2`
   font-size: 36px;
 `;
 
-
 const S_AccordionIcon = styled.div`
   display: flex;
   align-items: center;

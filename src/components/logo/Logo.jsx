@@ -48,12 +48,10 @@ export const LogoLink = styled(Link)`
 
   ${mediaQuery.BREAKPOINT_2`
 		padding-top: ${space[5]};
-    padding-bottom: ${space[5]};
   `};
 
   ${mediaQuery.BREAKPOINT_3`
 		padding-top: ${space[5]};
-    padding-bottom: ${space[5]};
   `};
 
   :hover,

@@ -41,7 +41,7 @@ export const Container = styled.section`
   ${mediaQuery.BREAKPOINT_3`
     padding-right: ${props => (props.fluid ? 0 : space[7])};
     padding-left: ${props => (props.fluid ? 0 : space[7])};
-    margin-top: ${props => (props.offset ? '160px' : '0')};
+    margin-top: ${props => (props.offset ? '220px' : '0')};
     grid-template-columns: ${props =>
       props.col === '3'
         ? `repeat(3, 1fr)`

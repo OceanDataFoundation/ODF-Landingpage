@@ -49,6 +49,7 @@ const StyledNav = styled.nav`
   justify-self: end;
   margin: auto 0;
   list-style-type: none;
+  padding-top: ${space[2]};
 `
 
 const NavList = styled.ul`
@@ -94,13 +95,5 @@ const BurgerWrapper = styled.div`
       display: none;
     `}
 `
-
-const CustomLink = styled.a`
-
-  &:hover {
-    padding-bottom: .250rem;
-    border-bottom: 1px solid white;
-  }
-`;
 
 export default Nav

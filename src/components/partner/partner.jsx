@@ -29,6 +29,10 @@ Partner.propTypes = {
   partner: PropTypes.object.isRequired,
 }
 
+// const CustomH3 = styled(H3)`
+//   margin-bottom: 0;
+// `;
+
 const PartnerContainer = styled.a`
   display: flex;
   flex-direction: column;
@@ -45,7 +49,7 @@ const ImageContainer = styled.div`
   align-items: center;
   min-height: 256px;
   background-color: white;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 `
 
 const PartnerImage = styled(Img)`
@@ -57,6 +61,6 @@ const PartnerImage = styled(Img)`
 
 const PartnerText = styled.div`
   ${H3} {
-    margin-bottom: 37px;
+    margin-bottom: 12px;
   }
 `

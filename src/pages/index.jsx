@@ -5,7 +5,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // Components
-import { ArrowRight } from '../components/arrow/ArrowRight'
+import { SmallArrowRight } from '../components/arrow/SmallArrowRight'
 import { Article } from '../components/article/Article'
 import Blockquote from '../components/blockquote/Blockquote'
 import { Container } from '../components/container/Container'
@@ -84,6 +84,7 @@ const IndexPage = ({ data }) => {
       <FullWidthContainer style={{marginBottom: "64px"}}>
         <Header style={{marginBottom: "12px"}}>
           <H2>Projects</H2>
+          <Line />
         </Header>
 
         <ThreeColumnsContainer>
@@ -95,13 +96,13 @@ const IndexPage = ({ data }) => {
                 {project.coverImage && (
                   <Img
                     fluid={project.coverImage.fluid}
-                    style={{ minHeight: '329px', marginBottom: '24px' }}
+                    style={{ minHeight: '329px', maxHeight: '329px', marginBottom: '24px' }}
                   />
                 )}
                 <H3 style={{ marginBottom: '1rem' }}>{project.title}</H3>
                 <P style={{ margin: '1rem 0' }}>{project.teaser}</P>
               </Article>
-              <ArrowRight />
+              <SmallArrowRight />
             </LinkBlock>
           ))}
         </ThreeColumnsContainer>
@@ -154,13 +155,13 @@ const IndexPage = ({ data }) => {
                 {article.coverImage && (
                   <Img
                     fluid={article.coverImage.fluid}
-                    style={{ minHeight: '329px', marginBottom: '24px' }}
+                    style={{ minHeight: '329px', maxHeight: '329px', marginBottom: '32px' }}
                   />
                 )}
                 <H3 style={{ marginBottom: '1rem' }}>{article.title}</H3>
-                <P style={{ margin: '1rem 0' }}>{article.teaser}</P>
+                <P style={{ margin: '12px 0 1rem 0' }}>{article.teaser}</P>
               </Article>
-              <ArrowRight />
+              <SmallArrowRight />
             </LinkBlock>
           ))}
         </ThreeColumnsContainer>

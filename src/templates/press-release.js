@@ -3,6 +3,7 @@ import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 import React from 'react'
 
+// Components
 import {ArrowLeft} from '../components/arrow/ArrowLeft'
 import {
   Article,
@@ -10,7 +11,6 @@ import {
   ArticleContent,
 } from '../components/article/Article'
 import { Container } from '../components/container/Container'
-// Components
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
 import { Figcaption } from '../components/figcaption/Figcaption'
 import { Figure } from '../components/figure/Figure'

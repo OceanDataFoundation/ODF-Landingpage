@@ -20,7 +20,6 @@ import { Small } from '../typography/small/Small'
 const Footer = props => {
   const {
     siteTitle,
-    relatedLinkList,
     socialLinkList,
     contactInformation,
   } = props
@@ -30,24 +29,6 @@ const Footer = props => {
       <FullWidthContainer>
 
         <MobileFooter>
-          <Accordion title={relatedLinkList.text}>
-            {relatedLinkList && (
-              <LinkList noHeading underline linkList={relatedLinkList} />
-            )}
-
-            <Link
-              to="/use-of-cookies"
-              style={{
-                paddingBottom: '2px',
-                marginTop: '32px',
-                color: '#02FFD1',
-                borderBottomColor: '#02FFD1',
-                display: 'inline-block',
-              }}>
-              Use of Cookies
-            </Link>
-          </Accordion>
-
           <Accordion title={"WEF Network  "}>
               <Link
                 to="/"
@@ -76,29 +57,23 @@ const Footer = props => {
             &copy; {siteTitle} {new Date().getFullYear()}
           </Small>
 
+          <Link
+              to="/use-of-cookies"
+              style={{
+                paddingBottom: '2px',
+                marginTop: '32px',
+                color: '#02FFD1',
+                borderBottomColor: '#02FFD1',
+                display: 'inline-block',
+              }}>
+              Use of Cookies
+            </Link>
+
         </MobileFooter>
 
         <DesktopFooter>
           <Line largeMargin />
           <FooterGrid fluid>
-
-            <FooterCol>
-              {relatedLinkList && (
-                <LinkList underline linkList={relatedLinkList} />
-              )}
-
-              <Link
-                to="/use-of-cookies"
-                style={{
-                  paddingBottom: '2px',
-                  marginTop: '32px',
-                  color: '#02FFD1',
-                  borderBottomColor: '#02FFD1',
-                  display: 'inline-block',
-                }}>
-                Use of Cookies
-              </Link>
-            </FooterCol>
 
             <FooterCol>
               <H3>WEF Network</H3>
@@ -129,6 +104,18 @@ const Footer = props => {
               <Small style={{ marginTop: '2rem', display: 'block' }}>
                 &copy; {siteTitle} {new Date().getFullYear()}
               </Small>
+
+              <Link
+                to="/use-of-cookies"
+                style={{
+                  paddingBottom: '2px',
+                  marginTop: '32px',
+                  color: '#02FFD1',
+                  borderBottomColor: '#02FFD1',
+                  display: 'inline-block',
+                }}>
+                Use of Cookies
+              </Link>
             </FooterCol>
 
           </FooterGrid>
@@ -182,7 +169,7 @@ const FooterCol = styled.div`
   grid-column: span 1;
 
     ${mediaQuery.BREAKPOINT_3`
-      grid-column: span 3;
+      grid-column: span 4;
   `};
 `
 

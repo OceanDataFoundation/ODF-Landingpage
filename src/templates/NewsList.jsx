@@ -5,7 +5,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { ArrowLeft } from '../components/arrow/ArrowLeft'
-import { ArrowRight } from '../components/arrow/ArrowRight'
+import { SmallArrowRight } from '../components/arrow/SmallArrowRight'
 // Components
 import { Container } from '../components/container/Container'
 import { FullWidthContainer } from '../components/container/FullWidthContainer'
@@ -15,7 +15,7 @@ import LinkBlock from '../components/link-block/LinkBlock'
 import { NewsBlock } from '../components/news-block/NewsBlock'
 import SEO from '../components/seo/seo'
 import Layout from '../components/site-layout/Layout'
-import { H1, H4 } from '../components/typography/heading/Heading'
+import { H1, H3 } from '../components/typography/heading/Heading'
 import P from '../components/typography/paragraph/Paragraph'
 import { Small } from '../components/typography/small/Small'
 import { Strong } from '../components/typography/strong/Strong'
@@ -46,11 +46,11 @@ const NewsList = ({ data, pageContext }) => {
         <Container fluid col="3">
           {articles.map(({ node: article }) => (
             <LinkBlock to={`/news/${article.slug}`} key={article.id}>
-              {article.coverImage && <Img fluid={article.coverImage.fluid} style={{ minHeight: '329px', maxHeight: '329px' }} />}
+              {article.coverImage && <Img fluid={article.coverImage.fluid} style={{ minHeight: '329px', maxHeight: '329px',  marginBottom: '32px' }} />}
               <NewsBlock>
-                <H4>{article .title}</H4>
-                <P style={{ marginBottom: '2rem' }}>{article.teaser}</P>
-                 <ArrowRight />
+                <H3 style={{ marginBottom: '1rem' }}>{article .title}</H3>
+                <P style={{ marginBottom: '12px 0 2rem 0' }}>{article.teaser}</P>
+                 <SmallArrowRight />
               </NewsBlock>
             </LinkBlock>
           ))}
