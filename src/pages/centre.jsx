@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
-// Components
 import Accordion from '../components/accordion/Accordion'
 import Blockquote from '../components/blockquote/Blockquote'
 import { HightlightedBlockquote } from '../components/blockquote/Blockquote'
@@ -18,9 +17,26 @@ import Statement from '../components/statement/Statement'
 import { StatementContent, StatementImage } from '../components/statement/Statement'
 import { TextBlock } from '../components/text-block/TextBlock'
 import { H1, H3 } from '../components/typography/heading/Heading'
-// Mixins
 import { mediaQuery } from '../utils/mixins/mixMediaQuery'
 import { fontSize } from '../utils/tokens/tokenFontSize'
+
+// Components
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Mixins
+
+
 
 const CentrePage = ({ data }) => {
   const PersonList = data.allContentfulPersonLists.edges
@@ -79,6 +95,7 @@ const CentrePage = ({ data }) => {
                 <Accordion key={team.id} title={team.title}>
                   <Container fluid col="3">
                   {team.persons && team.persons.map(person => {
+                    console.log(person);
                     return (
                       <div key={person.id}>
                         {person.portrait && <TeamMemberImage
@@ -86,6 +103,7 @@ const CentrePage = ({ data }) => {
                           />}
                         <Name>{person.fullName}</Name>
                         <p>{person.role}</p>
+                        {person.bio && person.bio.bio && <p>{person.bio.bio}</p>}
                       </div>
                     )})
                     }
@@ -118,6 +136,7 @@ export const pageQuery = graphql`
             fullName
             role
             id
+            bio {bio}
             portrait {
             fluid(maxWidth: 700) {
               ...GatsbyContentfulFluid
